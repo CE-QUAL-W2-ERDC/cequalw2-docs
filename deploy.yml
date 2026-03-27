@@ -1,0 +1,101 @@
+# ==============================================================================
+# Build MkDocs site from private repo (cequalw2-docs-dev) and deploy to
+# public repo (cequalw2-docs) gh-pages branch.
+#
+# Setup required:
+#   1. Create a Personal Access Token (PAT) with 'repo' scope
+#   2. Add it as a secret named DEPLOY_TOKEN in cequalw2-docs-dev settings
+#   3. Enable GitHub Pages on cequalw2-docs from the gh-pages branch, root /
+# ==============================================================================
+
+name: Build and Deploy Documentation
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+env:
+  DEPLOY_REPO: CE-QUAL-W2-ERDC/cequalw2-docs
+  PYTHON_VERSION: "3.12"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout documentation source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Determine version
+        id: version
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/v}"
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+            echo "is_release=true" >> $GITHUB_OUTPUT
+          else
+            echo "version=dev" >> $GITHUB_OUTPUT
+            echo "is_release=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build site
+        run: |
+          mkdocs build --strict
+
+      - name: Deploy to public repo gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: ${{ env.DEPLOY_REPO }}
+          publish_branch: gh-pages
+          publish_dir: ./site
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: "Deploy documentation (${{ steps.version.outputs.version }})"
+
+  # Optional: Build PDF on tagged releases
+  build-pdf:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev
+
+      - name: Build PDF
+        env:
+          ENABLE_PDF_EXPORT: "1"
+        run: |
+          mkdocs build --strict
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CE-QUAL-W2-Manual
+          path: site/pdf/CE-QUAL-W2-Manual.pdf
