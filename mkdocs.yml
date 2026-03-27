@@ -3,7 +3,6 @@ site_description: "CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation
 site_author: "Environmental Modeling Team, U.S. Army Engineer Research and Development Center"
 site_url: "https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/"
 copyright: "U.S. Army Engineer Research and Development Center (ERDC)"
-
 repo_url: "https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs"
 repo_name: "cequalw2-docs"
 
