@@ -1,0 +1,66 @@
+/* ==========================================================================
+   CE-QUAL-W2 ERDC Documentation Theme
+   ========================================================================== */
+
+:root {
+  --md-primary-fg-color: #003366;
+  --md-primary-fg-color--light: #1a5276;
+  --md-primary-fg-color--dark: #001a33;
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: #c41e3a;
+  --md-accent-fg-color--transparent: rgba(196, 30, 58, 0.1);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #4a90d9;
+  --md-accent-fg-color: #e74c6f;
+}
+
+/* Custom admonition: ERDC-specific feature */
+.md-typeset .admonition.erdc-feature,
+.md-typeset details.erdc-feature {
+  border-color: #c41e3a;
+}
+.md-typeset .erdc-feature > .admonition-title,
+.md-typeset .erdc-feature > summary {
+  background-color: rgba(196, 30, 58, 0.1);
+  border-color: #c41e3a;
+}
+.md-typeset .erdc-feature > .admonition-title::before,
+.md-typeset .erdc-feature > summary::before {
+  background-color: #c41e3a;
+  -webkit-mask-image: var(--md-admonition-icon--info);
+  mask-image: var(--md-admonition-icon--info);
+}
+
+/* Custom admonition: PSU baseline note */
+.md-typeset .admonition.psu-baseline,
+.md-typeset details.psu-baseline {
+  border-color: #2e7d32;
+}
+.md-typeset .psu-baseline > .admonition-title,
+.md-typeset .psu-baseline > summary {
+  background-color: rgba(46, 125, 50, 0.1);
+  border-color: #2e7d32;
+}
+.md-typeset .psu-baseline > .admonition-title::before,
+.md-typeset .psu-baseline > summary::before {
+  background-color: #2e7d32;
+  -webkit-mask-image: var(--md-admonition-icon--note);
+  mask-image: var(--md-admonition-icon--note);
+}
+
+/* Parameter tables */
+.md-typeset table.parameter-table th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  white-space: nowrap;
+}
+.md-typeset table.parameter-table {
+  font-size: 0.85rem;
+}
+
+/* Equation overflow */
+.md-typeset .MathJax {
+  overflow-x: auto;
+}

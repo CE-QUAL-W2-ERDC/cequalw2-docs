@@ -1,0 +1,169 @@
+site_name: "CE-QUAL-W2 Documentation"
+site_description: "Official USACE/ERDC CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation"
+site_author: "ERDC Environmental Modeling Team"
+site_url: "https://CE-QUAL-W2-ERDC.github.io/CE-QUAL-W2/"
+copyright: "U.S. Army Engineer Research and Development Center (ERDC)"
+
+repo_url: "https://github.com/CE-QUAL-W2-ERDC/CE-QUAL-W2"
+repo_name: "CE-QUAL-W2"
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  # Uncomment after adding logo/favicon files:
+  # logo: assets/images/logo.png
+  # favicon: assets/images/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - assets/css/custom.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/CE-QUAL-W2-ERDC
+      name: CE-QUAL-W2-ERDC on GitHub
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - abbr
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+plugins:
+  - search
+  # PDF export -- uncomment when ready:
+  # - with-pdf:
+  #     author: "ERDC Environmental Modeling Team"
+  #     cover_title: "CE-QUAL-W2"
+  #     cover_subtitle: "Water Quality and Hydrodynamic Model Documentation"
+  #     toc_level: 3
+  #     enabled_if_env: ENABLE_PDF_EXPORT
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+# =============================================================================
+# Navigation
+# =============================================================================
+nav:
+  - Home: index.md
+
+  - Getting Started:
+      - getting-started/index.md
+      - Installation: getting-started/installation.md
+      - Quick Start Tutorial: getting-started/quick-start.md
+      - Modeling Workflow: getting-started/workflow.md
+
+  - Theory:
+      - theory/index.md
+      - Hydrodynamics:
+          - theory/hydrodynamics/index.md
+          - Governing Equations: theory/hydrodynamics/governing-equations.md
+          - Numerical Solution: theory/hydrodynamics/numerical-solution.md
+          - Boundary Conditions: theory/hydrodynamics/boundary-conditions.md
+      - Water Quality:
+          - theory/water-quality/index.md
+          - Constituent Transport: theory/water-quality/transport.md
+          - Temperature: theory/water-quality/temperature.md
+          - Dissolved Oxygen: theory/water-quality/dissolved-oxygen.md
+          - Nutrients: theory/water-quality/nutrients.md
+          - Organic Matter: theory/water-quality/organic-matter.md
+          - Algae: theory/water-quality/algae.md
+          - Sediment: theory/water-quality/sediment.md
+      - HAB Modules (ERDC):
+          - theory/hab-modules/index.md
+          - Nitrogen Fixation: theory/hab-modules/nitrogen-fixation.md
+          - Hypoxic Algal Mortality: theory/hab-modules/hypoxic-mortality.md
+          - Minimum Algae Concentration: theory/hab-modules/minimum-concentration.md
+          - Mechanical Removal: theory/hab-modules/mechanical-removal.md
+
+  - User Guide:
+      - user-guide/index.md
+      - Input Files:
+          - user-guide/input-files/index.md
+          - Control File: user-guide/input-files/control-file.md
+          - Bathymetry: user-guide/input-files/bathymetry.md
+          - Meteorological Data: user-guide/input-files/meteorological.md
+          - Inflows and Outflows: user-guide/input-files/inflows-outflows.md
+          - Water Quality Constituents: user-guide/input-files/water-quality.md
+          - Additional Input Files: user-guide/input-files/additional-files.md
+      - Output Files:
+          - user-guide/output-files/index.md
+          - Standard Outputs: user-guide/output-files/standard-outputs.md
+          - Optional Outputs: user-guide/output-files/optional-outputs.md
+      - Tools and Utilities:
+          - user-guide/tools/index.md
+          - Pre-processing: user-guide/tools/preprocessing.md
+          - Post-processing: user-guide/tools/postprocessing.md
+
+  - Examples:
+      - examples/index.md
+
+  - Developer Guide:
+      - developer-guide/index.md
+      - Code Architecture: developer-guide/architecture.md
+      - Compilation: developer-guide/compilation.md
+      - Test Harness: developer-guide/test-harness.md
+      - Contributing: developer-guide/contributing.md
+
+  - Release Notes:
+      - release-notes/index.md
+      - ERDC 2026.02: release-notes/2026.02.md
+      - Version Lineage: release-notes/version-lineage.md
