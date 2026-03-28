@@ -29,7 +29,7 @@
     
     
       
-        <title>Directory Paths - CE-QUAL-W2 Documentation</title>
+        <title>Relative Directory Paths - CE-QUAL-W2 Documentation</title>
       
     
     
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Directory Paths
+              Relative Directory Paths
             
           </span>
         </div>
@@ -764,6 +764,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative Directory Paths
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -780,6 +798,97 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-subdirectory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Subdirectory Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-relative-paths-in-the-control-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifying Relative Paths in the Control File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying Relative Paths in the Control File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-file-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input File Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-file-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output File Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1246,6 +1355,86 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-subdirectory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating a Subdirectory Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-relative-paths-in-the-control-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifying Relative Paths in the Control File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Specifying Relative Paths in the Control File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-file-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input File Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-file-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output File Examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1265,9 +1454,82 @@
 
 
 <h1 id="relative-directory-paths-for-input-and-output-files">Relative Directory Paths for Input and Output Files<a class="headerlink" href="#relative-directory-paths-for-input-and-output-files" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>By default, CE-QUAL-W2 expects all input and output files to reside in the same directory as the executable and the control file (<code>w2_con.npt</code>). For large projects with many waterbodies, branches, tributaries, and output files, a single directory becomes difficult to manage. Organize files into subdirectories to improve project clarity and simplify locating specific inputs or outputs.</p>
+<p>CE-QUAL-W2 supports relative directory paths in the control file. Instead of placing every file in the model root directory, create subdirectories and reference them using relative path notation.</p>
+<h2 id="creating-a-subdirectory-structure">Creating a Subdirectory Structure<a class="headerlink" href="#creating-a-subdirectory-structure" title="Permanent link">&para;</a></h2>
+<p>Consider a model with its root directory at <code>c:\w2\LakeA</code>. A practical directory structure might include:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Directory</th>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>c:\w2\LakeA\</code></td>
+<td style="text-align: left;">Executable, <code>w2_con.npt</code>, and other control files</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>c:\w2\LakeA\Inflows\</code></td>
+<td style="text-align: left;">Flow, temperature, and concentration input files for branch inflows, tributaries, and distributed tributaries</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>c:\w2\LakeA\Inputs\</code></td>
+<td style="text-align: left;">Bathymetry file, shading file, wind sheltering coefficient file</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>c:\w2\LakeA\output_snp\</code></td>
+<td style="text-align: left;">Snapshot output files</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>c:\w2\LakeA\output_tsr\</code></td>
+<td style="text-align: left;">Time series output files</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Choose a naming convention that clearly distinguishes input directories from output directories. This prevents accidental overwriting and simplifies archiving of model results.</p>
+</div>
+<h2 id="specifying-relative-paths-in-the-control-file">Specifying Relative Paths in the Control File<a class="headerlink" href="#specifying-relative-paths-in-the-control-file" title="Permanent link">&para;</a></h2>
+<p>In <code>w2_con.npt</code>, use the <code>.\</code> prefix to specify file paths relative to the directory containing the executable. The backslash (<code>\</code>) separates subdirectory names from filenames, following standard Windows path conventions.</p>
+<h3 id="input-file-examples">Input File Examples<a class="headerlink" href="#input-file-examples" title="Permanent link">&para;</a></h3>
+<p>To place the wind sheltering coefficient file and the shading file in the <code>Inputs</code> subdirectory:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>WSC FILE...............................WSCFN...............................
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>      .\Inputs\wsc.npt
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>SHD FILE...............................SHDFN...............................
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      .\Inputs\shade.npt
+</span></code></pre></div>
+<p>To place branch inflow files (flow, temperature, and concentration) in the <code>Inflows</code> subdirectory:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>QIN FILE...............................QINFN...............................
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>BR1    .\Inflows\qP88_2012.npt
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>TIN FILE...............................TINFN...............................
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>BR1    .\Inflows\tin_P88_2012.npt
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>CIN FILE...............................CINFN...............................
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>BR1    .\Inflows\cP88_2012_updated.npt
+</span></code></pre></div>
+<h3 id="output-file-examples">Output File Examples<a class="headerlink" href="#output-file-examples" title="Permanent link">&para;</a></h3>
+<p>To direct snapshot and time series outputs to their respective subdirectories:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SNP FILE...............................SNPFN...............................
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>WB 1    .\output_snp\snp_wb1.opt
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>TSR FILE...............................TSRFN...............................
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>      .\output_tsr\tsr.csv
+</span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Under Development</p>
-<p>This page is under active development.</p>
+<p class="admonition-title">Warning</p>
+<p>The subdirectories must exist before running the model. CE-QUAL-W2 does not create directories automatically. If a specified subdirectory is missing, the model will fail when it attempts to open the file.</p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Create subdirectories under the model root directory to organize input and output files.</li>
+<li>In <code>w2_con.npt</code>, replace bare filenames with relative paths using the <code>.\</code> prefix (e.g., <code>.\Inflows\qP88_2012.npt</code>).</li>
+<li>Verify that all referenced subdirectories exist before running the model.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Relative paths are resolved from the working directory where the executable runs. If you launch the model from a different directory, such as via a batch file, set the working directory to the model root directory. See <a href="../07_batch_processing_and_command_line/">Batch Processing and Command Line</a> for details on running models from batch scripts.</p>
 </div>
 
 
