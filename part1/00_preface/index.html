@@ -540,6 +540,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -556,6 +574,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-of-the-user-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History of the User Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Organization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1246,6 +1327,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-of-the-user-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        History of the User Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About This Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual Organization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1265,10 +1398,39 @@
 
 
 <h1 id="preface">Preface<a class="headerlink" href="#preface" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Under Development</p>
-<p>This page is under active development.</p>
+<p>This web-based manual documents the two-dimensional, laterally averaged, hydrodynamic and water quality model CE-QUAL-W2, ERDC Version 2026. As with any complex numerical model developed over decades, CE-QUAL-W2 reflects the contributions of many individuals and organizations.</p>
+<h2 id="history-of-the-user-manual">History of the User Manual<a class="headerlink" href="#history-of-the-user-manual" title="Permanent link">&para;</a></h2>
+<p>The CE-QUAL-W2 User Manual has been through several major editions:</p>
+<ul>
+<li><strong>Version 1.0</strong> (1986): The original manual, published by the Environmental and Hydraulic Laboratories at the U.S. Army Waterways Experiment Station (WES).</li>
+<li><strong>Version 2.0</strong> (1995): Authored by Cole and Buchak, documenting substantial improvements to computational accuracy and efficiency.</li>
+<li><strong>Version 3.0--3.1</strong> (2000): Authored by Cole and Wells, reflecting the expansion of the model to support entire river basins, multiple waterbodies, and numerous new water quality algorithms.</li>
+<li><strong>Version 4.1</strong> (2019): Authored by Cole and Wells, incorporating over a decade of continued development including sediment diagenesis, particle tracking, and many new features.</li>
+<li><strong>Version 4.5</strong> (2025): Edited by Dr. Scott A. Wells at Portland State University (PSU). This edition represents a major update with numerous corrections, new figures, new sections, and improvements in organization and presentation. Dr. Wells' sustained effort in developing and documenting CE-QUAL-W2 over more than two decades has been instrumental in advancing the model and its user community.</li>
+</ul>
+<h2 id="about-this-manual">About This Manual<a class="headerlink" href="#about-this-manual" title="Permanent link">&para;</a></h2>
+<p>This web-based manual for ERDC Version 2026 builds on the foundation of the PSU Version 4.5 User Manual but will deviate from it as ERDC development continues. The purpose of this documentation is to document ERDC Version 2026 -- not to reproduce the V4.5 manual verbatim. Features developed by ERDC that are not present in the PSU version are identified throughout this documentation with the following annotation:</p>
+<div class="admonition erdc-feature">
+<p class="admonition-title">ERDC Feature</p>
+<p>Content in boxes like this describes capabilities developed by ERDC that are not present in the PSU version.</p>
 </div>
+<h2 id="manual-organization">Manual Organization<a class="headerlink" href="#manual-organization" title="Permanent link">&para;</a></h2>
+<p>The User Manual is organized into four parts:</p>
+<ul>
+<li><strong>Part 1: Introduction</strong> -- Model overview, capabilities and limitations, data preparation, model download package, how to run the model, and version history.</li>
+<li><strong>Part 2: Theory</strong> -- Theoretical basis for CE-QUAL-W2 including hydrodynamics, water quality kinetics, particle transport, and numerical solution schemes.</li>
+<li><strong>Part 3: Input/Output Files</strong> -- Detailed descriptions of all model input and output files with format specifications and examples.</li>
+<li><strong>Part 4: Model Examples</strong> -- Example applications distributed with the model release, along with calibration guidance for different waterbody types.</li>
+</ul>
+<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
+<p>When citing this documentation:</p>
+<blockquote>
+<p>Steissberg, T.E., editor (2026). "CE-QUAL-W2: A Two-Dimensional, Laterally Averaged, Hydrodynamic and Water Quality Model, Version 2026, User Manual." U.S. Army Engineer Research and Development Center, Environmental Laboratory, Vicksburg, MS.</p>
+</blockquote>
+<p>When citing the PSU Version 4.5 User Manual:</p>
+<blockquote>
+<p>Wells, S. A., editor (2025). "CE-QUAL-W2: A Two-Dimensional, Laterally Averaged, Hydrodynamic and Water Quality Model, Version 4.5, User Manual." Department of Civil and Environmental Engineering, Portland State University, Portland, OR.</p>
+</blockquote>
 
 
 
