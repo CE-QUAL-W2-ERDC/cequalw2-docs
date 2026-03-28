@@ -3070,11 +3070,11 @@
 <h3 id="waterbodies">Waterbodies<a class="headerlink" href="#waterbodies" title="Permanent link">&para;</a></h3>
 <p>A <strong>waterbody</strong> is a collection of model branches that share the same turbulence closure scheme, water quality parameter values, and meteorological forcing. For example, a model of a river-reservoir system would typically define the reservoir and the river as separate waterbodies, each with its own meteorological input and turbulence closure settings. A single reservoir can also be split into multiple waterbodies where different portions require distinct meteorological forcing.</p>
 <h3 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">&para;</a></h3>
-<p>A <strong>branch</strong> is a collection of model segments with a variable model slope. In a river waterbody, multiple branches of variable slope can represent changes in channel gradient. In a reservoir, sidearms are typically represented as separate branches connected to the main branch.</p>
+<p>A <strong>branch</strong> is a collection of model segments that share a common slope. In a river, separate branches represent reaches with different channel gradients. In a reservoir, sidearms are typically represented as separate branches connected to the mainstem branch.</p>
 <h3 id="segments">Segments<a class="headerlink" href="#segments" title="Permanent link">&para;</a></h3>
-<p>A <strong>segment</strong> is a single longitudinal element of length <strong>Δx</strong>. Each segment is further divided vertically into layers. Segments are the fundamental horizontal unit of the model grid.</p>
+<p>A <strong>segment</strong> is a single longitudinal element of length <strong>Δx</strong>. Segment lengths can vary from segment to segment. Each segment is further divided vertically into layers.</p>
 <h3 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h3>
-<p>A <strong>layer</strong> is a single vertical element of height <strong>Δz</strong>. Layers are stacked within each segment to represent the vertical structure of the water column. The number of active layers in a segment varies with the water surface elevation and bathymetry.</p>
+<p>A <strong>layer</strong> is a single vertical element of height <strong>Δz</strong>. Layer heights can vary between waterbodies. Within a segment, layers between the bottom elevation and the water surface are <strong>active</strong> (wet); layers above the water surface are inactive (dry). As the water surface rises or falls during a simulation, layers are added or removed at the top of the water column.</p>
 <h3 id="summary-of-grid-hierarchy">Summary of Grid Hierarchy<a class="headerlink" href="#summary-of-grid-hierarchy" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3092,17 +3092,17 @@
 </tr>
 <tr>
 <td><strong>Branch</strong></td>
-<td>Collection of segments with variable slope</td>
+<td>Collection of segments sharing a common slope</td>
 <td>Mainstem channel, reservoir sidearms</td>
 </tr>
 <tr>
 <td><strong>Segment</strong></td>
-<td>Longitudinal element of length Δx</td>
+<td>Longitudinal element of length Δx (variable)</td>
 <td>Horizontal discretization unit</td>
 </tr>
 <tr>
 <td><strong>Layer</strong></td>
-<td>Vertical element of height Δz</td>
+<td>Vertical element of height Δz (variable between waterbodies)</td>
 <td>Vertical discretization unit</td>
 </tr>
 </tbody>
