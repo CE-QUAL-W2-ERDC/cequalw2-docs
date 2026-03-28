@@ -12,11 +12,13 @@
         <meta name="author" content="Environmental Modeling Team, U.S. Army Engineer Research and Development Center">
       
       
-        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/release-notes/version-lineage/">
+        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/part3/04_using_multiple_processors/">
       
       
-        <link rel="prev" href="../2026.02/">
+        <link rel="prev" href="../03_using_particle_transport/">
       
+      
+        <link rel="next" href="../05_references/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>Version Lineage - CE-QUAL-W2 Documentation</title>
+        <title>Using Multiple Processors for a Cascade of Waterbodies - CE-QUAL-W2 Documentation</title>
       
     
     
@@ -80,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#version-lineage" class="md-skip">
+        <a href="#using-multiple-processors-for-a-cascade-of-waterbodies" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Version Lineage
+              Using Multiple Processors for a Cascade of Waterbodies
             
           </span>
         </div>
@@ -284,11 +286,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../part3/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -328,13 +332,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../release-notes/" class="md-tabs__link">
           
   
   
@@ -1122,6 +1124,8 @@
       
   
   
+    
+  
   
   
     
@@ -1145,22 +1149,23 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../part3/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1178,13 +1183,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1204,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part3/01_introduction/" class="md-nav__link">
+      <a href="../01_introduction/" class="md-nav__link">
         
   
   
@@ -1232,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part3/02_input_and_output_files_data_description/" class="md-nav__link">
+      <a href="../02_input_and_output_files_data_description/" class="md-nav__link">
         
   
   
@@ -1260,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part3/03_using_particle_transport/" class="md-nav__link">
+      <a href="../03_using_particle_transport/" class="md-nav__link">
         
   
   
@@ -1285,10 +1290,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../part3/04_using_multiple_processors/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Multiple Processors
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1304,6 +1336,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-set-up-a-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Set Up a Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-file-w2_multiple_wbnpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input File w2_multiple_WB.npt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-file-waitforrunlogopt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output File WaitForRunLog.opt
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1316,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part3/05_references/" class="md-nav__link">
+      <a href="../05_references/" class="md-nav__link">
         
   
   
@@ -1419,8 +1515,6 @@
       
   
   
-    
-  
   
   
     
@@ -1438,23 +1532,22 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../release-notes/" class="md-nav__link ">
               
   
   
@@ -1472,13 +1565,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1498,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026.02/" class="md-nav__link">
+      <a href="../../release-notes/2026.02/" class="md-nav__link">
         
   
   
@@ -1523,37 +1616,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Version Lineage
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../release-notes/version-lineage/" class="md-nav__link">
         
   
   
@@ -1569,81 +1635,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#erdc-release-history" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ERDC Release History
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#psu-versions-tracked" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PSU Versions Tracked
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#versioning-convention" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Versioning Convention
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feature-provenance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Feature Provenance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommended-citations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Citations
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1683,10 +1674,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#erdc-release-history" class="md-nav__link">
+  <a href="#simulation-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ERDC Release History
+        Simulation Options
       
     </span>
   </a>
@@ -1694,10 +1685,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#psu-versions-tracked" class="md-nav__link">
+  <a href="#how-to-set-up-a-simulation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PSU Versions Tracked
+        How to Set Up a Simulation
       
     </span>
   </a>
@@ -1705,10 +1696,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#versioning-convention" class="md-nav__link">
+  <a href="#input-file-w2_multiple_wbnpt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Versioning Convention
+        Input File w2_multiple_WB.npt
       
     </span>
   </a>
@@ -1716,21 +1707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#feature-provenance" class="md-nav__link">
+  <a href="#output-file-waitforrunlogopt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Feature Provenance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommended-citations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommended Citations
+        Output File WaitForRunLog.opt
       
     </span>
   </a>
@@ -1757,78 +1737,174 @@
   
 
 
-<h1 id="version-lineage">Version Lineage<a class="headerlink" href="#version-lineage" title="Permanent link">&para;</a></h1>
-<p>CE-QUAL-W2 has been developed collaboratively by the U.S. Army Engineer Research and Development Center (ERDC) and Portland State University (PSU). Since 2021, ERDC has maintained the official version for use on U.S. Army Corps of Engineers (USACE) projects.</p>
-<p>This page documents the relationship between ERDC and PSU releases to ensure transparency and reproducibility for the user community.</p>
-<h2 id="erdc-release-history">ERDC Release History<a class="headerlink" href="#erdc-release-history" title="Permanent link">&para;</a></h2>
+<h1 id="using-multiple-processors-for-a-cascade-of-waterbodies">Using Multiple Processors for a Cascade of Waterbodies<a class="headerlink" href="#using-multiple-processors-for-a-cascade-of-waterbodies" title="Permanent link">&para;</a></h1>
+<p>When a model domain includes a cascade of waterbodies, such as reservoirs in series or a river system with a cascade of reaches, CE-QUAL-W2 provides a feature to reduce overall model run time by running multiple waterbodies simultaneously on separate processor cores. This approach applies when the water level in the downstream waterbody does not influence the upstream waterbody (i.e., no backwater effects).</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![Cascade of reservoirs or multiple waterbodies](../assets/images/part3/cascade_waterbodies.png){ width="700" }
+  <figcaption>Figure 55. Cascade of reservoirs or multiple waterbodies.</figcaption>
+</figure> -->
+
+<h2 id="simulation-options">Simulation Options<a class="headerlink" href="#simulation-options" title="Permanent link">&para;</a></h2>
+<p>There are three options for simulating a series of waterbodies, summarized in Table 65.</p>
+<p><strong>Table 65. Techniques for using CE-QUAL-W2 to simulate a cascade of waterbodies.</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">ERDC Version</th>
-<th style="text-align: left;">PSU Base Version</th>
-<th style="text-align: left;">Release Date</th>
-<th style="text-align: left;">Key Additions</th>
+<th>Option</th>
+<th>Description</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">2026.02</td>
-<td style="text-align: left;">V4.5</td>
-<td style="text-align: left;">2026-02</td>
-<td style="text-align: left;">HAB modules (nitrogen fixation, hypoxic algal mortality, minimum algae concentration, mechanical removal); gfortran compilation; macOS, Linux, and HPC support</td>
+<td>1</td>
+<td>Single system model with multiple waterbodies and one control file</td>
+<td>Entire model is under one control file (<code>w2_con.npt</code> or <code>w2_con.csv</code>); simpler to manage</td>
+<td>The time step for stability is dictated by one of the waterbodies, causing other waterbodies to run at the lowest time step. Run times may be long.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Separate waterbodies in separate directories; use a batch file to automatically transfer withdrawal output files from one waterbody as input to the next</td>
+<td>Each waterbody runs according to its own minimum time step, resulting in faster simulation time compared to Option 1. <strong>[DLTMAX]</strong> can be tuned for faster runs in some waterbodies.</td>
+<td>Must break the model into multiple models, one for each waterbody. Each waterbody must wait until the upper one is completed before starting.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Separate waterbodies in separate directories; use the input file <code>w2_multiple_WB.npt</code> to point downstream waterbodies to inflow from an upstream waterbody</td>
+<td>Each waterbody runs according to its own minimum time step and does not have to wait until the upper waterbody is complete before proceeding. Faster than Options 1 and 2. <strong>[DLTMAX]</strong> can be tuned for faster runs in some waterbodies. Each model typically runs on a different core of a multi-core processor.</td>
+<td>Must break the model into multiple models, one for each waterbody.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="psu-versions-tracked">PSU Versions Tracked<a class="headerlink" href="#psu-versions-tracked" title="Permanent link">&para;</a></h2>
+<p>Option 3 allows the downstream model to run even before the upstream model has completed. The downstream model uses the input file <code>w2_multiple_WB.npt</code> to determine where to obtain the upstream inflow boundary conditions. The downstream code can accept inflow from both branch inflows and tributaries from other waterbodies.</p>
+<p>In model tests with multiple waterbodies, speed improvements from 22--90% have been seen.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![Concept of running multiple waterbodies simultaneously](../assets/images/part3/multiple_wb_concept.png){ width="700" }
+  <figcaption>Figure 56. Concept of running multiple waterbodies simultaneously.</figcaption>
+</figure> -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This approach assumes that the water level in the downstream waterbody does not influence the upstream waterbody. If backwater effects are significant, all waterbodies must be included in a single model (Option 1).</p>
+</div>
+<h2 id="how-to-set-up-a-simulation">How to Set Up a Simulation<a class="headerlink" href="#how-to-set-up-a-simulation" title="Permanent link">&para;</a></h2>
+<p>Set up a simulation with multiple waterbodies in separate directories. The following steps are required:</p>
+<ol>
+<li>
+<p><strong>Set withdrawal output control for each upstream waterbody.</strong> Set <strong>[WDOC]</strong> to <code>ON</code> in the control file (<code>w2_con.npt</code> or <code>w2_con.csv</code>) and set the outlet segment as a withdrawal outflow. These outflow files contain the withdrawal flows, temperatures, and/or constituent concentrations as a time series. These files serve as input to the downstream waterbody. Set the output frequency to a short time interval, since the model writes instantaneous flows, temperatures, and concentrations rather than integrated values between output times.</p>
+</li>
+<li>
+<p><strong>Configure the downstream waterbody inflow files.</strong> For the downstream waterbody, set the inflow or tributary flow rate, temperature, and concentration file names to match the withdrawal outlet file names from the upstream waterbody. Use only the filenames (not the full directory path), since CE-QUAL-W2 copies these files into the directory of the downstream waterbody. For example, if the upstream waterbody has <strong>[WDOFN]</strong> set to <code>wdo.csv</code> and the withdrawal output segment is 6, the upstream model writes output files: <code>qwo_6.csv</code>, <code>two_6.csv</code>, and <code>cwo_6.csv</code>. The downstream model then uses these names as <strong>[QINFN]</strong>, <strong>[TINFN]</strong>, and <strong>[CINFN]</strong> (respectively) if these are a branch inflow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The inflow file from the upstream model and an output file for the downstream model cannot have the same name. If necessary, change the file extension for the <strong>[WDOFN]</strong> specification (e.g., from <code>.csv</code> to <code>.npt</code>) to avoid name conflicts.</p>
+</div>
+</li>
+<li>
+<p><strong>Create the <code>w2_multiple_WB.npt</code> file.</strong> The downstream model directory must contain a file called <code>w2_multiple_WB.npt</code> that specifies information on running the series of waterbodies. See the <a href="#input-file-w2_multiple_wbnpt">Input File w2_multiple_WB.npt</a> section below.</p>
+</li>
+<li>
+<p><strong>Start the waterbody executables in sequence.</strong> Launch the upstream waterbody executable first. A dialog box for the first waterbody will appear. Then, in the downstream waterbody directory, launch the executable. Once that waterbody starts to run, launch the next downstream executable. Start each downstream waterbody executable only after the upstream model begins generating output.</p>
+</li>
+<li>
+<p><strong>Clean up files before restarting.</strong> Before starting a new simulation, either delete the files from upstream waterbodies in the downstream directory, or start each waterbody sequentially with enough time for a new input file to be copied to the downstream waterbody.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Files from upstream waterbodies must either be deleted in the downstream directory prior to starting a new simulation, or each waterbody must be started sequentially with enough time for new input files to be copied to the downstream waterbody.</p>
+</div>
+<h2 id="input-file-w2_multiple_wbnpt">Input File <code>w2_multiple_WB.npt</code><a class="headerlink" href="#input-file-w2_multiple_wbnpt" title="Permanent link">&para;</a></h2>
+<p>The input file <code>w2_multiple_WB.npt</code> is a text file with the following format:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Multiple WB wait ON or OFF (only 2 spaces read)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ON
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Number of input types to wait for (at least 1)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>2
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Specific inputs to wait for:  branch inflow [BR] or trib [TR], branch/trib index number,
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>and directory (max 240 characters)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>BR, 1, ..\WB2
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>TR, 3, ..\WB3
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Buffer time to run program, days (wait until at least XX days available)
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>2
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Delay time in seconds to wait for buffer and recheck
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>60
+</span></code></pre></div>
+<p>Each header line between data lines is used for comments and is ignored by the model. The input fields are described in Table 66.</p>
+<p><strong>Table 66. Description of input file <code>w2_multiple_WB.npt</code>.</strong></p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">PSU Version</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: left;">Notes</th>
+<th>Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">V4.5</td>
-<td style="text-align: left;">Incorporated</td>
-<td style="text-align: left;">Basis for ERDC 2026.02</td>
+<td>Multiple WB wait ON or OFF</td>
+<td><code>ON</code> or <code>OFF</code>. Turns on or off the multiple waterbody run feature. Only the first 2 characters are read.</td>
 </tr>
 <tr>
-<td style="text-align: left;">V5.0 Beta</td>
-<td style="text-align: left;">Under review</td>
-<td style="text-align: left;">Changes to be evaluated for future ERDC release</td>
+<td>Number of input types to wait for</td>
+<td>Number of model inputs to the downstream waterbody. Must be at least 1, but can be multiple input files.</td>
+</tr>
+<tr>
+<td>Specific inputs to wait for: branch inflow [BR] or trib [TR], branch/trib index number, and directory (max 240 characters)</td>
+<td>Specifies the directory of the upstream waterbody, whether it is a branch inflow (<code>BR</code>) or a tributary inflow (<code>TR</code>), and the branch or tributary number, followed by the directory path of that file. In the example above, a relative directory path was used. <code>..\WB2</code> means to go up one directory to a subdirectory <code>WB2</code>. An absolute directory path can also be used.</td>
+</tr>
+<tr>
+<td>Buffer time in days</td>
+<td>How many days of output data from the upper waterbody must be available before starting the downstream waterbody computation.</td>
+</tr>
+<tr>
+<td>Delay time in seconds to wait for checking upstream boundary</td>
+<td>The time in seconds for the downstream waterbody to pause before checking to see if the buffer time is satisfied. If one chooses a 2-day buffer time, the downstream model would check at "delay time" intervals to see if the required number of output days are complete before continuing to run.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="versioning-convention">Versioning Convention<a class="headerlink" href="#versioning-convention" title="Permanent link">&para;</a></h2>
-<p>ERDC uses a <code>YYYY.MM</code> versioning scheme where <code>YYYY</code> is the release year and <code>MM</code> is the sequential release number within that year. This distinguishes ERDC releases from PSU's version numbering (V4.x, V5.x) and clearly identifies the provenance of each release.</p>
-<p>Each ERDC release specifies its PSU base version, ensuring that users can identify which PSU features and formulations are included. ERDC-specific additions are documented in the corresponding release notes and flagged throughout this documentation with the ERDC Feature annotation.</p>
-<h2 id="feature-provenance">Feature Provenance<a class="headerlink" href="#feature-provenance" title="Permanent link">&para;</a></h2>
-<p>Throughout this documentation, content is annotated to indicate its origin:</p>
-<div class="admonition erdc-feature">
-<p class="admonition-title">ERDC Feature</p>
-<p>Content in blue boxes like this describes capabilities developed by ERDC that are not present in the PSU version.</p>
+<p>This file is also included in the Excel input file under the tab <code>w2_multiple_WB.npt</code>. Select the highlighted section in Excel and click the export button to write the text file.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![Excel input file tab for w2_multiple_WB.npt](../assets/images/part3/excel_multiple_wb.png){ width="700" }
+  <figcaption>Excel input file tab for w2_multiple_WB.npt.</figcaption>
+</figure> -->
+
+<h2 id="output-file-waitforrunlogopt">Output File <code>WaitForRunLog.opt</code><a class="headerlink" href="#output-file-waitforrunlogopt" title="Permanent link">&para;</a></h2>
+<p>An output file <code>WaitForRunLog.opt</code> is produced showing how the downstream model copied files from the upstream waterbody. This file is used for debugging model errors. An example of this file is shown below:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    1.0000  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    1.0000  COPY ..\WB1\two_6.csv
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Execution stopped at    10.900 WAITING FOR RESTART
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   10.9000  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   10.9000  COPY ..\WB1\two_6.csv
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Execution stopped at    22.350 WAITING FOR RESTART
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>   22.3500  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>   22.3500  COPY ..\WB1\two_6.csv
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Execution stopped at    32.850 WAITING FOR RESTART
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>   32.8500  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>   32.8500  COPY ..\WB1\two_6.csv
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>Execution stopped at    43.080 WAITING FOR RESTART
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>   43.0800  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>   43.0800  COPY ..\WB1\two_6.csv
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>Execution stopped at    53.000 WAITING FOR RESTART
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>   53.0000  COPY ..\WB1\qwo_6.csv
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>   53.0000  COPY ..\WB1\two_6.csv
+</span></code></pre></div>
+<p>The log shows the simulation time (in Julian days) at which each file copy occurred. When the downstream model reaches the end of available input data, it displays <code>WAITING FOR RESTART</code> and pauses until the upstream model has produced enough additional output (as defined by the buffer time) before continuing.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Review <code>WaitForRunLog.opt</code> if the downstream model appears to hang or produces unexpected results. Frequent <code>WAITING FOR RESTART</code> messages may indicate that the buffer time is too large or the upstream model is running too slowly relative to the downstream model.</p>
 </div>
-<div class="admonition psu-origin">
-<p class="admonition-title">PSU Origin</p>
-<p>Content in green boxes like this highlights formulations or features where the ERDC implementation differs from or extends the PSU version, with a description of the differences.</p>
-</div>
-<h2 id="recommended-citations">Recommended Citations<a class="headerlink" href="#recommended-citations" title="Permanent link">&para;</a></h2>
-<p>When citing the ERDC version of CE-QUAL-W2:</p>
-<blockquote>
-<p>Steissberg, T.E., et al. (2026). CE-QUAL-W2: A Two-Dimensional Laterally-Averaged Hydrodynamic and Water Quality Model, Version 2026. U.S. Army Engineer Research and Development Center, Environmental Laboratory, Vicksburg, MS.</p>
-</blockquote>
-<p>When citing the PSU version of CE-QUAL-W2:</p>
-<blockquote>
-<p>Cole, T.M. and Wells, S.A. (2024). CE-QUAL-W2: A Two-Dimensional Laterally-Averaged Hydrodynamic and Water Quality Model, Version 4.5. Portland State University, Portland, OR.</p>
-</blockquote>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1860,7 +1936,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../2026.02/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ERDC 2026.02">
+          <a href="../03_using_particle_transport/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using Particle Transport">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1870,11 +1946,27 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                ERDC 2026.02
+                Using Particle Transport
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../05_references/" class="md-footer__link md-footer__link--next" aria-label="Next: References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     

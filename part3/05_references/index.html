@@ -1,0 +1,1930 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation">
+      
+      
+        <meta name="author" content="Environmental Modeling Team, U.S. Army Engineer Research and Development Center">
+      
+      
+        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/part3/05_references/">
+      
+      
+        <link rel="prev" href="../04_using_multiple_processors/">
+      
+      
+        <link rel="next" href="../../part4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>References - CE-QUAL-W2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#references" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-header__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CE-QUAL-W2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              References
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 1: Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 2: Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 3: Input/Output Files
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 4: Model Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../release-notes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-nav__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CE-QUAL-W2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1: Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/00_preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to CE-QUAL-W2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/02_capabilities_and_limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities and Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/03_data_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Data Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/04_model_download_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Download Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/05_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/06_setting_up_and_running_a_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up and Running a Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/07_batch_processing_and_command_line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Processing and Command Line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/08_including_relative_directory_paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative Directory Paths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/09_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/10_appendix_a_contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Contributors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/11_appendix_b_publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2: Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2: Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/02_hydrodynamics_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydrodynamics Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/03_particle_tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Particle Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/04_temperature_and_water_quality_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Temperature and Water Quality Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/05_numerical_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/06_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3: Input/Output Files
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3: Input/Output Files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_input_and_output_files_data_description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input and Output Files Data Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_using_particle_transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Particle Transport
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_using_multiple_processors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Multiple Processors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4: Model Examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4: Model Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../release-notes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2026.02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERDC 2026.02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/version-lineage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h1>
+<p>Allen, W.E. 1932. "Marine Plankton Diatom of Lower California in 1931", <em>Botanical Gazette</em>, Vol 95, pp 485--492.</p>
+<p>Anderson, E.R. 1954. "Energy budget studies in Water-loss investigations, Lake Hefner Studies", Technical Report, <em>USGS Prof. Paper</em>, 269, 71--119.</p>
+<p>Annear, R., and Wells, S.A. 2007. "A comparison of five models for estimating clear-sky solar radiation", <em>Water Resources Research</em>, 43, W10415, doi:10.1029/2006WR005055.</p>
+<p>Apstein, C. 1910. "Hat ein Organisms in der Tiefe Gelebt, in der er gefischt ist?", <em>Internat. Rev. Ges. Hydrobiol. Hydrograph</em>, Vol 3, pp 17--33.</p>
+<p>Ashton, G.D. 1979. "Suppression of River Ice by Thermal Effluents", <em>CRREL Rpt. 79-30</em>, US Army Engineer Cold Regions Research and Engineering Laboratory, Hanover, NH.</p>
+<p>Auer, M.T., Johnson, N.A., Penn, M.R., and Effler, S. 1993. "Measurement and verification of rates of sediment phosphorus release for a hypereutrophic urban lake", <em>Hydrobiologia</em>, Volume 253, Numbers 1-3, DOI:10.1007/BF00050750.</p>
+<p>Banks, R.B. 1975. "Some Features of Wind Action on Shallow Lakes", <em>ASCE J. Env. Engr. Div.</em>, 101(EE3), pp 489--504.</p>
+<p>Banks, R.B., and Herrera, F.F. 1977. "Effect of Wind and Rain on Surface Reaeration", <em>J. Envir. Engr. Div. ASCE</em>, 101(EE5):813--827.</p>
+<p>Bansal, M.K. 1976. "Nitrification in Natural Streams", <em>Water Pollution Control Federation Journal</em>, Vol 48, pp 2380--2393.</p>
+<p>Belay, A. 1981. "An Experimental Investigation of Inhibitation of Phytoplankton Photosynthesis at Lake Surfaces", <em>New Phytologist</em>, Vol 89, pp 61--74.</p>
+<p>Belov, A.P., and Giles, J.D. 1997. "Dynamical model of buoyant cyanobacteria", <em>Hydrobiologia</em>, 349, 11.</p>
+<p>Bella, D. 1970. "Dissolved Oxygen Variations in Stratified Lakes", <em>ASCE J. of the Sanitary Engineering Division</em>, Vol 96, No. SA5, pp 1129--1146.</p>
+<p>Berger, C. 2000. "Modeling Macrophytes of the Columbia Slough", Ph.D. dissertation, Portland State University, Department of Civil Engineering, Portland, Oregon.</p>
+<p>Bernard, F. 1963. "Vitesses de chute chez Cyclococcolithus fragilis Lohm", <em>Consequences Pour le Cycle Vital Des Mers Chaudes</em>.</p>
+<p>Beutel, M. 2006. "Inhibition of ammonia release from anoxic profundal sediments in lakes using hypolimnetic oxygenation", <em>J. Ecol. Eng.</em>, doi:10.1016/j.ecoleng.2006.05.009.</p>
+<p>Beutel, M.W., DeSilva, L., and Amegbletor, L. 2021. "Direct Measurement of Mercury Deposition at Rural and Suburban Sites in Washington State, USA", <em>Atmosphere</em>, 12, 35. https://doi.org/10.3390/atmos12010035.</p>
+<p>Bolsenga, J.S. 1969. "Total albedo of Great Lakes ice", <em>Water Resources Research</em>, Vol 5, Issue 5, 1132--1133. https://doi.org/10.1029/WR005i005p01132.</p>
+<p>Bramlette, M.N. 1961. In <em>Oceanography, No. 67</em>, M. Sears, ed., American Association of Science, Washington, DC., pp 345--366.</p>
+<p>Broecker, H.C., Petermann, J., and Siems, W. 1978. "The Influence of Wind on CO₂ Exchange in a Wind-Wave Tunnel", <em>J. Marine Res.</em>, 36(4):595--610.</p>
+<p>Burns, N.M. 1976. "Nutrient Budgets for Lake Erie", <em>J. of the Fisheries Research Board of Canada</em>, Vol 33, pp 520--536.</p>
+<p>Burns, N.M., and Rosa, F. 1980. "In situ Measurement of Settling Velocity of Organic Carbon Particles and 10 Species of Phytoplankton", <em>Limnology and Oceanography</em>, Vol 25, pp 855--864.</p>
+<p>Butts, T.A., and Evans, R.L. 1983. "Small Stream Channel Dam Aeration Characteristics", <em>Journal Environmental Engineering Division, ASCE</em>, Vol 109, No 3, pp. 555--573.</p>
+<p>Caffrey, A., Hoyer, M., and Canfield, D. 2006. <em>Factors Affecting the Maximum Depth of Colonization by Submersed Macrophytes in Florida Lakes</em>, Southwest Florida Water Management District, 46 pp.</p>
+<p>Camarero, L., and Catalan, J. 2012. "Atmospheric phosphorus deposition may cause lakes to revert from phosphorus limitation back to nitrogen limitation", <em>Nature Communications</em>, 3, 1118. https://doi.org/10.1038/ncomms2125.</p>
+<p>Carney, J.F., and Colwell, R.R. 1976. "Heterotrophic Utilization of Glucose and Glutamate in an Estuary: Effect of Season and Nutrient Load", <em>Applied and Environmental Microbiology</em>, Vol. 31, pp 227--233.</p>
+<p>Carpenter, E.J., and Guillard, R.R.L. 1971. "Intraspecific Differences in Nitrate Half-Saturation Constants for Three Species of Marine Phytoplankton", <em>Ecology</em>, Vol 52, pp 183--185.</p>
+<p>Castenholz, R.W. 1964. "The Effect of Daylength and Light Intensity on the Growth of Littoral Marine Diatoms in Culture", <em>Physiological Plant</em>, Vol 17, pp 951--963.</p>
+<p>Castenholz, R.W. 1969. "The Thermophilic Cyanophytes of Iceland and the Upper Temperature Limit", <em>J. of Phycology</em>, Vol 5, pp 360--368.</p>
+<p>Celik, I., and Rodi, W. 1984. "Simulation of Free-Surface Effects in Turbulent Channel Flow", <em>PhysicoChemical Hydrodynamics</em>, Vol. 5, No. 3/4, pp 217--227.</p>
+<p>Celik, I., and Rodi, W. 1988. "Modeling Suspended Sediment Transport in Nonequilibrium Situations", <em>Journal of Hydraulic Engineering</em>, Vol. 114, No. 10, pp 1157--1191.</p>
+<p>Cervarich, A. 2020. "CE-QUAL-W2 Hydrodynamic and Water Quality Model of the Cedar River Municipal Watershed", M.S. Thesis, Department of Civil and Environmental Engineering, Portland State University, Portland, OR.</p>
+<p>Chapra, S. 1997. <em>Surface Water Quality Modeling</em>, McGraw-Hill, NY.</p>
+<p>Chen, R.L., Brannon, J.M., and Gunnison, D. 1984. "Anaerobic and Aerobic Rate Coefficients for Use in CE-QUAL-RI", <em>Miscellaneous Paper E-84-5</em>, US Army Engineer Waterways Experiment Station, Vicksburg, MS.</p>
+<p>Chiaro, P.S., and Burke, D.A. 1980. "Sediment Oxygen Demand and Nutrient Release", <em>ASCE J. Env. Engr.</em>, Vol 106, No. EEI, pp 177--195.</p>
+<p>Chien, C-T., Allen, B., Dimova, N.T., Yang, J., Reuter, J., Schladow, G., and Paytan, A. 2019. "Evaluation of atmospheric dry deposition as a source of nutrients and trace metals to Lake Tahoe", <em>Chemical Geology</em>, Vol 511, pp 178--189.</p>
+<p>Churchill, M.A., Elmore, H.L., and Buckingham, R.A. 1962. "Prediction of Stream Reaeration Rates", <em>J. San. Engr. Div., ASCE</em>, SA4:1, Proc. Paper 3199.</p>
+<p>Cloern, J.E. 1977. "Effects of Light Intensity and Temperature on Cryptomonas Cryptophyceae. Growth and Nutrient Uptake Rates", <em>J. of Phycology</em>, Vol 13, pp 389--395.</p>
+<p>Cohen, M. 2003. "The Atmospheric Deposition of Mercury to the Great Lakes", Presentation at An Ecosystem Approach to the Health Effects of Mercury in the Great Lakes Basin, February 26--27, 2003, Cleary International Conference Center, Windsor, Ontario.</p>
+<p>Cole, T., and Buchak, E. 1995. <em>CE-QUAL-W2: A Two-Dimensional, Laterally Averaged, Hydrodynamic and Water Quality Model, Version 2.0</em>, Technical Report EI-95-1, U.S. Army Engineer Waterways Experiment Station, Vicksburg, MS.</p>
+<p>Collins, C.D., and Boylen, C.W. 1982a. "Physiological Responses of Anabaena variabilis Cyanophyceae. to Instantaneous Exposure to Various Combinations of Light Intensity and Temperature", <em>J. of Phycology</em>, Vol 18, pp 206--211.</p>
+<p>Collins, C.D., and Boylen, C.W. 1982b. "Ecological Consequences of Long-Term Exposure of Anabaena variabilis to Shifts in Environmental Conditions", <em>Applied and Environmental Microbiology</em>, Vol 44, pp 141--148.</p>
+<p>Collins, C.D., and Wlosinski, J.H. 1989. "A macrophyte submodel for aquatic ecosystems", <em>Aquatic Botany</em>, Vol 33, Issues 3-4, pp 191--206. doi:10.1016/0304-3770(89)90037-5.</p>
+<p>Columbia Basin Research. 2000. <em>Columbia River Salmon Passage Model, CRISP 1.6, Theory and Calibration</em>, Technical Report, School of Aquatic and Fisheries Sciences, University of Washington, 238 pp.</p>
+<p>Covar, A.P. 1976. "Selecting the Proper Reaeration Coefficient for Use in Water Quality Models", presented at the US EPA Conference on Environmental Simulation and Modeling, April 19--22, Cincinnati, OH.</p>
+<p>Diez, S., Noonan, G., MacFarlane, J., and Gschwend, P. 2007. "Ferrous iron oxidation rates in a pycnocline of a permanently stratified lake", <em>Chemosphere</em>, 66(8):1561--1570. doi:10.1016/j.chemosphere.2006.08.017.</p>
+<p>DiToro, D.M. 2001. <em>Sediment Flux Modeling</em>. Wiley-Interscience. New York. 656pp.</p>
+<p>Downing, A.L., and G.A. Truesdale. 1955. "Some factors affecting the rates of solution of oxygen in water", <em>J. Applied Chemistry</em>, Vol. 5, pp. 570--581.</p>
+<p>Duntley, S.Q. 1952. <em>The visibility of submerged objects</em>, Visibility Lab., Mass. Inst. Tech, Scripps Institution of Oceanography, San Diego, p. 74.</p>
+<p>Engelund, F. 1978. Effect of Lateral Wind on Uniform Channel Flow. <em>Progress Report 45</em>, Inst. of Hydrodynamic and Hydraulic Engr., Tech. Univ. of Denmark.</p>
+<p>EPA. 1985. <em>Rates, Constants and Kinetics in Surface Water Quality Modeling</em>, Environmental Research Laboratory, EPA/600/3-85/040, Athens, GA.</p>
+<p>Eppley, R.W., Holmes, R.W., and Strickland, J.D.H. 1967b. "Sinking Rates of Marine Phytoplankton Measured with a Fluorometer", <em>J. of Experimental Marine Biology and Ecology</em>, Vol 1, pp 191--208.</p>
+<p>Eppley, R.W., Rogers, J.N., and McCarthy, J.J. 1969. "Half-Saturation Constants for Uptake of Nitrate and Ammonia by Marine Phytoplankton", <em>Limnology and Oceanography</em>, Vol 14, pp. 912--920.</p>
+<p>Eppley, R.W., and Sloan, P.R. 1966. "Growth Rates of Marine Phytoplankton: Correlation with Light Adsorption by Cell Chlorophyll-a", <em>Physiological Plant</em>, Vol 19, pp 47--59.</p>
+<p>Eppley, R.W., and Thomas, W.H. 1969. "Comparison of Half-Saturation Constants for Growth and Nitrate Uptake of Marine Phytoplankton", <em>J. of Phycology</em>, Vol 5, pp 375--379.</p>
+<p>ERM and Golder Associates. 2001. "CEMA Oil Sands Pit Lake Model", Report 09-1336-1008, CEMA Reclamation Working Group, Alberta, CA.</p>
+<p>Fang, X., and Stefan, H.G. 1994. "Modeling Dissolved Oxygen Stratification Dynamics in Minnesota Lakes under Different Climate Scenarios", <em>Project Report 339</em>, St. Anthony Falls Hydraulic Laboratory, University of Minnesota, Minneapolis.</p>
+<p>Finenko, Z.Z., and Krupatkina-Aki-Nina, D.K. 1974. "Effect of Inorganic Phosphorus on the Growth Rate of Diatoms", <em>Marine Biology</em>, Vol 26, pp. 193--201.</p>
+<p>Fitzgerald, G.P. 1964. "The Effect of Algae on BOD Measurements", <em>National Pollution Control Federation J.</em>, Vol 36, pp 1524--1542.</p>
+<p>Fogg, G.E. 1969. "The Physiology of an Algal Nuisance", <em>Proc. R. Soc. B.</em>, Vol 173, pp 175--189.</p>
+<p>Fogg, G.E. 1973. "Phosphorus in Primary Aquatic Plants", <em>Water Research</em>, Vol 7, pp 77--91.</p>
+<p>Frost, W.H., and Streeter, H.W. 1924. "Bacteriological Studies", <em>Public Health Bulletin 143</em>, US Public Health Service, Washington, DC.</p>
+<p>Fuhs, G.W., Demmerle, S.D., Canelli, E., and Chen, M. 1972. "Characterization of Phosphorus-Limited Plankton Algae", <em>Limnol. Oceanogr. Special Symposia</em>, Vol 1, pp 113--133.</p>
+<p>Gao, S., and Stefan, H.G. 1998. "Observed and Simulated Ice Characteristics of Five Freshwater Lakes and Extrapolation to a Projected 2xCO₂ Climate Scenario", <em>St. Anthony Falls Laboratory Project Report 411</em>, University of Minnesota, 94 pp.</p>
+<p>Garstecki, B. 2021. "Modeling Algae Cyanotoxin Production, Fate and Transport in Surface Waterbodies", M.S. Thesis, Department of Civil and Environmental Engineering, Portland State University, 175 pp.</p>
+<p>Gaudy, A.F., and Gaudy, E.T. 1980. <em>Microbiology for Environmental Engineers and Scientists</em>, McGraw-Hill, NY.</p>
+<p>Gelda, R.K., Auer, M.T., Effler, S.W., Chapra, S.C., and Storey, M.L. 1996. "Determination of Reaeration Coefficients: A Whole Lake Approach", <em>ASCE J. Envir. Engr.</em>, Vol. 122, Issue 4 (April 1996).</p>
+<p>Goldman, J.C., and Graham, S.J. 1981. "Inorganic Carbon Limitation and Chemical Composition of Two Freshwater Green Microalgae", <em>Applied and Environmental Microbiology</em>, Vol 41, pp 60--70.</p>
+<p>Goldman, J.C., Porcella, D.B., Middlebrooks, E.J., and Toerien, D.F. 1972. "The Effects of Carbon on Algal Growth-Its Relationship to Eutrophication", <em>Water Research</em>, Vol 6, pp 637--679.</p>
+<p>Golterman, H.L. 1975. <em>Physiological Limnology</em>, Elsevier, Amsterdam.</p>
+<p>Goodwin, R.A., Nestler, J.M., Loucks, D.P., and Chapman, R.S. 2001. "Simulating mobile populations in aquatic ecosystems", <em>ASCE Journal of Water Resources Planning and Management</em>, 127(6):386--393.</p>
+<p>Gould, S. 2006. "k-ε Turbulence Model in CE-QUAL-W2", Research Project Report, Department of Civil and Environmental Engineering, Portland State University, Portland, OR, 53 pp.</p>
+<p>Guillard, R.R.L., and Ryther, J.H. 1962. "Studies on the Marine Planktonic Diatoms; I. <em>Cyclotella nana</em> Hustedt and <em>Detonula confervacea</em> Cleve)", <em>Canadian J. of Microbiology</em>, Vol 8, pp 229--239.</p>
+<p>Guillard, R.R.L., et al. 1973. "Maximum growth rate of two clones of the marine diatom <em>Thalassiosira pseudonana</em>."</p>
+<p>Gunnison, D., Chen, R.L., and Brannon, J.M. 1983. "Relationship of Materials in Flooded Soils and Sediments to the Water Quality of Reservoir; I. Oxygen Consumption Rates", <em>Water Research</em>, Vol 17, No. 11, pp 1609--1617.</p>
+<p>Hall, G.H. 1982. "Apparent and Measured Rates of Nitrification in the Hypolimnion of a Mesotrophic Lake", <em>Applied and Environmental Microbiology</em>, Vol 43, pp 542--547.</p>
+<p>Hanlon, R.D.G. 1982. "The Breakdown and Decomposition of Allochthonous and Autochthonous Plant Litter in an Oligotrophic Lake Llyn Frongoch)", <em>Hydrobiologia</em>, Vol 88, pp 281--288.</p>
+<p>Hecky, R.E., and Kilham, P. 1974. "Environmental Control of Phytoplankton Cell Size", <em>Limnology and Oceanography</em>, Vol 19, No. 2, pp 361--365.</p>
+<p>Hecky, R.E., Campbell, P., and Hendzel, L.L. 1993. "The stoichiometry of carbon, nitrogen, and phosphorus in particulate matter of lakes and oceans", <em>Limnology and Oceanography</em>, 38(4), 709--724.</p>
+<p>Holm, N.P., and Armstrong, D.E. 1981. "Role of Nutrient Limitation and Competition in Controlling the Populations of and <em>Asterionella formosa</em> and <em>Microcystis aeruginosa</em> in Semicontinuous Culture", <em>Limnology and Oceanography</em>, Vol 26, pp 622--634.</p>
+<p>Hondzo, M., and Stefan, H.G. 1996. "Dependence of water quality and fish habitat on lake morphometry and meteorology", <em>Journal of Water Resources Planning and Management</em>, Vol 122, Issue 5, pp 364--373.</p>
+<p>Hopcroft, R.R., Roff, J., and Bouman, H. 1998. "Zooplankton growth rates: the larvaceans Appendicularia, Fritillaria and Oikopleura in tropical waters", <em>Journal of Plankton Research</em>, Vol. 20, No. 3, pp. 539--555.</p>
+<p>Hoogenhout, H., and Amesz, J. 1965. "Growth Rates of Photosynthetic Microorganisms in Laboratory Studies", <em>Archives of Microbiology</em>, Vol 50, pp 10--24.</p>
+<p>Hoskins, J.K., Ruchhoft, C.C., and Williams, L.G. 1927. "A Study of the Pollution and Natural Purification of the Illinois River; I. Surveys and Laboratory Studies", <em>Public Health Bulletin No. 171</em>, Washington, DC.</p>
+<p>Huntley, M.E., and Lopez, M. 1992. "Temperature Dependent Production of Marine Copepods: A global synthesis", <em>The American Naturalist</em>, Vol 140, No. 2, pp. 201--242.</p>
+<p>Hutchinson, G.E. 1957. <em>A Treatise on Limnology; I. Geography</em>, Physics and Chemistry, John Wiley and Sons, New York, NY.</p>
+<p>Ignatiades, L., and Smayda, T.J. 1970. "Autecological Studies on the Marine Diatom <em>Rhizosolenia fragilissima</em> Bergon; I. The Influence of Light, Temperature, and Salinity", <em>J. of Phycology</em>, Vol 6, pp 332--229.</p>
+<p>James, W.F., Berko, J.W., and Eakin, H.L. 1995. <em>Phosphorus Loading in Lake Pepin (Minnesota-Wisconsin)</em>, Final Report ADA304855, Army Engineer Waterways Experiment Station, Vicksburg, MS.</p>
+<p>Jamieson, E.J. 1995. "Precipitation and Characterization of Iron (III) Oxyhydroxides from Acid Liquors", Ph.D. Dissertation, School of Mathematical and Physical Sciences, Murdoch University, Perth, Australia.</p>
+<p>Jeanjean, R. 1969. "Influence de al Carence en Phosphoric sur les Vitesses d'Absorption du Phosphate Par les Chlorelles", <em>Bull. Soc. Fr. Physiol. Veg.</em>, Vol 15, pp 159--171.</p>
+<p>Jewell, W.J., and McCarty, P.L. 1971. "Aerobic Decomposition of Algae", <em>Environment Science and Technology</em>, Vol 5, pp 1023--1031.</p>
+<p>Jitts, H.R., McAllister, C.D., Stephens, K., and Strickland, J.D.H. 1964. "The Cell Division Rates of Some Marine Phytoplankton as a Function of Light and Temperature", <em>J. of the Fisheries Research Board of Canada</em>, Vol 21, pp 139--157.</p>
+<p>Jorgensen, E.G. 1968. "The Adaptation of Plankton Algae; II. Aspects of the Temperature and the Temperature Adaptation of <em>Skeletonema costatum</em>, <em>Physiological Plant</em>, Vol 21, pp 423--427.</p>
+<p>Kanwisher, J. 1963. "On the Exchange of Gases Between the Atmosphere and the Sea", <em>Deepsea Research with Oceanography</em>, Vol 10, pp 195--207.</p>
+<p>Kim, L-H., Choi, E., Gil, K-I., and Stenstrom, M.K. 2003. "Phosphorus release rates from sediments and pollutant characteristics in Han River, Seoul, Korea", <em>Science of the Total Environment</em>, doi:10.1016/j.scitotenv.2003.08.018.</p>
+<p>Kittrell, F.W., and Furfari, S.A. 1963. "Observations of Coliform Bacteria in Streams", <em>J. of the Water Pollution Control Federation</em>, Vol 35, p 1361.</p>
+<p>Klaveness, D., and Guillard, R.R.L. 1975. <!-- TODO: Locate full citation details for Klaveness and Guillard 1975 on growth rate and silicon half-saturation for Chrysophyceae *Synura petersenii*. --></p>
+<p>Klock, J.W. 1971. "Survival of Coliform Bacteria in Wastewater Treatment Lagoons", <em>J. of the Water Pollution Control Federation</em>, Vol 43, p 2071.</p>
+<p>Knightes, C., Golden, H., Journey, C., Davis, G., Conrads, P., Marvin-DiPasquale, M., Brigham, M., and Bradley, P. 2014. "Mercury and methylmercury stream concentrations in a Coastal Plain watershed: A multi-scale simulation analysis", <em>Environmental Pollution</em>, Vol 187, pp 182--192. https://doi.org/10.1016/j.envpol.2013.12.026.</p>
+<p>Koenings, J., and Edmundson, J. 1991. "Secchi disk and photometer estimates of light regimes in Alaskan lakes: Effects of yellow color and turbidity", <em>Limnology and Oceanography</em>, 36(1), 91--105.</p>
+<p>Konopka, A. 1983. "The Effect of Nutrient Limitation and Its Interaction with Light upon the Products of Photosynthesis in <em>Merismopedia tenuissima</em> Cyanophyceae)", <em>J. Phycology</em>, Vol 19, pp 403--409.</p>
+<p>Langbein, W.B., and Durum, W.H. 1967. "The Aeration Capacity of Streams", <em>USGS Circular 542</em>, Washington, D.C.</p>
+<p>Laws, E.A., and Wong, D.C. 1978. "Studies of Carbon and Nitrogen Metabolism by Three Marine Phytoplankton Species in Nitrate-Limited Continuous Culture", <em>J. of Phycology</em>, Vol 14, pp 406--416.</p>
+<p>Liss, P.S. 1973. "Processes of gas exchange across an air-water interface", <em>Deep Sea Research</em>, Vol. 20, pp 221--238.</p>
+<p>Litchman, Elena. 2000. "Growth rates of phytoplankton under fluctuating light", <em>Freshwater Biology</em>, Volume 44, pp. 223--235.</p>
+<p>MacIsaac, J.H., and Dugdale, R.C. 1969. "The Kinetics of Nitrate and Ammonia Uptake by Natural Populations of Marine Phytoplankton", <em>Deepsea Research with Oceanography</em>, Vol 16, pp 16--27.</p>
+<p>Mahloch, J.L. 1974. "Comparative Analysis of Modeling Techniques for Coliform Organisms in Streams", <em>Applied Microbiology</em>, Vol 27, p 340.</p>
+<p>Marais, G.V.R. 1974. "Faecal Bacterial Kinetics in Stabilization Ponds", <em>ASCE J. of the Sanitation Engineering Division</em>, Vol 100, No. EE1, p 119.</p>
+<p>Margalef, R. 1961. "Velocidad de Sedimentatlon de Organismos Pasivos del Fitoplancton", <em>Investigacion Pesq.</em>, Vol 18, pp 3--8.</p>
+<p>McCutcheon, S. 1987. "Laboratory and instream nitrification rates for selected streams", <em>Journal of Environmental Engineering</em>, Vol. 113, No. 3, pp. 628--646.</p>
+<p>Melching, C., and Flores, H. 1999. "Reaeration Equations Derived from USGS Database", <em>J. Envir. Engr., ASCE</em>, 125(5), 407--414.</p>
+<p>Megard, R.O., Comles, W.S., Smith, P.D., and Knoll, A.S. 1980. "Attenuation of Light and Daily Integral Rates of Photosynthesis Attained by Planktonic Algae", <em>Limnology and Oceanography</em>, Vol 24, pp 1038--1050.</p>
+<p>Mills, W., Dean, J., Porcella, D., Gherini, A., Hudson, R., Frick, W., Rupp, G., and Bowie, G. 1982. <em>Water Quality Assessment: A Screening Procedure for Toxic and Conventional Pollutants, Part 1</em>, Tetra Tech, Inc., Environmental Research Laboratory, Office of Research and Development, USEPA, Athens, GA, 570 pp., EPA-600/6-82-004a.</p>
+<p>Myers, J., and Graham, J. 1961. "On the Mass Culture of Algae; III. Light Diffusers: High vs. Low Temperature Chlorellas", <em>Plant Physiology</em>, Vol 36, pp 342--346.</p>
+<p>Nalewajko, C. 1966. "Photosynthesis and Excretion in Various Planktonic Algae", <em>Limnology and Oceanography</em>, Vol 11, pp 1--10.</p>
+<p>Nelson, D.M., and Brzezinski, M.A. 1990. "Kinetics of silicic acid uptake by natural diatom assemblages in two Gulf Stream warm-core rings", <em>Marine Ecology Progress Series</em>, Vol 62, pp 283--292.</p>
+<p>Newbold, J.D., and Liggett, D.S. 1974. "Oxygen Depletion Model for Cayuga Lake", <em>ASCE J. of the Environmental Engineering Division</em>, Vol 100, No. EEI, pp 41--59.</p>
+<p>O'Connor, D.J., and Dobbins, W.E. 1958. "Mechanism of Reaeration in Natural Streams", <em>ASCE Trans.</em>, 86(SA3):35--55.</p>
+<p>O'Connor, D.J. 1983. "Wind Effects on Gas-Liquid Transfer Coefficients" <em>J. Envir Engr ASCE</em>, Vol. 109, pp. 731--752.</p>
+<p>Okubo, A. 1971. "Oceanic Diffusion Diagrams", <em>Deep-Sea Research</em>, 18:789.</p>
+<p>Otsuki, A., and Hanya, T. 1972. "Production of Dissolved Organic Matter from Dead Green Algal Cells; I. Aerobic Microbial Decomposition", <em>Limnology and Oceanography</em>, Vol 17, pp 248--257.</p>
+<p>Overman, C. 2019. "Modeling Vertical Migration of Cyanobacteria and Zooplankton", M.S. Thesis, Department of Civil and Environmental Engineering, Portland State University, 233 pp.</p>
+<p>Owens, M., Edwards, R., and Gibbs, J. 1964. "Some Reaeration Studies in Streams", <em>Int. J. Air Water Poll.</em>, 8:469--486.</p>
+<p>Paasche, E. 1968. "Marine Plankton Algae Grown with Light-Dark Cycles; II. <em>Ditylum brightwellii</em> and <em>Nitzschia turgidula</em>", <em>Physiological Plant</em>, Vol 21, pp 66--77.</p>
+<p>Pieczynska, E. 1972. <em>Wiadomosci Ekologiczne</em>, Vol 18, pp 131--140.</p>
+<p>Prakash, S., Vandenberg, J.A., and Buchak, E.M. 2015. "Sediment Diagenesis Module for CE-QUAL-W2. Part 2: Numerical Formulation", <em>Environmental Modeling &amp; Assessment</em>. http://dx.doi.org/10.1007/s10666-015-9459-1.</p>
+<p>Pulsifer, J., and Laws, E. 2021. "Temperature Dependence of Freshwater Phytoplankton Growth Rates and Zooplankton Grazing Rates", <em>Water</em>, 13(11):1591. https://doi.org/10.3390/w13111591.</p>
+<p>Quasim, S.Z., Bhattathiri, P.M.A., and Dovassoy, V.P. 1973. <em>Marine Biology</em>, Vol 21, pp 299--304.</p>
+<p>Reynolds, C.S. 1984. <em>The ecology of freshwater phytoplankton</em>. Cambridge University Press.</p>
+<p>Rhee, G-Yull. 1973. "A Continuous Culture Study of Phosphate Uptake, Growth Rate and Polyphosphate in <em>Scenedesmus sp.</em>", <em>J. of Phycology</em>, Vol 9, pp 495--506.</p>
+<p>Rhee, G-Yull, and Gotham, I.J. 1981a. "The Effects of Environmental Factors on Phytoplankton Growth: Temperature and the Interaction of Temperature with Nutrient Limitation", <em>Limnology and Oceanography</em>, Vol 26, pp 635--648.</p>
+<p>Rhee, G-Yull, and Gotham, I.J. 1981b. "The Effects of Environmental Factors on Phytoplankton Growth: Light and the Interaction of Light with Nitrate Limitation", <em>Limnology and Oceanography</em>, Vol 26, pp 649--659.</p>
+<p>Riley, G.A. 1943. <em>Bulletin of the Bingham Oceanography College</em>, Vol 8, Art. 4, p 53.</p>
+<p>Riley, G.A., H. Stommel, and D.F. Bumpus. 1949. "Quantitative Ecology of the Plankton of the Western North Atlantic", <em>Bulletin of the Bingham Oceanography College</em>, Vol 12, pp 1--169.</p>
+<p>Riley, G.A., and von Aux, R. 1949. In <em>J. of Marine Research</em>, Vol 8, No. 11, pp 60--72.</p>
+<p>Rodi, W. 1993. <em>Turbulence Models and Their Application in Hydraulics, 3rd edition, IAHR</em>, A.A. Balkema, Rotterdam.</p>
+<p>Rogers, K.H., and C.M. Breen. 1982. "Decomposition of <em>Potamogeton crispus</em>; I. Effects of Drying on the Pattern of Mass and Nutrient Loss", <em>Aquatic Botany</em>, Vol 12, pp 1--12.</p>
+<p>Rounds, S.A., and Buccola, N.L., 2015. "Improved algorithms in the CE-QUAL-W2 water-quality model for blending dam releases to meet downstream water-temperature targets", U.S. Geological Survey Open-File Report 2015-1027, 40 p., http://dx.doi.org/10.3133/ofr20151027.</p>
+<p>Ruane, J. 2014. Personal communication, Portland, OR.</p>
+<p>Sahoo, G.B., Nover, D.M., Reuter, J.E., Heyvaert, A.C., Riverson, J., and Schladow, S.G. 2013. "Nutrient and particle load estimates to Lake Tahoe (CA-NV, USA) for Total Maximum Daily Load Establishment", <em>Science of the Total Environment</em>, Vol 444, pp 579--590.</p>
+<p>Schmid, M., and Koster, O. 2016. "Excess warming of a Central European lake driven by solar brightening", <em>Water Resources Research</em>, 52, pp 8103--8116, doi:10.1002/2016WR018651.</p>
+<p>Schnoor, J.L., and Fruh, E.G. 1979. "Dissolved Oxygen Model of a Short Detention Time Reservoir with Anaerobic Hypolimnion", <em>Water Resources Bulletin</em>, Vol 15, No. 2, pp 506--518.</p>
+<p>Sedell, J.R., Triska, F.J., and Triska, N.S. 1975. "The Processing of Conifer and Hardwood Leaves in Two Coniferous Forest Streams; I. Weight Loss and Associated Invertebrates", <em>Verh. Internat. Verein. Limnol.</em>, Vol 19, pp 1617--1627.</p>
+<p>Shelef, G. 1968. "Kinetics of Algal Systems in Waste Treatment; Light Intensity and Nitrogen Concentration as Growth-Limiting Factors", Ph.D. Thesis, University of California, Berkeley, CA.</p>
+<p>Sher-Kaul, S., Oertli, B., Castella, E., and Lachavanne, J. 1995. "Relationship between biomass and surface area of six submerged aquatic plant species", <em>Aquatic Botany</em>, 51, 147--154.</p>
+<p>Simoes, F. 1998. "An Eddy Viscosity Model for Shallow-Water Flows", <em>Water Resources Engineering 98, ASCE</em>, NY, pp 1858--1863.</p>
+<p>Smayda, T.J. 1969. "Experimental Observations on the Influence of Temperature, Light, and Salinity on Cell Division of the Marine Diatom <em>Detonula cofervacea</em> Cleve. Gran", <em>J. of Phycology</em>, Vol 5, pp 150--157.</p>
+<p>Smayda, T.J. 1971. "Normal and Accelerated Sinking of Phytoplankton in the Sea", <em>Marine Geology</em>, Vol 11, pp 105--122.</p>
+<p>Smayda, T.J. 1974. "Some Experiments on the Sinking Characteristics of Two Freshwater Diatoms", <em>Limnology and Oceanography</em>, Vol 19, No. 4, pp 628--635.</p>
+<p>Smith, R.C., and Baker, K.S. 1978. "The Bio-optical State of Ocean Waters and Remote Sensing", <em>Limnology and Oceanography</em>, Vol 23, pp 247--259.</p>
+<p>Smith, D.J. 1978. "WQRRS, Generalized computer program for River-Reservoir systems", <em>USACE Hydrologic Engineering Center HEC</em>, Davis, California, User's Manual 401-100, 100A, 210 pp.</p>
+<p>Smith, W.O. 1979. "A Budget for the Autotrophic Ciliate <em>Mesodinium rubrum</em>", <em>J. of Phycology</em>, Vol 15, pp 27--33.</p>
+<p>Spears, B.M., Carvalho, L., Perkins, R., Kirika, A., and Paterson, D.M. 2007. "Sediment phosphorus cycling in a large shallow lake: spatio-temporal variation in phosphorus pools and release", <em>Hydrobiologia</em>, 584, pp 37--48. doi:10.1007/s10750-007-0610-0.</p>
+<p>Sorokin, C., and Krauss, R.W. 1962. "Effects of Temperature and Illumination on <em>Chorella</em> Growth Uncoupled from Cell Division", <em>Plant Physiology</em>, Vol 37, pp 37--42.</p>
+<p>Sorokin, C., and Meyers, J. 1953. "A High Temperature Strain of Chlorella", <em>Science</em>, Washington, D.C., Vol 117, pp 330--331.</p>
+<p>Spence, D.H.N. 1981. "Light Quality and Plant Responses Underwater", <em>Plants and the Daylight Spectrum</em>, H. Smith, ed., Academic Press, New York, NY, pp 245--276.</p>
+<p>Spencer, D.F., and Lembi, C.A. 1981. "Factors Regulating the Spatial Distribution of the Filamentous Alga <em>Pithophora oedoga</em> Chlorophyceae. in an Indiana Lake", <em>J. of Phycology</em>, Vol 17, pp 168--173.</p>
+<p>Steele, J.H. 1962. "Environmental Control of Photosynthesis in the Sea", <em>Limnology and Oceanography</em>, Vol 7, pp 137--150.</p>
+<p>Steemann-Nielsen, E. 1952. "On Detrimental Effects of High Light Intensities on the Photosynthetic Mechanism", <em>Physiological Plant</em>, Vol 5, pp 334--344.</p>
+<p>Steemann-Nielsen, E., and Jorgensen, E.G. 1968. "The Adaptation of Plankton Algae; I. General Part", <em>Physiological Plant</em>, Vol 21, pp 401--413.</p>
+<p>Tennessee Valley Authority (TVA). 1972. <em>Heat and Mass Transfer between a Water Surface and the Atmosphere</em>, Water Resources Report 0-6803, Lab Report #14, Norris, TN.</p>
+<p>Thackston, E.L., and Krenkel, P.A. 1966. "Reaeration Predictions in Natural Streams", <em>J. San. Engr. Div., ASCE</em>, 89(SA5):1--30.</p>
+<p>Thackston, E.L., and Dawson, J.W. 2001. "Recalibration of a Reaeration Equation", <em>J. Envir. Engr., ASCE</em>, 127(4), 317--321.</p>
+<p>They, N.H., Amado, A.M., and Cotner, J.B. 2017. "Redfield Ratios in Inland Waters: Higher Biological Control of C:N:P Ratios in Tropical Semi-arid High Water Residence Time Lakes", <em>Frontiers in Microbiology</em>, 8:1505. doi:10.3389/fmicb.2017.01505.</p>
+<p>Thomas, W.H., and Dodson, A.N. 1968. "Effects of Phosphate Concentration on Cell Division Rates and Yield of a Tropical Oceanic Diatom", <em>Biological Bulletin</em>, Vol 134, pp 199--208.</p>
+<p>Thomann, R.V. and Mueller, J.A. 1987. <em>Principles of Surface Water Quality Modeling and Control</em>, Harper and Row, NY.</p>
+<p>Timmermans, K., Wagt, B., and de Baar, H. 2004. "Growth rates, half-saturation constants, and silicate, nitrate, and phosphate depletion in relation to iron availability of four large, open-ocean diatoms from the Southern Ocean", <em>Limnology and Oceanography</em>, 49(6), 2141--2151.</p>
+<p>Tipping, E., Benham, S., Boyle, J.F., Crow, P., Davies, J., Fischer, U., Guyatt, H., Helliwell, R., Jackson-Blake, L., Lawlor, A.J., Monteith, D.T., Rowe, E.C., and Toberman, H. 2014. "Atmospheric deposition of phosphorus to land and freshwater", <em>Environmental Science: Processes &amp; Impacts</em>, 16(7).</p>
+<p>Titman, D., and Kilham, P. 1976. "Sinking in Freshwater Phytoplankton: Some Ecological Implications of Cell Nutrient Status and Physical Mixing Processes", <em>Limnology and Oceanography</em>, Vol 21, No. 3, pp 109--117.</p>
+<p>Toerien, D.F., and Cavari, B. 1982. "Effect of Temperature on Heterotrophic Glucose Uptake, Mineralization, and Turnover Rates in Lake Sediment", <em>Applied and Environmental Microbiology</em>, Vol 43, pp 1--5.</p>
+<p>Tsivoglou, E.C., and Wallace, S.R. 1972. "Characterization of Stream Reaeration Capacity", <em>USEPA, Report No. EPA-R3-72-012</em>.</p>
+<p>Turner, J.T. 1977. "Sinking Rates of Fecal Pellets from the Marine Copepod <em>Pontella meadii</em>", <em>Marine Biology</em>, Vol 40, No. 3, pp 249--259.</p>
+<p>Underhill, P.A. 1977. "Nitrate Uptake Kinetics and Clonal Variability in the Neritic Diatom <em>Biddulphia aurita</em>", <em>J. of Phycology</em>, Vol 13, pp 170--176.</p>
+<p>Vaccaro, R.F. 1969. "The Response of Natural Microbial Populations in Seawater to Organic Enrichment", <em>Limnology and Oceanography</em>, Vol 14, pp 726--735.</p>
+<p>Vandenberg, J.A., Prakash, S., and Buchak, E.M. 2014. "Sediment Diagenesis Module for CE-QUAL-W2. Part 1: Conceptual Formulation", <em>Environmental Modeling &amp; Assessment</em>, DOI:10.1007/s10666-014-9428-0.</p>
+<p>van Lierre, L., Zevenboom, W., and Mur, L.R. 1977. "Nitrogen as a Limiting Factor for the Growth of the Blue Green Alga <em>Oscillatoria</em>", <em>Progressive Water Technology</em>, Vol 8, pp 301--312.</p>
+<p>Verduin, J. 1952. "Photosynthesis and Growth Rates of Live Diatom Communities in Western Lake Erie", <em>Ecology</em>, Vol 33, pp 163--169.</p>
+<p>Verduin, J. 1982. "Components Contributing to Light Extinction in Natural Waters: Methods of Isolation", <em>Archives of Hydrobiology</em>, Vol 93, pp 303--312.</p>
+<p>Verity, P.G. 1981. "Effects of Temperature, Irradiance and Daylength on the Marine Diatom <em>Leptocylindrus danicus</em> Cleve; I. Photosynthesis and Cellular Composition", <em>J. of Experimental Marine Biology and Ecology</em>, Vol 55, pp 79--91.</p>
+<p>Visser, P.M., Passarge, J., and Mur, L.R. 1997. "Modelling vertical migration of the cyanobacterium <em>Microcystis</em>", <em>Hydrobiologia</em>, 349, 99--109.</p>
+<p>Von Muller, H. 1972. "Washstum und Phosphatbedarf von <em>Nitzschia actinastroides</em> Lemm.. V. Goor in Statischer and Homokontinuierlicher Kulter unter Phosphaltlimitierung", <em>Arch. Hydrobiol. Suppl.</em>, Vol 38, pp 399--484.</p>
+<p>Wallen, D.G., and Cartier, L.D. 1975. "Molybdenum Dependence, Nitrate Uptake and Photosynthesis of Freshwater Plankton Algae", <em>J. of Phycology</em>, Vol 11, pp 345--349.</p>
+<p>Wang, L.K., Poon, C.P., Wang, M.H., and Bergenthal, J. 1978. "Chemistry of Nitrification-Denitrification Process", <em>J. of Environmental Sciences</em>, Vol 21, pp 23--28.</p>
+<p>Wang, Y., Peng, Y., Wang, D., and Zhang, C. 2014. "Wet deposition fluxes of total mercury and methylmercury in core urban areas, Chongqing, China", <em>Atmospheric Environment</em>, Vol 92, pp 87--96.</p>
+<p>Wanninkhof, R., J.R. Ledwell, and J. Crucius. 1991. "Gas transfer velocities on lakes measured with sulfur hexafluoride", in <em>Proceedings of the Second International Symposium on Gas Transfer at Water Surfaces</em>, edited by S.C. Wilhelms and J.S. Gulliver, pp. 441--455, American Society of Civil Engineers, New York.</p>
+<p>Weiler, R.R. 1974. "Carbon dioxide exchange between water and atmosphere", <em>Journal of Fisheries Research Board of Canada</em>, Vol. 31, pp. 329--332.</p>
+<p>Welch, E.B., Cooke, G.D., Jones, J.R., and Gendusa, T.C. 2011. "DO-Temperature habitat loss due to eutrophication in Tenkiller Reservoir, Oklahoma, USA", <em>Lake and Reservoir Management</em>, 27:3, 271--285, DOI: 10.1080/07438141.2011.607553</p>
+<p>Wells, S. 2001. "Turbulence Closure Modeling in CE-QUAL-W2", Research Report, Department of Civil and Environmental Engineering, Portland State University, 37 pp.</p>
+<p>WES. 1996. <em>Evaluation and Analysis of Historical Dissolved Gas Data from the Snake and Columbia Rivers</em>, Waterways Experiments Station, ACOE Dissolved Gas Abatement Study Phase 1 Technical Report, Vicksburg, MS.</p>
+<p>WES. 1997. "Total Dissolved Gas Production at Spillways on the Snake and Columbia Rivers, Memorandum for Record", Waterways Experiments Station, <em>ACOE Dissolved Gas Abatement Study Phase 1 Technical Report</em>, Vicksburg, MS.</p>
+<p>Wetzel, R.G. 1975. <em>Limnology</em>, W.B. Saunders, Philadelphia, PA.</p>
+<p>Williams, P.J., Yentsch, L.B., and Yentsch, C.S. 1976. "An Examination of Photosynthetic Production, Excretion of Photosynthetic Products and Heterotrophic Utilization of Dissolved Organic Compounds with Reference to Results from a Coastal Subtropical Sea", <em>Marine Biology</em>, Vol 35, pp 31--40.</p>
+<p>Williams, D.T.; Drummond, G.R.; Ford, D.E.; and Robey, D.L. 1980. "Determination of Light Extinction Coefficients in Lakes and Reservoirs", <em>Surface Water Impoundments</em>, <em>Proceedings of the Symposium on Surface Water Impoundments</em>, American Society of Civil Engineers, H.G. Stefan, ed.</p>
+<p>Wright, R.T. 1975. "Studies on Glycolic Acid Metabolism by Freshwater Bacteria", <em>Limnology and Oceanography</em>, Vol 20, pp 626--633.</p>
+<p>Yu, S.L., Tuffy, T.J., and Lee, D.S. 1977. "Atmosphere Reaeration in a Lake", <em>Office of Water Resources and Technology</em>, U.S. Department of the Interior.</p>
+<p>Zimmerman, U. 1969. "Okologische and Physiologische Untersuchungen an der Planktonischen Blauagle Oscillatoria Rubescens, D.C., unter Besonderer Beruchlschtlgung von Licht and Temperatur", <em>Schweiz. Z. Hydrol.</em>, Vol 31, pp 1--58.</p>
+<p>Zison, S.W., Mills, W.B., Deimer, B., and Chen, C.W. 1978. "Rates, Constants, and Kinetics Formulations in Surface Water Quality Modeling", <em>EPA-600/3-68-105</em>, US Environmental Protection Agency, Washington, DC.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04_using_multiple_processors/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using Multiple Processors">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Using Multiple Processors
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../part4/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 4: Model Examples">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Part 4: Model Examples
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      U.S. Army Engineer Research and Development Center (ERDC)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/CE-QUAL-W2-ERDC" target="_blank" rel="noopener" title="CE-QUAL-W2-ERDC on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
