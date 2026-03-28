@@ -630,6 +630,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-to-use-this-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#typical-applications" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -969,6 +980,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1655,6 +1677,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-to-use-this-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#typical-applications" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1997,6 +2030,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2022,9 +2066,21 @@
 <p>CE-QUAL-W2 is the U.S. Army Corps of Engineers' (USACE) two-dimensional, longitudinal/vertical, hydrodynamic and water quality model. The model assumes <strong>lateral homogeneity</strong>, making it best suited for relatively long and narrow waterbodies that exhibit longitudinal and vertical water quality gradients. CE-QUAL-W2 has been applied to rivers, lakes, reservoirs, estuaries, and combinations thereof, including entire river basins with multiple reservoirs and river segments.</p>
 <div class="admonition info">
 <p class="admonition-title">What does CE-QUAL-W2 stand for?</p>
-<p>The name CE-QUAL-W2 stands for <strong>C</strong>orps of <strong>E</strong>ngineers - <strong>Qual</strong>ity - <strong>W</strong>idth-Averaged <strong>2</strong>D. CE-QUAL-W2 was originally developed at the U.S. Army Engineer Research and Development Center (ERDC). Since Version 3.0, Portland State University (PSU) has been a major CE-QUAL-W2 developer, as well as maintaining an active user community. ERDC resumed active development and maintenance of CE-QUAL-W2 in 2020, with research and development funding from the Ecosystem Management and Restoration Research Program (EMRRP) and Aquatic Nuisance Species Research Program (ANSRP). The ERDC V2026 release builds on the foundation of PSU's V4.5 codebase.</p>
-<p>The USACE Hydrologic, Hydraulic, and Coastal (HH&amp;C) Community of Practice (CoP) utilizes a specialized set of software engineering tools, primarily developed by the USACE Hydrologic Engineering Center (HEC) and the Engineer Research and Development Center (ERDC). These tools are used for modeling, planning, and designing water resource projects. The Software Engineering Technology (SET) program provides support for maintenance and support of these models. ERDC's responsibilities include user support, bug fixes, documentation, QA/QC, development of a new Graphical User Interface (GUI), annual training workshops, and new feature development. </p>
+<p>The name CE-QUAL-W2 stands for <strong>C</strong>orps of <strong>E</strong>ngineers - <strong>Qual</strong>ity - <strong>W</strong>idth-Averaged <strong>2</strong>D.</p>
+<p>CE-QUAL-W2 was originally developed at the U.S. Army Engineer Research and Development Center (ERDC). Since Version 3.0, Portland State University (PSU) has been a major CE-QUAL-W2 developer, as well as maintaining an active user community. ERDC resumed active development and maintenance of CE-QUAL-W2 in 2020, with research and development funding from the Ecosystem Management and Restoration Research Program (EMRRP) and Aquatic Nuisance Species Research Program (ANSRP). The ERDC V2026 release builds on the foundation of PSU's V4.5 codebase.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">USACE Software Engineering Tools (SET) Program</p>
+<p>The USACE Hydrologic, Hydraulic, and Coastal (HH&amp;C) Community of Practice (CoP) utilizes a specialized set of software engineering tools, primarily developed by the USACE Hydrologic Engineering Center (HEC) and the Engineer Research and Development Center (ERDC). The Software Engineering Technology (SET) program provides support for maintenance of these models. ERDC's responsibilities under SET include user support, bug fixes, documentation, QA/QC, development of a new Graphical User Interface (GUI), annual training workshops, and new feature development.</p>
+</div>
+<h2 id="how-to-use-this-manual">How to Use This Manual<a class="headerlink" href="#how-to-use-this-manual" title="Permanent link">&para;</a></h2>
+<p>This manual is organized into four parts:</p>
+<ul>
+<li><strong><a href="../">Part 1: Introduction</a></strong> -- Model overview, capabilities and limitations, data preparation, model download package, how to run the model, and version history.</li>
+<li><strong><a href="../../part2/">Part 2: Theory</a></strong> -- Theoretical basis for CE-QUAL-W2 including hydrodynamics, water quality kinetics, particle transport, and numerical solution schemes.</li>
+<li><strong><a href="../../part3/">Part 3: Input/Output Files</a></strong> -- Detailed descriptions of all model input and output files with format specifications and examples.</li>
+<li><strong><a href="../../part4/">Part 4: Model Examples</a></strong> -- Example applications distributed with the model release, along with calibration guidance for different waterbody types.</li>
+</ul>
 <h2 id="typical-applications">Typical Applications<a class="headerlink" href="#typical-applications" title="Permanent link">&para;</a></h2>
 <p>CE-QUAL-W2 is commonly applied to two broad categories of waterbodies:</p>
 <ul>
@@ -2040,7 +2096,7 @@
 <figcaption>Figure 1. Brownlee Reservoir, USA, predicted velocities (m/s) showing the plunging inflow of the Snake River moving as an interflow through the reservoir.</figcaption>
 </figure>
 <h3 id="river-basin-example">River Basin Example<a class="headerlink" href="#river-basin-example" title="Permanent link">&para;</a></h3>
-<p>The figure below shows the layout of the Upper Tualatin River CE-QUAL-W2 model. This model was composed of 2 waterbodies (BR1--BR3 and BR4--BR5). The mainstem consisted of 2 branches (BR1 and BR4) spanning from River Mile (RM) 62.4 to RM 38.4. Three side branches represented Scoggins Creek (BR2), Gales Creek (BR3), and Dairy Creek (BR5).</p>
+<p>The figure below shows the layout of the Upper Tualatin River CE-QUAL-W2 model. This model was composed of 2 waterbodies: Waterbody 1 (branches BR1--BR3) and Waterbody 2 (branches BR4--BR5). The mainstem consisted of 2 branches (BR1 and BR4) spanning from River Mile (RM) 62.4 to RM 38.4. Three side branches represented Scoggins Creek (BR2), Gales Creek (BR3), and Dairy Creek (BR5).</p>
 <!-- TODO: Add figure -->
 <figure>
   <img alt="Layout of the Upper Tualatin River CE-QUAL-W2 model" src="../../assets/images/part1/tualatin-river-layout.png" width="700" />
@@ -2054,9 +2110,9 @@
 <h3 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">&para;</a></h3>
 <p>A <strong>branch</strong> is a collection of model segments that share a common slope. In a river, separate branches represent reaches with different channel gradients. In a reservoir, sidearms are typically represented as separate branches connected to the mainstem branch.</p>
 <h3 id="segments">Segments<a class="headerlink" href="#segments" title="Permanent link">&para;</a></h3>
-<p>A <strong>segment</strong> is a single longitudinal element of length <strong>Δx</strong>. Segment lengths can vary from segment to segment. Each segment is further divided vertically into layers.</p>
+<p>A <strong>segment</strong> is a single longitudinal element of length <code>Δx</code>. Segment lengths can vary from segment to segment. Each segment is further divided vertically into layers.</p>
 <h3 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h3>
-<p>A <strong>layer</strong> is a single vertical element of height <strong>Δz</strong>. Layer heights can vary between waterbodies. Within a segment, layers between the bottom elevation and the water surface are <strong>active</strong> (wet); layers above the water surface are inactive (dry). As the water surface rises or falls during a simulation, layers are added or removed at the top of the water column.</p>
+<p>A <strong>layer</strong> is a single vertical element of height <code>Δz</code>. Layer heights can vary between waterbodies. Within a segment, layers between the bottom elevation and the water surface are <strong>active</strong> (wet); layers above the water surface are inactive (dry). As the water surface rises or falls during a simulation, layers are added or removed at the top of the water column.</p>
 <h3 id="summary-of-grid-hierarchy">Summary of Grid Hierarchy<a class="headerlink" href="#summary-of-grid-hierarchy" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2079,12 +2135,12 @@
 </tr>
 <tr>
 <td><strong>Segment</strong></td>
-<td>Longitudinal element of length Δx (variable)</td>
+<td>Longitudinal element of length <code>Δx</code> (variable)</td>
 <td>Horizontal discretization; lengths typically 100--10,000 m</td>
 </tr>
 <tr>
 <td><strong>Layer</strong></td>
-<td>Vertical element of height Δz; active (wet) or inactive (dry) depending on water surface elevation</td>
+<td>Vertical element of height <code>Δz</code>; active (wet) or inactive (dry) depending on water surface elevation</td>
 <td>Vertical discretization; heights typically 0.1--5 m</td>
 </tr>
 </tbody>
@@ -2105,7 +2161,11 @@
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Quasi-3D Modeling with Branches</p>
-<p>Although CE-QUAL-W2 is a 2D (longitudinal/vertical) model, the use of multiple branches to represent sidearms and tributaries creates a quasi-3D representation of the waterbody. This approach is particularly effective for reservoirs with complex geometries where sidearms contribute significant inflows or exhibit distinct water quality conditions. However, a quasi-3D representation does not replace a true 3D model. In some cases, a fully 3D model may be necessary to resolve complex three-dimensional flow patterns.</p>
+<p>Although CE-QUAL-W2 is a 2D (longitudinal/vertical) model, the use of multiple branches to represent sidearms and tributaries creates a quasi-3D representation of the waterbody. This approach is particularly effective for reservoirs with complex geometries where sidearms contribute significant inflows or exhibit distinct water quality conditions.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limitations of Quasi-3D Representation</p>
+<p>A quasi-3D representation does not replace a true 3D model. In some cases, a fully 3D model may be necessary to resolve complex three-dimensional flow patterns.</p>
 </div>
 <h2 id="historical-background">Historical Background<a class="headerlink" href="#historical-background" title="Permanent link">&para;</a></h2>
 <p>The development of CE-QUAL-W2 is the result of the collective effort of many researchers over several decades. The model's development has its origin with the U.S. Army Corps of Engineers, and the name reflects that origin: <strong>CE</strong> (Corps of Engineers), <strong>QUAL</strong> (Quality), <strong>W2</strong> (Width-averaged 2D).</p>
@@ -2116,8 +2176,8 @@
 <h3 id="version-10">Version 1.0<a class="headerlink" href="#version-10" title="Permanent link">&para;</a></h3>
 <p>The original model that served as the foundation for CE-QUAL-W2 was known as LARM (Laterally Averaged Reservoir Model), developed by Edinger and Buchak (1975, 1978, 1980, 1983). The first LARM application was on a reservoir with no branches. Subsequent modifications to allow for multiple branches and estuarine boundary conditions resulted in the code known as GLVHT (Generalized Longitudinal-Vertical Hydrodynamics and Transport Model). Addition of the water quality algorithms by the Water Quality Modeling Group at the Corps of Engineers Waterways Experiment Station (WES) resulted in CE-QUAL-W2 Version 1.0 (Environmental and Hydraulic Laboratories, 1986).</p>
 <h3 id="version-20">Version 2.0<a class="headerlink" href="#version-20" title="Permanent link">&para;</a></h3>
-<p>Version 2.0 was the result of major modifications to the code to improve the mathematical description of the prototype and increase computational accuracy and efficiency. These changes were summarized in the Cole and Buchak (1995) User Manual. Numerous new capabilities were included in Version 2.0:</p>
-<ol>
+<p>Version 2.0 introduced major modifications that improved the mathematical formulation, computational accuracy, and efficiency. These changes were summarized in the Cole and Buchak (1995) User Manual. New capabilities included:</p>
+<ul>
 <li>An algorithm that calculated the maximum allowable timestep and adjusted the timestep to ensure hydrodynamic stability requirements were not violated (autostepping)</li>
 <li>A selective withdrawal algorithm that calculated a withdrawal zone based on outflow, outlet geometry, and upstream density gradients</li>
 <li>A higher-order transport scheme (QUICKEST) that reduced numerical diffusion (Leonard, 1979)</li>
@@ -2130,10 +2190,10 @@
 <li>Generalized time-varying data input subroutine with input data accepted at any frequency</li>
 <li>Volume and mass balances to machine accuracy</li>
 <li>Sediment/water heat exchange</li>
-</ol>
+</ul>
 <h3 id="version-30">Version 3.0<a class="headerlink" href="#version-30" title="Permanent link">&para;</a></h3>
-<p>Version 3.0 introduced additional improvements to the numerical solution scheme and water quality algorithms, as well as extending the utility of the model to provide state-of-the-art capabilities for modeling entire waterbasins in two dimensions. The new capabilities included:</p>
-<ol>
+<p>Version 3.0 introduced improvements to the numerical solution scheme and water quality algorithms and extended the model to support entire basin modeling in two dimensions. New capabilities included:</p>
+<ul>
 <li>An implicit solution for the effects of vertical eddy viscosity in the horizontal momentum equation</li>
 <li>Addition of Leonard's ULTIMATE algorithm that eliminates over/undershoots in the numerical solution scheme</li>
 <li>Inclusion of momentum transfer between branches</li>
@@ -2152,10 +2212,10 @@
 <li>A graphical pre/postprocessor</li>
 <li>Converted to FORTRAN 90/95 with dynamic array allocation, eliminating the need to recompile the code for each application</li>
 <li>User-defined evaporation models including the Ryan-Harleman model</li>
-</ol>
+</ul>
 <h3 id="version-31">Version 3.1<a class="headerlink" href="#version-31" title="Permanent link">&para;</a></h3>
-<p>Version 3.1 introduced additional improvements to the numerical solution scheme and water quality algorithms, as well as extending the utility of the model for modeling entire waterbasins in two dimensions. The new capabilities included:</p>
-<ol>
+<p>Version 3.1 continued improvements to the water quality algorithms with emphasis on user-defined flexibility. New capabilities included:</p>
+<ul>
 <li>Any number of user-defined arbitrary constituents defined by a decay rate, settling rate, and temperature rate multiplier that can include any number of:<ul>
 <li>Conservative tracers</li>
 <li>Coliform bacteria</li>
@@ -2171,19 +2231,23 @@
 <li>Derived constituents such as total DOC, organic nitrogen, organic phosphorus, etc. that are not state variables</li>
 <li>Kinetic fluxes</li>
 <li>Graphical preprocessor</li>
-</ol>
+</ul>
 <h3 id="version-32">Version 3.2<a class="headerlink" href="#version-32" title="Permanent link">&para;</a></h3>
-<p>Version 3.2 introduced additional improvements to the model. The new capabilities included:</p>
-<ol>
+<p>Version 3.2 introduced improvements to code architecture and runtime capabilities. New capabilities included:</p>
+<ul>
 <li>Internal code rewrite to reduce code size, simplify code maintenance, and improve model execution speed</li>
 <li>New screen display during model run-time allowing controlling processor usage, examining output variables, and stopping, starting and restarting a model run on the fly</li>
 <li>Addition of a new algorithm to estimate suspended solids resuspension as a result of wind-wave action</li>
 <li>Reorganization of the <code>graph.npt</code> file to allow more output control formatting possibilities</li>
 <li>New turbulent kinetic energy-turbulent dissipation (TKE) turbulence closure model</li>
-</ol>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Version Numbering</p>
+<p>Versions 3.3 and 3.4 were not released. Development continued directly from Version 3.2 to Version 3.5.</p>
+</div>
 <h3 id="version-35">Version 3.5<a class="headerlink" href="#version-35" title="Permanent link">&para;</a></h3>
-<p>Version 3.5 introduced significant enhancements to the model. The new capabilities included:</p>
-<ol>
+<p>Version 3.5 introduced significant enhancements to the model. New capabilities included:</p>
+<ul>
 <li>Addition of the macrophyte model of Berger and Wells (2008) with a user-defined number of species</li>
 <li>Addition of a zooplankton model with a user-defined number of species based on an updated version of the CE-QUAL-R1 model (Environmental Laboratory, 1995)</li>
 <li>Addition of a new focusing or settling velocity for sediments that accumulate in the first-order sediment model</li>
@@ -2192,17 +2256,17 @@
 <li>The first-order sediment model also tracks C-N-P correctly and has a dynamic stoichiometry as it accumulates organic matter in the sediment</li>
 <li>CBOD groups now have a user-defined settling velocity</li>
 <li>A Monod formulation was implemented for the initiation of anaerobic processes and reduction of aerobic processes</li>
-</ol>
+</ul>
 <h3 id="version-36">Version 3.6<a class="headerlink" href="#version-36" title="Permanent link">&para;</a></h3>
-<p>Version 3.6 is file-compatible with Version 3.5. The primary change is allowing the code to run on multiple processors. The following changes were made:</p>
-<ol>
+<p>Version 3.6 is file-compatible with Version 3.5. The primary change is allowing the code to run on multiple processors. Additional changes include:</p>
+<ul>
 <li>The code has been rewritten into smaller subroutines to allow better code compilation and optimization</li>
 <li>The code has been revised with the goal of improving computational speed</li>
 <li>The code now has OpenMP commands embedded to allow for limited parallelization of some of the routines</li>
 <li>The TKE algorithm has been updated with new algorithms that match experimental tank data for kinetic energy and dissipation</li>
-<li>The roughness height of the water for correction of the vertical velocity wind profile is now a user-defined input, z₀</li>
+<li>The roughness height of the water for correction of the vertical velocity wind profile is now a user-defined input, <code>z₀</code></li>
 <li>The Windows user interface no longer uses Array Viewer</li>
-<li>Fixed error with algae/chlorophyll a ratio in the user manual and fixed the preprocessor</li>
+<li>Fixed error with algae/chlorophyll <em>a</em> ratio in the user manual and fixed the preprocessor</li>
 <li>Spreadsheet output improvements</li>
 <li>Preprocessor improvements</li>
 <li>For the generic constituent, added temperature dependence on 0th-order decay</li>
@@ -2211,39 +2275,43 @@
 <li>The light extinction coefficient (in m⁻¹) is now included as an output variable in the TSR opt file</li>
 <li>A new option for output in the format required for Tecplot</li>
 <li>A new variable for determining the fraction of NO₃-N that is diffused into the sediments that becomes organic matter, or SED-N</li>
-<li>In V3.5 the model computed an average decay coefficient of the sediments based on what was deposited. The user now has the option to dynamically compute that decay rate or to have it fixed and controlled by the model user (<code>DYNSEDK</code> variable)</li>
+<li>The sediment decay rate can be computed dynamically or held constant using the <code>DYNSEDK</code> variable</li>
 <li>Added kinetic flux output that sums up fluxes for all cells of a waterbody</li>
 <li>The selective withdrawal algorithm computation was adjusted to more closely follow the Corps' model code SELECT</li>
 <li>Command-line working directory specification is now active for the preprocessor, GUI, and W2 Windows versions</li>
-</ol>
+</ul>
 <h3 id="version-37">Version 3.7<a class="headerlink" href="#version-37" title="Permanent link">&para;</a></h3>
-<p>Version 3.7 is not file-compatible with Version 3.6 because of the addition of several new state variables. Many of the new features are accessed through additional control files separate from the main control file, <code>w2_con.npt</code>. The following changes were made:</p>
-<ol>
-<li>The model has been improved to handle river flow regimes with: initial water surface elevation computed from normal depth, initial non-zero velocity regime, trapezoidal or rectangular model segments, and two slopes per branch</li>
-<li>There is a new bathymetry file input format in comma-delimited format (CSV)</li>
-<li>Temperature and dissolved oxygen habitat volumes are now computed within the model for user-specified fish species</li>
-<li>There is a new automatic selection of a withdrawal port algorithm</li>
-<li>Since each BOD group can have a different BOD-P, BOD-C, and BOD-N stoichiometric equivalent, new state variables BOD-P, BOD-N, and BOD-C were added</li>
-<li>Environmental performance criteria were developed to evaluate time and volume averages</li>
-<li>The model now has a module for adding dissolved oxygen, such as hypolimnetic aeration, to specific locations</li>
-<li>The model has a dynamic pipe algorithm allowing a pipe to be turned ON or OFF over time</li>
-<li>The model also has a dynamic pump algorithm that allows dynamic parameters for water level control over time</li>
+<div class="admonition warning">
+<p class="admonition-title">File Compatibility</p>
+<p>Version 3.7 is <strong>not</strong> file-compatible with Version 3.6 because of the addition of several new state variables.</p>
+</div>
+<p>Many of the new features in Version 3.7 are accessed through additional control files separate from the main control file, <code>w2_con.npt</code>. New capabilities include:</p>
+<ul>
+<li>Improved handling of river flow regimes: initial water surface elevation computed from normal depth, initial non-zero velocity regime, trapezoidal or rectangular model segments, and two slopes per branch</li>
+<li>New bathymetry file input format in comma-delimited format (CSV)</li>
+<li>Temperature and dissolved oxygen habitat volumes computed within the model for user-specified fish species</li>
+<li>New automatic selection of a withdrawal port algorithm</li>
+<li>Since each BOD group can have a different stoichiometric equivalent, new state variables <code>BOD-P</code>, <code>BOD-N</code>, and <code>BOD-C</code> were added</li>
+<li>Environmental performance criteria developed to evaluate time and volume averages</li>
+<li>Module for adding dissolved oxygen, such as hypolimnetic aeration, to specific locations</li>
+<li>Dynamic pipe algorithm allowing a pipe to be turned ON or OFF over time</li>
+<li>Dynamic pump algorithm that allows dynamic parameters for water level control over time</li>
 <li>The maximum time step can now be set to interpolate its value over time</li>
 <li>The computation of the temperature at which ice freezes has been adjusted to account for salt water impacts</li>
 <li>New model output includes volume-weighted averages of eutrophication water quality variables and output for all individual withdrawals</li>
-</ol>
+</ul>
 <h3 id="version-371">Version 3.71<a class="headerlink" href="#version-371" title="Permanent link">&para;</a></h3>
-<p>Version 3.71 is file-compatible with Version 3.7 but adds one new variable to the control file <code>w2_con.npt</code>. The following changes were made:</p>
-<ol>
+<p>Version 3.71 is file-compatible with Version 3.7 but adds one new variable to the control file <code>w2_con.npt</code>. New capabilities include:</p>
+<ul>
 <li>New model input formats (free format) for many input files that were previously in fixed format, including: concentration input files, wind sheltering file, meteorological input file, vertical profile file, longitudinal-vertical profile file, withdrawal flow file, structure outflow file, and flow and temperature input files</li>
 <li>New option for dynamic outlet structure elevation for each model structure</li>
 <li>The release of a new post-processor from DSI, Inc.</li>
-</ol>
+</ul>
 <h3 id="version-372">Version 3.72<a class="headerlink" href="#version-372" title="Permanent link">&para;</a></h3>
 <p>Version 3.72 is file-compatible with Version 3.71 unless the user employs the new USGS automatic port selection algorithm, where the <code>w2_selective.npt</code> format is changed. This version allows for using the algorithm of Rounds and Buccola (2015) for trying to meet downstream temperature targets from reservoirs with multiple outlets.</p>
 <h3 id="version-40">Version 4.0<a class="headerlink" href="#version-40" title="Permanent link">&para;</a></h3>
-<p>Version 4.0 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the existing model files. The new features include:</p>
-<ol>
+<p>Version 4.0 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the existing model files. New features include:</p>
+<ul>
 <li>Sediment diagenesis model of Prakash et al. (2015) and Berger and Wells (2014). This model includes bubble formation and rise in the water column, sediment consolidation, and sediment diagenesis. It includes new state variables for sediment and water column CH₄, H₂S, SO₄, sulfide, FeOOH(s), Fe²⁺, MnO₂(s), Mn²⁺, sediment organic P, sediment organic N, sediment NO₃, sediment NH₄, sediment PO₄, sediment temperature, sediment pH, sediment alkalinity, sediment total inorganic C, sediment organic C, and mature fine tailings (turbidity based on correlation with TSS)</li>
 <li>Non-conservative alkalinity from the work of Sullivan et al. (2013)</li>
 <li>Wind-induced and boundary-induced shear causing scour of organic matter from sediments and resulting oxygen demand</li>
@@ -2257,31 +2325,31 @@
 <li>A floating skimmer weir can be used and is set up in the main control file section on internal weirs</li>
 <li>A new output file format for longitudinal profiles of water level, temperature, flow rate, and water quality</li>
 <li>A new output file that provides a P and N mass balance for each waterbody</li>
-</ol>
+</ul>
 <h3 id="version-41">Version 4.1<a class="headerlink" href="#version-41" title="Permanent link">&para;</a></h3>
-<p>Version 4.1 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the main control file. The new features include:</p>
-<ol>
+<p>Version 4.1 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the main control file. New features include:</p>
+<ul>
 <li>Particle tracking algorithm based on a revised and updated algorithm from Goodwin et al. (2001)</li>
 <li>Branch active and inactive algorithm allowing the model to activate or deactivate branches based on wetting and drying</li>
 <li>Updates to the sediment diagenesis model</li>
-<li>The value of Ax and Dx can now scale with the mean longitudinal velocity rather than being constants</li>
+<li>The longitudinal eddy viscosity (<code>Ax</code>) and eddy diffusivity (<code>Dx</code>) can now scale with the mean longitudinal velocity rather than being constants</li>
 <li>Canopy shade can be used in conjunction with the dynamic shade algorithm</li>
 <li>Assorted minor bug fixes and updates</li>
 <li>New water balance as a console application</li>
 <li>For withdrawal output files, precise output timing can now be used for seconds, minutes, or hours</li>
-<li>The model user can now deal with a constriction between two model segments</li>
-</ol>
+<li>The model supports constrictions between adjacent segments</li>
+</ul>
 <h3 id="version-42">Version 4.2<a class="headerlink" href="#version-42" title="Permanent link">&para;</a></h3>
-<p>Version 4.2 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the main control file. The new features include:</p>
-<ol>
+<p>Version 4.2 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the main control file. New features include:</p>
+<ul>
 <li>Multiple waterbody cascade modeling using multiple processors</li>
 <li>The User Manual was updated to a new format and organization with hundreds of additions, updates, and corrections</li>
 <li>The Corps of Engineers SYSTDG program for evaluating Total Dissolved Gas at spillways was added to the release version of the model</li>
 <li>The restart feature with sediment diagenesis and Tecplot CPL output is now working</li>
-</ol>
+</ul>
 <h3 id="version-421">Version 4.2.1<a class="headerlink" href="#version-421" title="Permanent link">&para;</a></h3>
-<p>Version 4.2.1 is file-compatible with Version 3.72 except for the new Excel version of the control file. The new features include:</p>
-<ol>
+<p>Version 4.2.1 is file-compatible with Version 3.72 except for the new Excel version of the control file. New features include:</p>
+<ul>
 <li>Multiple waterbody cascade modeling using multiple processors has been updated</li>
 <li>A new control file, <code>w2_con.csv</code>, is now available for use in CE-QUAL-W2</li>
 <li>The model examples and User Manual were updated with a new example problem from Long Lake, WA</li>
@@ -2289,16 +2357,24 @@
 <li>Output file format has been improved for the <code>w2.wrn</code> and the <code>W2errordump.opt</code> files</li>
 <li>The pump algorithm has a new enhancement allowing water to be pumped from the upstream to downstream based on downstream water level</li>
 <li>Tecplot output through the CPL output can now specify which branches to write out</li>
-</ol>
+</ul>
 <h3 id="version-422">Version 4.2.2<a class="headerlink" href="#version-422" title="Permanent link">&para;</a></h3>
-<p>Version 4.2.2 is not file-compatible with Version 3.72 since two new variables were added to the control file. This code update adds a regression equation for CO₂ global average concentration in ppm and allows the user to define an average CO₂ gas concentration. This new calculation technique is described in the User Manual Part 2.</p>
+<div class="admonition warning">
+<p class="admonition-title">File Compatibility</p>
+<p>Version 4.2.2 is <strong>not</strong> file-compatible with Version 3.72 since two new variables were added to the control file.</p>
+</div>
+<p>This code update adds a regression equation for CO₂ global average concentration in ppm and allows the user to define an average CO₂ gas concentration. <!-- TODO: Add link to Part 2 CO₂ section --></p>
 <h3 id="version-45">Version 4.5<a class="headerlink" href="#version-45" title="Permanent link">&para;</a></h3>
-<p>Version 4.5 includes many new features and upgrades and is not file-compatible with earlier versions because of many new variables in the control file. Many of these features were supported by ERDC Environmental Laboratory and Portland District of the U.S. Army Corps of Engineers. The new features include:</p>
-<ol>
+<div class="admonition warning">
+<p class="admonition-title">File Compatibility</p>
+<p>Version 4.5 is <strong>not</strong> file-compatible with earlier versions because of many new variables in the control file.</p>
+</div>
+<p>Version 4.5 includes many new features and upgrades. Many of these features were supported by ERDC Environmental Laboratory and Portland District of the U.S. Army Corps of Engineers. New features include:</p>
+<ul>
 <li>Atmospheric deposition of any state variable</li>
 <li>Ability to specify directly output of flow balance file, N and P mass balance file, and water level file</li>
 <li>New generic constituent source: sediment release</li>
-<li>New state variables: water age, N₂, dissolved total gas pressure, bacteria, CH₄, Fe(II), FeOOH, Mn(II), MnO₂, H₂S</li>
+<li>New state variables: water age, N₂, dissolved total gas pressure, bacteria, CH₄, Fe²⁺, FeOOH, Mn²⁺, MnO₂, H₂S</li>
 <li>New derived variables: turbidity (correlated to TSS), Secchi disk (based on light extinction), un-ionized ammonia (based on temperature, pH, and total ammonia), and Total Dissolved Gas (TDG)</li>
 <li>The model computes ammonia volatilization based on unionized ammonia volatilization rate</li>
 <li>Implementation of variable algal settling velocity including buoyancy effects from Overman (2019) for predicting cyanobacteria vertical migration</li>
@@ -2308,15 +2384,15 @@
 <li>Ability to generate river contours easily (model segment or distance along river vs. time) for temperature and dissolved oxygen</li>
 <li>The C groups dissolved organic C (DOC) and particulate organic C (POC) with both labile and refractory groups were added as an alternative to organic matter groups</li>
 <li>Sediment diagenesis updates: multiple vertical layers, simplified calculation, and much faster computation</li>
-<li>Removed internal minimum reaeration coefficient value and allowed the model user to set a minimum value if required</li>
+<li>Removed internal minimum reaeration coefficient value and allowed the user to set a minimum value if required</li>
 <li>Updates to auto-port selection</li>
 <li>SYSTDG input files updated to CSV input format</li>
 <li>Updates to particle settling and P adsorption onto inorganic SS</li>
 <li>All external control files are included in an Excel master sheet for ease of writing out as CSV files</li>
 <li>Added derived variables to the W2_post post-processor for time series, profiles, animations, and contour plots</li>
-</ol>
+</ul>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
-<p>A partial list of significant new model features since Version 3.7 is shown in Table 1.</p>
+<p>The table below provides a quick-reference summary of significant new model features since Version 3.7. For detailed descriptions, see the version-by-version entries in the <a href="#historical-background">Historical Background</a> section above.</p>
 <table>
 <thead>
 <tr>
@@ -2352,7 +2428,7 @@
 <td>4.0</td>
 </tr>
 <tr>
-<td>New state variables such as CH₄, H₂S, and Fe and Mn</td>
+<td>New state variables such as CH₄, H₂S, Fe, and Mn</td>
 <td>Since the addition of sediment diagenesis, other water state variables were added that connected to the sediments. Now metals can oxidize and precipitate and be reduced in the sediments and released.</td>
 <td>4.0</td>
 </tr>
@@ -2387,7 +2463,7 @@
 <td>4.1</td>
 </tr>
 <tr>
-<td>Ax and Dx scale with U</td>
+<td><code>Ax</code> and <code>Dx</code> scale with U</td>
 <td>The longitudinal eddy viscosity and eddy diffusivity can now scale with the longitudinal velocity.</td>
 <td>4.1</td>
 </tr>
@@ -2408,7 +2484,7 @@
 </tr>
 <tr>
 <td>Variable CO₂ atmosphere</td>
-<td>A regression equation is used to estimate global average CO₂ in the atmosphere. Also, the model user can input a user-defined value.</td>
+<td>A regression equation is used to estimate global average CO₂ in the atmosphere. Also, the user can input a user-defined value.</td>
 <td>4.2.2</td>
 </tr>
 <tr>
@@ -2423,7 +2499,7 @@
 </tr>
 <tr>
 <td>New state variables</td>
-<td>Water age, N₂, dissolved total gas pressure, bacteria, CH₄, Fe(II), FeOOH, Mn(II), MnO₂, H₂S.</td>
+<td>Water age, N₂, dissolved total gas pressure, bacteria, CH₄, Fe²⁺, FeOOH, Mn²⁺, MnO₂, H₂S.</td>
 <td>4.5</td>
 </tr>
 <tr>
@@ -2473,6 +2549,8 @@
 <li>Pre-compiled binaries for Windows, macOS (Apple Silicon), and Linux.</li>
 <li>Compilation and execution scripts for DoD HPC systems.</li>
 </ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>For a complete list of references cited in this chapter, see <a href="../09_references/">References</a>. For a comprehensive bibliography of CE-QUAL-W2 publications, see <a href="../11_appendix_b_publications/">Appendix B: Publications</a>.</p>
 
 
 
