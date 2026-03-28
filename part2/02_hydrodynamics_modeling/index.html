@@ -1,0 +1,4443 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation">
+      
+      
+        <meta name="author" content="Environmental Modeling Team, U.S. Army Engineer Research and Development Center">
+      
+      
+        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/part2/02_hydrodynamics_modeling/">
+      
+      
+        <link rel="prev" href="../01_introduction/">
+      
+      
+        <link rel="next" href="../03_particle_tracking/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Hydrodynamics Modeling - CE-QUAL-W2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hydrodynamics-modeling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-header__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CE-QUAL-W2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hydrodynamics Modeling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 1: Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 2: Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 3: Input/Output Files
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 4: Model Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../release-notes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-nav__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CE-QUAL-W2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1: Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/00_preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to CE-QUAL-W2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/02_capabilities_and_limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities and Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/03_data_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Data Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/04_model_download_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Download Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/05_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/06_setting_up_and_running_a_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up and Running a Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/07_batch_processing_and_command_line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Processing and Command Line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/08_including_relative_directory_paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative Directory Paths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/09_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/10_appendix_a_contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Contributors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/11_appendix_b_publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2: Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2: Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydrodynamics Modeling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydrodynamics Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coordinate System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turbulent-time-averaged-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turbulent Time-Averaged Equations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turbulent Time-Averaged Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        y-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coriolis-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coriolis Effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjusting-the-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjusting the Coordinate System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#governing-equations-for-general-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governing Equations for General Coordinate System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Governing Equations for General Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        y-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simplification-of-z-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simplification of z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Averaging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lateral Averaging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-laterally-averaged-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary of Laterally Averaged Equations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary of Laterally Averaged Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simplification-of-pressure-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simplification of Pressure Term
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free-water-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free Water Surface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equation-of-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equation of State
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-governing-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary of Governing Equations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkage-of-mainstem-branches-with-internal-head-boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkage of Mainstem Branches with Internal Head Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkage-of-tributary-or-side-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkage of Tributary or Side Branches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linkage of Tributary or Side Branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longitudinal-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longitudinal Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-shear-of-tributary-inflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Shear of Tributary Inflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computation-of-initial-water-surface-slope-and-velocity-field-for-river-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computation of Initial Water Surface Slope and Velocity Field for River Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auxiliary Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#surface-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Surface Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wind-fetch-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wind Fetch Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vertical-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Shear Stress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vertical Shear Stress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rng-turbulent-eddy-viscosity-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNG Turbulent Eddy Viscosity Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nickuradse-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nickuradse Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parabolic-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parabolic Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w2n-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W2N Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tke-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TKE Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-of-vertical-layer-numbers-on-vertical-turbulence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect of Vertical Layer Numbers on Vertical Turbulence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#longitudinal-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longitudinal Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hydraulic-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydraulic Structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydraulic Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-weirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal Weirs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-level-control-or-pumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Level Control or Pumps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outlet-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outlet Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spillwaysweirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spillways/Weirs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-momentum-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Momentum Exchange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-inflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Inflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#density" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selective-withdrawal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selective Withdrawal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sediment-resuspension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sediment Resuspension
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_particle_tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Particle Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_temperature_and_water_quality_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Temperature and Water Quality Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_numerical_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3: Input/Output Files
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3: Input/Output Files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4: Model Examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4: Model Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../release-notes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2026.02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERDC 2026.02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/version-lineage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coordinate System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#turbulent-time-averaged-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turbulent Time-Averaged Equations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turbulent Time-Averaged Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        y-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coriolis-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coriolis Effect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjusting-the-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjusting the Coordinate System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#governing-equations-for-general-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governing Equations for General Coordinate System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Governing Equations for General Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        y-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simplification-of-z-momentum-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simplification of z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Averaging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lateral Averaging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-laterally-averaged-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary of Laterally Averaged Equations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary of Laterally Averaged Equations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuity-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuity Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-momentum-equation_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-momentum-equation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        z-Momentum Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simplification-of-pressure-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simplification of Pressure Term
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#free-water-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free Water Surface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equation-of-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equation of State
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-governing-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary of Governing Equations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkage-of-mainstem-branches-with-internal-head-boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkage of Mainstem Branches with Internal Head Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkage-of-tributary-or-side-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkage of Tributary or Side Branches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linkage of Tributary or Side Branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#longitudinal-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longitudinal Momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-shear-of-tributary-inflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Shear of Tributary Inflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computation-of-initial-water-surface-slope-and-velocity-field-for-river-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computation of Initial Water Surface Slope and Velocity Field for River Simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auxiliary-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auxiliary Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auxiliary Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#surface-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Surface Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wind-fetch-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wind Fetch Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottom-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vertical-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Shear Stress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vertical Shear Stress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rng-turbulent-eddy-viscosity-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RNG Turbulent Eddy Viscosity Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nickuradse-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nickuradse Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parabolic-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parabolic Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w2n-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W2N Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tke-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TKE Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-of-vertical-layer-numbers-on-vertical-turbulence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect of Vertical Layer Numbers on Vertical Turbulence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#longitudinal-shear-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Longitudinal Shear Stress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hydraulic-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydraulic Structures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydraulic Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-weirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Internal Weirs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-level-control-or-pumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Level Control or Pumps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outlet-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outlet Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spillwaysweirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spillways/Weirs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-momentum-exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Momentum Exchange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-inflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Inflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#density" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Density
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selective-withdrawal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selective Withdrawal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sediment-resuspension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sediment Resuspension
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hydrodynamics-modeling">Hydrodynamics Modeling<a class="headerlink" href="#hydrodynamics-modeling" title="Permanent link">&para;</a></h1>
+<p>This chapter presents the theoretical basis for hydrodynamic computations in CE-QUAL-W2. The governing equations are derived from fundamental conservation laws for mass and momentum, simplified through lateral averaging and the hydrostatic assumption. Auxiliary functions for turbulent shear stress, hydraulic structures, density, selective withdrawal, and sediment resuspension are also described.</p>
+<h2 id="coordinate-system">Coordinate System<a class="headerlink" href="#coordinate-system" title="Permanent link">&para;</a></h2>
+<p>The coordinate system used to derive the governing equations is shown in Figure 1. The x-axis is oriented east, the y-axis is oriented north, and the z-axis is oriented upward.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch of coordinate system for governing equations where x is oriented east, y is oriented north, and z is oriented upward.](../assets/images/part2/fig1_coordinate_system.png){ width="500" }
+  <figcaption>Figure 1. Definition sketch of coordinate system for governing equations where x is oriented east, y is oriented north, and z is oriented upward.</figcaption>
+</figure>
+-->
+
+<p>Based on this coordinate system, the following definitions apply:</p>
+<ul>
+<li><span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> are horizontal coordinates.</li>
+<li><span class="arithmatex">\(z\)</span> is a vertical coordinate assumed to be opposite the gravity force.</li>
+<li><span class="arithmatex">\(\Omega\)</span> is a vector representing the angular velocity of the earth spinning on its axis. The rotation of the coordinate system can result in horizontal acceleration of the fluid, usually significant only for large water bodies such as large lakes and ocean systems. The resulting force is termed the Coriolis force.</li>
+<li><span class="arithmatex">\(\phi\)</span> is the latitude of the water body.</li>
+<li>The meridian represents the longitude of the water body.</li>
+</ul>
+<h2 id="turbulent-time-averaged-equations">Turbulent Time-Averaged Equations<a class="headerlink" href="#turbulent-time-averaged-equations" title="Permanent link">&para;</a></h2>
+<p>The governing equations are obtained by performing a mass and momentum balance about a control volume. The resulting equations are the continuity (conservation of fluid mass) and the conservation of momentum equations for a rotating coordinate system (Batchelor, 1967; Sabersky et al., 1989; Cushman-Roisin, 1994). Using the coordinate system in Figure 1, the following assumptions are made:</p>
+<ol>
+<li>Incompressible fluid (it is possible to develop compressible equations of motion for special cases; see Wells, 2009).</li>
+<li>Centripetal acceleration is a minor correction to gravity.</li>
+<li>Boussinesq approximation.</li>
+<li>All velocities (<span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>, <span class="arithmatex">\(w\)</span>) and pressure (<span class="arithmatex">\(p\)</span>) are the sum of turbulent time averages and deviations from that average, i.e., <span class="arithmatex">\(u = \bar{u} + u'\)</span>, where <span class="arithmatex">\(\bar{u} = \frac{1}{T}\int_t^{t+T} u \, dt\)</span>, <span class="arithmatex">\(v = \bar{v} + v'\)</span>, <span class="arithmatex">\(w = \bar{w} + w'\)</span>, and <span class="arithmatex">\(p = \bar{p} + p'\)</span>, where the overbar represents the time average and the prime represents deviation from the temporal average.</li>
+</ol>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch of turbulent time averaging for velocity.](../assets/images/part2/fig2_turbulent_time_avg.png){ width="500" }
+  <figcaption>Figure 2. Definition sketch of turbulent time averaging for velocity.</figcaption>
+</figure>
+-->
+
+<p>The governing equations (continuity and x, y, z momentum equations) become after simplification:</p>
+<h3 id="continuity">Continuity<a class="headerlink" href="#continuity" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial \bar{u}}{\partial x} + \frac{\partial \bar{v}}{\partial y} + \frac{\partial \bar{w}}{\partial z} = 0 \tag{2-1}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(u\)</span> = x-direction velocity</li>
+<li><span class="arithmatex">\(v\)</span> = y-direction velocity</li>
+<li><span class="arithmatex">\(w\)</span> = z-direction velocity</li>
+</ul>
+<h3 id="x-momentum-equation">x-Momentum Equation<a class="headerlink" href="#x-momentum-equation" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\underbrace{\frac{\partial \bar{u}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{u}}{\partial x} + \bar{v}\frac{\partial \bar{u}}{\partial y} + \bar{w}\frac{\partial \bar{u}}{\partial z}}_{\text{convective acceleration}} - \underbrace{2\Omega_z \bar{v} + 2\Omega_y \bar{w}}_{\text{Coriolis}} = -\underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial x}}_{\text{pressure}} + \underbrace{\frac{\mu}{\rho}\left(\frac{\partial^2 \bar{u}}{\partial x^2} + \frac{\partial^2 \bar{u}}{\partial y^2} + \frac{\partial^2 \bar{u}}{\partial z^2}\right)}_{\text{viscous stresses}} + \frac{1}{\rho}\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right) \tag{2-2}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{xx}\)</span> = turbulent shear stress acting in x direction on the x-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{xy}\)</span> = turbulent shear stress acting in x direction on the y-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{xz}\)</span> = turbulent shear stress acting in x direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\mu\)</span> = dynamic viscosity</li>
+<li><span class="arithmatex">\(\Omega_z = \Omega_E \sin\varphi\)</span></li>
+<li><span class="arithmatex">\(\Omega_y = \Omega_E \cos\varphi\)</span></li>
+<li><span class="arithmatex">\(\varphi\)</span> = latitude</li>
+<li><span class="arithmatex">\(\Omega_E\)</span> = earth's rotation rate</li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch of turbulent shear stresses in x-direction.](../assets/images/part2/fig3_shear_stress_x.png){ width="400" }
+  <figcaption>Figure 3. Definition sketch of turbulent shear stresses in x-direction.</figcaption>
+</figure>
+-->
+
+<h3 id="y-momentum-equation">y-Momentum Equation<a class="headerlink" href="#y-momentum-equation" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial \bar{v}}{\partial t} + \bar{u}\frac{\partial \bar{v}}{\partial x} + \bar{v}\frac{\partial \bar{v}}{\partial y} + \bar{w}\frac{\partial \bar{v}}{\partial z} + 2\Omega_z \bar{u} - 2\Omega_x \bar{w} = -\frac{1}{\rho}\frac{\partial \bar{p}}{\partial y} + \frac{\mu}{\rho}\left(\frac{\partial^2 \bar{v}}{\partial x^2} + \frac{\partial^2 \bar{v}}{\partial y^2} + \frac{\partial^2 \bar{v}}{\partial z^2}\right) + \frac{1}{\rho}\left(\frac{\partial \tau_{yx}}{\partial x} + \frac{\partial \tau_{yy}}{\partial y} + \frac{\partial \tau_{yz}}{\partial z}\right) \tag{2-3}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{yx}\)</span> = turbulent shear stress acting in y direction on the x-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{yy}\)</span> = turbulent shear stress acting in y direction on the y-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{yz}\)</span> = turbulent shear stress acting in y direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\Omega_x = 0\)</span></li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Sketch of turbulent shear stresses in y-direction.](../assets/images/part2/fig4_shear_stress_y.png){ width="400" }
+  <figcaption>Figure 4. Sketch of turbulent shear stresses in y-direction.</figcaption>
+</figure>
+-->
+
+<h3 id="z-momentum-equation">z-Momentum Equation<a class="headerlink" href="#z-momentum-equation" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial \bar{w}}{\partial t} + \bar{u}\frac{\partial \bar{w}}{\partial x} + \bar{v}\frac{\partial \bar{w}}{\partial y} + \bar{w}\frac{\partial \bar{w}}{\partial z} - 2\Omega_y \bar{u} + 2\Omega_x \bar{v} = -g - \frac{1}{\rho}\frac{\partial \bar{p}}{\partial z} + \frac{\mu}{\rho}\left(\frac{\partial^2 \bar{w}}{\partial x^2} + \frac{\partial^2 \bar{w}}{\partial y^2} + \frac{\partial^2 \bar{w}}{\partial z^2}\right) + \frac{1}{\rho}\left(\frac{\partial \tau_{zx}}{\partial x} + \frac{\partial \tau_{zy}}{\partial y} + \frac{\partial \tau_{zz}}{\partial z}\right) \tag{2-4}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{zx}\)</span> = turbulent shear stress acting in z direction on the x-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{zy}\)</span> = turbulent shear stress acting in z direction on the y-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{zz}\)</span> = turbulent shear stress acting in z direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\Omega_x = 0\)</span></li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Sketch of turbulent shear stresses in z-direction.](../assets/images/part2/fig5_shear_stress_z.png){ width="400" }
+  <figcaption>Figure 5. Sketch of turbulent shear stresses in z-direction.</figcaption>
+</figure>
+-->
+
+<p>The turbulent shear stresses are defined as follows:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{xx} = \rho \overline{u'u'}\)</span></li>
+<li><span class="arithmatex">\(\tau_{xy} = \rho \overline{u'v'}\)</span> (same as <span class="arithmatex">\(\tau_{yx} = \rho \overline{v'u'}\)</span>)</li>
+<li><span class="arithmatex">\(\tau_{xz} = \rho \overline{u'w'}\)</span> (same as <span class="arithmatex">\(\tau_{zx} = \rho \overline{w'u'}\)</span>)</li>
+<li><span class="arithmatex">\(\tau_{yy} = \rho \overline{v'v'}\)</span></li>
+<li><span class="arithmatex">\(\tau_{yz} = \rho \overline{v'w'}\)</span> (same as <span class="arithmatex">\(\tau_{zy} = \rho \overline{w'v'}\)</span>)</li>
+<li><span class="arithmatex">\(\tau_{zz} = \rho \overline{w'w'}\)</span></li>
+</ul>
+<h3 id="coriolis-effect">Coriolis Effect<a class="headerlink" href="#coriolis-effect" title="Permanent link">&para;</a></h3>
+<p>All the <span class="arithmatex">\(\Omega_x\)</span> terms are zero and can be eliminated from the y and z momentum equations. If one integrates over the y-direction (therefore assuming the net velocity in y is zero) and assumes that the horizontal length scale is much greater than the vertical length scale, it can be shown by using scaling arguments that the Coriolis acceleration forces are negligible (Cushman-Roisin, 1994). Hence, prior to lateral averaging, the Coriolis acceleration terms will be neglected.</p>
+<h2 id="adjusting-the-coordinate-system">Adjusting the Coordinate System<a class="headerlink" href="#adjusting-the-coordinate-system" title="Permanent link">&para;</a></h2>
+<p>The coordinate system is transformed into a form compatible with the original W2 development where the vertical axis is in the direction of gravity. In addition, as shown in Figure 6, the coordinate system is oriented along an arbitrary slope.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![General coordinate system with z-axis compatible with original derivation of W2 model.](../assets/images/part2/fig6_general_coord_system.png){ width="500" }
+  <figcaption>Figure 6. General coordinate system with z-axis compatible with original derivation of W2 model.</figcaption>
+</figure>
+-->
+
+<p>The gravity acceleration is a body force represented by a vector:</p>
+<div class="arithmatex">\[
+\vec{g} = -g\vec{\nabla}h \tag{2-5}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(h\)</span> = surface normal from the earth's surface</li>
+<li><span class="arithmatex">\(g\)</span> = gravitational acceleration, 9.8 m s⁻²</li>
+</ul>
+<p>This term can be written as three vector components:</p>
+<div class="arithmatex">\[
+g_x = -g\frac{\partial h}{\partial x} \tag{2-6}
+\]</div>
+<div class="arithmatex">\[
+g_y = -g\frac{\partial h}{\partial y} \tag{2-7}
+\]</div>
+<div class="arithmatex">\[
+g_z = -g\frac{\partial h}{\partial z} \tag{2-8}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Sketch of channel slope and coordinate system for W2 where the x-axis is oriented along the channel slope.](../assets/images/part2/fig7_channel_slope.png){ width="500" }
+  <figcaption>Figure 7. Sketch of channel slope and coordinate system for W2 where the x-axis is oriented along the channel slope.</figcaption>
+</figure>
+-->
+
+<p>The channel slope, <span class="arithmatex">\(S_o\)</span>, can be incorporated into the definition of the gravity vector if the x-axis is chosen parallel to the channel slope. The channel slope is defined as:</p>
+<div class="arithmatex">\[
+S_o = \tan\alpha \tag{2-9}
+\]</div>
+<p>and in terms of the gravity components:</p>
+<div class="arithmatex">\[
+g_x = -g\frac{\partial h}{\partial x} = g\sin\alpha \tag{2-10}
+\]</div>
+<div class="arithmatex">\[
+g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
+\]</div>
+<p>The gravity acceleration in y is assumed negligible since <span class="arithmatex">\(\frac{\partial h}{\partial y} = 0\)</span> in the lateral direction of the channel.</p>
+<h2 id="governing-equations-for-general-coordinate-system">Governing Equations for General Coordinate System<a class="headerlink" href="#governing-equations-for-general-coordinate-system" title="Permanent link">&para;</a></h2>
+<p>After redefining the coordinate system, eliminating Coriolis effects, and neglecting viscous shear stresses, the governing equations become:</p>
+<h3 id="continuity_1">Continuity<a class="headerlink" href="#continuity_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial \bar{u}}{\partial x} + \frac{\partial \bar{v}}{\partial y} + \frac{\partial \bar{w}}{\partial z} = 0 \tag{2-12}
+\]</div>
+<h3 id="x-momentum-equation_1">x-Momentum Equation<a class="headerlink" href="#x-momentum-equation_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\underbrace{\frac{\partial \bar{u}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{u}}{\partial x} + \bar{v}\frac{\partial \bar{u}}{\partial y} + \bar{w}\frac{\partial \bar{u}}{\partial z}}_{\text{convective acceleration}} = \underbrace{g\sin\alpha}_{\text{gravity}} - \underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial x}}_{\text{pressure}} + \frac{1}{\rho}\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right) \tag{2-13}
+\]</div>
+<h3 id="y-momentum-equation_1">y-Momentum Equation<a class="headerlink" href="#y-momentum-equation_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\underbrace{\frac{\partial \bar{v}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{v}}{\partial x} + \bar{v}\frac{\partial \bar{v}}{\partial y} + \bar{w}\frac{\partial \bar{v}}{\partial z}}_{\text{convective acceleration}} = -\underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial y}}_{\text{pressure}} + \frac{1}{\rho}\left(\frac{\partial \tau_{yx}}{\partial x} + \frac{\partial \tau_{yy}}{\partial y} + \frac{\partial \tau_{yz}}{\partial z}\right) \tag{2-14}
+\]</div>
+<h3 id="z-momentum-equation_1">z-Momentum Equation<a class="headerlink" href="#z-momentum-equation_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\underbrace{\frac{\partial \bar{w}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{w}}{\partial x} + \bar{v}\frac{\partial \bar{w}}{\partial y} + \bar{w}\frac{\partial \bar{w}}{\partial z}}_{\text{convective acceleration}} = \underbrace{g\cos\alpha}_{\text{gravity}} - \underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial z}}_{\text{pressure}} + \frac{1}{\rho}\left(\frac{\partial \tau_{zx}}{\partial x} + \frac{\partial \tau_{zy}}{\partial y} + \frac{\partial \tau_{zz}}{\partial z}\right) \tag{2-15}
+\]</div>
+<h2 id="simplification-of-z-momentum-equation">Simplification of z-Momentum Equation<a class="headerlink" href="#simplification-of-z-momentum-equation" title="Permanent link">&para;</a></h2>
+<p>If the longitudinal length scale is much greater than the vertical length scale, then all vertical velocities are much smaller than horizontal velocities. As a result, vertical acceleration and shear stress terms in the z-momentum equation are negligible, and the z-momentum equation becomes the hydrostatic equation:</p>
+<div class="arithmatex">\[
+\frac{1}{\rho}\frac{\partial \bar{p}}{\partial z} = g\cos\alpha \tag{2-16}
+\]</div>
+<p>This assumption prevents the model from accurately representing vertical accelerations of the fluid caused by convective cooling at night and similar processes. However, internal algorithms in the model mix vertical layers when density instabilities occur, approximating the convective cooling process. Vertical accelerations in the vicinity of an outlet are approximated by using selective withdrawal theory rather than solving the full vertical momentum equation.</p>
+<h2 id="lateral-averaging">Lateral Averaging<a class="headerlink" href="#lateral-averaging" title="Permanent link">&para;</a></h2>
+<p>The governing equations above are laterally averaged after decomposing all velocities and pressure into a lateral average and a deviation from the lateral average. The lateral, longitudinal, and vertical velocities and pressure are defined as follows:</p>
+<div class="arithmatex">\[
+\bar{v} = \tilde{\bar{v}} + v'' \tag{2-17}
+\]</div>
+<div class="arithmatex">\[
+\bar{u} = \tilde{\bar{u}} + u'' \tag{2-18}
+\]</div>
+<div class="arithmatex">\[
+\bar{w} = \tilde{\bar{w}} + w'' \tag{2-19}
+\]</div>
+<div class="arithmatex">\[
+\bar{p} = \tilde{\bar{p}} + p'' \tag{2-20}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tilde{\bar{u}} = \frac{1}{B}\int_{y_1}^{y_2}\bar{u}\,dy\)</span></li>
+<li><span class="arithmatex">\(B\)</span> = control volume width, m</li>
+<li><span class="arithmatex">\(y_1\)</span> = left bank coordinate</li>
+<li><span class="arithmatex">\(y_2\)</span> = right bank coordinate</li>
+</ul>
+<p>The double overbars represent the spatial average of the temporal average quantity. The double prime represents the deviation from the lateral average and is a function of y.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Lateral average and deviation from lateral average components of longitudinal velocity.](../assets/images/part2/fig8_lateral_avg.png){ width="500" }
+  <figcaption>Figure 8. Lateral average and deviation from lateral average components of longitudinal velocity.</figcaption>
+</figure>
+-->
+
+<p>These definitions are substituted into the turbulent time-average governing equations and then laterally averaged. The y-momentum equation is neglected since the average lateral velocities are zero (<span class="arithmatex">\(\tilde{\bar{v}} = 0\)</span>), and cross shear stresses that contribute to vertical mixing will be computed from the analysis of wind stress. The equations that remain are the continuity, x-momentum, and z-momentum equations.</p>
+<h3 id="continuity-equation">Continuity Equation<a class="headerlink" href="#continuity-equation" title="Permanent link">&para;</a></h3>
+<p>The continuity equation becomes after substituting the above velocity components and laterally averaging:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')} }{\partial x} + \frac{\overline{\partial(\tilde{v}+v'')} }{\partial y} + \frac{\overline{\partial(\tilde{w}+w'')} }{\partial z} = 0 \tag{2-21}
+\]</div>
+<p>The lateral average of a double-primed variable is by definition zero:</p>
+<div class="arithmatex">\[
+\overline{u''} = \frac{1}{B}\int_{y_1}^{y_2}u''\,dy = 0 \tag{2-22}
+\]</div>
+<p>Note that:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{v}+v'')} }{\partial y} = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial(\tilde{v}+v'')}{\partial y}\,dy = \left.\frac{(\tilde{v}+v'')}{B}\right|_{y_1}^{y_2} = \left.\frac{v''}{B}\right|_{y_1}^{y_2} = q \tag{2-23}
+\]</div>
+<p>where <span class="arithmatex">\(q\)</span> is defined as the net lateral inflow per unit volume of cell [T⁻¹], and:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')} }{\partial x} = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial(\tilde{u}+u'')}{\partial x}\,dy = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial\tilde{u}}{\partial x}\,dy + \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial u''}{\partial x}\,dy = \frac{1}{B}\frac{\partial}{\partial x}\int_{y_1}^{y_2}\tilde{u}\,dy = \frac{1}{B}\frac{\partial B\tilde{u}}{\partial x} \tag{2-24}
+\]</div>
+<p>and:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{w}+w'')} }{\partial z} = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial(\tilde{w}+w'')}{\partial z}\,dy = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial\tilde{w}}{\partial z}\,dy + \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial w''}{\partial z}\,dy = \frac{1}{B}\frac{\partial}{\partial z}\int_{y_1}^{y_2}\tilde{w}\,dy = \frac{1}{B}\frac{\partial B\tilde{w}}{\partial z} \tag{2-25}
+\]</div>
+<p>Combining terms, the continuity equation becomes:</p>
+<div class="arithmatex">\[
+\frac{\partial B\tilde{u}}{\partial x} + \frac{\partial B\tilde{w}}{\partial z} = qB \tag{2-26}
+\]</div>
+<h3 id="x-momentum-equation_2">x-Momentum Equation<a class="headerlink" href="#x-momentum-equation_2" title="Permanent link">&para;</a></h3>
+<p>The laterally-averaged x-momentum equation is more easily simplified by writing it in conservative form (this can be verified by using the continuity equation with the x-momentum equation):</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')} }{\partial t} + \frac{\overline{\partial(\tilde{u}+u'')(\tilde{u}+u'')} }{\partial x} + \frac{\overline{\partial(\tilde{v}+v'')(\tilde{u}+u'')} }{\partial y} + \frac{\overline{\partial(\tilde{w}+w'')(\tilde{u}+u'')} }{\partial z} = g\sin\alpha - \frac{1}{\rho}\frac{\overline{\partial(\tilde{p}+p'')} }{\partial x} + \frac{1}{\rho}\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right) \tag{2-27}
+\]</div>
+<p>Each term is simplified as follows (note that the spatial average of any double-primed variable goes to zero by definition).</p>
+<p>The unsteady acceleration term:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')} }{\partial t} = \frac{1}{B}\frac{\partial B\tilde{u}}{\partial t} \tag{2-28}
+\]</div>
+<p>The convective acceleration terms:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')(\tilde{u}+u'')} }{\partial x} = \frac{1}{B}\frac{\partial B\tilde{u}\tilde{u}}{\partial x} + \underbrace{\frac{1}{B}\frac{\partial}{\partial x}\int_{y_1}^{y_2}u''u''\,dy}_{\text{dispersion term}} \tag{2-29}
+\]</div>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')(\tilde{w}+w'')} }{\partial z} = \frac{1}{B}\frac{\partial B\tilde{u}\tilde{w}}{\partial z} + \underbrace{\frac{1}{B}\frac{\partial}{\partial z}\int_{y_1}^{y_2}u''w''\,dy}_{\text{dispersion term}} \tag{2-30}
+\]</div>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{u}+u'')(\tilde{v}+v'')} }{\partial y} = \left.u''v''\right|_{y_2} - \left.u''v''\right|_{y_1} = 0 \tag{2-31}
+\]</div>
+<p>The gravity term:</p>
+<div class="arithmatex">\[
+\overline{g\sin\alpha} = \frac{1}{B}\int_{y_1}^{y_2}g\sin\alpha\,dy = g\sin\alpha \tag{2-32}
+\]</div>
+<p>The pressure gradient term (assuming the derivative of the lateral average pressure gradient in the x-direction is not a function of y):</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{p}+p'')} }{\partial x} = \frac{\partial \tilde{p}}{\partial x} \tag{2-34}
+\]</div>
+<p>The shear stress terms:</p>
+<div class="arithmatex">\[
+\overline{\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right)} = \frac{1}{B}\left(\frac{\partial B\overline{\tau_{xx}}}{\partial x} + \frac{\partial B\overline{\tau_{xz}}}{\partial z}\right) \tag{2-35}
+\]</div>
+<p>Collecting all terms and neglecting all dispersion terms, the final x-momentum equation is:</p>
+<div class="arithmatex">\[
+\frac{\partial B\tilde{u}}{\partial t} + \frac{\partial B\tilde{u}\tilde{u}}{\partial x} + \frac{\partial B\tilde{u}\tilde{w}}{\partial z} = Bg\sin\alpha - \frac{B}{\rho}\frac{\partial\tilde{p}}{\partial x} + \frac{1}{\rho}\left(\frac{\partial B\tau_{xx}}{\partial x} + \frac{\partial B\tau_{xz}}{\partial z}\right) \tag{2-36}
+\]</div>
+<h2 id="summary-of-laterally-averaged-equations">Summary of Laterally Averaged Equations<a class="headerlink" href="#summary-of-laterally-averaged-equations" title="Permanent link">&para;</a></h2>
+<p>In the development of CE-QUAL-W2 in Cole and Buchak (1995), the lateral average terms were represented by uppercase characters, such that <span class="arithmatex">\(\tilde{\bar{u}} = U\)</span>, <span class="arithmatex">\(\tilde{\bar{w}} = W\)</span>, and <span class="arithmatex">\(\tilde{\bar{p}} = P\)</span>. The shear stress terms will be assumed lateral averages and the double overbars will be dropped for convenience. Making these simplifications, the governing equations become:</p>
+<h3 id="continuity-equation_1">Continuity Equation<a class="headerlink" href="#continuity-equation_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial x} + \frac{\partial WB}{\partial z} = qB \tag{2-37}
+\]</div>
+<h3 id="x-momentum-equation_3">x-Momentum Equation<a class="headerlink" href="#x-momentum-equation_3" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha - \frac{B}{\rho}\frac{\partial P}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} \tag{2-38}
+\]</div>
+<h3 id="z-momentum-equation_2">z-Momentum Equation<a class="headerlink" href="#z-momentum-equation_2" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\frac{1}{\rho}\frac{\partial P}{\partial z} = g\cos\alpha \tag{2-39}
+\]</div>
+<p>Knowing the density through the equation of state, there are now three equations and three unknowns: <span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(W\)</span>, and <span class="arithmatex">\(P\)</span>.</p>
+<h2 id="simplification-of-pressure-term">Simplification of Pressure Term<a class="headerlink" href="#simplification-of-pressure-term" title="Permanent link">&para;</a></h2>
+<p>The z-momentum equation reduces to:</p>
+<div class="arithmatex">\[
+P = P_a + g\cos\alpha\int_{\eta}^{z}\rho\,dz \tag{2-40}
+\]</div>
+<p>after integration from a depth <span class="arithmatex">\(z\)</span> to the water surface defined as <span class="arithmatex">\(z=\eta\)</span>. <span class="arithmatex">\(P_a\)</span> is the atmospheric pressure at the water surface.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Schematization for simplification of pressure term.](../assets/images/part2/fig9_pressure_term.png){ width="600" }
+  <figcaption>Figure 9. Schematization for simplification of pressure term.</figcaption>
+</figure>
+-->
+
+<p>This equation for pressure is now substituted into the x-momentum equation and simplified using the Leibnitz rule. The pressure gradient term in the x-momentum equation then becomes:</p>
+<div class="arithmatex">\[
+-\frac{1}{\rho}\frac{\partial P}{\partial x} = -\frac{1}{\rho}\frac{\partial P_a}{\partial x} + g\cos\alpha\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz \tag{2-41}
+\]</div>
+<p>The three terms on the right-hand side represent:</p>
+<ul>
+<li><strong>Atmospheric pressure term</strong>: accelerations due to atmospheric pressure changes over the water surface</li>
+<li><strong>Barotropic pressure term</strong>: accelerations due to water surface variations</li>
+<li><strong>Baroclinic pressure term</strong>: accelerations due to density-driven currents</li>
+</ul>
+<p>Assuming that atmospheric pressure does not vary spatially, the atmospheric pressure gradient term is neglected. This implies that for long water bodies during severe storms, the model cannot account for accelerations due to atmospheric pressure changes in <span class="arithmatex">\(x\)</span>. The pressure term then becomes:</p>
+<div class="arithmatex">\[
+-\frac{1}{\rho}\frac{\partial P}{\partial x} = g\cos\alpha\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz \tag{2-42}
+\]</div>
+<p>The revised form of the x-momentum equation is then:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} \tag{2-43}
+\]</div>
+<p>Effectively, pressure has been removed from the unknowns by combining the z-momentum and x-momentum equations, but <span class="arithmatex">\(\eta\)</span> has been added as an unknown.</p>
+<h2 id="free-water-surface">Free Water Surface<a class="headerlink" href="#free-water-surface" title="Permanent link">&para;</a></h2>
+<p>This equation is a simplification of the continuity equation. The continuity equation integrated over the depth from the water surface to the bottom is called the free water surface equation. Figures 10 and 11 are definition sketches for the computational grid without and with a channel slope, respectively.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Coordinate system without channel slope.](../assets/images/part2/fig10_coord_no_slope.png){ width="600" }
+  <figcaption>Figure 10. Coordinate system without channel slope.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Coordinate system with channel slope.](../assets/images/part2/fig11_coord_with_slope.png){ width="600" }
+  <figcaption>Figure 11. Coordinate system with channel slope.</figcaption>
+</figure>
+-->
+
+<p>The continuity equation is integrated over the depth as follows:</p>
+<div class="arithmatex">\[
+\int_{\eta}^{h}\frac{\partial UB}{\partial x}\,dz + \int_{\eta}^{h}\frac{\partial WB}{\partial z}\,dz = \int_{\eta}^{h}qB\,dz \tag{2-44}
+\]</div>
+<p>The first term can be expanded using Leibnitz's rule:</p>
+<div class="arithmatex">\[
+\int_{\eta}^{h}\frac{\partial UB}{\partial x}\,dz = \frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - \frac{\partial h}{\partial x}UB\big|_h + \frac{\partial\eta}{\partial x}UB\big|_\eta \tag{2-45}
+\]</div>
+<p>The integral of the vertical flow rate over z relates to changes in water surface elevation:</p>
+<div class="arithmatex">\[
+\int_{\eta}^{h}\frac{\partial WB}{\partial z}\,dz = WB\big|_h - WB\big|_\eta \tag{2-46}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(W_h = \frac{\partial h}{\partial t} + U_h\frac{\partial h}{\partial x}\)</span></li>
+<li><span class="arithmatex">\(W_\eta = \frac{\partial\eta}{\partial t} + U_\eta\frac{\partial\eta}{\partial x}\)</span></li>
+</ul>
+<p>Combining these terms together, the free surface equation becomes:</p>
+<div class="arithmatex">\[
+\int_{\eta}^{h}qB\,dz = \frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - \frac{\partial h}{\partial x}UB\big|_h + \frac{\partial\eta}{\partial x}UB\big|_\eta + U_hB_h\frac{\partial h}{\partial t} + U_hB_h\frac{\partial h}{\partial x} - B_\eta\frac{\partial\eta}{\partial t} - B_\eta U_\eta\frac{\partial\eta}{\partial x} \tag{2-47}
+\]</div>
+<p>Canceling out terms and applying the no-slip boundary condition that <span class="arithmatex">\(U_h\)</span> is zero:</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - B_\eta\frac{\partial\eta}{\partial t} = \int_{\eta}^{h}qB\,dz \tag{2-48}
+\]</div>
+<p>or</p>
+<div class="arithmatex">\[
+B_\eta\frac{\partial\eta}{\partial t} = \frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - \int_{\eta}^{h}qB\,dz \tag{2-49}
+\]</div>
+<p>where <span class="arithmatex">\(B_\eta\)</span> is the width at the surface.</p>
+<h2 id="equation-of-state">Equation of State<a class="headerlink" href="#equation-of-state" title="Permanent link">&para;</a></h2>
+<p>The density must be known for the solution of the momentum equations. The equation of state is an equation that relates density to temperature and concentration of dissolved substances. This equation is given by:</p>
+<div class="arithmatex">\[
+\rho = f(T_w, \Phi_{TDS}, \Phi_{ISS}) \tag{2-50}
+\]</div>
+<p>where <span class="arithmatex">\(f(T_w, \Phi_{TDS}, \Phi_{ISS})\)</span> is a density function dependent upon water temperature (<span class="arithmatex">\(T_w\)</span>), concentration of total dissolved solids or salinity (<span class="arithmatex">\(\Phi_{TDS}\)</span>), and concentration of inorganic suspended solids (<span class="arithmatex">\(\Phi_{ISS}\)</span>).</p>
+<h2 id="summary-of-governing-equations">Summary of Governing Equations<a class="headerlink" href="#summary-of-governing-equations" title="Permanent link">&para;</a></h2>
+<p>Table 1 shows the governing equations after lateral averaging for a channel slope of zero and for an arbitrary channel slope. Parameters used in Table 1 are illustrated in Figure 12.</p>
+<table>
+<thead>
+<tr>
+<th>Equation</th>
+<th>No channel slope, no momentum conservation at branch intersections</th>
+<th>Arbitrary channel slope with momentum conservation at branch intersections</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-momentum</td>
+<td><span class="arithmatex">\(\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\frac{\partial\eta}{\partial x} - \frac{gB}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z}\)</span></td>
+<td><span class="arithmatex">\(\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} + qBU_x\)</span></td>
+</tr>
+<tr>
+<td>z-momentum</td>
+<td><span class="arithmatex">\(0 = g - \frac{1}{\rho}\frac{\partial P}{\partial z}\)</span></td>
+<td><span class="arithmatex">\(0 = g\cos\alpha - \frac{1}{\rho}\frac{\partial P}{\partial z}\)</span></td>
+</tr>
+<tr>
+<td>continuity</td>
+<td><span class="arithmatex">\(\frac{\partial UB}{\partial x} + \frac{\partial WB}{\partial z} = qB\)</span></td>
+<td><span class="arithmatex">\(\frac{\partial UB}{\partial x} + \frac{\partial WB}{\partial z} = qB\)</span></td>
+</tr>
+<tr>
+<td>state</td>
+<td><span class="arithmatex">\(\rho = f(T_w, \Phi_{TDS}, \Phi_{SS})\)</span></td>
+<td><span class="arithmatex">\(\rho = f(T_w, \Phi_{TDS}, \Phi_{SS})\)</span></td>
+</tr>
+<tr>
+<td>free surface</td>
+<td><span class="arithmatex">\(B_\eta\frac{\partial\eta}{\partial t} = \frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - \int_{\eta}^{h}qB\,dz\)</span></td>
+<td><span class="arithmatex">\(B_\eta\frac{\partial\eta}{\partial t} = \frac{\partial}{\partial x}\int_{\eta}^{h}UB\,dz - \int_{\eta}^{h}qB\,dz\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(U\)</span> = horizontal velocity, m s⁻¹</li>
+<li><span class="arithmatex">\(W\)</span> = vertical velocity, m s⁻¹</li>
+<li><span class="arithmatex">\(B\)</span> = channel width</li>
+<li><span class="arithmatex">\(P\)</span> = pressure</li>
+<li><span class="arithmatex">\(\tau_x\)</span> = x-direction lateral average shear stress</li>
+<li><span class="arithmatex">\(\tau_y\)</span> = y-direction lateral average shear stress</li>
+<li><span class="arithmatex">\(\rho\)</span> = density</li>
+<li><span class="arithmatex">\(\eta\)</span> = water surface</li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch for channel slope.](../assets/images/part2/fig12_channel_slope_def.png){ width="500" }
+  <figcaption>Figure 12. Definition sketch for channel slope.</figcaption>
+</figure>
+-->
+
+<h2 id="linkage-of-mainstem-branches-with-internal-head-boundary-conditions">Linkage of Mainstem Branches with Internal Head Boundary Conditions<a class="headerlink" href="#linkage-of-mainstem-branches-with-internal-head-boundary-conditions" title="Permanent link">&para;</a></h2>
+<p>Since the CE-QUAL-W2 model can represent neighboring waterbodies with different vertical grids, the vertical grids must be linked together to transfer volume, mass, and heat accurately.</p>
+<p>In order for the volume, heat, and mass to be passed from one cell to another, the flow, temperature, and concentration from the downstream segment <strong>[ID]</strong> of the upstream branch are transferred to the upstream segment <strong>[IU]</strong> of the downstream branch. Spatial averaging to conserve flow, heat, and mass is illustrated in Figure 13.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Transfer of mass and momentum between branches with unequal vertical grid spacing.](../assets/images/part2/fig13_branch_linkage.png){ width="500" }
+  <figcaption>Figure 13. Transfer of mass and momentum between branches with unequal vertical grid spacing.</figcaption>
+</figure>
+-->
+
+<h2 id="linkage-of-tributary-or-side-branches">Linkage of Tributary or Side Branches<a class="headerlink" href="#linkage-of-tributary-or-side-branches" title="Permanent link">&para;</a></h2>
+<p>Tributary or side branches are not defined as "tributaries" in the model. "Tributaries" are inflows into a branch, whereas side or tributary branches are modeled as part of the model domain.</p>
+<p>Version 2 of CE-QUAL-W2 assumed all tributary branches entered at right angles to the main channel, resulting in no longitudinal momentum exchange between branches. Version 3 and later include momentum transfer between the side branch and the main branch based on segment orientation.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Linkage of tributary or side branch coming in at an angle to main branch.](../assets/images/part2/fig14_tributary_linkage.png){ width="500" }
+  <figcaption>Figure 14. Linkage of tributary or side branch coming in at an angle to main branch.</figcaption>
+</figure>
+-->
+
+<p>The tributary branch inflow can create shear stress along both the longitudinal axis of the main stem branch and along the y-axis of the segment. The cross-shear mixing has been added to the cross-shear wind stress for the computation involving the vertical eddy viscosity and vertical diffusivity. This involves determining the y and x velocity components of the entering branch.</p>
+<h3 id="longitudinal-momentum">Longitudinal Momentum<a class="headerlink" href="#longitudinal-momentum" title="Permanent link">&para;</a></h3>
+<p>The vector component of velocity in the x-direction of the main channel, <span class="arithmatex">\(U_x\)</span>, can be computed by analysis of the channel orientations. This component in the x-direction would be:</p>
+<div class="arithmatex">\[
+U_x = U\cos\beta \tag{2-51}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(U\)</span> = longitudinal velocity of the tributary at segment ID for the tributary branch</li>
+<li><span class="arithmatex">\(\beta\)</span> = difference in the angle between the main stem and tributary segments</li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment.](../assets/images/part2/fig15_velocity_components.png){ width="500" }
+  <figcaption>Figure 15. Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment. U_x is the x-velocity component of the tributary branch into the main segment. U_y is the y-velocity component of the tributary branch into the main segment.</figcaption>
+</figure>
+-->
+
+<p>The conservation of momentum about a control volume (the main stem segment) would result in an additional source of momentum. Lai (1986) shows that the correction to the x-momentum equation would be:</p>
+<div class="arithmatex">\[
+qBU_x \tag{2-52}
+\]</div>
+<p>where <span class="arithmatex">\(q\)</span> = lateral inflow per unit length.</p>
+<p>This arises from re-deriving the momentum equations and assuming that all the flow entering the segment is moving at the velocity <span class="arithmatex">\(U_x\)</span>. This correction to the x-momentum equation would be:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} + qBU_x \tag{2-53}
+\]</div>
+<h3 id="cross-shear-of-tributary-inflow">Cross-Shear of Tributary Inflow<a class="headerlink" href="#cross-shear-of-tributary-inflow" title="Permanent link">&para;</a></h3>
+<p>Even though CE-QUAL-W2 assumes lateral averaging, the y-velocity entering a reservoir may also contribute to vertical mixing. The y-component of a tributary inflow is <span class="arithmatex">\(U_y = U\sin\beta\)</span>. Since there is no y-momentum equation, this lateral shear contributes to the vertical shear stress, analogous to how cross-shear stress from the wind (<span class="arithmatex">\(\tau_{wy} \cong C_D \rho_a W_h^2 \sin(\Theta_1 - \Theta_2)\)</span>) contributes to the vertical eddy viscosity.</p>
+<p>For lateral inflow, the additional shear stress was parameterized as an interfacial shear:</p>
+<div class="arithmatex">\[
+\tau_{ytrib} \cong \rho\frac{f_i}{8}U_y^2 \tag{2-54}
+\]</div>
+<p>where <span class="arithmatex">\(f_i\)</span> = interfacial friction factor.</p>
+<p>For two-layer flow systems, <span class="arithmatex">\(f_i\)</span> has been found to be of order 0.01. Therefore, the vertical eddy viscosity would be increased by a significant lateral tributary inflow.</p>
+<h2 id="computation-of-initial-water-surface-slope-and-velocity-field-for-river-simulation">Computation of Initial Water Surface Slope and Velocity Field for River Simulation<a class="headerlink" href="#computation-of-initial-water-surface-slope-and-velocity-field-for-river-simulation" title="Permanent link">&para;</a></h2>
+<p>The initial conditions for velocity are usually set to zero, and the initial water surface elevations are set in the bathymetry input file. This is appropriate for reservoir, lake, or estuary systems.</p>
+<p>For sloping river sections, initial water surface elevations and velocities can be computed internally in the model. The user can enable this feature for river systems. This allows a smoother model start-up and avoids having to compute the initial water surface elevation before a simulation. Initial water levels and horizontal velocities are computed using Manning's normal depth equation from the model bathymetry and flow files.</p>
+<p>The flow through each model segment is estimated first by considering all inflows and outflows such as tributaries, withdrawals, distributed tributaries, upstream branch inflows, flows associated with internal head boundaries, and dam outflows. Once the flow through each segment has been estimated, the normal depth for each segment is calculated using Manning's equation:</p>
+<div class="arithmatex">\[
+Q_i = \frac{1}{n_i}A_i R_i^{2/3} S^{1/2} \tag{2-55a}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(Q_i\)</span> = flow through segment <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(n_i\)</span> = Manning's friction coefficient for segment <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(A_i\)</span> = cross-sectional area of segment <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(R_i\)</span> = hydraulic radius of segment <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(S\)</span> = branch slope</li>
+</ul>
+<p>The cross-sectional area <span class="arithmatex">\(A_i\)</span> and hydraulic radius <span class="arithmatex">\(R_i\)</span> are a function of depth. The hydraulic radius is calculated using:</p>
+<div class="arithmatex">\[
+R_i = \frac{A_i}{P_i}
+\]</div>
+<p>where <span class="arithmatex">\(P_i\)</span> is the wetted perimeter. To calculate the normal depth, the root to the following function is found:</p>
+<div class="arithmatex">\[
+Q_i - \frac{1}{n_i}A_i R_i^{2/3} S^{1/2} = 0
+\]</div>
+<p>The method of bisection (Press et al., 1992) is used to find the root, or normal depth, because the function is discontinuous (has corners).</p>
+<p>Once the normal depth for every segment has been calculated, the water surface of each sloping branch is smoothed. If the predicted water level of a segment is less than the water level of a downstream segment, the downstream segment is considered controlling and the water level is increased to match.</p>
+<p>The effect of spillways and gates is considered by calculating the head necessary to convey the flow of the segment on the upstream side of the gate or spillway. If the normal-depth predicted water levels of segments upstream of a gate or spillway are less than the necessary water level, upstream segment water levels are set to that of the segment immediately upstream of the structure.</p>
+<p>Once water levels have been smoothed and gates or spillways have been accounted for, the average horizontal velocity <span class="arithmatex">\(U_{avg}\)</span> in each segment is estimated with:</p>
+<div class="arithmatex">\[
+U_{avg} = \frac{Q_i}{A_i}
+\]</div>
+<p>If a branch is a "loop branch" (a branch with upstream and downstream ends that are internal head boundaries attached to segments of another branch), the initialization tool sets initial velocities to zero. Water levels are estimated by interpolating between the water levels in the upstream and downstream boundary condition segments.</p>
+<h2 id="auxiliary-functions">Auxiliary Functions<a class="headerlink" href="#auxiliary-functions" title="Permanent link">&para;</a></h2>
+<p>Auxiliary functions are relationships that describe processes independent of basic hydrodynamic and transport computational schemes in the model. Auxiliary functions include turbulent dispersion and wind shear processes, heat exchange (including ice cover), evaporation, hydraulic structures, density, and selective withdrawal.</p>
+<h3 id="surface-shear-stress">Surface Shear Stress<a class="headerlink" href="#surface-shear-stress" title="Permanent link">&para;</a></h3>
+<p>Referring to Figure 16, the shear stress at the water surface is defined as:</p>
+<div class="arithmatex">\[
+\tau_s = C_D\rho_a(W_h - u_s)^2 \cong C_D\rho_a(W_h)^2 \tag{2-55}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_s\)</span> = surface shear stress at water surface, kg m⁻¹ s⁻²</li>
+<li><span class="arithmatex">\(u_s\)</span> = surface velocity in water, m s⁻¹</li>
+<li><span class="arithmatex">\(W_h\)</span> = wind velocity measured at a distance h above water surface in direction of shear, m s⁻¹</li>
+<li><span class="arithmatex">\(C_D\)</span> = drag coefficient, [-]</li>
+<li><span class="arithmatex">\(\rho_a\)</span> = air density, kg m⁻³</li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Shear stress at the air-water surface.](../assets/images/part2/fig16_surface_shear.png){ width="500" }
+  <figcaption>Figure 16. Shear stress at the air-water surface.</figcaption>
+</figure>
+-->
+
+<p>Note that this relationship leads to the "3% rule" for surface currents:</p>
+<div class="arithmatex">\[
+\tau_s = C_D\rho_a(W_h - u_s)^2 = C_D\rho_W u_s^2 \quad \text{if} \quad C_{D_{air}} \sim C_{D_{water}}, \quad \text{then} \quad u_s \sim 0.03 W_h \tag{2-56}
+\]</div>
+<h4 id="wind-speed-height-correction">Wind Speed Height Correction<a class="headerlink" href="#wind-speed-height-correction" title="Permanent link">&para;</a></h4>
+<p>Usually the drag coefficient is a function of the measurement height, <span class="arithmatex">\(h\)</span>, above the water surface. Most drag coefficient formulae have been determined based on a 10 m wind speed measurement height. If wind speeds are taken at other measurement heights for the shear stress calculation, these are corrected in the model to a 10 m height.</p>
+<p>The wind speed is a function of measurement height. To correct the measurement height to an elevation z, the following approach is used assuming a logarithmic boundary layer:</p>
+<div class="arithmatex">\[
+\frac{W_z}{W_{z_1}} = \frac{\ln(z/z_0)}{\ln(z_1/z_0)} \tag{2-57}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(W_z\)</span> = desired wind speed at elevation z</li>
+<li><span class="arithmatex">\(W_{z_1}\)</span> = known wind speed at height <span class="arithmatex">\(z_1\)</span></li>
+<li><span class="arithmatex">\(z_0\)</span> = wind roughness height, m (user-defined coefficient; typical values range from 1.5 x 10⁻⁴ to 0.009 m)</li>
+</ul>
+<h4 id="surface-shear-components">Surface Shear Components<a class="headerlink" href="#surface-shear-components" title="Permanent link">&para;</a></h4>
+<p>This term can then be used to compute the surface stress in the direction of the x-axis and the cross-shear (the cross-shear term is used in the turbulent shear stress algorithm) as follows:</p>
+<div class="arithmatex">\[
+\tau_{wx} \cong C_D\rho_a W_h^2\cos(\Theta_1 - \Theta_2) \tag{2-58}
+\]</div>
+<div class="arithmatex">\[
+\tau_{wy} \cong C_D\rho_a W_h^2\sin(\Theta_1 - \Theta_2) \tag{2-59}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{wx}\)</span> = surface shear stress along x-axis due to wind</li>
+<li><span class="arithmatex">\(\tau_{wy}\)</span> = surface shear stress along lateral direction due to wind</li>
+<li><span class="arithmatex">\(\Theta_1\)</span> = wind orientation relative to North, radians</li>
+<li><span class="arithmatex">\(\Theta_2\)</span> = segment orientation relative to North, radians</li>
+</ul>
+<p>Segment and wind orientation are illustrated in Figures 17 and 18, respectively. The angles are measured in radians clockwise from north. A wind from the east would have an angle of π/2 radians, π radians from the south, 3π/2 radians from the west, and 0 or 2π radians from the north.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Segment orientation.](../assets/images/part2/fig17_segment_orientation.png){ width="500" }
+  <figcaption>Figure 17. Segment orientation.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Wind orientation.](../assets/images/part2/fig18_wind_orientation.png){ width="400" }
+  <figcaption>Figure 18. Wind orientation.</figcaption>
+</figure>
+-->
+
+<h4 id="drag-coefficient-formulations">Drag Coefficient Formulations<a class="headerlink" href="#drag-coefficient-formulations" title="Permanent link">&para;</a></h4>
+<p>The CE-QUAL-W2 model Version 3.5 and earlier included a drag coefficient, <span class="arithmatex">\(C_D\)</span>, based on the following formulae:</p>
+<ul>
+<li><span class="arithmatex">\(C_D = 0.0\)</span> if <span class="arithmatex">\(W_{10} &lt; 1\)</span> m s⁻¹</li>
+<li><span class="arithmatex">\(C_D = 0.005 W_{10}^{0.5}\)</span> if <span class="arithmatex">\(1 \le W_{10} &lt; 15\)</span> m s⁻¹</li>
+<li><span class="arithmatex">\(C_D = 0.0026\)</span> if <span class="arithmatex">\(W_{10} \ge 15\)</span> m s⁻¹</li>
+</ul>
+<p>where <span class="arithmatex">\(W_{10}\)</span> is the wind speed in m s⁻¹ at 10 m.</p>
+<p>This formulation shows that <span class="arithmatex">\(C_D\)</span> decreases as wind speed decreases. However, for wind speeds below 5 m s⁻¹, <span class="arithmatex">\(C_D\)</span> has been observed to increase with decreasing wind speed. According to Wuest and Lorke (2003), the drag coefficient for a smooth surface (below 5 m s⁻¹) follows:</p>
+<div class="arithmatex">\[
+C_D = 0.0044 W_{10}^{-1.15}
+\]</div>
+<p>Above a wind speed of 5 m s⁻¹, <span class="arithmatex">\(C_D\)</span> can be calculated from the following implicit equation:</p>
+<div class="arithmatex">\[
+C_D = \left\{\kappa^{-1}\ln\left[\frac{10g}{C_D W_{10}^2}\right] + 11.3\right\}^{-2}
+\]</div>
+<p>where <span class="arithmatex">\(\kappa\)</span> is the von Karman constant (0.41), and the constant 10 in the above equation has units of m. This equation for winds greater than 5 m s⁻¹ is considered a lower limit to the drag coefficient, since wind-wave effects at higher wind speeds likely increase <span class="arithmatex">\(C_D\)</span> beyond the value predicted by this implicit equation.</p>
+<p>Since the W2 approximation for wind speeds above 4 m s⁻¹ is reasonable, for Version 3.6 and later the following drag coefficient formulation is used:</p>
+<ul>
+<li><span class="arithmatex">\(C_D = 0.01\)</span> if <span class="arithmatex">\(W_{10} &lt; 0.5\)</span> m s⁻¹</li>
+<li><span class="arithmatex">\(C_D = 0.0044 W_{10}^{-1.15}\)</span> if <span class="arithmatex">\(W_{10} &lt; 4\)</span> m s⁻¹</li>
+<li><span class="arithmatex">\(C_D = 0.005 W_{10}^{0.5}\)</span> if <span class="arithmatex">\(4 \le W_{10} &lt; 15\)</span> m s⁻¹</li>
+<li><span class="arithmatex">\(C_D = 0.0026\)</span> if <span class="arithmatex">\(W_{10} \ge 15\)</span> m s⁻¹</li>
+</ul>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).](../assets/images/part2/fig19_drag_coefficient.png){ width="500" }
+  <figcaption>Figure 19. Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier.](../assets/images/part2/fig20_surface_shear_stress.png){ width="500" }
+  <figcaption>Figure 20. Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier.</figcaption>
+</figure>
+-->
+
+<h3 id="wind-fetch-calculation">Wind Fetch Calculation<a class="headerlink" href="#wind-fetch-calculation" title="Permanent link">&para;</a></h3>
+<p>The wind fetch is the distance along a lake or reservoir where the wind blows unobstructed. This can contribute to enhanced wind-wave generation as the fetch distance is increased. The vertical shear stress can be enhanced as fetch increases.</p>
+<p>CE-QUAL-W2 always calculates fetch distance for the vertical shear stress algorithm and for reaeration calculations. The calculation is based on the prevailing wind direction. The fetch at a segment is the sum of the lengths of the segments either upstream or downstream of it.</p>
+<p>For example, in Figure 21, the fetch distance of segment 5 (computed at the segment center) is: <span class="arithmatex">\(Fetch = \Delta x_2 + \Delta x_3 + \Delta x_4 + \frac{\Delta x_5}{2}\)</span>.</p>
+<p>A more complex fetch correction has been reviewed by Henry (2008) and will be part of an updated algorithm.</p>
+<p>A fetch correction to the wind velocity can be applied as determined by Fang and Stefan (1994). This correction is described in the dissolved oxygen lake/reservoir reaeration section <!-- TODO: Add link to reaeration section --> and is not applicable to rivers.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Illustration of fetch distance calculation.](../assets/images/part2/fig21_fetch_distance.png){ width="500" }
+  <figcaption>Figure 21. Illustration of fetch distance calculation.</figcaption>
+</figure>
+-->
+
+<h3 id="bottom-shear-stress">Bottom Shear Stress<a class="headerlink" href="#bottom-shear-stress" title="Permanent link">&para;</a></h3>
+<p>The shear stress is defined along the bottom of each cell (or for each cell in contact with side walls or channel bottom) as:</p>
+<div class="arithmatex">\[
+\tau_b = \frac{\rho_w g}{C^2}U|U| \tag{2-60}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(C\)</span> = Chezy friction coefficient</li>
+<li><span class="arithmatex">\(U\)</span> = longitudinal velocity</li>
+<li><span class="arithmatex">\(\rho_w\)</span> = density of water</li>
+</ul>
+<p>The user can alternatively specify a Manning's friction factor, <span class="arithmatex">\(n\)</span>, where the Chezy coefficient, <span class="arithmatex">\(C\)</span>, is related to Manning's friction factor (in SI units) as:</p>
+<div class="arithmatex">\[
+C = (1/n)R^{1/6} \tag{2-61}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(n\)</span> = Manning's friction factor</li>
+<li><span class="arithmatex">\(R\)</span> = hydraulic radius</li>
+</ul>
+<p>In Version 2, the bottom shear stress was applied only to the bottom of each layer. In Version 3 and later, the sidewall friction is accounted for because of its greater importance in river systems. The user can input either the Chezy or Manning's coefficient for each model segment.</p>
+<h2 id="vertical-shear-stress">Vertical Shear Stress<a class="headerlink" href="#vertical-shear-stress" title="Permanent link">&para;</a></h2>
+<p>The vertical shear stress is defined as:</p>
+<div class="arithmatex">\[
+\frac{\tau_{xz}}{\rho} = \nu_t \frac{\partial U}{\partial z} = A_z \frac{\partial U}{\partial z} \tag{2-62}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(A_z\)</span> = vertical eddy viscosity, m² s⁻¹</li>
+<li><span class="arithmatex">\(\nu_t\)</span> = vertical eddy viscosity, m² s⁻¹</li>
+<li><span class="arithmatex">\(U\)</span> = longitudinal velocity, m s⁻¹</li>
+<li><span class="arithmatex">\(\rho\)</span> = density of water, kg m⁻³</li>
+<li><span class="arithmatex">\(\tau_{xz}\)</span> = vertical shear stress, kg m⁻¹ s⁻²</li>
+</ul>
+<p>In Version 3 and later, the user must specify which formulation to use for <span class="arithmatex">\(A_z\)</span> or <span class="arithmatex">\(\nu_t\)</span>, the vertical eddy viscosity. The formulations are shown in Table 2.</p>
+<p><strong>Table 2. Vertical eddy viscosity formulations.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Formulation</th>
+<th>Formula</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nickuradse (NICK)</td>
+<td><span class="arithmatex">\(\nu_t = \ell_m^2 \left\|\frac{\partial u}{\partial z}\right\| e^{-CRi}\)</span> where <span class="arithmatex">\(\ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right]\)</span></td>
+<td>Rodi (1993)</td>
+</tr>
+<tr>
+<td>Parabolic (PARAB)</td>
+<td><span class="arithmatex">\(\nu_t = \kappa u_* z\left(1-\frac{z}{H}\right)e^{-CRi}\)</span></td>
+<td>Engelund (1978)</td>
+</tr>
+<tr>
+<td>W2 (used in Version 2)</td>
+<td><span class="arithmatex">\(\nu_t = \kappa\frac{l_m^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{y,wind}e^{-2kz}+\tau_{tributary}}{\rho\nu_t}\right)\right]^{1/2}e^{-CRi}\)</span>, <span class="arithmatex">\(\ell_m = \Delta z_{max}\)</span></td>
+<td>Cole and Buchak (1995)</td>
+</tr>
+<tr>
+<td>W2N (W2 with Nickuradse mixing length)</td>
+<td><span class="arithmatex">\(\nu_t = \kappa\frac{l_m^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{y,wind}e^{-2kz}+\tau_{tributary}}{\rho\nu_t}\right)^2\right]^{1/2}e^{-CRi}\)</span>, <span class="arithmatex">\(\ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right]\)</span></td>
+<td>Cole and Buchak (1995) and Rodi (1993)</td>
+</tr>
+<tr>
+<td>RNG (re-normalization group)</td>
+<td><span class="arithmatex">\(\nu_t = \nu\left[1+\Psi\left(3\kappa\left(\frac{zu_*}{\nu}\right)^3\left(1-\frac{z}{H}\right)^3-C_1\right)\right]^{1/3}e^{-CRi}\)</span></td>
+<td>Simoes (1998)</td>
+</tr>
+<tr>
+<td>TKE (turbulent kinetic energy)</td>
+<td><span class="arithmatex">\(\nu_t = C_\mu\frac{k^2}{\varepsilon}\)</span> where k and ε are determined from transport equations</td>
+<td>Wells (2001), Gould (2006)</td>
+</tr>
+</tbody>
+</table>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\ell_m\)</span> = mixing length</li>
+<li><span class="arithmatex">\(z\)</span> = vertical coordinate</li>
+<li><span class="arithmatex">\(u_*\)</span> = shear velocity</li>
+<li><span class="arithmatex">\(H\)</span> = depth</li>
+<li><span class="arithmatex">\(\kappa\)</span> = von Karman constant</li>
+<li><span class="arithmatex">\(C\)</span> = constant (assumed 0.15)</li>
+<li><span class="arithmatex">\(k\)</span> = wave number (in W2 models)</li>
+<li><span class="arithmatex">\(\rho\)</span> = liquid density</li>
+<li><span class="arithmatex">\(\Psi(x)\)</span> = max(0,x)</li>
+<li><span class="arithmatex">\(\nu\)</span> = molecular viscosity</li>
+<li><span class="arithmatex">\(C_1\)</span> = empirical constant, 100</li>
+<li><span class="arithmatex">\(Ri\)</span> = Richardson number</li>
+<li><span class="arithmatex">\(\Delta z_{max}\)</span> = maximum vertical grid spacing</li>
+<li><span class="arithmatex">\(B\)</span> = width</li>
+<li><span class="arithmatex">\(\nu_t\)</span> = turbulent viscosity</li>
+<li><span class="arithmatex">\(\tau_{wy}\)</span> = cross-shear from wind</li>
+<li><span class="arithmatex">\(k\)</span> = turbulent kinetic energy (in TKE model)</li>
+<li><span class="arithmatex">\(\varepsilon\)</span> = turbulent energy dissipation rate</li>
+<li><span class="arithmatex">\(P\)</span> = turbulent energy production from boundary friction</li>
+<li><span class="arithmatex">\(U\)</span> = longitudinal velocity (laterally averaged)</li>
+<li><span class="arithmatex">\(W\)</span> = vertical velocity (laterally averaged)</li>
+<li><span class="arithmatex">\(\sigma\)</span> = turbulent Prandtl number</li>
+<li><span class="arithmatex">\(C_\varepsilon\)</span>, <span class="arithmatex">\(C_\mu\)</span> = constants in the TKE model</li>
+<li><span class="arithmatex">\(\tau_{trib}\)</span> = cross-shear from lateral tributaries</li>
+<li>Production term: <span class="arithmatex">\(P = \nu_t\left(\frac{\partial U}{\partial z}\right)^2\)</span></li>
+<li>Buoyancy term: <span class="arithmatex">\(G = -\frac{\nu_t}{\sigma_t}N^2\)</span></li>
+<li>Brunt-Vaisala frequency: <span class="arithmatex">\(N = \sqrt{-\frac{g}{\rho}\frac{d\rho}{dz}}\)</span></li>
+</ul>
+<p>The user can also specify the maximum value of the vertical eddy viscosity <strong>[AZMAX]</strong>. This value is specified because the time step for numerical stability is greatly reduced when solving the momentum equations using an explicit numerical technique. The user can choose whether to compute vertical momentum transfer using an implicit or explicit numerical technique. The explicit formulation was used in Version 2 with a fixed <strong>[AZMAX]</strong> of 1.0 x 10⁻⁵ m² s⁻¹. The implicit solution code was originally developed by Chapman and Cole and revised/updated.</p>
+<p>Since its introduction, the k-ε turbulence closure model has worked well for all waterbody types and is the suggested default algorithm. Only the W2 and W2N formulations include the effects of cross-shear from wind explicitly and from tributary or branch inflows. The k-ε turbulence model accounts for total turbulent kinetic energy production from wind, not just the x-component.</p>
+<p>The W2 or W2N formulations can be used for waterbodies with deep sections that could be stratified. The NICK, PARAB, or RNG formulations are suitable for estuary or river systems where the maximum computed <strong>[AZMAX]</strong> could be as high as 1 to 5 m² s⁻¹. For river models, use the implicit solution technique. To reproduce results from Version 2 in a stratified reservoir, set <strong>[AZMAX]</strong> to 1.0 x 10⁻⁵ m² s⁻¹ and use the explicit solution.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km (Manning's n=0.03 and S=0.0001).](../assets/images/part2/fig22_eddy_viscosity_mannings.png){ width="500" }
+  <figcaption>Figure 22. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km (Chezy=50 and S=0.0001).](../assets/images/part2/fig23_eddy_viscosity_chezy.png){ width="500" }
+  <figcaption>Figure 23. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory.](../assets/images/part2/fig24_velocity_comparison.png){ width="500" }
+  <figcaption>Figure 24. Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory.</figcaption>
+</figure>
+-->
+
+<h3 id="formulation">Formulation<a class="headerlink" href="#formulation" title="Permanent link">&para;</a></h3>
+<p>In CE-QUAL-W2, the shear stress term includes the contribution to the shear stress from surface waves induced by the wind. The wind can produce waves that produce decaying motions with depth.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Conceptual diagram of wind induced motion.](../assets/images/part2/fig25_wind_induced_motion.png){ width="500" }
+  <figcaption>Figure 25. Conceptual diagram of wind induced motion.</figcaption>
+</figure>
+-->
+
+<p>The total longitudinal shear stress for a layer is defined as having contributions from interfacial velocity shear, wind wave generated shear, and friction shear along boundaries:</p>
+<div class="arithmatex">\[
+\frac{\tau_{xz}}{\rho} = A_z\frac{\partial U}{\partial z} + \frac{\tau_{wx}}{\rho}e^{-2kz} + \frac{\tau_b}{\rho} \tag{2-63}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{wx}\)</span> = longitudinal wind shear at the surface</li>
+<li><span class="arithmatex">\(k\)</span> = wave number = <span class="arithmatex">\(\frac{4\pi^2}{gT_w^2}\)</span></li>
+<li><span class="arithmatex">\(T_w\)</span> = wind wave period = <span class="arithmatex">\(6.95 \times 10^{-2}\;F^{0.233}|W|^{0.534}\)</span></li>
+<li><span class="arithmatex">\(F\)</span> = wind fetch length, m</li>
+</ul>
+<p>The turbulent eddy viscosity was conceptualized by Prandtl as:</p>
+<div class="arithmatex">\[
+\nu_{turbulent} = \ell^2\left|\frac{dU}{dz}\right| \tag{2-64}
+\]</div>
+<p>where <span class="arithmatex">\(\ell\)</span> is the mixing length, interpreted as proportional to the average size of large eddies or the length scale of a turbulent eddy. This length varies with distance from a boundary since eddy sizes change accordingly. The goal in most turbulence models is the determination of the mixing length as a function of position in the fluid. Because this concept is not firmly grounded in theory, many formulations for <span class="arithmatex">\(A_z\)</span> have been published (Shanahan and Harleman, 1982).</p>
+<p>The mechanism for transporting the wind stress on the surface in the model is based on:</p>
+<div class="arithmatex">\[
+A_z = \kappa\frac{\ell^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\partial V}{\partial z}\right)^2\right]^{1/2}e^{-CRi} \tag{2-65}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(Ri\)</span> = Richardson number = <span class="arithmatex">\(\frac{g\frac{\partial\rho}{\partial z}}{\rho\left(\frac{\partial U}{\partial z}\right)^2}\)</span></li>
+<li><span class="arithmatex">\(\kappa\)</span> = von Karman constant, 0.4</li>
+<li><span class="arithmatex">\(C\)</span> = constant, 1.5</li>
+<li><span class="arithmatex">\(\ell\)</span> = vertical length scale chosen as cell thickness, <span class="arithmatex">\(\Delta z\)</span></li>
+</ul>
+<p>The formulation is a typical mixing length formulation that is decreased or increased based on the Richardson number. The Richardson number accounts for the impact of density stratification on transfer of momentum between fluid parcels. In regions where there is no stratification, the Richardson number is zero and the exponential term is one. For regions where there is strong stratification, the Richardson number becomes large and the exponential term approaches zero.</p>
+<p>In the longitudinal-vertical model, the lateral velocity <span class="arithmatex">\(V\)</span> and its gradient <span class="arithmatex">\(\partial V/\partial z\)</span> are due to the lateral component of wind wave motion. These quantities are assumed zero when averaged laterally, but the square <span class="arithmatex">\((\partial V/\partial z)^2\)</span> is not necessarily zero. Cross-wind shear, <span class="arithmatex">\(\tau_{wy}\)</span>, generates lateral wave components and decays exponentially with depth:</p>
+<div class="arithmatex">\[
+\tau_{yz} = \tau_{wy}e^{-2kz} \tag{2-66}
+\]</div>
+<p>Then using <span class="arithmatex">\(\frac{\tau_{yz}}{\rho} = A_z\frac{\partial V}{\partial z}\)</span>:</p>
+<div class="arithmatex">\[
+\left(\frac{\partial V}{\partial z}\right)^2 = \left[\frac{\tau_{wy}e^{-2kz}}{\rho A_z}\right]^2 \tag{2-68}
+\]</div>
+<p>The final equation for the vertical eddy viscosity is then:</p>
+<div class="arithmatex">\[
+A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{y,wind}e^{-2kz}}{\rho A_z}\right)^2\right]^{1/2}e^{-CRi} \tag{2-69}
+\]</div>
+<p>The above equation is implicit. In the model, this equation is explicit since the value of <span class="arithmatex">\(A_z\)</span> in the lateral shear term is used from the previous time step. <span class="arithmatex">\(A_z\)</span> is never less than the molecular kinematic viscosity for water.</p>
+<h3 id="rng-turbulent-eddy-viscosity-formulation">RNG Turbulent Eddy Viscosity Formulation<a class="headerlink" href="#rng-turbulent-eddy-viscosity-formulation" title="Permanent link">&para;</a></h3>
+<p>The Re-Normalization Group (RNG) model was derived from the RNG model of Yakhot and Orszag (1986) by Simoes (1998). The turbulent eddy viscosity is derived from Yakhot and Orszag (1986) as:</p>
+<div class="arithmatex">\[
+\nu_t = \nu\left[1 + \Psi\left(a\frac{\varepsilon\ell_m^4}{\nu^3} - C_1\right)\right]^{1/3} \tag{2-70}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\Psi(x)\)</span> = max(0,x)</li>
+<li><span class="arithmatex">\(\nu\)</span> = molecular viscosity</li>
+<li><span class="arithmatex">\(\nu_t\)</span> = turbulent eddy viscosity</li>
+<li><span class="arithmatex">\(\ell_m\)</span> = mixing length</li>
+<li><span class="arithmatex">\(\varepsilon\)</span> = turbulent energy dissipation rate</li>
+<li><span class="arithmatex">\(a \approx 1\)</span></li>
+<li><span class="arithmatex">\(C_1 \approx 100\)</span></li>
+</ul>
+<p>Two additional equations are necessary in determining the mixing length and the turbulent energy dissipation. For the mixing length:</p>
+<div class="arithmatex">\[
+\frac{\ell_m}{H} = \kappa\frac{z}{H}\sqrt{1-\frac{z}{H}} \tag{2-71}
+\]</div>
+<p>and for the turbulent eddy dissipation:</p>
+<div class="arithmatex">\[
+\frac{\varepsilon H}{u_*^3} = \frac{3z}{H}\left(1-\frac{z}{H}\right)^{3/2} \tag{2-72}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(u_*\)</span> = shear velocity, m s⁻¹</li>
+<li><span class="arithmatex">\(H\)</span> = depth of the channel, m</li>
+<li><span class="arithmatex">\(z\)</span> = vertical coordinate measured from the bottom of the channel, m</li>
+<li><span class="arithmatex">\(\kappa\)</span> = von Karman's constant, 0.41</li>
+</ul>
+<p>Substituting these into Equation 2-70:</p>
+<div class="arithmatex">\[
+\nu_t = \nu\left[1 + \Psi\left(3\kappa\left(\frac{zu_*}{\nu}\right)^3\left(1-\frac{z}{H}\right)^3 - C_1\right)\right]^{1/3} \tag{2-73}
+\]</div>
+<p>Simoes (1998) states that this model better represents experimental data than the more traditional parabolic eddy viscosity model of:</p>
+<div class="arithmatex">\[
+\nu_t = \kappa z u_*\left(1-\frac{z}{H}\right) \tag{2-74}
+\]</div>
+<p>A value of <span class="arithmatex">\(\nu\)</span> was derived as a function of temperature based on values from Batchelor (1967) using a polynomial curve fit between 0 and 30 °C.</p>
+<p>This model was adjusted to account for stratified flow conditions by using the same Richardson number criteria as used in the original W2 model (the approach of Mamayev as quoted in French, 1985):</p>
+<div class="arithmatex">\[
+\nu_t = \max\left(\nu, \nu_{tRNG}e^{-CRi}\right) \tag{2-75}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(Ri\)</span> = Richardson number = <span class="arithmatex">\(\frac{g\frac{\partial\rho}{\partial z}}{\rho\left(\frac{\partial U}{\partial z}\right)^2}\)</span></li>
+<li><span class="arithmatex">\(C\)</span> = empirical constant, 1.5 (French [1985] shows a value of 0.4)</li>
+</ul>
+<h3 id="nickuradse-formulation">Nickuradse Formulation<a class="headerlink" href="#nickuradse-formulation" title="Permanent link">&para;</a></h3>
+<p>This model, as noted in Rodi (1993), is a mixing length model where the mixing length, <span class="arithmatex">\(\ell_m\)</span>, and eddy viscosity, <span class="arithmatex">\(\nu_t\)</span>, are determined from:</p>
+<div class="arithmatex">\[
+\nu_t = \ell_m^2\left|\frac{\partial u}{\partial z}\right| \tag{2-76}
+\]</div>
+<div class="arithmatex">\[
+\ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right] \tag{2-77}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Mixing length as a function of depth for the Nickuradse formulation.](../assets/images/part2/fig26_mixing_length_nick.png){ width="500" }
+  <figcaption>Figure 26. Mixing length as a function of depth for the Nickuradse formulation.</figcaption>
+</figure>
+-->
+
+<p>The stability of the water column affects the mixing length. A Richardson number criteria has been applied to correct the mixing length for stability effects such as:</p>
+<div class="arithmatex">\[
+\ell_m = \ell_{mo}(1-7Ri) \quad \text{if } Ri \ge 0 \tag{2-78}
+\]</div>
+<div class="arithmatex">\[
+\ell_m = \ell_{mo}(1-14Ri)^{-0.25} \quad \text{if } Ri &lt; 0 \tag{2-79}
+\]</div>
+<p>This is different from the approach of Munk and Anderson (1948) where the Richardson number correction was applied to the value of <span class="arithmatex">\(A_z\)</span> and not the mixing length directly.</p>
+<p>For compatibility with the original formulation, the computed value of <span class="arithmatex">\(A_z\)</span> is corrected using the Mamayev formulation:</p>
+<div class="arithmatex">\[
+\nu_t = \max\left(\nu, \nu_{t_{NICK}}e^{-CRi}\right) \tag{2-80}
+\]</div>
+<h3 id="parabolic-formulation">Parabolic Formulation<a class="headerlink" href="#parabolic-formulation" title="Permanent link">&para;</a></h3>
+<p>Another formulation is a parabolic distribution for <span class="arithmatex">\(A_z\)</span> (Engelund, 1978):</p>
+<div class="arithmatex">\[
+\nu_t = \kappa u_* z\left(1-\frac{z}{H}\right) \tag{2-81}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Variation of A_z with depth for the parabolic model of Engelund (1978).](../assets/images/part2/fig27_parabolic_az.png){ width="500" }
+  <figcaption>Figure 27. Variation of A_z with depth for the parabolic model of Engelund (1978).</figcaption>
+</figure>
+-->
+
+<p>For compatibility with the original model formulation, the computed value of <span class="arithmatex">\(A_z\)</span> is corrected using the Mamayev formulation:</p>
+<div class="arithmatex">\[
+\nu_t = \max\left(\nu, \nu_{t_{PARAB}}e^{-CRi}\right) \tag{2-82}
+\]</div>
+<h3 id="w2n-formulation">W2N Formulation<a class="headerlink" href="#w2n-formulation" title="Permanent link">&para;</a></h3>
+<p>The W2N formulation is the same as the W2 model except that the mixing length is no longer the layer thickness but is computed using Nickuradse's mixing length model. The equations for the W2N formulation are:</p>
+<div class="arithmatex">\[
+A_z = \kappa\left(\frac{\ell_m^2}{2}\right)\sqrt{\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{wy}e^{-2kz}}{\rho A_z}\right)^2}\;e^{-CRi} \tag{2-83}
+\]</div>
+<div class="arithmatex">\[
+\ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right] \tag{2-84}
+\]</div>
+<h3 id="tke-formulation">TKE Formulation<a class="headerlink" href="#tke-formulation" title="Permanent link">&para;</a></h3>
+<p>The Turbulent Kinetic Energy (TKE) formulation is an application of the k-ε turbulence model. This model includes vertical transport of kinetic energy and dissipation by advection and diffusion, as well as horizontal transport by advection. The model solves two partial differential equations for <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(\varepsilon\)</span> to compute the turbulent eddy viscosity:</p>
+<div class="arithmatex">\[
+\nu_t = C_\mu\frac{k^2}{\varepsilon} \tag{2-85}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial\varepsilon B}{\partial t} + \frac{\partial\varepsilon BU}{\partial x} + \frac{\partial\varepsilon BW}{\partial z} - \frac{\partial}{\partial z}\left(B\frac{\nu_t}{\sigma_\varepsilon}\frac{\partial\varepsilon}{\partial z}\right) - \frac{\partial}{\partial x}\left(B\frac{\nu_t}{\sigma_\varepsilon}\frac{\partial\varepsilon}{\partial x}\right) = B\left(C_{\varepsilon 1}\frac{\varepsilon}{k}P - C_{\varepsilon 2}\frac{\varepsilon^2}{k} + P_\varepsilon\right) \tag{2-86}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial kB}{\partial t} + \frac{\partial kBU}{\partial x} + \frac{\partial kBW}{\partial z} - \frac{\partial}{\partial z}\left(B\frac{\nu_t}{\sigma_k}\frac{\partial k}{\partial z}\right) - \frac{\partial}{\partial x}\left(B\frac{\nu_t}{\sigma_k}\frac{\partial k}{\partial x}\right) = B(P + G - \varepsilon + P_k) \tag{2-87}
+\]</div>
+<p>where <span class="arithmatex">\(C_\mu\)</span> is an empirical constant and:</p>
+<ul>
+<li><span class="arithmatex">\(P = \nu_t\left(\frac{\partial U}{\partial z}\right)^2\)</span> (production)</li>
+<li><span class="arithmatex">\(G = -\frac{\nu_t}{\sigma_t}N^2\)</span> (buoyancy)</li>
+<li><span class="arithmatex">\(P_k = \frac{C_f |u^3|}{0.5B}\)</span> (production term from boundary friction)</li>
+<li><span class="arithmatex">\(P_\varepsilon = \frac{10 C_f^{1.25} u^4}{(0.5B)^2}\)</span> (production term from boundary friction)</li>
+<li>Brunt-Vaisala frequency <span class="arithmatex">\(N = \sqrt{-\frac{g}{\rho}\frac{d\rho}{dz}}\)</span></li>
+</ul>
+<p><span class="arithmatex">\(B\)</span> is the width, <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(W\)</span> are the advective velocities in x and z respectively, and other terms are empirical constants.</p>
+<p>Typical values of the above model constants that have been used in other studies are:</p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(C_\mu\)</span></th>
+<th><span class="arithmatex">\(C_{\varepsilon 1}\)</span></th>
+<th><span class="arithmatex">\(C_{\varepsilon 2}\)</span></th>
+<th><span class="arithmatex">\(\sigma_k\)</span></th>
+<th><span class="arithmatex">\(\sigma_\varepsilon\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.09</td>
+<td>1.44</td>
+<td>1.92</td>
+<td>1.0</td>
+<td>1.3</td>
+</tr>
+</tbody>
+</table>
+<p>Turbulent Prandtl/Schmidt number, <span class="arithmatex">\(\sigma_t\)</span> = 1.0.</p>
+<p>The friction coefficient <span class="arithmatex">\(C_f\)</span> is defined as:</p>
+<div class="arithmatex">\[
+C_f = \frac{g}{C^2} = \frac{gn^2}{R_h^{1/3}} \tag{2-95}
+\]</div>
+<p>where <span class="arithmatex">\(g\)</span> is gravitational acceleration, <span class="arithmatex">\(C\)</span> is a Chezy friction factor, <span class="arithmatex">\(n\)</span> is a Manning's friction factor, and <span class="arithmatex">\(R_h\)</span> is the hydraulic radius.</p>
+<p>The solution of the above equations for <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(\varepsilon\)</span> uses a split solution technique: explicit horizontal and source-sink term solution followed by an implicit vertical solution. A description of the solution algorithm is based on Gould (2006).</p>
+<h4 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h4>
+<p>The current algorithm is based on the laterally averaged k-ε turbulence model equations shown below:</p>
+<div class="arithmatex">\[
+\nu_t = C_\mu\frac{k^2}{\varepsilon} \tag{2-88}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial kB}{\partial t} + \frac{\partial(kUB)}{\partial x} + \frac{\partial(kWB)}{\partial z} - \frac{\partial}{\partial z}\left(B\frac{\nu_t}{\sigma_k}\frac{\partial k}{\partial z}\right) = B(P + G - \varepsilon + P_k) \tag{2-89}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial\varepsilon B}{\partial t} + \frac{\partial(\varepsilon UB)}{\partial x} + \frac{\partial(\varepsilon WB)}{\partial z} - \frac{\partial}{\partial z}\left(B\frac{\nu_t}{\sigma_\varepsilon}\frac{\partial\varepsilon}{\partial z}\right) = B\left(C_{\varepsilon 1}\frac{\varepsilon}{k}P - C_{\varepsilon 2}\frac{\varepsilon^2}{k} + P_\varepsilon\right) \tag{2-90}
+\]</div>
+<p>where <span class="arithmatex">\(\nu_t\)</span>, <span class="arithmatex">\(k\)</span>, and <span class="arithmatex">\(\varepsilon\)</span> are the eddy viscosity, turbulent kinetic energy and turbulent dissipation. <span class="arithmatex">\(P\)</span> is the production term and is calculated using:</p>
+<div class="arithmatex">\[
+P = \nu_t\left(\frac{\partial U}{\partial z}\right)^2 \tag{2-91}
+\]</div>
+<p>and <span class="arithmatex">\(G\)</span> is the buoyancy term:</p>
+<div class="arithmatex">\[
+G = -\frac{\nu_t}{\sigma_t}N^2 \tag{2-92}
+\]</div>
+<p>The production of turbulent kinetic energy and turbulent dissipation from boundary friction are represented by the terms <span class="arithmatex">\(P_k\)</span> and <span class="arithmatex">\(P_\varepsilon\)</span>.</p>
+<p>The equations above are solved using a split solution technique similar to the horizontal momentum equation in CE-QUAL-W2. Two methods are available:</p>
+<ol>
+<li>The vertical transport term is solved using an explicit finite difference along with the horizontal transport term.</li>
+<li>The vertical transport term is integrated into a fully implicit finite difference.</li>
+</ol>
+<p>Both methods are based on the solutions developed by Wells (2001). The computational grid used in these calculations is shown in Figure 28.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![CE-QUAL-W2 computational grid.](../assets/images/part2/fig28_computational_grid.png){ width="600" }
+  <figcaption>Figure 28. CE-QUAL-W2 computational grid. Width, density, pressure and water quality state variables are defined at cell centers. Horizontal velocity, longitudinal eddy viscosity and diffusivity, and longitudinal shear stress are defined at the right-hand side of the cell. Vertical velocity and vertical diffusivity are defined at the bottom of the cell, and the vertical eddy viscosity is defined at the lower right corner of the cell.</figcaption>
+</figure>
+-->
+
+<h4 id="boundary-and-initial-conditions-for-k-model">Boundary and Initial Conditions for k-ε Model<a class="headerlink" href="#boundary-and-initial-conditions-for-k-model" title="Permanent link">&para;</a></h4>
+<p>To apply this algorithm to CE-QUAL-W2 hydraulic problems, boundary conditions for the bed, free surface, inlet, and outlet, as well as initial conditions, must be specified.</p>
+<p>At the bed, steep gradients of turbulent kinetic energy and turbulent dissipation are present in the viscous sublayer. To avoid this problem, an empirical law can be used to construct a simple wall function. The largest assumption is that the flow parallel to the wall obeys the law of the wall:</p>
+<div class="arithmatex">\[
+\frac{U}{U_*} = \frac{1}{\kappa}\ln\left(E\frac{yU_*}{\nu}\right) \tag{2-130}
+\]</div>
+<p>where <span class="arithmatex">\(U_*\)</span> is the bed friction velocity, <span class="arithmatex">\(\kappa\)</span> is the von Karman constant, <span class="arithmatex">\(y\)</span> is the distance of the grid point from the bed, <span class="arithmatex">\(E\)</span> is the roughness coefficient and <span class="arithmatex">\(\nu\)</span> is the kinematic viscosity.</p>
+<p>The boundary condition for turbulent kinetic energy at the first grid point is (Rodi, 1993):</p>
+<div class="arithmatex">\[
+k = \frac{U_*^2}{\sqrt{C_\mu}} \tag{2-132}
+\]</div>
+<p>The boundary condition for turbulent dissipation is:</p>
+<div class="arithmatex">\[
+\varepsilon = \frac{U_*^3}{\kappa y} \tag{2-133}
+\]</div>
+<p>For hydraulically smooth beds the roughness coefficient <span class="arithmatex">\(E\)</span> is set to 9.535 (Ferziger and Peric, 2002). For rough boundaries a smaller value of <span class="arithmatex">\(E\)</span> is used. Two options are available in the current algorithm for specifying the roughness coefficient: a uniform constant value applied to all segments, or a value calculated based on the Manning's coefficients specified in the bathymetry file.</p>
+<p>For the free surface boundary conditions, the following apply:</p>
+<div class="arithmatex">\[
+\frac{\partial k}{\partial y} = 0 \tag{2-138}
+\]</div>
+<div class="arithmatex">\[
+\varepsilon = \frac{k^{3/2}}{aH} \tag{2-139}
+\]</div>
+<p>where <span class="arithmatex">\(a\)</span> is an empirical constant and <span class="arithmatex">\(H\)</span> is the depth of the shear layer (channel depth). The coefficient <span class="arithmatex">\(a\)</span> was originally set to a value of 0.18 by Celik and Rodi (1984) and then later changed to a value of 0.43 by Celik and Rodi (1988).</p>
+<p>The initial conditions and inlet boundary conditions are specified by setting the eddy viscosity, turbulent kinetic energy, and turbulent dissipation terms to the following values:</p>
+<ul>
+<li><span class="arithmatex">\(\nu_t = 1.4 \times 10^{-6}\)</span></li>
+<li><span class="arithmatex">\(k = 1.25 \times 10^{-7}\)</span></li>
+<li><span class="arithmatex">\(\varepsilon = 1.0 \times 10^{-9}\)</span></li>
+</ul>
+<p>The outlet values of turbulent kinetic energy and turbulent dissipation are determined using a zero-gradient approach:</p>
+<div class="arithmatex">\[
+\frac{\partial k}{\partial x} = 0, \quad \frac{\partial\varepsilon}{\partial x} = 0
+\]</div>
+<p>This is done by setting the value of turbulent kinetic energy and turbulent dissipation at the outlet cell equal to the value of the cell in the upstream segment.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975).](../assets/images/part2/fig29_turbulent_dissipation.png){ width="500" }
+  <figcaption>Figure 29. Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975).](../assets/images/part2/fig30_turbulent_ke.png){ width="500" }
+  <figcaption>Figure 30. Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
+</figure>
+-->
+
+<h3 id="effect-of-vertical-layer-numbers-on-vertical-turbulence">Effect of Vertical Layer Numbers on Vertical Turbulence<a class="headerlink" href="#effect-of-vertical-layer-numbers-on-vertical-turbulence" title="Permanent link">&para;</a></h3>
+<p>In contrast to other riverine models that assume vertically well-mixed systems, CE-QUAL-W2 accounts for the vertical variation of velocity in a riverine reach. Even though there is an added computational burden of computing the 2D velocity profile, the advantage of making this computation is that the friction factor (Manning's or Chezy) for a segment can be flow or stage invariant depending on the number of vertical layers schematized.</p>
+<p>Many one-dimensional (1D) hydraulic flow models, such as CE-QUAL-RIV1 and UNET (Barkau, 1997), allow the user to specify how Manning's friction factor changes with depth. The Manning's friction factor, <span class="arithmatex">\(n\)</span>, has been thought to vary as a function of depth, Reynolds number, and roughness factor or scale of bed grain size (Ugarte and Madrid, 1994; Soong et al., 1995).</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Variation of Manning's friction factor using formulae from Limerinos (1970) and Jarrett (1984, 1985) for a channel slope, S, of 0.0005 and 84th percentile diameter of the bed material, d_84, of 50.](../assets/images/part2/fig31_mannings_variation.png){ width="500" }
+  <figcaption>Figure 31. Variation of Manning's friction factor with hydraulic radius.</figcaption>
+</figure>
+-->
+
+<p>However, in a two-dimensional, longitudinal-vertical river model, Manning's friction factor does not have to vary with stage to produce the effect that apparent friction decreases as river stage increases. The water surface setup changes significantly with the number of layers. In general, water surface slope increases as the number of computational layers decreases, because the average eddy viscosity in the water column increases with fewer layers. At the limit of a one-layer system, the average vertical eddy viscosity is infinite.</p>
+<p>The model allows choosing between six different vertical eddy viscosity formulations. These formulations are shown in Table 2. Typical variation of these formulations is shown in Figure 24 for Manning's friction factor for an open-channel, non-stratified flow regime as compared to theory of steady, uniform channel flow.</p>
+<p>The number of vertical layers significantly affects model predictions. For example, Figure 32 shows a comparison of vertical velocity profiles from a model with one, three, and seven vertical layers using the parabolic eddy viscosity model.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of vertical velocity predictions with one, three, and seven vertical layers.](../assets/images/part2/fig32_velocity_layers.png){ width="500" }
+  <figcaption>Figure 32. Comparison of vertical velocity predictions with one, three, and seven vertical layers.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.](../assets/images/part2/fig33_elevation_drop.png){ width="500" }
+  <figcaption>Figure 33. Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.</figcaption>
+</figure>
+-->
+
+<h2 id="longitudinal-shear-stress">Longitudinal Shear Stress<a class="headerlink" href="#longitudinal-shear-stress" title="Permanent link">&para;</a></h2>
+<p>The longitudinal turbulent shear stress is defined as:</p>
+<div class="arithmatex">\[
+\frac{\tau_{xx}}{\rho} = \nu_t\frac{\partial U}{\partial x} = A_x\frac{\partial U}{\partial x} \tag{2-142}
+\]</div>
+<p>where <span class="arithmatex">\(A_x = \nu_t\)</span> = longitudinal eddy viscosity.</p>
+<p><span class="arithmatex">\(A_x\)</span> is a user-defined constant or it can be set to scale with the average longitudinal velocity. This turbulence closure approximation is termed a zero-order closure model since no further equations are necessary to solve for the transmission of shear stress within the fluid.</p>
+<p>This term is usually of very low magnitude except in areas near boundaries such as at a dam face where the longitudinal velocity goes to zero.</p>
+<p>The equation for computing <span class="arithmatex">\(A_x\)</span> is:</p>
+<div class="arithmatex">\[
+A_x = \alpha\bar{U}\Delta z
+\]</div>
+<p>where α is a user input value, <span class="arithmatex">\(U\)</span> with double bars are the time-averaged, lateral averaged longitudinal velocity at a segment and layer.</p>
+<h2 id="hydraulic-structures">Hydraulic Structures<a class="headerlink" href="#hydraulic-structures" title="Permanent link">&para;</a></h2>
+<h3 id="pipes">Pipes<a class="headerlink" href="#pipes" title="Permanent link">&para;</a></h3>
+<p>The user can specify a pipe or culvert between model segments (Berger and Wells, 1999) using a 1D, unsteady hydraulic model that computes the flow between the two linked segments. The model computes the selective withdrawal outflow from the upstream segment. The user specifies whether the inflow to the downstream segment is mixed over the depth, placed at the depth determined from inflow density, or distributed between an upper and lower elevation.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Schematic of linkage of model segments with a culvert.](../assets/images/part2/fig34_culvert_schematic.png){ width="600" }
+  <figcaption>Figure 34. Schematic of linkage of model segments with a culvert.</figcaption>
+</figure>
+-->
+
+<p>This model is only appropriate for simple piping systems that are not suddenly under a large hydraulic head. The governing equations for computing the flow and the numerical solution technique are shown below.</p>
+<p>The governing equations used to predict flow through culverts are the 1D, time-dependent conservation of momentum and continuity equations (Yen, 1973):</p>
+<div class="arithmatex">\[
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + g\cos\varphi\frac{\partial h}{\partial x} - g(S_o - S_f - S_m) = 0 \tag{2-143}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial h}{\partial t} + u\frac{\partial h}{\partial x} + \frac{A}{T}\frac{\partial u}{\partial x} = 0 \tag{2-144}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(u\)</span> = velocity, m s⁻¹</li>
+<li><span class="arithmatex">\(t\)</span> = time, s</li>
+<li><span class="arithmatex">\(h\)</span> = piezometric head, m</li>
+<li><span class="arithmatex">\(g\)</span> = gravitational acceleration, m s⁻²</li>
+<li><span class="arithmatex">\(x\)</span> = distance along axis of culvert, m</li>
+<li><span class="arithmatex">\(A\)</span> = cross-sectional area of culvert filled with water, m²</li>
+<li><span class="arithmatex">\(T\)</span> = width of water level surface, m</li>
+<li><span class="arithmatex">\(\varphi\)</span> = angle between culvert axis and horizontal</li>
+<li><span class="arithmatex">\(S_o\)</span> = culvert slope</li>
+<li><span class="arithmatex">\(S_f\)</span> = friction slope</li>
+<li><span class="arithmatex">\(S_m\)</span> = minor loss slope</li>
+</ul>
+<p>The friction slope <span class="arithmatex">\(S_f\)</span> is estimated using the Manning formula:</p>
+<div class="arithmatex">\[
+S_f = \frac{n^2}{R^{4/3}}u|u| \tag{2-145}
+\]</div>
+<p>Minor losses due to entrance configuration, gates, valves, and corners are accounted for in the minor loss term <span class="arithmatex">\(S_m\)</span>:</p>
+<div class="arithmatex">\[
+S_m = k\frac{u|u|}{2g}\frac{1}{L} \tag{2-146}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(k\)</span> = sum of minor loss coefficients</li>
+<li><span class="arithmatex">\(L\)</span> = length</li>
+</ul>
+<p>Pressurized or full culvert flow is modeled using a fictitious water surface width called a Preissmann slot (Yen, 1986). If the culvert is full, the surface width <span class="arithmatex">\(T\)</span> is zero and the governing equations become singular. The Preissmann slot avoids switching between the open channel and pressurized flow equations. A top width of 0.5% of the diameter is assumed for culverts flowing full.</p>
+<p>The advantages of using a Preissmann slot are (Yen, 1986):</p>
+<ol>
+<li>Uses only Saint-Venant equations and avoids switching between the surcharge equation and open-channel flow equations</li>
+<li>No need to define surcharge criteria</li>
+<li>Not necessary to keep inventory of the pipes that are surcharged at different times</li>
+<li>Permits the flow transition to progress computationally reach by reach in a sewer</li>
+<li>Requires few additional assumptions than the standard approach to achieve numerical stability</li>
+<li>Simpler to program</li>
+</ol>
+<p>The disadvantages are:</p>
+<ol>
+<li>Introduces a potential accuracy problem in the mass and momentum balance of the flow if the slot is too wide, and stability problems if it is too narrow</li>
+<li>Requires computation of two equations (continuity and momentum) for each of the reaches of the sewer when the sewer is full surcharged</li>
+<li>Hypothetical rather than real</li>
+</ol>
+<p>The boundary condition used for solving the governing equations is the head or water level at each end of the culvert. However, if the water level at the downstream end of the culvert is less than the critical depth, the critical depth is used. Momentum is not transferred between model segments and the culverts. Initial conditions are the calculated velocities and heads at the previous time step.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Linkage schematic of model segments with a culvert.](../assets/images/part2/fig35_culvert_linkage.png){ width="500" }
+  <figcaption>Figure 35. Linkage schematic of model segments with a culvert.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Computed versus observed flow using dynamic culvert model.](../assets/images/part2/fig36_culvert_flow.png){ width="500" }
+  <figcaption>Figure 36. Computed versus observed flow using dynamic culvert model.</figcaption>
+</figure>
+-->
+
+<h3 id="internal-weirs">Internal Weirs<a class="headerlink" href="#internal-weirs" title="Permanent link">&para;</a></h3>
+<p>The model can be used to set internal weirs at specified cell locations. The user specifies the location of the internal weir by providing a segment and layer number. The "weir" effectively acts as a barrier to flow and diffusion of mass/heat across the width of the waterbody. This can be used to simulate submerged and curtain weirs within a waterbody.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Schematic representation of internal weirs.](../assets/images/part2/fig37_internal_weirs.png){ width="500" }
+  <figcaption>Figure 37. Schematic representation of internal weirs.</figcaption>
+</figure>
+-->
+
+<h3 id="water-level-control-or-pumps">Water Level Control or Pumps<a class="headerlink" href="#water-level-control-or-pumps" title="Permanent link">&para;</a></h3>
+<p>In many reservoir systems, outflows are controlled by water levels. A water level control or pump algorithm allows the user to specify the upstream and downstream segments for water transfer at a given flow rate based on the water level at the upstream segment. This is essentially a pump based on a float controller.</p>
+<p>Reverse flow is not allowed. The withdrawal is treated as a lateral selective withdrawal, and the receiving segment is treated as a tributary inflow.</p>
+<h3 id="outlet-structures">Outlet Structures<a class="headerlink" href="#outlet-structures" title="Permanent link">&para;</a></h3>
+<p>Outflows through hydraulic structures can either be specified or computed by the model based on user-supplied rating curves.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Radial gates and spillway flow.](../assets/images/part2/fig38_radial_gates.png){ width="500" }
+  <figcaption>Figure 38. Radial gates and spillway flow.</figcaption>
+</figure>
+-->
+
+<p>The UNET model (Hydrologic Engineering Center [HEC], 1997a), a one-dimensional unsteady hydraulic model, formally accounts for spillway flow from weirs and spillways. For free or submerged flow from a spillway with a radial gate, UNET uses a general equation of the form:</p>
+<div class="arithmatex">\[
+Q_{sp} = CWA^\alpha B^\beta H^\eta \tag{2-149}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\beta\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\eta\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(Q_{sp}\)</span> = flow rate, m³ s⁻¹</li>
+<li><span class="arithmatex">\(A\)</span> = trunnion height, m</li>
+<li><span class="arithmatex">\(B\)</span> = gate opening, m</li>
+<li><span class="arithmatex">\(C\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(W\)</span> = gate width, m</li>
+</ul>
+<p>and</p>
+<div class="arithmatex">\[
+H = Z_u - KZ_d - (1-K)Z_{sp} \tag{2-150}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(Z_u\)</span> = headwater elevation</li>
+<li><span class="arithmatex">\(Z_d\)</span> = tailwater elevation</li>
+<li><span class="arithmatex">\(K\)</span> = 1 for submerged flow and 0 for free flow</li>
+<li><span class="arithmatex">\(Z_{sp}\)</span> = spillway elevation</li>
+</ul>
+<p>Submergence is defined as:</p>
+<div class="arithmatex">\[
+\frac{Z_d - Z_{sp}}{Z_u - Z_{sp}} &gt; \frac{2}{3} \tag{2-151}
+\]</div>
+<p>Note that weir flow is assumed to occur whenever <span class="arithmatex">\(B = 0.8H\)</span> and is computed as:</p>
+<div class="arithmatex">\[
+Q_{weir} = C_w FW\left((1-K)Z_u + KZ_d - Z_{sp}\right)H^{1/2} \tag{2-152}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(C_w\)</span> = weir coefficient</li>
+<li><span class="arithmatex">\(F = 3\left(1-\frac{|Z_d-Z_{sp}|}{|Z_u-Z_{sp}|}\right)\)</span> when <span class="arithmatex">\(K = 1\)</span></li>
+<li><span class="arithmatex">\(F = 1\)</span> when <span class="arithmatex">\(K = 0\)</span></li>
+</ul>
+<p>For a concrete spillway, HEC (1997a) suggests using a weir coefficient value of 4. Note that the above two equations are considered equivalent whenever <span class="arithmatex">\(B = 0.8H\)</span>.</p>
+<p>HEC-RAS (Hydrologic Engineering Center River Analysis System), a one-dimensional, steady-state hydraulic model (HEC, 1997b), includes the ability to model flow over spillways including tainter and sluice gates, broad-crested weirs, and an ogee crest. A summary of the equations used by HEC-RAS is shown in Table 4.</p>
+<h3 id="spillwaysweirs">Spillways/Weirs<a class="headerlink" href="#spillwaysweirs" title="Permanent link">&para;</a></h3>
+<p>Analysis of flow over weirs has been studied extensively. Martin and McCutcheon (1999) show that a typical relationship between the pool depth and flow over a weir is:</p>
+<div class="arithmatex">\[
+Q = C_e W_c h_w^\eta \tag{2-153}
+\]</div>
+<p>where <span class="arithmatex">\(C_e\)</span> and <span class="arithmatex">\(\eta\)</span> are empirical coefficients, <span class="arithmatex">\(W_c\)</span> is the length of the weir crest, and <span class="arithmatex">\(h_w\)</span> is the height of the pool above the weir crest. Theoretical calculations of steady-state flow over a weir can be complex depending on whether the weirs are sharp-crested, broad-crested, V-notched, rectangular, Cipolletti, parabolic, or some other type.</p>
+<p>Since all weirs in practice are calibrated and a head discharge relationship is usually determined, the flow versus head relationship is used rather than an equation from Table 5. The user must then analyze the weir or spillway and input a relationship based on the weir or spillway geometry. The model accepts equations in the form of a power function for freely flowing conditions:</p>
+<div class="arithmatex">\[
+Q = \alpha_1\Delta h^{\beta_1} \tag{A-2-154}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha_1\)</span> = empirical parameter</li>
+<li><span class="arithmatex">\(\beta_1\)</span> = empirical parameter</li>
+<li><span class="arithmatex">\(\Delta h = Z_u - Z_{sp}\)</span></li>
+<li><span class="arithmatex">\(Z_u\)</span> = upstream head</li>
+<li><span class="arithmatex">\(Z_{sp}\)</span> = spillway crest elevation</li>
+</ul>
+<p>and for submerged conditions:</p>
+<div class="arithmatex">\[
+Q = \alpha_2\Delta h^{\beta_2} \tag{A-2-155}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha_2\)</span> = empirical parameter</li>
+<li><span class="arithmatex">\(\beta_2\)</span> = empirical parameter</li>
+<li><span class="arithmatex">\(\Delta h = Z_u - Z_d\)</span></li>
+<li><span class="arithmatex">\(Z_u\)</span> = upstream head</li>
+<li><span class="arithmatex">\(Z_d\)</span> = downstream head</li>
+</ul>
+<p>Submerged conditions are defined when the tailwater depth over the upstream energy head (static head and velocity head) is greater than 0.67 (HEC, 1997b). Negative flow rates are possible using the second equation whenever <span class="arithmatex">\(Z_d &gt; Z_u\)</span>; however, use these results with caution since rating curves are rarely calibrated for reverse flow over a spillway.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure a smooth transition between submerged and free flowing conditions by proper choice of model coefficients.</p>
+</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Flow rate over a spillway or weir for submerged and free flowing conditions.](../assets/images/part2/fig39_weir_flow.png){ width="500" }
+  <figcaption>Figure 39. Flow rate over a spillway or weir for submerged and free flowing conditions.</figcaption>
+</figure>
+-->
+
+<p>For a smooth transition, the two flows must be equal at the transition point. Using:</p>
+<div class="arithmatex">\[
+H_2 - H_{weir} = 0.67\left(\Delta h_1 + \frac{u^2}{2g}\right) \approx 0.67(H_1 - H_{weir}) \tag{2-156}
+\]</div>
+<p>and substituting the rating curves for free flow and submerged conditions and solving for <span class="arithmatex">\(\alpha_2\)</span> results in:</p>
+<div class="arithmatex">\[
+\alpha_2 = \frac{\alpha_1(H_1-H_{weir})^{\beta_1-\beta_2}}{(0.33)^{\beta_2}} \tag{2-157}
+\]</div>
+<p>In many cases a weir can be set as the downstream boundary condition of a river. In CE-QUAL-W2, the user can specify the weir crest as the channel bottom elevation, such that the weir equation is of the form:</p>
+<div class="arithmatex">\[
+Q = \alpha_1 H^{\beta_1} \tag{2-158}
+\]</div>
+<p>where <span class="arithmatex">\(H\)</span> is the depth of the water at the weir. Setting this in the form of a stage-discharge relationship:</p>
+<div class="arithmatex">\[
+H = aQ^b = \left(\frac{Q}{\alpha_1}\right)^{1/\beta_1} \tag{2-159}
+\]</div>
+<p>Then the a and b coefficients become:</p>
+<div class="arithmatex">\[
+a = \left(\frac{1}{\alpha_1}\right)^{1/\beta_1} \tag{2-161}
+\]</div>
+<div class="arithmatex">\[
+b = \frac{1}{\beta_1} \tag{2-162}
+\]</div>
+<p>or vice versa:</p>
+<div class="arithmatex">\[
+\alpha_1 = a^{-\beta_1} \tag{2-163}
+\]</div>
+<div class="arithmatex">\[
+\beta_1 = \frac{1}{b} \tag{2-164}
+\]</div>
+<p>This allows the user to set a weir-rating curve that reproduces the stage discharge relationship at a downstream boundary.</p>
+<p>A dynamic weir or spillway crest elevation can also be used to simulate dynamic raising of flashboards. These are designated in the model as gates.</p>
+<h3 id="gates">Gates<a class="headerlink" href="#gates" title="Permanent link">&para;</a></h3>
+<p>For a gated structure or sluice gate, a more complex rating curve is required based on the opening and the head difference between the upstream and downstream condition (the spillway crest if free flow and the tailwater elevation if submerged flow).</p>
+<p>The following equation is used for freely flowing conditions:</p>
+<div class="arithmatex">\[
+Q = \alpha_1\Delta h^{\beta_1}B^{\gamma_1} \tag{2-165}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha_1\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\beta_1\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\gamma_1\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\Delta h = Z_u - Z_{sp}\)</span></li>
+<li><span class="arithmatex">\(Z_u\)</span> = upstream head</li>
+<li><span class="arithmatex">\(Z_{sp}\)</span> = spillway crest elevation</li>
+</ul>
+<p>and the following equation is used for submerged flow:</p>
+<div class="arithmatex">\[
+Q = \alpha_2\Delta h^{\beta_2}B^{\gamma_2} \tag{2-166}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha_2\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\beta_2\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\gamma_2\)</span> = empirical coefficient</li>
+<li><span class="arithmatex">\(\Delta h = Z_u - Z_d\)</span></li>
+<li><span class="arithmatex">\(Z_d\)</span> = downstream head</li>
+<li><span class="arithmatex">\(B\)</span> = gate opening, m</li>
+</ul>
+<p>In defining these parameters, the user also has to generate a time series file with the gate opening in m where a gate opening of 0 m is closed. Whenever the gate opening is equal to or greater than <span class="arithmatex">\(0.8\Delta h\)</span>, a weir equation is used with no functional dependency on the gate opening. In this case, a rating curve must be supplied when the gate acts like a weir.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Flow rate variation with gate opening.](../assets/images/part2/fig41_gate_flow.png){ width="500" }
+  <figcaption>Figure 41. Flow rate variation with gate opening.</figcaption>
+</figure>
+-->
+
+<p>In some reservoir systems, an outlet valve is connected to the reservoir and a head-discharge relationship is used based on the gate opening or number of gate turns. In this case, the outlet level is usually at a different elevation than the withdrawal elevation. The above gate formulation can still be used if no reverse flow occurs through the needle valve.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Selective withdrawal with outflow connected to a valve with a gate.](../assets/images/part2/fig42_selective_withdrawal_valve.png){ width="500" }
+  <figcaption>Figure 42. Selective withdrawal with outflow connected to a valve with a gate.</figcaption>
+</figure>
+-->
+
+<p>The user can insert weirs and/or spillways, specify connectivity to other model segments, and provide rating curve parameters for each structure. The model treats each spillway, weir, or gate as a selective withdrawal outflow and uses the selective withdrawal algorithm to determine flow from each vertical layer adjacent to the structure.</p>
+<p>Inflows from hydraulic control structures are treated as tributary inflows. The user must specify whether the inflow is placed according to density, distributed equally between all vertical layers, or distributed between a given elevation range.</p>
+<p>Weir equations are used when gates are open and the open gate does not interfere with the flow (when <span class="arithmatex">\(B \ge 0.8\Delta h\)</span>).</p>
+<p>Gates can also be used to move flows around to different parts of the model domain, including different branches. In that case the specification of gate openings is interpreted as specification of flow rates.</p>
+<h2 id="branch-momentum-exchange">Branch Momentum Exchange<a class="headerlink" href="#branch-momentum-exchange" title="Permanent link">&para;</a></h2>
+<p>Starting with CE-QUAL-W2 Version 3, CE-QUAL-W2 conserves longitudinal momentum at branch intersections. The vector component of velocity in the x-direction of the main channel, <span class="arithmatex">\(U_x\)</span>, can be computed from the channel orientations. The x-direction component is <span class="arithmatex">\(U_x = U\cos\beta\)</span> where <span class="arithmatex">\(U\)</span> is the longitudinal velocity of the tributary at the downstream segment that intersects the main branch and <span class="arithmatex">\(\beta\)</span> is the difference in the angle between the main stem and tributary segments.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Schematic of branch connection.](../assets/images/part2/fig43_branch_connection.png){ width="500" }
+  <figcaption>Figure 43. Schematic of branch connection.</figcaption>
+</figure>
+-->
+
+<p>The conservation of momentum about a control volume (the main stem segment) would result in an additional source of momentum. Lai (1986) shows that the correction to the x-momentum equation would be:</p>
+<div class="arithmatex">\[
+qBU_x \tag{2-167}
+\]</div>
+<p>where <span class="arithmatex">\(q\)</span> = lateral inflow per unit length.</p>
+<p>This arises from re-deriving the momentum equations and assuming that all the fluid entering the segment is moving at the velocity <span class="arithmatex">\(U_x\)</span>. The correction to the x-momentum equation is:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} + qBU_x \tag{2-168}
+\]</div>
+<h2 id="lateral-inflows">Lateral Inflows<a class="headerlink" href="#lateral-inflows" title="Permanent link">&para;</a></h2>
+<p>Wells (1997) proposed accounting for the cross-shear as a result of the y component of the velocity of a side branch in the computation of the vertical eddy viscosity. This was implemented by increasing the cross-shear velocity gradient. In Version 2, wind shear across the lateral axis of a segment also increased the vertical mixing by affecting the computation of <span class="arithmatex">\(A_z\)</span>. Analogous to wind shear, an additional side shear is included in the calculation of the vertical eddy viscosity:</p>
+<div class="arithmatex">\[
+A_z = \kappa\left(\frac{l^2}{2}\right)\sqrt{\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{wy}e^{-2kz}+\tau_{trib}}{\rho A_z}\right)^2}\;e^{-CRi} \tag{2-169}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\tau_{trib} \cong \rho\frac{f_i}{8}U_y^2\)</span></li>
+<li><span class="arithmatex">\(f_i\)</span> = interfacial friction factor, <span class="arithmatex">\(\approx 0.01\)</span></li>
+<li><span class="arithmatex">\(U_y = \frac{\sum Q_{in_y}}{\Delta z \Delta x}\)</span></li>
+<li><span class="arithmatex">\(\sum Q_{in_y} = [U_{br}\Delta z B] + \left[\sum Q_{trib}\right]\)</span></li>
+<li><span class="arithmatex">\(U_{br} = U_{br}\sin(\Theta_{main}-\Theta_{branch})\)</span></li>
+<li><span class="arithmatex">\(\Delta z\)</span> = inflow cell layer height</li>
+<li><span class="arithmatex">\(B\)</span> = inflow cell width</li>
+<li><span class="arithmatex">\(\Delta x\)</span> = inflow cell segment length</li>
+<li><span class="arithmatex">\(Q_{trib}\)</span> = tributary flow rate assumed to be at right angles to the main channel</li>
+</ul>
+<p>This side shear effect is only computed when the vertical mixing algorithm chosen by the user is W2 or W2N.</p>
+<h2 id="density">Density<a class="headerlink" href="#density" title="Permanent link">&para;</a></h2>
+<p>Accurate hydrodynamic calculations require accurate water densities. Water densities are affected by variations in temperature and solids concentrations given by:</p>
+<div class="arithmatex">\[
+\rho = \rho_T + \Delta\rho_S \tag{2-170}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\rho\)</span> = density, kg m⁻³</li>
+<li><span class="arithmatex">\(\rho_T\)</span> = water density as a function of temperature, kg m⁻³</li>
+<li><span class="arithmatex">\(\Delta\rho_S\)</span> = density increment due to solids, kg m⁻³</li>
+</ul>
+<p>A variety of formulations has been proposed to describe water density variations due to temperatures. The following relationship is used in the model (Gill, 1982):</p>
+<div class="arithmatex">\[
+\rho_{T_w} = 999.842594 + 6.793952 \times 10^{-2}T_w - 9.095290 \times 10^{-3}T_w^2 + 1.001685 \times 10^{-4}T_w^3 - 1.120083 \times 10^{-6}T_w^4 + 6.536332 \times 10^{-9}T_w^5 \tag{2-171}
+\]</div>
+<p>Suspended and dissolved solids also affect density. For most applications, dissolved solids are represented as total dissolved solids (TDS). For estuarine applications, specify salinity instead. The choice is controlled by the variable <strong>[WTYPE]</strong>.</p>
+<p>Density effects due to TDS are given by Ford and Johnson (1983):</p>
+<div class="arithmatex">\[
+\Delta\rho_{TDS} = (8.221 \times 10^{-4} - 3.87 \times 10^{-6}T_w + 4.99 \times 10^{-8}T_w^2)\Phi_{TDS} \tag{2-172}
+\]</div>
+<p>where <span class="arithmatex">\(\Phi_{TDS}\)</span> = total dissolved solids (TDS) concentration, g m⁻³.</p>
+<p>And for salinity (Gill, 1982):</p>
+<div class="arithmatex">\[
+\Delta\rho_{sal} = (0.824493 - 4.0899 \times 10^{-3}T_w + 7.6438 \times 10^{-5}T_w^2 - 8.2467 \times 10^{-7}T_w^3 + 5.3875 \times 10^{-9}T_w^4)\Phi_{sal} + (-5.72466 \times 10^{-3} + 1.0227 \times 10^{-4}T_w - 1.6546 \times 10^{-6}T_w^2)\Phi_{sal}^{1.5} + 4.8314 \times 10^{-4}\Phi_{sal}^2 \tag{2-173}
+\]</div>
+<p>where <span class="arithmatex">\(\Phi_{sal}\)</span> = salinity, kg m⁻³.</p>
+<p>The suspended solids effects are given by Ford and Johnson (1983):</p>
+<div class="arithmatex">\[
+\Delta\rho_{SS} = \Phi_{SS}\left(1 - \frac{1}{SG}\right) \times 10^{-3} \tag{2-174}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\Phi_{SS}\)</span> = suspended solids concentration, g m⁻³</li>
+<li><span class="arithmatex">\(SG\)</span> = specific gravity of suspended solids</li>
+</ul>
+<p>Assuming a specific gravity of 2.65, the above relationship is simplified to:</p>
+<div class="arithmatex">\[
+\Delta\rho_{SS} = 0.00062\Phi_{SS} \tag{2-175}
+\]</div>
+<p>The total effect of solids is then:</p>
+<div class="arithmatex">\[
+\Delta\rho_S = (\Delta\rho_{sal} \text{ or } \Delta\rho_{TDS}) + \Delta\rho_{SS} \tag{2-176}
+\]</div>
+<h2 id="selective-withdrawal">Selective Withdrawal<a class="headerlink" href="#selective-withdrawal" title="Permanent link">&para;</a></h2>
+<p>To model the complex outlet hydraulics in a reservoir, selective withdrawal algorithms are used (Brooks and Koh, 1969; Davis et al., 1987). These allow the computation of flow from multiple vertical layers without solving the full vertical momentum equation.</p>
+<p>Selective withdrawal is applied to all structure outflows. Layer locations and outflows at each layer are calculated based on the total outflow <strong>[QOUT]</strong>, structure type <strong>[SINKC]</strong>, elevation <strong>[ESTR]</strong>, and computed upstream density gradients. The selective withdrawal computation determines vertical withdrawal zone limits and outflows, and sums the outflows for multiple structures. All outflows (including withdrawals and hydraulic structures) use selective withdrawal theory to compute the withdrawal envelope.</p>
+<p>Outflow distribution is calculated in the subroutine SELECTIVE_WITHDRAWAL. This routine first calculates limits of withdrawal based on either a user-specified point or line sink approximation for outlet geometry <strong>[SINKC]</strong>. The empirical expression for point sink withdrawal limits is:</p>
+<div class="arithmatex">\[
+d = \left(\frac{c_{bi}Q}{N}\right)^{0.33} \tag{2-177}
+\]</div>
+<p>and for a line sink:</p>
+<div class="arithmatex">\[
+d = \left(\frac{2c_{bi}q}{N}\right)^{0.5} \tag{2-178}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(d\)</span> = withdrawal zone half height, m</li>
+<li><span class="arithmatex">\(Q\)</span> = total outflow, m³ s⁻¹</li>
+<li><span class="arithmatex">\(N\)</span> = internal buoyancy frequency, Hz, <span class="arithmatex">\(N = \sqrt{-\frac{g}{\rho}\frac{d\rho}{dz}}\)</span></li>
+<li><span class="arithmatex">\(q\)</span> = outflow per unit width, m² s⁻¹, q=Q/W where W is the outlet width of the line sink</li>
+<li><span class="arithmatex">\(c_{bi}\)</span> = boundary interference coefficient</li>
+</ul>
+<p>The point sink approximation assumes approach flow is radial both longitudinally and vertically while the line sink approximation assumes flow approaches the outlet radially in the vertical. The boundary interference coefficient is two near a physical boundary and one elsewhere.</p>
+<p>Velocities are determined using a quadratic shape function:</p>
+<div class="arithmatex">\[
+V_k = 1 - \left[\frac{(\rho_k - \rho_o)}{(\rho_l - \rho_o)}\right]^2 \tag{2-179}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(V_k\)</span> = normalized velocity in layer <span class="arithmatex">\(k\)</span></li>
+<li><span class="arithmatex">\(\rho_k\)</span> = density in layer <span class="arithmatex">\(k\)</span>, kg m⁻³</li>
+<li><span class="arithmatex">\(\rho_o\)</span> = density in the outlet layer, kg m⁻³</li>
+<li><span class="arithmatex">\(\rho_l\)</span> = density of the withdrawal limit layer, kg m⁻³</li>
+</ul>
+<p>The shape function generates a maximum velocity at the outlet level with velocities approaching zero at withdrawal limits. During non-stratified periods, outflow from top to bottom is uniform. Uniform flows also result from large outflows during periods of mild stratification. As stratification develops, withdrawal limits decrease and outflow is weighted towards the outlet elevation.</p>
+<p>Withdrawal limits can be varied by specifying a line sink and changing the effective width. Small outlet widths result in nearly uniform outflows, while large widths limit outflows to the outlet layer.</p>
+<h2 id="sediment-resuspension">Sediment Resuspension<a class="headerlink" href="#sediment-resuspension" title="Permanent link">&para;</a></h2>
+<p>This algorithm is based on work by Kang et al. (1982), where bottom shear stress is computed from wind speed, wind fetch, and depth. Wind blowing across a water surface creates wind waves with orbital motion that decays with depth. The user inputs a critical shear stress for particle detachment; if this threshold is exceeded, particles are resuspended.</p>
+<p>The approach of Kang et al. (1982) consists of the following steps:</p>
+<ol>
+<li>Computation of the wave height, <span class="arithmatex">\(H_s\)</span> in m:</li>
+</ol>
+<div class="arithmatex">\[
+H_s = \frac{W^2}{g}0.283\tanh\left[0.53\left(\frac{gH}{W^2}\right)^{0.75}\right]\tanh\left[\frac{0.0125\left(\frac{gF}{W^2}\right)^{0.42}}{\tanh\left[0.53\left(\frac{gH}{W^2}\right)^{0.75}\right]}\right] \tag{2-180}
+\]</div>
+<div class="language-text highlight"><pre><span></span><code>where $W$ is the wind velocity (m s⁻¹), $F$ is the fetch (m), $H$ is the mean depth (m).
+</code></pre></div>
+<ol>
+<li>Computation of wave period, <span class="arithmatex">\(T_s\)</span> in s:</li>
+</ol>
+<div class="arithmatex">\[
+T_s = \frac{2\pi W}{g}1.2\tanh\left[0.833\left(\frac{gH}{W^2}\right)^{0.375}\right]\tanh\left[\frac{0.077\left(\frac{gF}{W^2}\right)^{0.25}}{\tanh\left[0.833\left(\frac{gH}{W^2}\right)^{0.375}\right]}\right] \tag{2-181}
+\]</div>
+<ol>
+<li>Computation of the wavelength, <span class="arithmatex">\(L\)</span> in m, iteratively from the following equation:</li>
+</ol>
+<div class="arithmatex">\[
+L = \frac{gT_s^2}{2\pi}\tanh\left[\frac{2\pi H}{L}\right] \tag{2-182}
+\]</div>
+<ol>
+<li>Computation of the orbital velocity, <span class="arithmatex">\(\tilde{U}\)</span> in cm s⁻¹:</li>
+</ol>
+<div class="arithmatex">\[
+\tilde{U} = \frac{\pi H_s}{T_s}\frac{100}{\sinh(2\pi H/L)} \tag{2-183}
+\]</div>
+<ol>
+<li>Computation of bottom shear stress, <span class="arithmatex">\(\tau\)</span> in dynes cm⁻²:</li>
+</ol>
+<div class="arithmatex">\[
+\tau = 0.003\tilde{U}^2 \tag{2-184}
+\]</div>
+<ol>
+<li>Computation of actual bottom scour rate of suspended solids, <span class="arithmatex">\(\varepsilon\)</span> in g m⁻²:</li>
+</ol>
+<div class="arithmatex">\[
+\varepsilon = 0 \quad \tau \le \tau_c \tag{2-185}
+\]</div>
+<div class="arithmatex">\[
+\varepsilon = \frac{\alpha_o}{\tau_d^4}(\tau - \tau_c)^3 \quad \tau &gt; \tau_c \tag{2-186}
+\]</div>
+<div class="language-text highlight"><pre><span></span><code>where $\alpha_o$ is an empirical constant (0.008), $\tau_d$ = 7, and $\tau_c$ is the user-defined critical shear stress in dynes cm⁻².
+</code></pre></div>
+<p>Resuspension is assumed to occur only during the first hour after wind shear exceeds the critical shear stress. The rate of resuspension, <span class="arithmatex">\(E\)</span> in g m⁻² hr⁻¹, is:</p>
+<div class="arithmatex">\[
+E = \frac{\varepsilon}{1hr}
+\]</div>
+<p>for the first hour and zero thereafter. The resulting concentration of suspended solids in the water column, <span class="arithmatex">\(c\)</span> in mg/L, if distributed evenly over the entire volume is:</p>
+<div class="arithmatex">\[
+c = \frac{10000\varepsilon A_{bottom}}{V} = \frac{10000\varepsilon}{H}
+\]</div>
+<p>where <span class="arithmatex">\(A_{bottom}\)</span> is the surface area of the bottom and <span class="arithmatex">\(V\)</span> is the volume of the water column above the bottom (=<span class="arithmatex">\(HA_{bottom}\)</span>). Chapra (1997) also uses this approach and provides an example calculation.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01_introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03_particle_tracking/" class="md-footer__link md-footer__link--next" aria-label="Next: Particle Tracking">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Particle Tracking
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      U.S. Army Engineer Research and Development Center (ERDC)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/CE-QUAL-W2-ERDC" target="_blank" rel="noopener" title="CE-QUAL-W2-ERDC on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

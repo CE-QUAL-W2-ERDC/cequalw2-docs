@@ -1,0 +1,2823 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation">
+      
+      
+        <meta name="author" content="Environmental Modeling Team, U.S. Army Engineer Research and Development Center">
+      
+      
+        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/part2/05_numerical_solution/">
+      
+      
+        <link rel="prev" href="../04_temperature_and_water_quality_modeling/">
+      
+      
+        <link rel="next" href="../06_references/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Numerical Solution - CE-QUAL-W2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#numerical-solution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-header__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CE-QUAL-W2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Numerical Solution
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 1: Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 2: Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 3: Input/Output Files
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 4: Model Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../release-notes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-nav__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CE-QUAL-W2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1: Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/00_preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to CE-QUAL-W2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/02_capabilities_and_limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities and Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/03_data_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Data Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/04_model_download_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Download Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/05_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/06_setting_up_and_running_a_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up and Running a Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/07_batch_processing_and_command_line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Processing and Command Line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/08_including_relative_directory_paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative Directory Paths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/09_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/10_appendix_a_contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Contributors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/11_appendix_b_publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2: Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2: Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_hydrodynamics_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydrodynamics Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_particle_tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Particle Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_temperature_and_water_quality_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Temperature and Water Quality Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Solution
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-the-finite-difference-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Finite Difference Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hydrodynamic-equations-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamic Equations Numerical Solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydrodynamic Equations Numerical Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristics-of-the-hydrodynamics-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Hydrodynamics Numerical Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-water-surface-numerical-solution-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-Water Surface Numerical Solution for η
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-momentum-numerical-solution-for-horizontal-velocity-u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horizontal Momentum Numerical Solution for Horizontal Velocity U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-of-vertical-velocity-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution of Vertical Velocity W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numerical-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advective-diffusion-equation-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advective-Diffusion Equation Numerical Solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advective-Diffusion Equation Numerical Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristics-of-the-constituent-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Constituent Numerical Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-of-the-advective-diffusion-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution of the Advective-Diffusion Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advective-transport-in-x-and-z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advective Transport in x and z
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-uniform-grid-quickest-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Uniform Grid QUICKEST Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultimatequickest-numerical-transport-solution-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ULTIMATE/QUICKEST Numerical Transport Solution Scheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-implicit-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Implicit Transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3: Input/Output Files
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3: Input/Output Files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4: Model Examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4: Model Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../release-notes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2026.02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERDC 2026.02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/version-lineage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#characteristics-of-the-finite-difference-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Finite Difference Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hydrodynamic-equations-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamic Equations Numerical Solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydrodynamic Equations Numerical Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristics-of-the-hydrodynamics-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Hydrodynamics Numerical Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-water-surface-numerical-solution-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-Water Surface Numerical Solution for η
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-momentum-numerical-solution-for-horizontal-velocity-u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Horizontal Momentum Numerical Solution for Horizontal Velocity U
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-of-vertical-velocity-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution of Vertical Velocity W
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numerical-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advective-diffusion-equation-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advective-Diffusion Equation Numerical Solution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advective-Diffusion Equation Numerical Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#characteristics-of-the-constituent-numerical-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Characteristics of the Constituent Numerical Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-of-the-advective-diffusion-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution of the Advective-Diffusion Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advective-transport-in-x-and-z" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advective Transport in x and z
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-uniform-grid-quickest-formulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Uniform Grid QUICKEST Formulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultimatequickest-numerical-transport-solution-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ULTIMATE/QUICKEST Numerical Transport Solution Scheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-implicit-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vertical Implicit Transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="numerical-solution">Numerical Solution<a class="headerlink" href="#numerical-solution" title="Permanent link">&para;</a></h1>
+<h2 id="characteristics-of-the-finite-difference-scheme">Characteristics of the Finite Difference Scheme<a class="headerlink" href="#characteristics-of-the-finite-difference-scheme" title="Permanent link">&para;</a></h2>
+<p>The solution of the governing equations in CE-QUAL-W2 is based on a finite difference numerical approach using variables defined in Figure 122 for no channel slope or Figure 123 for arbitrary channel slope. The finite difference solution has the following characteristics:</p>
+<ul>
+<li>Space-staggered grid</li>
+<li>Conservative formulation</li>
+<li>Regular, structured, Cartesian grid with variable cell length Δx and cell thickness Δz</li>
+<li>Δt for stability requirement computed internally and updated for each time step</li>
+</ul>
+<p>This section outlines the numerical approach for the hydrodynamic equations (solution of <span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(W\)</span>, and η) and advective-diffusion equations (<span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(C\)</span> or Φ). Abbreviations used throughout this section include: finite difference approximation (FDA), left-hand side (LHS), right-hand side (RHS), and partial differential equation (PDE).</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Computational grid variable definitions for no channel slope](../assets/images/part2/fig122_grid_no_slope.png){ width="600" }
+  <figcaption>Figure 122. Computational grid variable definitions for no channel slope.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Computational grid variable definitions for arbitrary channel slope](../assets/images/part2/fig123_grid_slope.png){ width="600" }
+  <figcaption>Figure 123. Computational grid variable definitions for arbitrary channel slope.</figcaption>
+</figure>
+-->
+
+<h2 id="hydrodynamic-equations-numerical-solution">Hydrodynamic Equations Numerical Solution<a class="headerlink" href="#hydrodynamic-equations-numerical-solution" title="Permanent link">&para;</a></h2>
+<h3 id="characteristics-of-the-hydrodynamics-numerical-solution">Characteristics of the Hydrodynamics Numerical Solution<a class="headerlink" href="#characteristics-of-the-hydrodynamics-numerical-solution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Horizontal velocities and water levels are not solved simultaneously; water levels are solved first followed by velocities.</li>
+<li>Branch hydrodynamics are solved sequentially rather than simultaneously. This can cause instabilities if Δt is too large, and the time step may need to be manually reduced.</li>
+<li>The water surface solution is solved implicitly using central spatial differences, and the resulting simultaneous equations are solved using the Thomas algorithm.</li>
+<li>The horizontal momentum equation is solved explicitly using upwind (or backward) spatial differencing for the advection terms and central spatial differences for all other terms.</li>
+<li>The continuity equation is used to solve for vertical velocities using a central difference explicit solution.</li>
+<li>The order of the solution is as follows:<ol>
+<li>Solve the water surface equation for η at time level <span class="arithmatex">\(n+1\)</span> (<span class="arithmatex">\(n\)</span> is the current time level).</li>
+<li>Compute <span class="arithmatex">\(U\)</span> at <span class="arithmatex">\(n+1\)</span> using the momentum equation.</li>
+<li>Compute <span class="arithmatex">\(W\)</span> at <span class="arithmatex">\(n+1\)</span> using the continuity equation.</li>
+</ol>
+</li>
+</ul>
+<h3 id="free-water-surface-numerical-solution-for">Free-Water Surface Numerical Solution for η<a class="headerlink" href="#free-water-surface-numerical-solution-for" title="Permanent link">&para;</a></h3>
+<p>The free surface equation:</p>
+<div class="arithmatex">\[
+B_\eta \frac{\partial \eta}{\partial t} = \frac{\partial}{\partial x} \int_\eta^h UB \, dz - \int_\eta^h qB \, dz \tag{5-1}
+\]</div>
+<p>is solved by substituting the momentum equation:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} + qBU_x \tag{5-2}
+\]</div>
+<p>in finite difference form and then simplifying. The finite difference form of the momentum equation is:</p>
+<div class="arithmatex">\[
+UB_i^{n+1} = UB_i^n + \Delta t \left[ -\frac{\partial UUB}{\partial x} - \frac{\partial WUB}{\partial z} + gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} + qBU_x \right]_i^n \tag{5-3}
+\]</div>
+<p>Defining for simplicity the term <span class="arithmatex">\(F\)</span> as:</p>
+<div class="arithmatex">\[
+F = -\frac{\partial UUB}{\partial x} - \frac{\partial WUB}{\partial z} + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} \tag{5-4}
+\]</div>
+<p>and substituting in for <span class="arithmatex">\(\tau_{xx}\)</span>, <span class="arithmatex">\(F\)</span> becomes:</p>
+<div class="arithmatex">\[
+F = -\frac{\partial UUB}{\partial x} - \frac{\partial WUB}{\partial z} + \frac{\partial \left(BA_x \frac{\partial U}{\partial x}\right)}{\partial x} \tag{5-5}
+\]</div>
+<p>Substituting the term <span class="arithmatex">\(UB_i^{n+1}\)</span> in the free surface equation for <span class="arithmatex">\(UB\)</span>, the free surface equation becomes:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+B_\eta \frac{\partial \eta}{\partial t} &amp;= \frac{\partial}{\partial x} \int_\eta^h UB_i^n \, dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h F^n \, dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h gB\sin\alpha \, dz \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \int_\eta^h g\cos\alpha B \frac{\partial \eta}{\partial x} \bigg|^n dz - \Delta t \frac{\partial}{\partial x} \int_\eta^h \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \bigg|^n dz \, dz \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \int_\eta^h \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} \bigg|^n dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h qBU_x^n \, dz - \int_\eta^h q^n B \, dz
+\end{aligned} \tag{5-6}
+\]</div>
+<p>Some of these terms can be simplified as follows:</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h gB \sin\alpha \, dz = g \sin\alpha \frac{\partial}{\partial x} \int_\eta^h B \, dz \tag{5-7}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h g\cos\alpha \, B \frac{\partial \eta}{\partial x} \, dz = g\cos\alpha \frac{\partial}{\partial x} \left( \frac{\partial \eta}{\partial x} \int_\eta^h B \, dz \right) \tag{5-8}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz \, dz = \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \int_\eta^z \frac{\partial \rho}{\partial x} \, dz \, dz \tag{5-9}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} \, dz = \frac{1}{\rho} \frac{\partial}{\partial x} \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right) \tag{5-10}
+\]</div>
+<p>Then substituting these into the equation:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+B_\eta \frac{\partial \eta}{\partial t} &amp;= \frac{\partial}{\partial x} \int_\eta^h UB_i^n \, dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h F^n \, dz + \Delta t g \sin\alpha \frac{\partial}{\partial x} \int_\eta^h B \, dz \\
+&amp;+ \Delta t g \cos\alpha \frac{\partial}{\partial x} \left( \frac{\partial \eta}{\partial x} \bigg|^n \int_\eta^h B \, dz \right) - \Delta t \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \int_\eta^z \frac{\partial \rho}{\partial x} \bigg|^n dz \, dz \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \frac{1}{\rho} \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)^n + \Delta t \frac{\partial}{\partial x} \int_\eta^h qBU_x^n \, dz - \int_\eta^h q^n B \, dz
+\end{aligned} \tag{5-11}
+\]</div>
+<p>All terms with η are grouped on the left-hand side (LHS) such that:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+B_\eta \frac{\partial \eta}{\partial t} - \Delta t g \cos\alpha \frac{\partial}{\partial x} \left( \frac{\partial \eta}{\partial x} \int_\eta^h B \, dz \right) &amp;= \frac{\partial}{\partial x} \int_\eta^h UB_i^n \, dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h F^n \, dz \\
+&amp;+ \Delta t g \sin\alpha \frac{\partial}{\partial x} \int_\eta^h B \, dz \\
+&amp;- \Delta t \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \int_\eta^z \frac{\partial \rho}{\partial x} \bigg|^n dz \, dz \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \frac{1}{\rho} \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)^n \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \int_\eta^h qBU_x^n \, dz - \int_\eta^h q^n B \, dz
+\end{aligned} \tag{5-12}
+\]</div>
+<p>The first term on the LHS can be put into a backward finite difference form as:</p>
+<div class="arithmatex">\[
+B_\eta \frac{\partial \eta}{\partial t} \approx B_\eta \frac{\eta_i^n - \eta_i^{n-1}}{\Delta t} \tag{5-13}
+\]</div>
+<p>The second term, <span class="arithmatex">\(-\Delta t g \cos\alpha \frac{\partial}{\partial x}\left(\frac{\partial \eta}{\partial x} \int_\eta^h B \, dz\right)^n\)</span>, can be simplified using the chain rule for partial differential equations to:</p>
+<div class="arithmatex">\[
+-\Delta t g \cos\alpha \frac{\partial \eta}{\partial x}\bigg|^n \frac{\partial}{\partial x} \int_\eta^h B \, dz - \Delta t g \cos\alpha \int_\eta^h B \, dz \frac{\partial^2 \eta}{\partial x^2}\bigg|^n \tag{5-14}
+\]</div>
+<p>Then using a second-order central difference for the second derivative and a first-order backward difference for the first derivative such that:</p>
+<div class="arithmatex">\[
+-\Delta t g \cos\alpha \frac{\eta_i^n - \eta_{i-1}^n}{\Delta x} \frac{\partial}{\partial x} \int_\eta^h B \, dz - \Delta t g \cos\alpha \int_\eta^h B \, dz \frac{\eta_{i+1}^n - 2\eta_i^n + \eta_{i-1}^n}{\Delta x^2} \tag{5-15}
+\]</div>
+<p>Also using a backward difference:</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h B \, dz = \frac{1}{\Delta x} \left( \int_\eta^h B \, dz \bigg|_i - \int_\eta^h B \, dz \bigg|_{i-1} \right)^n \tag{5-16}
+\]</div>
+<p>Grouping and collecting terms and multiplying through by <span class="arithmatex">\(\Delta t \Delta x\)</span>, the LHS becomes after simplification:</p>
+<div class="arithmatex">\[
+\eta_{i-1}^n \left[ \frac{-g\cos\alpha \Delta t^2}{\Delta x} \int_\eta^h B \, dz \bigg|_{i-1} \right] + \eta_i^n \left[ B_\eta \Delta x + \frac{g\cos\alpha \Delta t^2}{\Delta x} \left\{ \int_\eta^h B \, dz \bigg|_i + \int_\eta^h B \, dz \bigg|_{i-1} \right\} \right] + \eta_{i+1}^n \left[ \frac{-g\cos\alpha \Delta t^2}{\Delta x} \int_\eta^h B \, dz \bigg|_i \right] = (RHS)_i^n \Delta x \Delta t + B_\eta \eta_i^{n-1} \Delta x \tag{5-17}
+\]</div>
+<p>where the RHS is defined as:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+RHS &amp;= \frac{\partial}{\partial x} \int_\eta^h UB_i^n \, dz + \Delta t \frac{\partial}{\partial x} \int_\eta^h F \, dz + \Delta t g \sin\alpha \frac{\partial}{\partial x} \int_\eta^h B \, dz \\
+&amp;- \Delta t \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \int_\eta^z \frac{\partial \rho}{\partial x} \, dz \, dz + \Delta t \frac{\partial}{\partial x} \frac{1}{\rho} \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right) \\
+&amp;+ \Delta t \frac{\partial}{\partial x} \int_\eta^h qBU_x \, dz - \int_\eta^h qB \, dz
+\end{aligned} \tag{5-18}
+\]</div>
+<p>and is evaluated at time level <span class="arithmatex">\(n\)</span>.</p>
+<p>The integral of the cell widths can be put into a summation over the vertical layers as:</p>
+<div class="arithmatex">\[
+\int_\eta^h B \, dz \bigg|_i = \sum_{kb}^{kt} BH_{ri} \tag{5-19}
+\]</div>
+<div class="arithmatex">\[
+\int_\eta^h B \, dz \bigg|_{i-1} = \sum_{kb}^{kt} BH_{ri-1} \tag{5-20}
+\]</div>
+<p>where <span class="arithmatex">\(BH_r\)</span> is the value of the width times the layer depth for the right-hand side of a cell. In the code, this is the variable <code>BR(I,K)</code> times <code>H(K)</code>, or the derived variable <code>BHR(I,K)</code>.</p>
+<p>Some of the right-hand side terms can be put into a format compatible with the model schematization such as:</p>
+<div class="arithmatex">\[
+\frac{\partial}{\partial x} \int_\eta^h (UB)_i^n \, dz \approx \frac{\partial}{\partial x} \sum_{kt}^{kb} UBH_r \approx \frac{1}{\Delta x} \sum_{kt}^{kb} (UBH_r|_i - UBH_r|_{i-1})^n \tag{5-21}
+\]</div>
+<div class="arithmatex">\[
+\Delta t \frac{\partial}{\partial x} \int_\eta^h F^n \, dz \approx \Delta t \frac{\partial}{\partial x} \sum_{kt}^{kb} FH_r \approx \frac{\Delta t}{\Delta x} \sum_{kt}^{kb} (FH_r|_i - FH_r|_{i-1})^n \tag{5-22}
+\]</div>
+<div class="arithmatex">\[
+\Delta t g \sin\alpha \frac{\partial}{\partial x} \int_\eta^h B \, dz \approx \frac{\Delta t g \sin\alpha}{\Delta x} \sum_{kt}^{kb} (BH_r|_i - BH_r|_{i-1}) \tag{5-23}
+\]</div>
+<div class="arithmatex">\[
+\Delta t \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \int_\eta^z \frac{\partial \rho}{\partial x} \, dz \, dz \approx \Delta t \frac{g\cos\alpha}{\rho} \frac{\partial}{\partial x} \int_\eta^h B \sum_{kt}^{kb} \frac{\partial \rho}{\partial x} H_r \, dz \approx \Delta t \frac{g\cos\alpha}{\rho \Delta x} \sum_{kt}^{kb} \frac{\partial \rho}{\partial x} H_r \sum_{kt}^{kb} (BH_r|_i - BH_r|_{i-1}) \tag{5-24}
+\]</div>
+<div class="arithmatex">\[
+\Delta t \frac{\partial}{\partial x} \frac{1}{\rho} \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right) \approx \frac{\Delta t}{\rho \Delta x} \left\{ \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_i - \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_{i-1} \right\} \tag{5-25}
+\]</div>
+<p>The lateral inflow of momentum term represents the gradient over <span class="arithmatex">\(x\)</span> of the inflow momentum:</p>
+<div class="arithmatex">\[
+\Delta t \frac{\partial}{\partial x} \int_\eta^h q \, BU_x \, dz \approx \Delta t \frac{\partial}{\partial x} \sum_{kt}^{kb} qU_x BH_r \tag{5-26}
+\]</div>
+<div class="arithmatex">\[
+\int_\eta^h qB \, dz \approx \sum_{kt}^{kb} qBH_r \tag{5-27}
+\]</div>
+<h4 id="tridiagonal-system-for">Tridiagonal System for η<a class="headerlink" href="#tridiagonal-system-for" title="Permanent link">&para;</a></h4>
+<p>Combining these terms into one equation:</p>
+<div class="arithmatex">\[
+A \eta_{i-1}^n + X \eta_i^n + C \eta_{i+1}^n = D \tag{5-28}
+\]</div>
+<p>where:</p>
+<div class="arithmatex">\[
+A = \left[ \frac{-g\cos\alpha \, \Delta t^2}{\Delta x} \sum_{kt}^{kb} BH_r \bigg|_{i-1} \right]
+\]</div>
+<div class="arithmatex">\[
+X = \left[ B_\eta \Delta x + \frac{g\cos\alpha \, \Delta t^2}{\Delta x} \left\{ \sum_{kt}^{kb} BH_r \bigg|_i + \sum_{kt}^{kb} BH_r \bigg|_{i-1} \right\} \right]
+\]</div>
+<div class="arithmatex">\[
+C = \left[ \frac{-g\cos\alpha \, \Delta t^2}{\Delta x} \sum_{kt}^{kb} BH_r \bigg|_i \right]
+\]</div>
+<div class="arithmatex">\[
+D = \Delta t \sum_{kt}^{kb} (UBH_r|_i - UBH_r|_{i-1}) + B_\eta \eta_i^{n-1} \Delta x + \Delta t^2 \sum_{kt}^{kb} (FH_r|_i - FH_r|_{i-1})
+\]</div>
+<div class="arithmatex">\[
++ \Delta t^2 g \sin\alpha \sum_{kt}^{kb} (BH_r|_i - BH_r|_{i-1}) + \Delta t^2 \frac{g\cos\alpha}{\rho} \sum_{kt}^{kb} (BH_r|_i - BH_r|_{i-1}) \sum_{kt}^{kb} \frac{\partial \rho}{\partial x} H_r
+\]</div>
+<div class="arithmatex">\[
++ \Delta x \Delta t \sum_{kt}^{kb} qBH_r + \Delta x \Delta t^2 \frac{\partial}{\partial x} \sum_{kt}^{kb} qU_x BH_r + \frac{\Delta t^2}{\rho} \left[ \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_i - \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_{i-1} \right]
+\]</div>
+<p>This equation is applied at all cells in the branch, generating a system of equations that are solved for the water surface elevation at the <span class="arithmatex">\(n+1\)</span> time level using the Thomas algorithm. The resulting FDA is implicit in η because of the dependence of η in the momentum equation.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Solution of the water level eta](../assets/images/part2/fig124_eta_solution.png){ width="500" }
+  <figcaption>Figure 124. Solution of the water level, η.</figcaption>
+</figure>
+-->
+
+<p>The boundary conditions of either flow or head boundary are accounted for in applying the above equation to the boundary cells as shown in Figure 125 and Figure 126, respectively. The boundary condition implementation is the same as described in Cole and Buchak (1995).</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Grid for computation of a flow boundary in x](../assets/images/part2/fig125_flow_boundary_eta.png){ width="500" }
+  <figcaption>Figure 125. Grid for computation of a flow boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the flow rate.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Grid for computation of a head boundary in x](../assets/images/part2/fig126_head_boundary_eta.png){ width="500" }
+  <figcaption>Figure 126. Grid for computation of a head boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the head difference between the boundary head (at center of inactive segment 1) and the head at the first grid cell (segment 2).</figcaption>
+</figure>
+-->
+
+<h3 id="horizontal-momentum-numerical-solution-for-horizontal-velocity-u">Horizontal Momentum Numerical Solution for Horizontal Velocity U<a class="headerlink" href="#horizontal-momentum-numerical-solution-for-horizontal-velocity-u" title="Permanent link">&para;</a></h3>
+<p>The x-momentum equation:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} + qBU_x \tag{5-29}
+\]</div>
+<p>is solved using either a fully explicit or an explicit/implicit finite difference solution technique specified by the user after the water surface equation is solved.</p>
+<h4 id="explicit-solution">Explicit Solution<a class="headerlink" href="#explicit-solution" title="Permanent link">&para;</a></h4>
+<p>This scheme solves the partial differential terms using an explicit finite difference technique where:</p>
+<div class="arithmatex">\[
+U_i^{n+1} B_i^{n+1} = U_i^n B_i^n + \Delta t \left\{ -\frac{\partial UUB}{\partial x} - \frac{\partial WUB}{\partial z} + gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} + qBU_x \right\}_i^n \tag{5-30}
+\]</div>
+<p>The various terms are put into finite difference form as follows. The longitudinal advection of momentum is an upwind difference scheme where the order of differencing depends on the sign of <span class="arithmatex">\(U\)</span>, e.g., for <span class="arithmatex">\(U &gt; 0\)</span>:</p>
+<div class="arithmatex">\[
+\frac{\partial UUB}{\partial x}\bigg|_{i,k} \cong \frac{1}{\Delta x_i} \left[ B_{i,k}^n U_{i,k}^n U_{i,k}^n - B_{i-1,k}^n U_{i-1,k}^n U_{i-1,k}^n \right] \tag{5-31}
+\]</div>
+<p>The vertical advection of momentum is also an upwind scheme based on the velocity of <span class="arithmatex">\(W\)</span>. For <span class="arithmatex">\(W &gt; 0\)</span> or downward flow:</p>
+<div class="arithmatex">\[
+\frac{\partial WUB}{\partial z}\bigg|_{i,k} \cong \frac{1}{\Delta z_k} \left[ \left( W_{i,k}^n U_{i,k}^n B_{i,k}^n \right) - \left( W_{i,k-1}^n U_{i,k-1}^n B_{i,k-1}^n \right) \right] \tag{5-32}
+\]</div>
+<p>The gravity force is:</p>
+<div class="arithmatex">\[
+gB\sin\alpha = g\sin\alpha \, B_i^n \tag{5-33}
+\]</div>
+<p>The pressure gradient is:</p>
+<div class="arithmatex">\[
+g\cos\alpha \, B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz = \frac{g\cos\alpha B_i^n}{\Delta x} (\eta_{i+1} - \eta_i)^n - \frac{g\cos\alpha B_i^n}{\rho \Delta x} \sum \left( \rho_{i+1,k} - \rho_{i,k} \right)^n \Delta z_k \tag{5-34}
+\]</div>
+<p>The horizontal advection of turbulent momentum is:</p>
+<div class="arithmatex">\[
+\frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} = \frac{\partial BA_x \frac{\partial U}{\partial x}}{\partial x} = \left( \frac{B_{i+1/2}^n A_x}{\Delta x_i \Delta x_{i+1/2}} \right) \left( U_{i+1,k}^n - U_{i,k}^n \right) - \left( \frac{B_{i-1/2}^n A_x}{\Delta x_i \Delta x_{i-1/2}} \right) \left( U_{i,k}^n - U_{i-1,k}^n \right) \tag{5-35}
+\]</div>
+<p>The contribution to longitudinal momentum by lateral branch inflows is:</p>
+<div class="arithmatex">\[
+qBU_x = qBU_x \big|_{i,k}^n \tag{5-36}
+\]</div>
+<p>Using the definition of the shear stress:</p>
+<div class="arithmatex">\[
+\tau_{xz} = \left[ \tau_w + \tau_b + \rho A_z \frac{\partial U}{\partial z} \right] \tag{5-37}
+\]</div>
+<p>where <span class="arithmatex">\(A_z\)</span> is the turbulent kinematic viscosity, the vertical transport of momentum is:</p>
+<div class="arithmatex">\[
+\frac{1}{\rho} \frac{\partial B\tau_{xz}}{\partial z} = \frac{\partial}{\partial z} \frac{B}{\rho} \left[ \tau_w + \tau_b + \rho A_z \frac{\partial U}{\partial z} \right] = \left( \frac{B_{i,k+1/2}^n}{\Delta z_k \Delta z_{k+1/2} \rho} \right) \left[ \tau_w|_{i,k+1/2}^n + \tau_b|_{i,k+1/2}^n + \frac{\rho A_z \bigg|_{i,k+1/2}}{\Delta z_{k+1/2}} \left( U_{i,k+1}^n - U_{i,k}^n \right) \right] - \left( \frac{B_{i,k-1/2}^n}{\Delta z_k \Delta z_{k-1/2} \rho} \right) \left[ \tau_w|_{i,k-1/2}^n + \tau_b|_{i,k-1/2}^n + \frac{\rho A_z \bigg|_{i,k-1/2}}{\Delta z_{k-1/2}} \left( U_{i,k}^n - U_{i,k-1}^n \right) \right] \tag{5-38}
+\]</div>
+<h4 id="implicit-solution">Implicit Solution<a class="headerlink" href="#implicit-solution" title="Permanent link">&para;</a></h4>
+<p>The implicit technique was utilized to reduce the time step limitation for numerical stability when values of <span class="arithmatex">\(A_z\)</span> were large, as for an estuary or a river system. This occurs because the time step limitation is a function of <span class="arithmatex">\(A_z\)</span>. Only the vertical transport of momentum term was solved implicitly. All other terms for the solution of the horizontal momentum equation were the same as the explicit scheme.</p>
+<p>The horizontal momentum equation can be separated into the following two equations:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B(\tau_b + \tau_w)}{\partial z} + qBU_x \tag{5-39}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} = \frac{1}{\rho} \frac{\partial}{\partial z} \left( BA_z \frac{\partial U}{\partial z} \right) \tag{5-40}
+\]</div>
+<p>Equation 5-39 is written as:</p>
+<div class="arithmatex">\[
+U_i^* B_i^{n+1} = U_i^n B_i^n + \Delta t \left\{ -\frac{\partial UUB}{\partial x} - \frac{\partial WUB}{\partial z} + gB\sin\alpha + g\cos\alpha B \frac{\partial \eta}{\partial x} - \frac{g\cos\alpha B}{\rho} \int_\eta^z \frac{\partial \rho}{\partial x} \, dz + \frac{1}{\rho} \frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho} \frac{\partial B(\tau_b + \tau_w)}{\partial z} + qBU_x \right\}_i^n \tag{5-41}
+\]</div>
+<p>where <span class="arithmatex">\(U^*\)</span> is the velocity at the new time level before the application of Equation 5-40. Equation 5-39 is solved similarly to the solution of the fully explicit technique outlined above.</p>
+<p>Equation 5-40 is then solved using a fully implicit technique as:</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial t} = \frac{(U_i^{n+1}B_i^{n+1} - U_i^*B_i^{n+1})}{\Delta t} = \frac{1}{\rho} \frac{\partial}{\partial z} \left( \rho B^{n+1} A_z \frac{\partial U^{n+1}}{\partial z} \right) \tag{5-42}
+\]</div>
+<p>This can be rewritten as:</p>
+<div class="arithmatex">\[
+U_i^{n+1} B_i^{n+1} = U_i^* B_i^{n+1} + \left( \frac{\Delta t B_{i,k+1/2}^{n+1}}{\Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k+1/2}}{\Delta z_{k+1/2}} \left( U_{i,k+1}^{n+1} - U_{i,k}^{n+1} \right) \right] - \left( \frac{\Delta t B_{i,k-1/2}^{n+1}}{\Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k-1/2}}{\Delta z_{k-1/2}} \left( U_{i,k}^{n+1} - U_{i,k-1}^{n+1} \right) \right] \tag{5-43}
+\]</div>
+<p>Regrouping terms at <span class="arithmatex">\(n+1\)</span> time level on the LHS, the equation can be written as:</p>
+<div class="arithmatex">\[
+A U_{i,k-1}^{n+1} + V U_{i,k}^{n+1} + C U_{i,k+1}^{n+1} = D U_{i,k}^* \tag{5-44}
+\]</div>
+<p>where:</p>
+<div class="arithmatex">\[
+A = \left( \frac{-\Delta t B_{i,k-1/2}^{n+1}}{B_{i,k}^{n+1} \Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k-1/2}}{\Delta z_{k-1/2}} \right]
+\]</div>
+<div class="arithmatex">\[
+V = 1 + \left( \frac{\Delta t B_{i,k+1/2}^{n+1}}{B_{i,k}^{n+1} \Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k+1/2}}{\Delta z_{k+1/2}} \right] + \left( \frac{\Delta t B_{i,k-1/2}^{n+1}}{B_{i,k}^{n+1} \Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k-1/2}}{\Delta z_{k-1/2}} \right]
+\]</div>
+<div class="arithmatex">\[
+C = \left( \frac{-\Delta t B_{i,k+1/2}^{n+1}}{B_{i,k}^{n+1} \Delta z_k} \right) \left[ \frac{A_z \bigg|_{i,k+1/2}}{\Delta z_{k+1/2}} \right]
+\]</div>
+<div class="arithmatex">\[
+D = 1
+\]</div>
+<p>The resulting simultaneous equations are solved for <span class="arithmatex">\(U^{n+1}\)</span> using the Thomas algorithm.</p>
+<p>The resulting horizontal velocities are then corrected to preserve branch continuity (or more correctly to "force" continuity). The lack of a continuity balance is a result of numerical errors in the solution of the FDAs for <span class="arithmatex">\(\eta^n\)</span> and <span class="arithmatex">\(U^{n+1}\)</span>. Cole and Buchak (1995) discuss the algorithm to correct horizontal velocities from continuity.</p>
+<p>The correction is calculated segment by segment: the change in the water layers over time should equal the net flow into the segment by horizontal velocities. The change or correction in velocity is apportioned equally to the horizontal velocity of all vertical layers. Other numerical models iterate by re-solving the water surface equation after updated horizontal and vertical velocities are computed, which results in significant computational time but a more correct solution.</p>
+<h4 id="boundary-conditions">Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permanent link">&para;</a></h4>
+<p>The solution of the horizontal momentum equation can either accept a flow boundary condition (as shown in Figure 127) or a head or water level condition (as shown in Figure 128). For the flow boundary condition, the velocities at the flow boundary are specified based on the flow rates provided by the user. For the head condition, the model user sets the head or water level as a function of time.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Flow boundary condition where velocities are specified on a boundary](../assets/images/part2/fig127_flow_boundary_U.png){ width="500" }
+  <figcaption>Figure 127. Flow boundary condition where velocities are specified on a boundary.</figcaption>
+</figure>
+-->
+
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Head boundary condition for solution of momentum equation](../assets/images/part2/fig128_head_boundary_U.png){ width="500" }
+  <figcaption>Figure 128. Head boundary condition for solution of momentum equation.</figcaption>
+</figure>
+-->
+
+<h3 id="solution-of-vertical-velocity-w">Solution of Vertical Velocity W<a class="headerlink" href="#solution-of-vertical-velocity-w" title="Permanent link">&para;</a></h3>
+<p>The continuity equation</p>
+<div class="arithmatex">\[
+\frac{\partial UB}{\partial x} + \frac{\partial WB}{\partial z} = qB
+\]</div>
+<p>is used to solve for <span class="arithmatex">\(W\)</span> after discretizing into finite differences as:</p>
+<div class="arithmatex">\[
+\frac{WB_{i,k} - WB_{i,k-1}}{\Delta z_k} = -\left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x_i} \right) + q_{i,k} B_{i,k} \tag{5-45}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Solution of vertical velocity W from continuity equation](../assets/images/part2/fig129_w_solution.png){ width="400" }
+  <figcaption>Figure 129. Solution of vertical velocity, W, from continuity equation.</figcaption>
+</figure>
+-->
+
+<p>The algorithm starts at the bottom cell using corrected horizontal velocities and where <span class="arithmatex">\(WB_{k=0} = 0\)</span> such that:</p>
+<div class="arithmatex">\[
+WB_{i,k-1} = -WB_{i,k} + \Delta z_k \left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x_i} \right) - \Delta z_k q_{i,k} B_{i,k}
+\]</div>
+<h3 id="numerical-stability">Numerical Stability<a class="headerlink" href="#numerical-stability" title="Permanent link">&para;</a></h3>
+<p>The numerical stability criterion is based on the following equation that only considers momentum equation stability:</p>
+<div class="arithmatex">\[
+\Delta t \leq \frac{1}{2\left(\frac{A_x}{\Delta x^2} + \frac{A_z}{\Delta z^2}\right) + \frac{Q}{V} + \frac{\sqrt{\frac{\Delta\rho}{\rho} gH}}{2\Delta x}} \tag{5-46}
+\]</div>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Delta t\)</span></td>
+<td>time step</td>
+<td>s</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A_x\)</span></td>
+<td>longitudinal eddy viscosity</td>
+<td>m² s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(A_z\)</span></td>
+<td>vertical eddy viscosity</td>
+<td>m² s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Q\)</span></td>
+<td>total flow into or out of a cell</td>
+<td>m³ s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(V\)</span></td>
+<td>cell volume</td>
+<td>m³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(g\)</span></td>
+<td>gravitational acceleration</td>
+<td>m s⁻²</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(H\)</span></td>
+<td>maximum waterbody depth</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\rho\)</span></td>
+<td>water density</td>
+<td>kg m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Delta\rho\)</span></td>
+<td>surface to bottom water density difference</td>
+<td>kg m⁻³</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This criterion does NOT guarantee numerical stability since it is based on a linearized form of the PDEs. There is no check on stability for the advective-diffusion equation since it is usually not limiting. However, the advective-diffusion equation can also become unstable.</p>
+</div>
+<h2 id="advective-diffusion-equation-numerical-solution">Advective-Diffusion Equation Numerical Solution<a class="headerlink" href="#advective-diffusion-equation-numerical-solution" title="Permanent link">&para;</a></h2>
+<h3 id="characteristics-of-the-constituent-numerical-solution">Characteristics of the Constituent Numerical Solution<a class="headerlink" href="#characteristics-of-the-constituent-numerical-solution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The advective-diffusion equation is solved by splitting the solution between horizontal and vertical transport.</li>
+<li>The horizontal transport is solved explicitly where QUICKEST (Quadratic Upstream Interpolation for Convective Kinematics with Estimated Streaming Terms, a third-order numerical scheme, Leonard, 1979) is used for horizontal explicit transport, and central differences are used for diffusion.</li>
+<li>Vertical transport is solved using an implicit/explicit general time-weighted scheme for advection and a fully implicit scheme for diffusion; simultaneous equations are solved using the Thomas algorithm.</li>
+</ul>
+<h3 id="solution-of-the-advective-diffusion-equation">Solution of the Advective-Diffusion Equation<a class="headerlink" href="#solution-of-the-advective-diffusion-equation" title="Permanent link">&para;</a></h3>
+<p>The advective-diffusion transport equation</p>
+<div class="arithmatex">\[
+\frac{\partial B\Phi}{\partial t} + \frac{\partial UB\Phi}{\partial x} + \frac{\partial WB\Phi}{\partial z} - \frac{\partial \left(BD_x \frac{\partial \Phi}{\partial x}\right)}{\partial x} - \frac{\partial \left(BD_z \frac{\partial \Phi}{\partial z}\right)}{\partial z} = q_\Phi B + S_\Phi B
+\]</div>
+<p>is solved by splitting the two-dimensional FDA into two one-dimensional parts: (1) horizontal transport and sources/sinks and lateral inflows/outflows, and (2) vertical transport.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Horizontal advective and diffusive transport](../assets/images/part2/fig130_horizontal_transport.png){ width="500" }
+  <figcaption>Figure 130. Horizontal advective and diffusive transport.</figcaption>
+</figure>
+-->
+
+<h4 id="horizontal-transport">Horizontal Transport<a class="headerlink" href="#horizontal-transport" title="Permanent link">&para;</a></h4>
+<p>The horizontal part of the solution is:</p>
+<div class="arithmatex">\[
+\frac{\partial B\Phi}{\partial t} \cong \frac{B\Phi_{i,k}^* - B\Phi_{i,k}^n}{\Delta t} \cong \left[ -\frac{\partial UB\Phi}{\partial x} + \frac{\partial \left(BD_x \frac{\partial \Phi}{\partial x}\right)}{\partial x} + q_\Phi B + S_\Phi B \right]_{i,k}^n \tag{5-47}
+\]</div>
+<p>The time level <span class="arithmatex">\(*\)</span> is the intermediate concentration (or temperature) considering only horizontal fluxes, sources/sinks, and lateral inflows. In this step, the diffusion term is a central spatial difference and the advection term uses the ULTIMATE/QUICKEST differencing technique (see discussion below).</p>
+<p>In Version 2, the QUICKEST scheme was introduced, which uses quadratic upstream differencing rather than linear upstream differencing. Cole and Buchak (1995) discuss this differencing algorithm, which eliminates much of the numerical diffusion associated with upstream differencing.</p>
+<h4 id="vertical-transport">Vertical Transport<a class="headerlink" href="#vertical-transport" title="Permanent link">&para;</a></h4>
+<p>The result from this explicit computation is then used to compute the vertical transport (see Figure 131). The resulting FDA is put in a general time-weighted scheme:</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Vertical advective and diffusive transport](../assets/images/part2/fig131_vertical_transport.png){ width="400" }
+  <figcaption>Figure 131. Vertical advective and diffusive transport.</figcaption>
+</figure>
+-->
+
+<div class="arithmatex">\[
+\frac{\partial B\Phi}{\partial t} \cong \frac{B\Phi_{i,k}^{n+1} - B\Phi_{i,k}^*}{\Delta t} \cong \left(-\theta \frac{\partial WB\Phi}{\partial z}\right)_{i,k}^n + \left(-(1-\theta) \frac{\partial WB\Phi}{\partial z}\right)_{i,k}^{n+1} + \left(\frac{\partial \left(BD_z \frac{\partial \Phi}{\partial z}\right)}{\partial z}\right)_{i,k}^{n+1} \tag{5-48}
+\]</div>
+<p>where θ is the degree of implicitness (=0 explicit; =0.5 Crank-Nicholson; =1 fully implicit). Central differences are used for the spatial derivatives for both the vertical diffusion and vertical advection terms. This equation is applied to all vertical layers and solved using the Thomas algorithm. The model user can choose the degree of implicitness for this equation.</p>
+<h3 id="advective-transport-in-x-and-z">Advective Transport in x and z<a class="headerlink" href="#advective-transport-in-x-and-z" title="Permanent link">&para;</a></h3>
+<p>The first step in the numerical solution is to define the computational grid (Figure 132). The grid is space-staggered since some state variables are defined at the segment centers and some at segment interfaces, displaced by <span class="arithmatex">\(\Delta x/2\)</span> or <span class="arithmatex">\(\Delta z/2\)</span> from the segment center. The grid discretizes a waterbody into computational cells whose locations are defined by their segment <code>I</code> and layer number <code>K</code>, i.e., cell (K,I).</p>
+<p>Variables defined at the cell boundary include the horizontal and vertical velocities (<span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(W\)</span>), longitudinal eddy viscosity and diffusivity (<span class="arithmatex">\(A_x\)</span> and <span class="arithmatex">\(D_x\)</span>), vertical eddy viscosity and diffusivity (<span class="arithmatex">\(A_z\)</span> and <span class="arithmatex">\(D_z\)</span>), and internal shear stress <span class="arithmatex">\(\tau_x\)</span>. Variables defined at the cell center include the density (<span class="arithmatex">\(\rho\)</span>), temperature (<span class="arithmatex">\(T\)</span>), constituent concentration (Φ), pressure (<span class="arithmatex">\(P\)</span>), and average cell width (<span class="arithmatex">\(B\)</span>).</p>
+<p>Since constituent concentration is defined at the center and velocities are defined at the boundaries, spatial averaging of velocities is not required to determine fluxes into or out of the control volume at a fixed time level. The horizontal velocity is surrounded by a cell with water surface elevations and densities defined on either side, so it is computed from horizontal gradients of the surface slope and densities without requiring spatial averaging of these variables.</p>
+<p>The geometry is specified by a cell width, <span class="arithmatex">\(B\)</span>, thickness or vertical grid spacing, <span class="arithmatex">\(H\)</span> or <span class="arithmatex">\(\Delta z\)</span>, and length, <span class="arithmatex">\(\Delta x\)</span>. Several additional geometric variables are used in the calculations. These additional variables include the average cross-sectional area between two cells (k,i) and (k,i+1):</p>
+<div class="arithmatex">\[
+BH_{r_{k,i}} = \frac{B_{k,i} H_{k,i} + B_{k,i} H_{k,i+1}}{2} \tag{5-49}
+\]</div>
+<p>the average widths between two cells (k,i) and (k+1,i):</p>
+<div class="arithmatex">\[
+B_{b_{k,i}} = \frac{B_{k,i} + B_{k+1,i}}{2} \tag{5-50}
+\]</div>
+<p>and the average layer thickness between layers k and k+1:</p>
+<div class="arithmatex">\[
+\overline{H}_{k,i} = \frac{H_k + H_{k+1}}{2} \tag{5-51}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Variable locations in computational grid](../assets/images/part2/fig132_variable_locations.png){ width="500" }
+  <figcaption>Figure 132. Variable locations in computational grid.</figcaption>
+</figure>
+-->
+
+<p>The numerical procedure for solving the six unknowns at each timestep is to first compute water surface elevations. With the new surface elevations, new horizontal velocities can be computed, and with new horizontal velocities, the vertical velocities can be found from continuity.</p>
+<p>Using new horizontal and vertical velocities, the water surface elevation equation can be solved for η simultaneously for a model branch. The solution for η is thus spatially implicit at the same time level and eliminates the surface gravity wave speed criterion:</p>
+<div class="arithmatex">\[
+\Delta t &lt; \frac{\Delta x}{\sqrt{g H_{max}}} \tag{5-52}
+\]</div>
+<p>that can seriously limit timesteps in deep waterbodies. Then the temperature and constituent concentrations are computed from the energy and constituent mass balance equations.</p>
+<h4 id="numerical-diffusion-with-upwind-differencing">Numerical Diffusion with Upwind Differencing<a class="headerlink" href="#numerical-diffusion-with-upwind-differencing" title="Permanent link">&para;</a></h4>
+<p>Version 1.0 used upwind differencing in the constituent transport advective terms, in which the cell concentration immediately upstream of the velocity was used to calculate mass fluxes. A major problem with upwind differencing is the introduction of numerical diffusion, which acts like physical diffusion but is an artifact of the numerical scheme. The false longitudinal diffusion coefficient (m² s⁻¹) added to the model can be computed from:</p>
+<div class="arithmatex">\[
+\alpha_e = \frac{u \Delta x}{2}(1 - C) \tag{5-53}
+\]</div>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\alpha_e\)</span></td>
+<td>numerical diffusion coefficient, m² s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(u\)</span></td>
+<td>velocity, m s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Delta x\)</span></td>
+<td>longitudinal grid spacing, m</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(C\)</span></td>
+<td>Courant number = <span class="arithmatex">\(\frac{u \Delta t}{\Delta x}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A similar condition holds for vertical advection. In many cases, numerical diffusion can overwhelm physical diffusion, producing inaccurate results when strong gradients are present. The problem is particularly pronounced for stratified reservoirs and estuaries.</p>
+<p>Numerical diffusion has been reduced by implementing an explicit, third-order accurate QUICKEST horizontal/vertical transport scheme (Leonard, 1979), and time-weighted, implicit vertical advection. Tests of this scheme are reported in Chapman and Cole (1992).</p>
+<h3 id="non-uniform-grid-quickest-formulation">Non-Uniform Grid QUICKEST Formulation<a class="headerlink" href="#non-uniform-grid-quickest-formulation" title="Permanent link">&para;</a></h3>
+<p>QUICKEST uses an additional spatial term to estimate concentrations used in computing horizontal and vertical fluxes. A nonuniform grid QUICKEST scheme was developed using a three-point Lagrangian interpolation function to estimate constituent values at grid cell interfaces. Specifically, advective multipliers for each of three upstream weighted grid cells are derived in terms of cell lengths and the local cell interface velocity. Time-invariant parts of the interpolation functions are calculated once, thus minimizing computations for additional constituents.</p>
+<p>Implicit vertical transport including variable layer heights has also been implemented. Vertical diffusion is fully implicit, and advection employs a time-weighted, central difference, implicit scheme. A unique feature of vertical advection in the explicit part of the time-weighted scheme is QUICKEST, which increases overall accuracy.</p>
+<p>As implemented in the code, the transport scheme is a two-part solution for constituent concentrations at the new timestep:</p>
+<ol>
+<li>Horizontal advection is computed using QUICKEST and diffusion is computed using central differencing. This part also includes the explicit vertical advection contribution (which utilizes QUICKEST) and all sources and sinks.</li>
+<li>The implicit part of vertical advection and diffusion are included. Diffusion is always fully implicit.</li>
+</ol>
+<p>The user can time-weight advection by specifying a value for <strong>[THETA]</strong> that varies from 0 to 1:</p>
+<ul>
+<li>For <code>THETA</code> equal to 0, the solution is explicit in time and vertical advection is accounted for in the first part of the algorithm.</li>
+<li>For <code>THETA</code> equal to 1, the solution is fully implicit in time and vertical advection is accounted for in the second part of the algorithm.</li>
+<li>For <code>THETA</code> equal to 0.5 or greater, a Crank-Nicholson scheme results where vertical advection is time-weighted between the explicit (using QUICKEST) and implicit parts.</li>
+</ul>
+<p>The following is a description of QUICKEST, the preferred transport scheme.</p>
+<h4 id="quickest-derivation">QUICKEST Derivation<a class="headerlink" href="#quickest-derivation" title="Permanent link">&para;</a></h4>
+<p>In one dimension, the conservative control volume advective transport of a constituent Φ integrated over a timestep is:</p>
+<div class="arithmatex">\[
+\Phi_i^{n+1} = \Phi_i^n - \frac{\Delta t}{\Delta x}(U_r \Phi_r^n - U_l \Phi_l^n) \tag{5-54}
+\]</div>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Phi_i\)</span></td>
+<td>constituent concentration at a grid point</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_{r,l}\)</span></td>
+<td>right and left cell face constituent concentrations</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(U_{r,l}\)</span></td>
+<td>right and left cell face velocity</td>
+<td>m s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(t\)</span></td>
+<td>time</td>
+<td>s</td>
+</tr>
+</tbody>
+</table>
+<p>The QUICKEST algorithm was originally derived using an upstream weighted quadratic interpolation function defined over three uniformly spaced grid points. This interpolation function estimates cell face concentrations required by the conservative control volume transport scheme. For example, the right cell face concentration estimate for a flow positive to the right is:</p>
+<div class="arithmatex">\[
+\Phi_r = T_{i-1} \Phi_{i-1} + T_i \Phi_i + T_{i+1} \Phi_{i+1} \tag{5-55}
+\]</div>
+<p>where <span class="arithmatex">\(T\)</span> are advective multipliers which weight the contribution of three adjacent grid point concentrations.</p>
+<p>The advective multipliers are obtained by collecting terms associated with each constituent defined by the QUICKEST advection operator. For a non-uniform grid, a combination of two and three-point Lagrangian interpolation functions (Henrici, 1964) are used to compute the QUICKEST estimate for the right cell face concentration centered about cells i and i+1:</p>
+<div class="arithmatex">\[
+\Phi_r = P_1(x) - \frac{U \Delta t}{2} P_2(x) + \left[ D_x \Delta t - \frac{1}{6}\left[\Delta x^2 - (U \Delta t)^2\right] \right] P_2''(x) \tag{5-56}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(x\)</span> = the local right cell face position</li>
+<li><span class="arithmatex">\(D_x\)</span> = diffusion coefficient</li>
+</ul>
+<p>Defining a local coordinate system of three non-uniformly spaced grid cells denoted by <span class="arithmatex">\(x_{i-1}\)</span>, <span class="arithmatex">\(x_i\)</span>, and <span class="arithmatex">\(x_{i+1}\)</span> with corresponding constituent values, the interpolation functions required in Equation 5-56 are:</p>
+<div class="arithmatex">\[
+P_1(x) = \frac{(x - x_i)}{(x_{i+1} - x_i)} \Phi_{i+1} + \frac{(x_{i+1} - x)}{(x_{i+1} - x_i)} \Phi_i \tag{5-57}
+\]</div>
+<div class="arithmatex">\[
+P_2(x) = \frac{(x - x_i)(x - x_{i-1})}{(x_{i+1} - x_i)(x_{i+1} - x_{i-1})} \Phi_{i+1} + \frac{(x - x_{i+1})(x - x_{i-1})}{(x_i - x_{i+1})(x_i - x_{i-1})} \Phi_i + \frac{(x_{i+1})(x - x_i)}{(x_{i-1} - x_{i+1})(x_{i-1} - x_i)} \Phi_{i-1} \tag{5-58}
+\]</div>
+<p>Taking the first derivative of <span class="arithmatex">\(P_1(x)\)</span> and the second derivative of <span class="arithmatex">\(P_2(x)\)</span> and substituting into Equation 5-56, it is then possible to group terms and obtain the advective multipliers. For example, the <span class="arithmatex">\(T_{i+1}\)</span> multiplier is:</p>
+<div class="arithmatex">\[
+T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x_i) + (x - x_{i-1})]}{(x_{i+1} - x_i)(x_{i+1} - x_{i-1})} + \frac{2\left(D_x \Delta t - \frac{1}{6}[\Delta x_i^2 - (U \Delta t)^2]\right)}{(x_{i+1} - x_i)(x_{i+1} - x_{i-1})} \tag{5-59}
+\]</div>
+<p>Similar functions are obtained for <span class="arithmatex">\(T_i\)</span> and <span class="arithmatex">\(T_{i-1}\)</span> multipliers that complete the formulation for the QUICKEST algorithm.</p>
+<p>From a computational standpoint, most geometric components of the multipliers are time-invariant and are computed once and stored in arrays. The time-varying part of the multipliers (<span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(\Delta t\)</span>, <span class="arithmatex">\(D_x\)</span>) are updated each timestep during computation of the <span class="arithmatex">\(T\)</span> arrays. However, when the QUICKEST scheme is applied vertically, the spatial part of the multipliers for layers <code>KT</code> and <code>KT</code>+1 are updated each timestep to accommodate the surface elevation fluctuation.</p>
+<h3 id="ultimatequickest-numerical-transport-solution-scheme">ULTIMATE/QUICKEST Numerical Transport Solution Scheme<a class="headerlink" href="#ultimatequickest-numerical-transport-solution-scheme" title="Permanent link">&para;</a></h3>
+<p>In Version 2, the QUICKEST numerical scheme replaced the upwind numerical scheme used in Version 1 for solving the advective terms in the advection-diffusion equation. Compared to the upwind scheme, QUICKEST resulted in improved numerical accuracy in simulating sharp fronts since the upwind transport scheme adds excessive numerical diffusion.</p>
+<p>A problem with the QUICKEST scheme is that it can give rise to spurious oscillations at the leading and trailing edge of a sharp front or gradient. This can occur where there are fresh/salt water interfaces, point source discharges, or cases of strong temperature stratification. Even though the upwind scheme always gives physically realistic solutions, it introduces numerical diffusion that artificially reduces sharp gradients.</p>
+<p>An improvement was introduced by Leonard (1991) that eliminated spurious oscillations but preserved the higher-order solution scheme of QUICKEST. This technique is a Universal Limiter for Transient Interpolation Modeling of the Advective Transport Equations (ULTIMATE), a limiter for maintaining monotonic profiles near a gradient that can be applied to numerical schemes other than QUICKEST.</p>
+<h4 id="formulation-for-uniform-velocity-and-grid-spacing">Formulation for Uniform Velocity and Grid Spacing<a class="headerlink" href="#formulation-for-uniform-velocity-and-grid-spacing" title="Permanent link">&para;</a></h4>
+<p>In order to illustrate the scheme, consider the solution of the unsteady advective equation:</p>
+<div class="arithmatex">\[
+\frac{\partial B\Phi}{\partial t} + \frac{\partial BU\Phi}{\partial x} = 0 \tag{5-60}
+\]</div>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Φ</td>
+<td>concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(B\)</span></td>
+<td>width</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(U\)</span></td>
+<td>velocity</td>
+<td>m s⁻¹</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x\)</span></td>
+<td>longitudinal coordinate</td>
+<td>m</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(t\)</span></td>
+<td>time</td>
+<td>s</td>
+</tr>
+</tbody>
+</table>
+<p>The finite difference scheme for this based on a positive flow (<span class="arithmatex">\(U &gt; 0\)</span>) is:</p>
+<div class="arithmatex">\[
+\Phi_i^{n+1} = \frac{1}{B_i^{n+1}} \left( B_i^n \Phi_i^n - \left\{ \left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R - \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \right\} \right) \tag{5-61}
+\]</div>
+<p>The value <span class="arithmatex">\(i\)</span> refers to the center grid point, <span class="arithmatex">\(R\)</span> is the right-hand face value, and <span class="arithmatex">\(L\)</span> is the left-hand face value.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![ULTIMATE schematization for positive flow](../assets/images/part2/fig133_ultimate_positive.png){ width="500" }
+  <figcaption>Figure 133. ULTIMATE schematization for positive flow.</figcaption>
+</figure>
+-->
+
+<p>For positive flow (Figure 133):</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Phi_{i-1}\)</span></td>
+<td>upstream concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_i\)</span></td>
+<td>center concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_{i+1}\)</span></td>
+<td>downstream concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_L\)</span></td>
+<td>left face concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_R\)</span></td>
+<td>right face concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(U_r\)</span></td>
+<td>right face horizontal velocity</td>
+<td>m s⁻¹</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![ULTIMATE schematization for negative flow](../assets/images/part2/fig134_ultimate_negative.png){ width="500" }
+  <figcaption>Figure 134. ULTIMATE schematization for negative flow.</figcaption>
+</figure>
+-->
+
+<p>For negative flow (Figure 134):</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\Phi_{i-1}\)</span></td>
+<td>downstream concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_i\)</span></td>
+<td>center concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_{i+1}\)</span></td>
+<td>upstream concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_L\)</span></td>
+<td>left face concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\Phi_R\)</span></td>
+<td>right face concentration</td>
+<td>g m⁻³</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(U_L\)</span></td>
+<td>left face horizontal velocity</td>
+<td>m s⁻¹</td>
+</tr>
+</tbody>
+</table>
+<p>The term <span class="arithmatex">\(U \Delta t / \Delta x\)</span> is called the Courant number. The problem to resolve is how to choose the concentrations at the "face" values since concentrations are defined at the center of a cell. An upwinding scheme sets the concentration at the left face to <span class="arithmatex">\(\Phi_{i-1}\)</span> and the concentration at the right face to <span class="arithmatex">\(\Phi_i\)</span> for positive flow. Higher-order numerical techniques, such as QUICKEST (Leonard, 1979), improve numerical accuracy in estimating these face values.</p>
+<p>In CE-QUAL-W2, <span class="arithmatex">\(\Phi_R\)</span> and <span class="arithmatex">\(\Phi_L\)</span> are initially computed based on the QUICKEST method. However, if the criteria for a monotonic solution are violated, the values for <span class="arithmatex">\(\Phi_R\)</span> and <span class="arithmatex">\(\Phi_L\)</span> are revised to ensure a monotonic solution. This is the essence of the ULTIMATE algorithm that eliminates over/undershoots in the numerical transport scheme.</p>
+<h4 id="monotonicity-criteria">Monotonicity Criteria<a class="headerlink" href="#monotonicity-criteria" title="Permanent link">&para;</a></h4>
+<p>To outline the procedure for simple conditions, the velocity, segment spacing, and segment widths are assumed constant, so that Equation 5-61 can be written as:</p>
+<div class="arithmatex">\[
+\Phi_i^{n+1} = \left( \Phi_i^n - \left\{ \left[\frac{U\Delta t}{\Delta x}\right] \Phi_R - \left[\frac{U\Delta t}{\Delta x}\right] \Phi_L \right\} \right) \tag{5-62}
+\]</div>
+<p>Defining normalized variables based on:</p>
+<div class="arithmatex">\[
+\widetilde{\Phi} = \frac{\Phi - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} \tag{5-63}
+\]</div>
+<p>for location <span class="arithmatex">\(i\)</span> (the center location) and the right face value for positive flow, we have the following:</p>
+<div class="arithmatex">\[
+\widetilde{\Phi}_i^n = \frac{\Phi_i^n - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} \tag{5-64}
+\]</div>
+<div class="arithmatex">\[
+\widetilde{\Phi}_R = \frac{\Phi_R - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} \tag{5-65}
+\]</div>
+<p>The conditions for a monotonic solution are:</p>
+<p>If <span class="arithmatex">\(\widetilde{\Phi}_R \leq \frac{\widetilde{\Phi}_i^n}{\left[\frac{U\Delta t}{\Delta x}\right]_R}\)</span> for <span class="arithmatex">\(0 &lt; \widetilde{\Phi}_i^n \leq 1\)</span>:</p>
+<div class="arithmatex">\[
+\widetilde{\Phi}_i^n \leq \widetilde{\Phi}_R \leq 1 \quad \text{for } 0 &lt; \widetilde{\Phi}_i^n \leq 1 \tag{5-66}
+\]</div>
+<div class="arithmatex">\[
+\widetilde{\Phi}_i^n = \widetilde{\Phi}_R \quad \text{for } \widetilde{\Phi}_i^n &lt; 0 \text{ or } \widetilde{\Phi}_i^n &gt; 1 \tag{5-67}
+\]</div>
+<p>The face value is unadjusted from that computed by the numerical scheme and the QUICKEST value of <span class="arithmatex">\(\Phi_R\)</span> is used without alteration. These conditions are shown as the shaded region in Figure 135.</p>
+<p>If these conditions are not met, then <span class="arithmatex">\(\Phi_R\)</span> is adjusted to force a monotonic solution. The value of the face is replaced with the nearest allowable value of <span class="arithmatex">\(\widetilde{\Phi}_R\)</span> based on the above criteria that will ensure these criteria are met. The face value is determined by using:</p>
+<div class="arithmatex">\[
+\Phi_R = \Phi_{i-1}^n + \widetilde{\Phi}_R (\Phi_{i+1}^n - \Phi_{i-1}^n) \tag{5-68}
+\]</div>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch for monotonic solution domain](../assets/images/part2/fig135_monotonic_domain.png){ width="400" }
+  <figcaption>Figure 135. Definition sketch for monotonic solution domain.</figcaption>
+</figure>
+-->
+
+<p>This procedure is applied to all the faces and then Equation 5-61 is solved to update the concentration at the next time level. This means that the right face concentration will be the left face concentration for the next segment, thus ensuring mass conservation.</p>
+<p>According to tests performed by Lin and Falconer (1997), the QUICKEST-ULTIMATE scheme with splitting of the diffusion and source/sink terms conserved mass and eliminated numerical oscillations. Leonard (1991) also indicated that the QUICKEST scheme coupled with the ULTIMATE scheme was numerically accurate and cost-effective in terms of computational time.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport](../assets/images/part2/fig136_scheme_comparison.png){ width="600" }
+  <figcaption>Figure 136. Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport.</figcaption>
+</figure>
+-->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For any case of unequal grid spacing, the order of accuracy diminishes. Leonard (1991) recommends that if used with non-uniform grid spacing, the formal accuracy of the method is only preserved if the grid does not expand or contract more than about 125%.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Even though the ULTIMATE scheme can be used with any suitable numerical technique, Leonard (1991) indicates that when coupled with the 3rd-order QUICKEST scheme and a 2nd-order central difference diffusion operator, the results are virtually indistinguishable from other higher-order advection solvers.</p>
+</div>
+<h4 id="procedure-for-variable-velocities-and-grid-spacing">Procedure for Variable Velocities and Grid Spacing<a class="headerlink" href="#procedure-for-variable-velocities-and-grid-spacing" title="Permanent link">&para;</a></h4>
+<p>The following shows a straightforward procedure by Leonard to compute the right and left face values if they do not meet the monotonic criteria, as well as a procedure for variable velocities.</p>
+<p>Based on the sign of the velocity for each face, compute <code>DEL</code>:</p>
+<div class="arithmatex">\[
+\text{DEL} = \Phi_{i+1}^n - \Phi_{i-1}^n \tag{5-69}
+\]</div>
+<p>If <span class="arithmatex">\(|\text{DEL}| &lt; 10^{-5}\)</span>, set <span class="arithmatex">\(\Phi_{face} = \Phi_i^n\)</span> and proceed to the next face (the face value is the L or R face). Otherwise, compute:</p>
+<div class="arithmatex">\[
+\widetilde{\Phi}_i^n = \frac{\Phi_i^n - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_i^n - \Phi_{i-1}^n}{\text{DEL}} \tag{5-70}
+\]</div>
+<p>If <span class="arithmatex">\(\widetilde{\Phi}_i^n &lt; 0\)</span> or <span class="arithmatex">\(\widetilde{\Phi}_i^n &gt; 1\)</span>, set <span class="arithmatex">\(\Phi_{face} = \Phi_i^n\)</span> and proceed to the next face. If not, compute:</p>
+<div class="arithmatex">\[
+\widetilde{\Phi}_{face} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\text{DEL}} \tag{5-71}
+\]</div>
+<p>where <span class="arithmatex">\(\Phi_{face}\)</span> is computed based on the user's chosen numerical scheme (such as QUICKEST or another scheme).</p>
+<ol>
+<li>If <span class="arithmatex">\(\widetilde{\Phi}_{face} &lt; \widetilde{\Phi}_i^n\)</span>, <span class="arithmatex">\(\widetilde{\Phi}_{face} = \widetilde{\Phi}_i^n\)</span></li>
+<li>If <span class="arithmatex">\(\widetilde{\Phi}_{face} &gt; \frac{\widetilde{\Phi}_i^n}{\left(\frac{U\Delta t}{\Delta x}\right)}\)</span>, <span class="arithmatex">\(\widetilde{\Phi}_{face} = \frac{\widetilde{\Phi}_i^n}{\left(\frac{U\Delta t}{\Delta x}\right)}\)</span></li>
+<li>If <span class="arithmatex">\(\widetilde{\Phi}_{face} &gt; 1\)</span>, <span class="arithmatex">\(\widetilde{\Phi}_{face} = 1\)</span></li>
+</ol>
+<p>Then recompute the face value according to <span class="arithmatex">\(\Phi_{face} = \widetilde{\Phi}_{face} \cdot \text{DEL} + \Phi_i^n\)</span>.</p>
+<p>Once all the face values are determined, use the finite difference form of the solution (Equation 5-61) to determine the solution.</p>
+<h4 id="optimized-ultimatequickest-procedure">Optimized ULTIMATE/QUICKEST Procedure<a class="headerlink" href="#optimized-ultimatequickest-procedure" title="Permanent link">&para;</a></h4>
+<p>Leonard (1991) also showed a numerical technique that minimized the computational burden when using ULTIMATE with the QUICKEST scheme. This technique is described as follows.</p>
+<p>Based on the sign of the velocity for each face, define C, D, and U nodes (center, downstream, and upstream) corresponding for positive flow to <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(i+1\)</span>, and <span class="arithmatex">\(i-1\)</span>, respectively.</p>
+<p>Compute <code>DEL</code> and <code>CURV</code>, where <span class="arithmatex">\(\text{DEL} = \Phi_{i+1}^n - \Phi_i^n\)</span> and <span class="arithmatex">\(\text{CURV} = \Phi_{i+1}^n - 2\Phi_i^n + \Phi_{i-1}^n\)</span>.</p>
+<ol>
+<li>If <span class="arithmatex">\(|\text{CURV}| \leq 0.6|\text{DEL}|\)</span>, then use the QUICKEST computed value for the face value, <span class="arithmatex">\(\Phi_{face}\)</span> (the face value is the R or L face as shown in Figure 137).</li>
+<li>If not, and if <span class="arithmatex">\(|\text{CURV}| \geq |\text{DEL}|\)</span>, then set <span class="arithmatex">\(\Phi_{face} = \Phi_i^n\)</span></li>
+<li>If not, and <span class="arithmatex">\(\text{DEL} &gt; 0\)</span>, limit <span class="arithmatex">\(\Phi_{face}\)</span> by <span class="arithmatex">\(\Phi_i^n\)</span> below, or the smaller of <span class="arithmatex">\(\Phi_{reference} = \Phi_{i-1}^n + \frac{(\Phi_i^n - \Phi_{i-1}^n)}{\left(\frac{U\Delta t}{\Delta x}\right)}\)</span> and <span class="arithmatex">\(\Phi_{i+1}^n\)</span></li>
+<li>If not, and <span class="arithmatex">\(\text{DEL} &lt; 0\)</span>, limit <span class="arithmatex">\(\Phi_{face}\)</span> by <span class="arithmatex">\(\Phi_i^n\)</span>, or the larger of <span class="arithmatex">\(\Phi_{reference} = \Phi_{i-1}^n + \frac{(\Phi_i^n - \Phi_{i-1}^n)}{\left(\frac{U\Delta t}{\Delta x}\right)}\)</span> and <span class="arithmatex">\(\Phi_{i+1}^n\)</span></li>
+<li>Once all the face values are determined, use Equation 5-61 to obtain the solution.</li>
+</ol>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Definition sketch for variable velocity](../assets/images/part2/fig137_variable_velocity.png){ width="500" }
+  <figcaption>Figure 137. Definition sketch for variable velocity.</figcaption>
+</figure>
+-->
+
+<h4 id="conditions-for-variable-velocity-and-width">Conditions for Variable Velocity and Width<a class="headerlink" href="#conditions-for-variable-velocity-and-width" title="Permanent link">&para;</a></h4>
+<p>The procedure outlined above is based on unidirectional and uniform magnitude velocity and segment widths. If the velocity regime and widths are variable, then the following procedure is followed in order to maintain a monotonic solution.</p>
+<p>Assuming that <span class="arithmatex">\(U_R\)</span> is positive and the concentration times width (<span class="arithmatex">\(\Phi B\)</span>) increases monotonically, i.e., <span class="arithmatex">\((B\Phi)_{i-1}^n &lt; (B\Phi)_i^n &lt; (B\Phi)_{i+1}^n &lt; (B\Phi)_{i+2}^n\)</span>, between segment <span class="arithmatex">\(i-1\)</span> and <span class="arithmatex">\(i+2\)</span>, then the goal of the technique is to estimate <span class="arithmatex">\(\Phi_R\)</span>, or really <span class="arithmatex">\(B_R \Phi_R\)</span>, and to update the concentration using Equation 5-61. Equation 5-61 can be written as a condition for <span class="arithmatex">\(\Phi_R\)</span> as:</p>
+<div class="arithmatex">\[
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R = B_i^n \Phi_i^n - \Phi_i^{n+1} B_i^{n+1} + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-72}
+\]</div>
+<p>If it is assumed that <span class="arithmatex">\(B_i^n \Phi_i^n \leq B_R \Phi_R \leq B_{i+1} \Phi_{i+1}^n\)</span>, then this is equivalent to saying that <span class="arithmatex">\(B_i^n U_i^n \Phi_i^n \leq B_R^n U_R^n \Phi_R \leq B_{i+1}^n U_{i+1}^n \Phi_{i+1}^n\)</span>, or that the net flux into a segment is increasing.</p>
+<p>Using the monotonic limitation that <span class="arithmatex">\(B_i^{n+1} \Phi_i^{n+1} \geq B_{i-1} \Phi_{i-1}^n\)</span> then Equation 5-72 becomes:</p>
+<div class="arithmatex">\[
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-73}
+\]</div>
+<p>Then making a conservative assumption that <span class="arithmatex">\(B_L \Phi_L \geq B_{i-1} \Phi_{i-1}^n\)</span>, Equation 5-73 becomes:</p>
+<div class="arithmatex">\[
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{i-1}^n \Phi_{i-1}^n \tag{5-74}
+\]</div>
+<p>Another condition is also imposed on <span class="arithmatex">\(B_R \Phi_R\)</span> by looking at the control volume segment centered at <span class="arithmatex">\(i+1\)</span>. Using similar reasoning as above and assuming that <span class="arithmatex">\(U_{RR} &gt; 0\)</span>, the other criterion for <span class="arithmatex">\(B_R \Phi_R\)</span> is:</p>
+<div class="arithmatex">\[
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_{i+2}^n \Phi_{i+2}^n - \Phi_{i+1}^n B_{i+1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{RR} \Phi_{i+1}^n \tag{5-75}
+\]</div>
+<p>These criteria would be altered appropriately if the function were monotonically decreasing rather than increasing.</p>
+<h3 id="vertical-implicit-transport">Vertical Implicit Transport<a class="headerlink" href="#vertical-implicit-transport" title="Permanent link">&para;</a></h3>
+<p>Focusing on vertical advective and diffusive transport, constituent transport can be written as:</p>
+<div class="arithmatex">\[
+\frac{\partial B\Phi}{\partial t} + \frac{\partial WB\Phi}{\partial z} - \frac{\partial}{\partial z}\left(BD_z \frac{\partial \Phi}{\partial z}\right) = RHS \tag{5-76}
+\]</div>
+<p>where <span class="arithmatex">\(RHS\)</span> represents horizontal transport and all sources/sinks. Integrating the transport equation vertically and over time gives:</p>
+<div class="arithmatex">\[
+BH\Phi^{n+1} + \theta H \Delta t \delta_z (WB\Phi^{n+1}) - H\Delta t \delta_z \left(BD_z \frac{\partial \Phi^{n+1}}{\partial z}\right) = BH\Phi^* \tag{5-77}
+\]</div>
+<p>where:</p>
+<ul>
+<li><span class="arithmatex">\(\Phi^*\)</span> = all <span class="arithmatex">\(n\)</span>-time level horizontal and explicit vertical transport and sources/sinks</li>
+<li>θ = time-weighting for vertical advection; 0 for fully explicit, 0.55 for Crank-Nicholson, and 1 for fully implicit</li>
+</ul>
+<p>Expanding the differential operators in terms of central differences and collecting terms, the above equation can be recast as:</p>
+<div class="arithmatex">\[
+A_{t_i} \Phi_{i-1}^{n+1} + V_{t_i} \Phi_i^{n+1} + C_{t_i} \Phi_{i+1}^{n+1} = D_{t_i} \tag{5-78}
+\]</div>
+<p>where:</p>
+<div class="arithmatex">\[
+V_{t_i} = 1 + \frac{\Delta t}{BH_{k,i}} \left[ \theta \left( \frac{W_{k,i} B_{b_{k,i}} - W_{k-1,i} B_{b_{k-1,i}}}{2} \right) + \frac{B_{b_{k,i}} D_{z_{k,i}}}{\overline{H}_k} + \frac{B_{b_{k-1}} D_{z_{k-1,i}}}{\overline{H}_{k-1}} \right]
+\]</div>
+<div class="arithmatex">\[
+A_{t_i} = \frac{\Delta t B_{b_{k,i}}}{BH_{k,i}} \left( \theta \frac{W_{k,i}}{2} - \frac{D_{z_{k,i}}}{\overline{H}_k} \right)
+\]</div>
+<div class="arithmatex">\[
+C_{t_i} = -\frac{\Delta t B_{b_{k-1,i}}}{BH_{k,i}} \left( \theta \frac{W_{k-1,i}}{2} + \frac{D_{z_{k-1,i}}}{\overline{H}_{k-1}} \right)
+\]</div>
+<p>The coefficients are computed once, stored in arrays, and used to update each constituent. This is accomplished by loading the explicit part of the solution, <span class="arithmatex">\(\Phi^*\)</span>, with each successive constituent and inverting the resulting matrix via a Thomas tridiagonal solver.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04_temperature_and_water_quality_modeling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Temperature and Water Quality Modeling">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Temperature and Water Quality Modeling
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06_references/" class="md-footer__link md-footer__link--next" aria-label="Next: References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      U.S. Army Engineer Research and Development Center (ERDC)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/CE-QUAL-W2-ERDC" target="_blank" rel="noopener" title="CE-QUAL-W2-ERDC on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
