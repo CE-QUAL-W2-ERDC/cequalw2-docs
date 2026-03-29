@@ -60,7 +60,15 @@
   font-size: 0.85rem;
 }
 
-/* Equation overflow */
-.md-typeset .MathJax {
+/* Equation overflow - prevent scrollbar from wrapping to second line */
+.md-typeset mjx-container {
   overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding-bottom: 0.5em;
+}
+
+.md-typeset mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
