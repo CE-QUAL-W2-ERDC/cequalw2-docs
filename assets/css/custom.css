@@ -61,24 +61,16 @@
 }
 
 /* Equation overflow - prevent scrollbar from wrapping to second line */
-.md-typeset mjx-container {
-  display: inline-block;
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-width: 100%;
-  vertical-align: middle;
+.md-typeset mjx-container[jax="CHTML"] {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  width: 100%;
+  min-width: 0;
 }
 
 .md-typeset mjx-container[jax="CHTML"][display="true"] {
-  display: block;
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-width: 100%;
+  display: block !important;
   margin: 1em 0;
-}
-
-/* Prevent MathJax internal elements from forcing width */
-.md-typeset mjx-container > svg,
-.md-typeset mjx-container > mjx-math {
-  max-width: none;
+  padding: 0.25em 0;
 }
