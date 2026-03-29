@@ -62,13 +62,23 @@
 
 /* Equation overflow - prevent scrollbar from wrapping to second line */
 .md-typeset mjx-container {
+  display: inline-block;
   overflow-x: auto;
   overflow-y: hidden;
   max-width: 100%;
-  padding-bottom: 0.5em;
+  vertical-align: middle;
 }
 
 .md-typeset mjx-container[jax="CHTML"][display="true"] {
+  display: block;
   overflow-x: auto;
   overflow-y: hidden;
+  max-width: 100%;
+  margin: 1em 0;
+}
+
+/* Prevent MathJax internal elements from forcing width */
+.md-typeset mjx-container > svg,
+.md-typeset mjx-container > mjx-math {
+  max-width: none;
 }
