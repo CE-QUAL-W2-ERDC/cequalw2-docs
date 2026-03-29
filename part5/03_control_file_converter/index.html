@@ -2270,25 +2270,19 @@
 <ol>
 <li>Open the template file <code>w2_con.xlsm</code> (or a descriptively named variant such as <code>w2_con_DeGray.xlsm</code>) from an existing example problem.</li>
 </ol>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Example of an existing w2_con.xlsm file](../assets/images/part5/figure3_w2con_xlsm.png){ width="700" }
-  <figcaption>Figure 3. An example of an existing w2_con.xlsm file. Columns A and B are not used in the control file. The w2_con45.csv data is pasted into column C1, not A1.</figcaption>
+<figure>
+  <img alt="Example of an existing w2_con.xlsm file" src="../../assets/images/part5/fig03_w2con_xlsm.png" width="700" />
+<br />
+<figcaption>Figure 3. An example of an existing w2_con.xlsm file. Columns A and B are not used in the control file. The w2_con45.csv data is pasted into column C1, not A1.</figcaption>
 </figure>
--->
-
 <ol>
 <li>Open <code>w2_con45.csv</code> from the converter output in Excel.</li>
 </ol>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Example of the w2_con45.csv file from the converter utility](../assets/images/part5/figure4_w2con45_csv.png){ width="700" }
-  <figcaption>Figure 4. An example of the w2_con45.csv file from the converter utility.</figcaption>
+<figure>
+  <img alt="Example of the w2_con45.csv file from the converter utility" src="../../assets/images/part5/fig04_w2con45_csv.png" width="700" />
+<br />
+<figcaption>Figure 4. An example of the w2_con45.csv file from the converter utility.</figcaption>
 </figure>
--->
-
 <ol>
 <li>In <code>w2_con45.csv</code>, select the columns and rows containing data. Do not select the entire sheet, because the data cannot be pasted into cell C1 of <code>w2_con.xlsm</code> if the entire sheet is selected. Select all columns required by the data, including enough columns for segment-specific parameters such as sediment oxygen demand (SOD), which requires as many columns as the number of segments (<code>IMX</code>).</li>
 <li>Copy the selected cells from <code>w2_con45.csv</code> and paste them into cell <strong>C1</strong> of <code>w2_con.xlsm</code>. Use <strong>Paste Values and Number Formatting</strong> to preserve the colors and formatting of the original template.</li>
@@ -2306,14 +2300,11 @@
 <li>To remove rows, select the extra cells in columns A and B only, right-click, and choose <strong>Delete</strong>, then <strong>Move cells up</strong>.</li>
 </ol>
 <p>After adjustment, the labels in columns A and B should align with the corresponding data in column C.</p>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Location in Excel template showing constituent order](../assets/images/part5/figure5_constituent_order.png){ width="700" }
-  <figcaption>Figure 5. Location in the Excel template where the constituent order is shown. The required number of constituents is computed by a formula. Verify that this number matches the count in the constituent list. Another tab in the Excel file provides guidance on the required order based on your dimensioning of algal groups, biochemical oxygen demand (BOD) groups, macrophyte groups, periphyton groups, suspended solids groups, and generic constituent groups. Column A also provides guidance on the number of columns needed.</figcaption>
+<figure>
+  <img alt="Location in Excel template showing constituent order" src="../../assets/images/part5/fig05_constituent_order.png" width="700" />
+<br />
+<figcaption>Figure 5. Location in the Excel template where the constituent order is shown. The required number of constituents is computed by a formula. Verify that this number matches the count in the constituent list. Another tab in the Excel file provides guidance on the required order based on your dimensioning of algal groups, biochemical oxygen demand (BOD) groups, macrophyte groups, periphyton groups, suspended solids groups, and generic constituent groups. Column A also provides guidance on the number of columns needed.</figcaption>
 </figure>
--->
-
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Search for "increase # of rows" in column A to locate the sections where row adjustments may be needed.</p>
@@ -2323,47 +2314,35 @@
 <ul>
 <li><strong>Structures</strong>: Look at rows 136--165. Notes in columns A and B describe where to add rows if more than 5 structures are present.</li>
 </ul>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Excel file location for structures row adjustment](../assets/images/part5/figure6_structures_rows.png){ width="700" }
-  <figcaption>Figure 6. Location in the Excel file where the number of rows needs to be increased if there are more than 5 structures.</figcaption>
+<figure>
+  <img alt="Excel file location for structures row adjustment" src="../../assets/images/part5/fig06_structures_rows.png" width="700" />
+<br />
+<figcaption>Figure 6. Location in the Excel file where the number of rows needs to be increased if there are more than 5 structures.</figcaption>
 </figure>
--->
-
 <ul>
 <li><strong>Epiphyton/periphyton groups</strong>: Search for "epiphyton" in the Excel template to locate the relevant section.</li>
 </ul>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Excel file location for epiphyton/periphyton row adjustment](../assets/images/part5/figure7_epiphyton_rows.png){ width="700" }
-  <figcaption>Figure 7. Location in the Excel file where the number of rows needs to be increased if there are more than 5 epiphyton/periphyton groups.</figcaption>
+<figure>
+  <img alt="Excel file location for epiphyton/periphyton row adjustment" src="../../assets/images/part5/fig07_epiphyton_rows.png" width="700" />
+<br />
+<figcaption>Figure 7. Location in the Excel file where the number of rows needs to be increased if there are more than 5 epiphyton/periphyton groups.</figcaption>
 </figure>
--->
-
 <ul>
 <li><strong>Algae and zooplankton groups</strong>: Search for "zooplankton" in the Excel template to locate the relevant section.</li>
 </ul>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Excel file location for zooplankton row adjustment](../assets/images/part5/figure8_zooplankton_rows.png){ width="700" }
-  <figcaption>Figure 8. Location in the Excel file where the number of rows needs to be increased if there are more than 5 zooplankton groups.</figcaption>
+<figure>
+  <img alt="Excel file location for zooplankton row adjustment" src="../../assets/images/part5/fig08_zooplankton_rows.png" width="700" />
+<br />
+<figcaption>Figure 8. Location in the Excel file where the number of rows needs to be increased if there are more than 5 zooplankton groups.</figcaption>
 </figure>
--->
-
 <ul>
 <li><strong>Macrophyte groups</strong>: Search for "macrophyte" in the Excel template to locate the relevant section.</li>
 </ul>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Excel file location for macrophyte row adjustment](../assets/images/part5/figure9_macrophyte_rows.png){ width="700" }
-  <figcaption>Figure 9. Location in the Excel file where the number of rows needs to be increased if there are more than 5 macrophyte groups.</figcaption>
+<figure>
+  <img alt="Excel file location for macrophyte row adjustment" src="../../assets/images/part5/fig09_macrophyte_rows.png" width="700" />
+<br />
+<figcaption>Figure 9. Location in the Excel file where the number of rows needs to be increased if there are more than 5 macrophyte groups.</figcaption>
 </figure>
--->
-
 <h3 id="add-double-quotes-to-text-fields">Add Double Quotes to Text Fields<a class="headerlink" href="#add-double-quotes-to-text-fields" title="Permanent link">&para;</a></h3>
 <p>The <code>TITLE</code>, <code>HNAME</code>, <code>CNAME</code>, and <code>CDNAME</code> fields require double quotes in the control file. Excel drops double quotes on import, so these must be restored manually.</p>
 <p>To restore double quotes around a cell value, set up a formula in each affected cell:</p>

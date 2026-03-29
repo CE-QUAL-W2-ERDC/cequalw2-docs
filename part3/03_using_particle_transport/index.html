@@ -2412,7 +2412,7 @@
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Particle Input File  S.Wells PSU based on Andy Goodwin Fish Migration Program
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>PART CONTROL, NSEG, #PARTICLES SEGMENT, LINE, DXTHEORY, OUTFREQ (days), LINEAR, HTST BOTTOM, HTST SIDE, IDEBUG
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ON, 5, ON, ON, 1, 1, 0, 0, 0
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ON, 10, 5, ON, ON, 1, 1, 0, 0, 0
 </span></code></pre></div>
 <table>
 <thead>
@@ -2428,7 +2428,7 @@
 </tr>
 <tr>
 <td><code>NSEG</code></td>
-<td>Number of segments where particles are added.</td>
+<td>Number of segments where particles are added. In the example above, 10 segment entries are defined in Section 2.</td>
 </tr>
 <tr>
 <td><code>#PART/SEG</code></td>
@@ -2735,26 +2735,20 @@
 <p class="admonition-title">Tip</p>
 <p>Plot a histogram of particle detention times from the <code>Finalparticle.csv</code> file to evaluate residence time distributions in the system.</p>
 </div>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Example of particle detention time histogram plotted using data from the Finalparticle.csv file](../assets/images/part3/particle_detention_time_histogram.png){ width="700" }
-  <figcaption>Figure 52. Example of particle detention time histogram using the file Finalparticle.csv. For this system the average particle detention time was 9.5 days.</figcaption>
+<figure>
+  <img alt="Example of particle detention time histogram plotted using data from the Finalparticle.csv file" src="../../assets/images/part3/fig46_particle_histogram.png" width="700" />
+<br />
+<figcaption>Figure 52. Example of particle detention time histogram using the file Finalparticle.csv. For this system the average particle detention time was 9.5 days.</figcaption>
 </figure>
--->
-
 <h3 id="initialparticlecsv"><code>Initialparticle.csv</code><a class="headerlink" href="#initialparticlecsv" title="Permanent link">&para;</a></h3>
 <p>This file contains the initial state of all particles added or to be added to the system. It is a valuable file for verifying that the input file <code>w2_particle.csv</code> was interpreted properly. The file format is the same as <code>Finalparticle.csv</code> described above.</p>
 <h3 id="envrprf_v_particlecsv-envrprf_t_particlecsv-and-envrprf_depth_particlecsv"><code>envrprf_v_particle.csv</code>, <code>envrprf_t_particle.csv</code>, and <code>envrprf_depth_particle.csv</code><a class="headerlink" href="#envrprf_v_particlecsv-envrprf_t_particlecsv-and-envrprf_depth_particlecsv" title="Permanent link">&para;</a></h3>
 <p>These files contain histograms for each particle released in the model domain, recording velocity, temperature, and depth distributions. The file format matches that of the Environmental Performance Criteria output files. <!-- TODO: Add link to Environmental Performance Criteria section --> Histograms can be aggregated across all particles to summarize overall exposure conditions.</p>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Example histograms of particles released for velocity and temperature for a particle release experiment](../assets/images/part3/particle_velocity_temperature_histograms.png){ width="700" }
-  <figcaption>Figure 53. Example histograms of particles released for velocity and temperature for a particle release experiment.</figcaption>
+<figure>
+  <img alt="Example histograms of particles released for velocity and temperature for a particle release experiment" src="../../assets/images/part3/fig47_particle_velocity_temp.png" width="700" />
+<br />
+<figcaption>Figure 53. Example histograms of particles released for velocity and temperature for a particle release experiment.</figcaption>
 </figure>
--->
-
 <h3 id="diagnosticsout"><code>Diagnostics.out</code><a class="headerlink" href="#diagnosticsout" title="Permanent link">&para;</a></h3>
 <p>This file provides diagnostic output for the initial state of all particles and records events such as branch transfers and particles leaving the system. The file logs the following event types.</p>
 <h4 id="particle-lost-from-the-dam-or-from-the-end-of-a-branch">Particle Lost from the Dam or from the End of a Branch<a class="headerlink" href="#particle-lost-from-the-dam-or-from-the-end-of-a-branch" title="Permanent link">&para;</a></h4>
@@ -2803,13 +2797,11 @@
 <li>Animate particle movement by stepping through the particle zones (the temperature and velocity zones remain fixed).</li>
 <li>To export an animation, write a Tecplot script that activates Frame 1 with Zone 1, then activates Frame 2 with Zone 1, and exports the image. Loop over all zones and write the output to a video file (e.g., mp4, avi, wmv).</li>
 </ol>
-<!-- TODO: Add figure -->
-<!--
-<figure markdown="span">
-  ![Branch temperature, velocity, and particles in Tecplot frame](../assets/images/part3/tecplot_particle_frame.png){ width="700" }
-  <figcaption>Figure 54. Branch temperature, velocity, and particles in Tecplot frame.</figcaption>
+<figure>
+  <img alt="Branch temperature, velocity, and particles in Tecplot frame" src="../../assets/images/part3/fig48_tecplot_particles.png" width="700" />
+<br />
+<figcaption>Figure 54. Branch temperature, velocity, and particles in Tecplot frame.</figcaption>
 </figure>
--->
 
 
 

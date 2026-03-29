@@ -2196,12 +2196,12 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The CE-QUAL-W2 model preprocessor and executable are command-line aware. Users can execute both programs from any directory and specify the default model directory as a command-line argument. This capability is particularly useful for linked models that run independently as separate model applications rather than as one large, combined model.</p>
 <h2 id="linked-model-workflow">Linked Model Workflow<a class="headerlink" href="#linked-model-workflow" title="Permanent link">&para;</a></h2>
-<p>Consider an example with two linked CE-QUAL-W2 models stored in separate directories:</p>
+<p>Consider an example with two linked CE-QUAL-W2 models stored in separate directories, with the W2 model and preprocessor executable in the <code>c:\w2</code> directory:</p>
 <ul>
-<li><code>c:\w2\LakeA</code>: an upstream lake model</li>
-<li><code>c:\w2\RiverBelowLakeA</code>: a downstream river model that receives outflow from the lake</li>
+<li><code>c:\w2\LakeA</code>: an upstream lake model with all required input files</li>
+<li><code>c:\w2\RiverBelowLakeA</code>: a downstream river model that receives outflow from the lake, with all required input files</li>
 </ul>
-<p>The general workflow for linked models is:</p>
+<p>Since the outflow from <code>LakeA</code> goes into <code>RiverBelowLakeA</code>, the general workflow for linked models is:</p>
 <ol>
 <li>Run the preprocessor for each model to verify input files.</li>
 <li>Run the upstream model first.</li>

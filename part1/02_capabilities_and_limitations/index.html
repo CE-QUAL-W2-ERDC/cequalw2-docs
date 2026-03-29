@@ -2747,7 +2747,7 @@
 <h4 id="derived-variables">Derived Variables<a class="headerlink" href="#derived-variables" title="Permanent link">&para;</a></h4>
 <p>Additionally, over 60 derived variables can be computed internally from the state variables and output for comparison to measured data. These include pH, total organic carbon (TOC), dissolved organic carbon (DOC), total organic nitrogen (TON), total organic phosphorus (TOP), dissolved organic phosphorus (DOP), total phosphorus (TP), total nitrogen (TN), total Kjeldahl nitrogen (TKN), Secchi disk depth, unionized ammonia, and turbidity.</p>
 <h3 id="long-term-simulations">Long-Term Simulations<a class="headerlink" href="#long-term-simulations" title="Permanent link">&para;</a></h3>
-<p>The water surface elevation is solved implicitly, which eliminates the surface gravity wave restriction on the timestep. This permits larger timesteps during a simulation, resulting in decreased computational time. The vertical diffusion criterion from stability requirements has also been eliminated, allowing for even larger timesteps. Model simulations of multiple decades can be performed within the CE-QUAL-W2 model framework.</p>
+<p>The water surface elevation is solved implicitly, which eliminates the surface gravity wave restriction on the timestep. This permits larger timesteps during a simulation, resulting in decreased computational time. As a result, the model can easily simulate long-term water quality responses. The vertical diffusion criterion from stability requirements has also been eliminated, allowing for even larger timesteps. Model simulations of multiple decades can be performed within the CE-QUAL-W2 model framework.</p>
 <div class="admonition warning">
 <p class="admonition-title">Timestep and Numerical Accuracy</p>
 <p>Larger timesteps do not guarantee numerical accuracy. Increasing the timestep degrades numerical accuracy. The user should verify that results are not sensitive to the selected timestep.</p>
@@ -2787,11 +2787,11 @@
 <h3 id="ice-cover-calculations">Ice Cover Calculations<a class="headerlink" href="#ice-cover-calculations" title="Permanent link">&para;</a></h3>
 <p>The model can calculate onset, growth, and breakup of ice cover. <!-- TODO: Add link to Part 2 ice cover theory --></p>
 <h3 id="selective-withdrawal-calculations">Selective Withdrawal Calculations<a class="headerlink" href="#selective-withdrawal-calculations" title="Permanent link">&para;</a></h3>
-<p>The model can calculate the vertical extent of the withdrawal zone based on outlet geometry, outflow, and density. <!-- TODO: Add link to Part 2 selective withdrawal theory --></p>
+<p>The model can calculate the vertical extent of the withdrawal zone based on outlet geometry, outflow, and density, as shown in Figure 5. <!-- TODO: Add link to Part 2 selective withdrawal theory --></p>
 <figure>
   <img alt="Selective withdrawal" src="../../assets/images/part1/selective-withdrawal.png" width="700" />
 <br />
-<figcaption>Figure 5. Withdrawal zone created in the CE-QUAL-W2 model using the selective withdrawal algorithm.</figcaption>
+<figcaption>Figure 5. Withdrawal zone created in model using selective withdrawal theory.</figcaption>
 </figure>
 <h3 id="multiple-hydraulic-structure-algorithms">Multiple Hydraulic Structure Algorithms<a class="headerlink" href="#multiple-hydraulic-structure-algorithms" title="Permanent link">&para;</a></h3>
 <p>The model can be set up to allow multiple pumps, spillways, pipes, and gates between model segments. <!-- TODO: Add link to Part 3 hydraulic structure input files --></p>
@@ -2809,7 +2809,7 @@
 <h3 id="theoretical">Theoretical<a class="headerlink" href="#theoretical" title="Permanent link">&para;</a></h3>
 <p><strong>Hydrodynamics and transport.</strong> The governing equations are laterally and layer averaged. Lateral averaging assumes lateral variations in velocities, temperatures, and constituents are negligible. This assumption may be inappropriate for large waterbodies exhibiting significant lateral variations in water quality. Whether this assumption is met is often a judgment call and depends in large part on the questions being addressed.</p>
 <p>Eddy coefficients are used to model turbulence. The user must decide which vertical turbulence scheme is most appropriate for the type of waterbody being simulated. The equations are written in the conservative form using the Boussinesq and hydrostatic approximations. Since vertical momentum is not included, the model may give inaccurate results where there is significant vertical acceleration, but the selective withdrawal algorithms compensate for this in the vicinity of withdrawals.</p>
-<p><strong>Water quality.</strong> Water quality interactions are simplified descriptions of complex processes. The goal of modeling is to represent these as simply as possible to describe known phenomena. Improvements in these algorithms are made as needed to describe complexities in the dynamics of the state variables or state variable interactions.</p>
+<p><strong>Water quality.</strong> Water quality interactions are simplified descriptions of complex processes. The goal of modeling is to represent these as simply as possible to describe known phenomena. Improvements in these algorithms are often made as needed to describe complexities in the dynamics of the state variables or state variable interactions.</p>
 <div class="admonition note">
 <p class="admonition-title">Sediment Oxygen Demand (SOD)</p>
 <p>The model includes three approaches for sediment oxygen demand:</p>
@@ -2828,7 +2828,7 @@
 <li><strong><code>ULTIMATE</code></strong>: Leonard's solution to the over/undershoots problem. This scheme has been available since Version 3.0 and is the recommended transport scheme.</li>
 </ul>
 <p>In addition, discretization errors are introduced as the finite difference cell dimensions or the timestep increase. See <a href="../09_references/">References</a> for the Leonard (1979) citation.</p>
-<p><strong>Computer limits.</strong> The model places computational and storage burdens on a computer when making long-term simulations. Year-long water quality simulations for a single reservoir can take from a few minutes to days for multiple waterbodies in a large river basin. Applications to dynamic river systems can take considerably longer than reservoirs because of the much smaller timesteps needed for river numerical stability.</p>
+<p><strong>Computer limits.</strong> A considerable effort has been invested in increasing model efficiency, including a vertically implicit solution for vertical turbulence in the horizontal momentum equation. However, the model still places computational and storage burdens on a computer when making long-term simulations. Year-long water quality simulations for a single reservoir can take from a few minutes to days for multiple waterbodies in a large river basin. Applications to dynamic river systems can take considerably longer than reservoirs because of the much smaller timesteps needed for river numerical stability.</p>
 <p>Since the model uses dynamic memory allocation, the memory required for a simulation is determined at run-time. In most cases the memory requirements of CE-QUAL-W2 are minimal since the model opens input files and reads them record-by-record as needed rather than reading them all into memory at the beginning of the model run.</p>
 
 

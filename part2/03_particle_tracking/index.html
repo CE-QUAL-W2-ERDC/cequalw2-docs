@@ -1093,29 +1093,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm-description" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Algorithm Description
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advective-transport-equations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advective Transport Equations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advective Transport Equations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#variable-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1123,11 +1100,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2213,29 +2185,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm-description" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Algorithm Description
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advective-transport-equations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Advective Transport Equations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Advective Transport Equations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#variable-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2243,11 +2192,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2383,11 +2327,10 @@
 
 
 <h1 id="particle-tracking-algorithm">Particle Tracking Algorithm<a class="headerlink" href="#particle-tracking-algorithm" title="Permanent link">&para;</a></h1>
-<p>The original particle tracking algorithm in CE-QUAL-W2 was developed by Goodwin et al. (2001) for use in a smart-particle tracking algorithm that predicts the movement of fish in a southern reservoir in the United States. This chapter describes the mathematical formulation for tracking discrete particles through the CE-QUAL-W2 computational grid.</p>
-<h2 id="algorithm-description">Algorithm Description<a class="headerlink" href="#algorithm-description" title="Permanent link">&para;</a></h2>
-<p>The particle-tracking algorithm was developed by Chapman et al. (1994) to predict transport and fate of floatables and suspended and dissolved materials in three dimensions. The algorithm was simplified for use in CE-QUAL-W2 by removing portions of the model relating to surface transport of floatables and suspended and dissolved materials. Transport equations for lateral movement were also removed because CE-QUAL-W2 computes forcing functions only in the longitudinal and vertical directions.</p>
-<h2 id="advective-transport-equations">Advective Transport Equations<a class="headerlink" href="#advective-transport-equations" title="Permanent link">&para;</a></h2>
-<p>The following equations are used for particle tracking in CE-QUAL-W2 based on velocity:</p>
+<p>The original particle tracking algorithm in CE-QUAL-W2 was developed by Goodwin et al. (2001) for use in a smart-particle tracking algorithm predicting movement of fish in a southern reservoir in the USA. A description from Goodwin et al. (2001) of the algorithm is reproduced below:</p>
+<blockquote>
+<p>The particle-tracking algorithm used was developed by Chapman et al. (1994) to predict transport and fate of floatables and suspended and dissolved materials in three dimensions. The algorithm was simplified for use in CE-QUAL-W2 by deleting portions of the model relating to surface transport of floatables and suspended and dissolved materials. In addition, transport equations for lateral movement were also deleted because CE-QUAL-W2 computes forcing functions only in the longitudinal and vertical directions. The following equations are used for particle tracking in CE-QUAL-W2 based on velocity:</p>
+</blockquote>
 <div class="arithmatex">\[
 X^{t+1} = X^{t} + U^{t}(Z^{t}, X^{t}) \cdot \Delta t \tag{3-1}
 \]</div>
@@ -2425,20 +2368,20 @@ Z^{t+1} = Z^{t} + W^{t}(Z^{t}, X^{t}) \cdot \Delta t \tag{3-2}
 <td>Offset (below) from Node(k,i) to the particle's position (m)</td>
 </tr>
 <tr>
+<td><span class="arithmatex">\(X^{t+1}\)</span></td>
+<td>Longitudinal position of particle at time <span class="arithmatex">\(t+1\)</span> (m); defined as <span class="arithmatex">\(x_{\text{Node}(k,i)} + \Delta x\)</span> at time <span class="arithmatex">\(t+1\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(Z^{t+1}\)</span></td>
+<td>Vertical position of particle at time <span class="arithmatex">\(t+1\)</span> (m); defined as <span class="arithmatex">\(z_{\text{Node}(k,i)} + \Delta z\)</span> at time <span class="arithmatex">\(t+1\)</span></td>
+</tr>
+<tr>
 <td><span class="arithmatex">\(X^{t}\)</span></td>
 <td>Longitudinal position of particle at time <span class="arithmatex">\(t\)</span> (m); defined as <span class="arithmatex">\(x_{\text{Node}(k,i)} + \Delta x\)</span> at time <span class="arithmatex">\(t\)</span></td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(Z^{t}\)</span></td>
 <td>Vertical position of particle at time <span class="arithmatex">\(t\)</span> (m); defined as <span class="arithmatex">\(z_{\text{Node}(k,i)} + \Delta z\)</span> at time <span class="arithmatex">\(t\)</span></td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(X^{t+1}\)</span></td>
-<td>Longitudinal position of particle at time <span class="arithmatex">\(t+1\)</span> (m)</td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(Z^{t+1}\)</span></td>
-<td>Vertical position of particle at time <span class="arithmatex">\(t+1\)</span> (m)</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(U^{t}(Z^{t}, X^{t})\)</span></td>
@@ -2454,17 +2397,16 @@ Z^{t+1} = Z^{t} + W^{t}(Z^{t}, X^{t}) \cdot \Delta t \tag{3-2}
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Particle transport through the CE-QUAL-W2 grid](../assets/images/part2/fig44_particle_transport_grid.png){ width="600" }
-  <figcaption>Figure 44. From Goodwin et al. (2001) illustrating the particle transport through the CE-QUAL-W2 grid.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Particle transport through the CE-QUAL-W2 grid" src="../../assets/images/part2/fig44_particle_transport_grid.jpeg" width="600" />
+<br />
+<figcaption>Figure 44. From Goodwin et al. (2001) illustrating the particle transport through the CE-QUAL-W2 grid.</figcaption>
+</figure>
 <h2 id="boundary-checks">Boundary Checks<a class="headerlink" href="#boundary-checks" title="Permanent link">&para;</a></h2>
-<p>After <span class="arithmatex">\(X^{t+1}\)</span> and <span class="arithmatex">\(Z^{t+1}\)</span> are calculated, boundary checks determine whether the particle's new position exceeds the longitudinal or vertical boundaries of the cell containing <span class="arithmatex">\(X^{t}\)</span> and <span class="arithmatex">\(Z^{t}\)</span>, or any system boundary. If the new position exceeds the boundaries of the previous cell, an algorithm identifies the appropriate cell in which to place the particle. Once the correct cell is found, the values of k, i, Node(k,i), <span class="arithmatex">\(x_{\text{Node}(k,i)}\)</span>, <span class="arithmatex">\(z_{\text{Node}(k,i)}\)</span>, <span class="arithmatex">\(\Delta x\)</span>, and <span class="arithmatex">\(\Delta z\)</span> are updated for the particle at <span class="arithmatex">\(t+1\)</span> and stored.</p>
-<p>Since the displacement of a particle is proportional to the time step used, the displacement calculated in Equations 3-1 and 3-2 could position the particle outside system boundaries. To correct for this, the model places a particle near the boundary at a user-specified distance if <span class="arithmatex">\(X^{t+1}\)</span> or <span class="arithmatex">\(Z^{t+1}\)</span> exceeds the system boundaries.</p>
+<p>After <span class="arithmatex">\(X^{t+1}\)</span> and <span class="arithmatex">\(Z^{t+1}\)</span> are calculated, boundary checks are performed to determine if the particle's new position exceeds either the longitudinal or vertical boundaries of the cell containing <span class="arithmatex">\(X^{t}\)</span> and <span class="arithmatex">\(Z^{t}\)</span>, or any system boundary. An algorithm is activated to determine the appropriate cell in which to place the particle if the particle's new position exceeds the boundaries of its cell from the previous time step. Once the appropriate cell is found, the values of k, i, Node(k,i), <span class="arithmatex">\(x_{\text{Node}(k,i)}\)</span>, <span class="arithmatex">\(z_{\text{Node}(k,i)}\)</span>, <span class="arithmatex">\(\Delta x\)</span>, and <span class="arithmatex">\(\Delta z\)</span> are updated for the particle at <span class="arithmatex">\(t+1\)</span> and stored.</p>
+<p>Since the displacement of a particle is proportional to the time step used, the displacement calculated in Equations 3-1 and/or 3-2 could position the particle outside system boundaries. To correct for this, the model places a particle near the boundary at a user-specified distance if <span class="arithmatex">\(X^{t+1}\)</span> or <span class="arithmatex">\(Z^{t+1}\)</span> exceeds the system boundaries.</p>
 <h2 id="turbulent-diffusion">Turbulent Diffusion<a class="headerlink" href="#turbulent-diffusion" title="Permanent link">&para;</a></h2>
-<p>In addition to advective transport, a random movement is added to represent the effects of turbulence. The magnitude of the random movement is proportional to the intensity of turbulence in the system. Following Dunsbergen and Stalling (1993) and Chapman et al. (1994), the transport in x and z including both advection and random turbulent transport is:</p>
+<p>In addition, a random movement of the particle is added to the velocity movement. The randomness added to the particle movement is based on the intensity of turbulence in a system. Following the work of Dunsbergen and Stalling (1993) and Chapman et al. (1994), the transport in x and z including the translation by velocity and random turbulent transport are shown below:</p>
 <div class="arithmatex">\[
 X^{t+1} = X^{t} + U \Delta t + R\sqrt{6 D_x \Delta t} \tag{3-3}
 \]</div>
@@ -2479,10 +2421,10 @@ Z^{t+1} = Z^{t} + W \Delta t + R\sqrt{6 D_z \Delta t} \tag{3-4}
 </ul>
 <p>The use of the uniform distribution rather than a Gaussian distribution saves computational time and does not affect the resulting random distribution (Hathhorn, 1997).</p>
 <h3 id="dispersion-coefficient-specification">Dispersion Coefficient Specification<a class="headerlink" href="#dispersion-coefficient-specification" title="Permanent link">&para;</a></h3>
-<p>The value of <span class="arithmatex">\(D_x\)</span> is specified in the control file <code>w2_con.npt</code>, whereas <span class="arithmatex">\(D_z\)</span> is computed by the turbulence closure model <!-- TODO: Add link to turbulence closure section --> selected for the simulation (for example, setting <strong>[AZC]</strong> to <code>TKE</code> activates the k-ε turbulence model). A high value of <span class="arithmatex">\(D_x\)</span> can produce excessive random longitudinal movement. In all cases, the maximum displacement of a particle per time step is constrained by the grid cell height (<span class="arithmatex">\(\Delta z\)</span>) and segment length (<span class="arithmatex">\(\Delta x\)</span>).</p>
+<p>The value of <span class="arithmatex">\(D_x\)</span> is specified in the control file <code>w2_con.npt</code>, whereas the value of <span class="arithmatex">\(D_z\)</span> is computed based on the turbulence closure model used, such as the k-ε turbulence model (for example in <code>w2_con.npt</code> the user can set <code>AZC</code>=<code>TKE</code>). The choice of <span class="arithmatex">\(D_x\)</span> can lead to high values of random movement in x if <span class="arithmatex">\(D_x\)</span> is high. In all cases the maximum movement of a particle is constrained by the grid cell height, <span class="arithmatex">\(\Delta z\)</span>, and segment length, <span class="arithmatex">\(\Delta x\)</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">High Dispersion Coefficient Values</p>
-<p>Setting <span class="arithmatex">\(D_x\)</span> to a high value can cause excessive random longitudinal movement of particles. The maximum particle displacement per time step is bounded by the grid cell dimensions (<span class="arithmatex">\(\Delta z\)</span> and <span class="arithmatex">\(\Delta x\)</span>).</p>
+<p>Setting <span class="arithmatex">\(D_x\)</span> to a high value can cause excessive random movement of particles. The maximum particle movement per time step is bounded by the grid cell dimensions (<span class="arithmatex">\(\Delta z\)</span> and <span class="arithmatex">\(\Delta x\)</span>).</p>
 </div>
 <h2 id="lateral-transport">Lateral Transport<a class="headerlink" href="#lateral-transport" title="Permanent link">&para;</a></h2>
 <p>Particles also move in the lateral direction based on the following equation, assuming that the lateral dispersion coefficient is the same as the longitudinal coefficient:</p>
@@ -2491,43 +2433,35 @@ Y^{t+1} = Y^{t} + V \Delta t + R\sqrt{6 D_x \Delta t} \tag{3-5}
 \]</div>
 <p>The value of <span class="arithmatex">\(V\)</span> is based on any lateral inflows or outflows at a segment.</p>
 <h2 id="particle-location-in-the-grid">Particle Location in the Grid<a class="headerlink" href="#particle-location-in-the-grid" title="Permanent link">&para;</a></h2>
-<p>The location of each particle in the grid is identified by segment (I) and layer (K) indices as well as X, Y, and Z coordinates within each cell. The standard CE-QUAL-W2 sign convention is followed in this algorithm:</p>
-<ul>
-<li><strong>Longitudinal velocity</strong>: positive downstream (increasing segment number)</li>
-<li><strong>Vertical velocity</strong>: positive downward</li>
-</ul>
-<p>Initial x, y, and z coordinates are specified for each particle released into a segment and layer. The user specifies x and z; y is set to the middle of the layer, that is, <span class="arithmatex">\(y = B/2\)</span> where <span class="arithmatex">\(B\)</span> is the layer width.</p>
+<p>The location of the particles in the grid is identified by segment (I) and layer (K) location as well as X, Y, and Z coordinates within each layer. Figure 45 and Figure 46 show the x, y, and z coordinate reference locations within the cells for the particle algorithm for the plan view and side view, respectively. Figure 47 shows the definition sketch for lateral velocities in a layer. The standard CE-QUAL-W2 designation for longitudinal (positive downstream or increasing segment number) and vertical velocities (positive downward) is followed in this algorithm. Initial x, y, and z are given for each particle released into a segment and layer. The user specifies x and z, but y is chosen as the middle of a layer, i.e., <span class="arithmatex">\(y = B/2\)</span> where <span class="arithmatex">\(B\)</span> is the layer width.</p>
 <h3 id="plan-view-coordinates">Plan View Coordinates<a class="headerlink" href="#plan-view-coordinates" title="Permanent link">&para;</a></h3>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Plan view of x and y coordinates within a layer and segment](../assets/images/part2/fig45_plan_view_coordinates.png){ width="600" }
-  <figcaption>Figure 45. Plan view of x and y coordinates within a layer (K) and segment (I). DLX is the segment length and B is the segment width at the given layer K.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Plan view of x and y coordinates within a layer and segment" src="../../assets/images/part2/fig45_plan_view_coordinates.png" width="600" />
+<br />
+<figcaption>Figure 45. Plan view of x and y coordinates within a layer (K) and segment (I). DLX is the segment length and B is the segment width at the given layer K.</figcaption>
+</figure>
 <p>Within a given layer K and segment I, the coordinate system for the plan view is defined as follows:</p>
 <ul>
 <li><strong>X-coordinate</strong>: Ranges from 0 at the right (looking downstream) to <code>DLX</code> at the left, with <code>DLX</code><span class="arithmatex">\(/2\)</span> at the center.</li>
 <li><strong>Y-coordinate</strong>: Ranges from 0 at the left bank (looking upstream) to <span class="arithmatex">\(B\)</span> at the right bank, with <span class="arithmatex">\(B/2\)</span> at the center.</li>
 </ul>
 <h3 id="side-view-coordinates">Side View Coordinates<a class="headerlink" href="#side-view-coordinates" title="Permanent link">&para;</a></h3>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Side view of z and y coordinates within a layer and segment](../assets/images/part2/fig46_side_view_coordinates.png){ width="600" }
-  <figcaption>Figure 46. Side view of z and y coordinates within a layer (K) and segment (I). DZ is the layer thickness and B is the layer width.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Side view of z and y coordinates within a layer and segment" src="../../assets/images/part2/fig46_side_view_coordinates.png" width="600" />
+<br />
+<figcaption>Figure 46. Side view of z and y coordinates within a layer (K) and segment (I). DZ is the layer thickness and B is the layer width.</figcaption>
+</figure>
 <p>Within a given layer K and segment I, the coordinate system for the side view is defined as follows:</p>
 <ul>
 <li><strong>Z-coordinate</strong>: Ranges from 0 at the top of the layer to <code>DZ</code> at the bottom, with <code>DZ</code><span class="arithmatex">\(/2\)</span> at the midpoint.</li>
 <li><strong>Y-coordinate</strong>: Same convention as the plan view (0 to <span class="arithmatex">\(B\)</span>).</li>
 </ul>
 <h3 id="lateral-and-longitudinal-velocities">Lateral and Longitudinal Velocities<a class="headerlink" href="#lateral-and-longitudinal-velocities" title="Permanent link">&para;</a></h3>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Definition sketch for lateral and longitudinal velocities](../assets/images/part2/fig47_velocity_definition_sketch.png){ width="600" }
-  <figcaption>Figure 47. Definition sketch for lateral and longitudinal velocities within the cells. Withdrawals are always assumed to be on the LHS (left-hand side) of the segment.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Definition sketch for lateral and longitudinal velocities" src="../../assets/images/part2/fig47_lateral_longitudinal_velocities.png" width="600" />
+<br />
+<figcaption>Figure 47. Definition sketch for lateral and longitudinal velocities within the cells. Withdrawals are always assumed to be on the LHS (left-hand side) of the segment.</figcaption>
+</figure>
 <p>The velocity sign conventions within each cell are:</p>
 <ul>
 <li><strong>Longitudinal velocity</strong>: Positive in the downstream direction (toward segment I+1), negative in the upstream direction.</li>
@@ -2541,7 +2475,6 @@ Y^{t+1} = Y^{t} + V \Delta t + R\sqrt{6 D_x \Delta t} \tag{3-5}
 <li>Dunsbergen, D.W., and Stalling, G.S. (1993). The Application of a Particle Model to Coastal and Estuarine Problems. Delft University of Technology, Dept. of Civil Engineering, Delft, The Netherlands.</li>
 <li>Goodwin, R.A., Nestler, J.M., Anderson, J.J., Weber, L.J., and Loucks, D.P. (2001). A New Tool to Forecast Fish Movement and Passage. <em>Hydro Review</em>, 25(4), 74--82.</li>
 <li>Hathhorn, W.E. (1997). A Second Look at the Method of Random Walks. <em>Stochastic Hydrology and Hydraulics</em>, 11(4), 319--329.</li>
-<li>Kang, S.W., Sheng, Y.P., and Lick, W. (1982). Wave Action and Bottom Shear Stresses in Lake Erie. <em>Journal of Great Lakes Research</em>, 8(3), 482--494.</li>
 </ul>
 
 

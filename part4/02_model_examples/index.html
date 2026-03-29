@@ -3061,7 +3061,19 @@
 <li>Spokane River (both old input format and CSV input format)</li>
 <li>SysTDG Columbia River (Bonneville Reservoir)</li>
 </ul>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![Model examples distributed with model release version](../assets/images/part4/model_examples_directory.png){ width="500" }
+  <figcaption>Figure 1. Model examples distributed with model release version.</figcaption>
+</figure> -->
+
 <p>Two additional sets of examples are also released with the model download: one for the United States Geological Survey (USGS) Auto Port Selection feature and one for using W2Post for plotting calibration profiles. The USGS Auto Port Selection examples are in the directory <code>USGS Examples for using USGS Auto Port Selection Algorithm</code> and include examples described in the <code>README.txt</code> file provided by Stewart Rounds of the USGS.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![USGS model examples illustrating the auto-port selection feature](../assets/images/part4/usgs_auto_port_examples.png){ width="600" }
+  <figcaption>Figure 2. USGS model examples illustrating using the auto-port selection feature.</figcaption>
+</figure> -->
+
 <p>The W2Post example is included in the download directory <code>W2tools post-processor integrated with W2control preprocessor</code>. This includes the DeGray Reservoir example with computed temperature calibration data and statistics.</p>
 <h2 id="columbia-slough-estuary">Columbia Slough Estuary<a class="headerlink" href="#columbia-slough-estuary" title="Permanent link">&para;</a></h2>
 <h3 id="waterbody-description">Waterbody Description<a class="headerlink" href="#waterbody-description" title="Permanent link">&para;</a></h3>
@@ -3076,19 +3088,18 @@
 </ul>
 <p>The example problem is set up as a 2-branch model of the Lower Columbia Slough.</p>
 <p>The Upper Columbia Slough, termed the "Middle" and "Upper" Slough, was historically maintained to provide irrigation water to agricultural and commercial users in the summer months. The Upper Slough is connected by pipes and an overflow weir during the fall, winter, and spring to Fairview Lake. During the summer, Fairview Lake is connected to the Upper Slough only by flow over and leakage through the weir.</p>
-<p>Water is also pumped from the Upper Slough to the Lower Columbia Slough at a pump station at MCDD1 and from the Upper Slough to the Columbia River at MCDD4. At MCDD1, pipes also allow gravity flow from the Upper Slough to the Lower Slough. Other inflows to the Upper Columbia Slough include groundwater and stormwater from the Portland International Airport and other industrial, commercial, and residential neighborhoods in the area.</p>
+<p>Water is also pumped from the Upper Slough to the Lower Columbia Slough at a pump station at MCDD1 and from the Upper Slough to the Columbia River at MCDD4 (Multnomah County Drainage District #4). At MCDD1, pipes also allow gravity flow from the Upper Slough to the Lower Slough. Other inflows to the Upper Columbia Slough include groundwater and stormwater from the Portland International Airport and other industrial, commercial, and residential neighborhoods in the area.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Lower Columbia Slough system](../assets/images/part4/columbia_slough_system.png){ width="700" }
   <figcaption>Figure 3. Lower Columbia Slough system.</figcaption>
 </figure> -->
 
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Columbia Slough reach map](../assets/images/part4/columbia_slough_reach_map.png){ width="700" }
-  <figcaption>Figure 4. Columbia Slough, Portland, Oregon (City of Portland, BES).</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Columbia Slough reach map" src="../../assets/images/part4/fig04_columbia_slough.png" width="700" />
+<br />
+<figcaption>Figure 4. Columbia Slough, Portland, Oregon (City of Portland, BES).</figcaption>
+</figure>
 <h3 id="model-grid">Model Grid<a class="headerlink" href="#model-grid" title="Permanent link">&para;</a></h3>
 <p>The model has 2 branches comprising the main arm of the Lower Slough and the branch named North Slough. The vertical grid spacing is 0.305--0.61 m (1--2 ft). Details of the bathymetry are shown in Table 1.</p>
 <p><strong>Table 1. Model branch characteristics for the Columbia Slough model.</strong></p>
@@ -3128,12 +3139,11 @@
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Grid layout for Columbia Slough Branch 1](../assets/images/part4/columbia_slough_grid_br1.png){ width="700" }
-  <figcaption>Figure 5. Grid layout for Columbia Slough Branch 1.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Grid layout for Columbia Slough Branch 1" src="../../assets/images/part4/fig05_columbia_slough_grid.png" width="700" />
+<br />
+<figcaption>Figure 5. Grid layout for Columbia Slough Branch 1.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Segment layout for Columbia Slough](../assets/images/part4/columbia_slough_segments.png){ width="700" }
@@ -3347,12 +3357,11 @@
 <li>Environmental performance</li>
 <li>Fish habitat</li>
 </ul>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![DeGray Reservoir map](../assets/images/part4/degray_reservoir_map.png){ width="700" }
-  <figcaption>Figure 7. DeGray Reservoir (Bing Maps, 2019).</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="DeGray Reservoir map" src="../../assets/images/part4/fig07_degray_reservoir.png" width="700" />
+<br />
+<figcaption>Figure 7. DeGray Reservoir (Bing Maps, 2019).</figcaption>
+</figure>
 <p><strong>Table 3. DeGray Reservoir physical characteristics.</strong></p>
 <table>
 <thead>
@@ -3402,12 +3411,11 @@
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![DeGray Reservoir computational grid](../assets/images/part4/degray_grid.png){ width="700" }
-  <figcaption>Figure 8. DeGray Reservoir computational grid.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="DeGray Reservoir computational grid" src="../../assets/images/part4/fig08_degray_grid.png" width="700" />
+<br />
+<figcaption>Figure 8. DeGray Reservoir computational grid.</figcaption>
+</figure>
 <h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h3>
 <p>This example demonstrates how to set up and use the fish habitat feature (output file <code>habitat.csv</code>) and the environmental performance features. Output files include <code>envrprf_t_1.csv</code> for temperature and <code>envrprf_c_1.csv</code> for concentration of state variables, used to evaluate a model simulation. These are configured using the input files <code>w2_habitat.npt</code> and <code>w2_envirprf.npt</code>. <!-- TODO: Add link to Part 3 --> Descriptions of these files are provided in the User Manual Part 3.</p>
 <p>Output files are also written for the W2Post post-processor and for contour plotting of depth vs. time and temperature (input file <code>w2_lake_river_contour.csv</code>).</p>
@@ -3418,18 +3426,16 @@
 <p>This example explores model execution, fish habitat analysis, and travel time of particles released at the upper end of the reservoir. The model represents Detroit Reservoir in Oregon, USA. The original model was developed by the USGS (Sullivan et al., 2007) and has been simplified for this example.</p>
 <h3 id="model-grid_2">Model Grid<a class="headerlink" href="#model-grid_2" title="Permanent link">&para;</a></h3>
 <p>The model has 4 branches and 31 segments. The vertical layer height is approximately 2 m. The model files are organized in a zipped file with input files in a subdirectory called <code>InputFiles</code>. All output files are written to the directory where the model executables are located, although output can be directed to a separate directory using guidelines in the User Manual.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Detroit Reservoir model grid](../assets/images/part4/detroit_grid.png){ width="700" }
-  <figcaption>Figure 9. Detroit Reservoir model grid.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Branch and inflow layout for Detroit Reservoir](../assets/images/part4/detroit_branch_layout.png){ width="700" }
-  <figcaption>Figure 10. Branch and inflow layout for Detroit Reservoir.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Detroit Reservoir model grid" src="../../assets/images/part4/fig09_detroit_grid.png" width="700" />
+<br />
+<figcaption>Figure 9. Detroit Reservoir model grid.</figcaption>
+</figure>
+<figure>
+  <img alt="Branch and inflow layout for Detroit Reservoir" src="../../assets/images/part4/fig10_detroit_inflow_layout.png" width="700" />
+<br />
+<figcaption>Figure 10. Branch and inflow layout for Detroit Reservoir.</figcaption>
+</figure>
 <h3 id="model-predictions">Model Predictions<a class="headerlink" href="#model-predictions" title="Permanent link">&para;</a></h3>
 <p>After running the preprocessor and model executable, two aspects of the model predictions are highlighted:</p>
 <ol>
@@ -3437,7 +3443,7 @@
 <li>Fish habitat volume</li>
 </ol>
 <h4 id="flow-balance-summary">Flow Balance Summary<a class="headerlink" href="#flow-balance-summary" title="Permanent link">&para;</a></h4>
-<p>The output file for overall flow balance is <code>flowbal.csv</code>. This file reports the flow in and out as well as evaporation losses over the 2002 simulation year. The file contains model-predicted evaporation losses, mass balance errors (which should be very small), and inflow and outflow volumes.</p>
+<p>The output file for overall flow balance is <code>flowbal.csv</code>. This file reports the flow in and out as well as evaporation losses over the 2002 simulation year. The file contains model-predicted evaporation losses, mass balance errors (very small), and inflow and outflow volumes.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Predicted evaporation losses from Detroit Reservoir in 2002](../assets/images/part4/detroit_evaporation.png){ width="500" }
@@ -3445,24 +3451,22 @@
 </figure> -->
 
 <h4 id="fish-habitat-volume">Fish Habitat Volume<a class="headerlink" href="#fish-habitat-volume" title="Permanent link">&para;</a></h4>
-<p>The output file for fish habitat volumes is <code>habitat.csv</code>. This file reports habitat volumes and percent volumes for each species listed at the beginning of the file.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Percent of reservoir volume optimal habitat for striped bass for Detroit Reservoir](../assets/images/part4/detroit_fish_habitat.png){ width="500" }
-  <figcaption>Figure 12. Percent of reservoir volume optimal habitat for striped bass for Detroit Reservoir.</figcaption>
-</figure> -->
-
+<p>The output file for fish habitat volumes is <code>habitat.csv</code>. This file reports habitat volumes and percent volumes for each species listed at the beginning of the file. The file opens in Excel, and the model-predicted fish habitat for striped bass can be viewed as a percentage of the reservoir volume over the year (Figure 12). This reservoir is too cold in the winter months for this species.</p>
+<figure>
+  <img alt="Percent of reservoir volume optimal habitat for striped bass for Detroit Reservoir" src="../../assets/images/part4/fig12_detroit_habitat.png" width="500" />
+<br />
+<figcaption>Figure 12. Percent of reservoir volume optimal habitat for striped bass for Detroit Reservoir.</figcaption>
+</figure>
 <p>Additional model features to explore include suspended solids distributions in the reservoir and stratification dynamics. The W2Post graphical user interface (GUI) post-processor provides contour plots of temperature stratification, time series plots, and profile plots.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Reservoir temperature on Julian day 168.2 in the year 2002 for Branch 1 for Detroit Lake](../assets/images/part4/detroit_contour.png){ width="700" }
-  <figcaption>Figure 13. Reservoir temperature on Julian day 168.2 in the year 2002 for Branch 1 for Detroit Lake.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Reservoir temperature on Julian day 168.2 in the year 2002 for Branch 1 for Detroit Lake" src="../../assets/images/part4/fig13_detroit_temperature.png" width="700" />
+<br />
+<figcaption>Figure 13. Reservoir temperature on Julian day 168.2 in the year 2002 for Branch 1 for Detroit Lake.</figcaption>
+</figure>
 <h2 id="long-lake-spokane-lake">Long Lake (Spokane Lake)<a class="headerlink" href="#long-lake-spokane-lake" title="Permanent link">&para;</a></h2>
 <h3 id="waterbody-description_3">Waterbody Description<a class="headerlink" href="#waterbody-description_3" title="Permanent link">&para;</a></h3>
-<p>This example tests the Excel-based control file <code>w2_con.xlsm</code>, which writes a CSV file named <code>w2_con.csv</code> used in lieu of the files <code>w2_con.npt</code> and <code>graph.npt</code>. <!-- TODO: Add link to Part 3 --> This is described in User Manual Part 3.</p>
-<p>Long Lake is part of the Spokane River that flows from Idaho to the Columbia River. Long Lake is the furthest downstream waterbody in the system model.</p>
+<p>This example was provided to test the new Excel-based control file, <code>w2_con.xlsm</code>, which writes out a CSV file named <code>w2_con.csv</code> that is used in lieu of the files <code>w2_con.npt</code> and <code>graph.npt</code>. <!-- TODO: Add link to Part 3 --> This is described in User Manual Part 3.</p>
+<p>Long Lake is part of the Spokane River that flows from Idaho to the Columbia River. Characteristics of the lake are described below. Figure 14 shows the location of the Upper Spokane River system. Figure 15 shows a close-up of the Spokane River from the WA-ID State line to the Long Lake Dam.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Upper Spokane River in Washington](../assets/images/part4/upper_spokane_river.png){ width="600" }
@@ -3475,17 +3479,17 @@
   <figcaption>Figure 15. Long Lake located west of the City of Spokane.</figcaption>
 </figure> -->
 
+<p>Long Lake is located furthest downstream in the system model. Table 5 provides some important physical characteristics of the reservoir.</p>
 <h3 id="long-lake-bathymetry">Long Lake Bathymetry<a class="headerlink" href="#long-lake-bathymetry" title="Permanent link">&para;</a></h3>
-<p>The Long Lake bathymetry was originally developed by the Washington Department of Ecology and was based on bathymetric contour maps provided by AVISTA Corporation.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Long Lake bathymetric contours](../assets/images/part4/long_lake_bathymetry.png){ width="600" }
-  <figcaption>Figure 16. Long Lake bathymetric contours.</figcaption>
-</figure> -->
-
+<p>The Long Lake bathymetry was originally developed by the WA Department of Ecology and was based on bathymetric contour maps provided by AVISTA Corporation. Figure 16 shows an image of the reservoir contours used to develop the lake bathymetry.</p>
+<figure>
+  <img alt="Long Lake bathymetric contours" src="../../assets/images/part4/fig16_long_lake_contours.jpeg" width="600" />
+<br />
+<figcaption>Figure 16. Long Lake bathymetric contours.</figcaption>
+</figure>
 <h3 id="long-lake-dam-and-reservoir">Long Lake Dam and Reservoir<a class="headerlink" href="#long-lake-dam-and-reservoir" title="Permanent link">&para;</a></h3>
-<p>The dam facilities are located at river mile (RM) 32.5, and the lake backs up to one mile below Nine Mile Dam at RM 57.8. The Long Lake section of the model extends from Nine Mile Dam to Long Lake Dam. Depending on water level, the uppermost segments of the model may function as a river or lake.</p>
-<p>The lake has a maximum depth of 170 ft at a full pool elevation of 1536 ft NGVD29 (National Geodetic Vertical Datum of 1929). There are 8 Tainter gates on the dam. These gates are kept closed to maximize storage (normal pool is with gates closed) and power generation.</p>
+<p>The dam facilities are located at RM 32.5, and the lake backs up to one mile below Nine Mile Dam at RM 57.8. The Long Lake section of the model includes from Nine Mile Dam to Long Lake Dam. Depending on water level, the uppermost segments of the model may act like a river or lake.</p>
+<p>The lake has a maximum depth of 170 ft at a full pool elevation of 1536 ft NGVD29. Figure 17 shows the Long Lake Dam, spillway, and powerhouse facilities. There are 8 Tainter gates on the dam. Aside from leakage, these gates are kept closed to allow as much storage (normal pool is with gates closed) and power generation as possible. Table 5 lists several dam facility specifications.</p>
 <p><strong>Table 5. Long Lake Dam and Reservoir specifications.</strong></p>
 <table>
 <thead>
@@ -3548,14 +3552,13 @@
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Long Lake Dam and Powerhouse](../assets/images/part4/long_lake_dam.png){ width="500" }
-  <figcaption>Figure 17. Long Lake Dam and Powerhouse.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Long Lake Dam and Powerhouse" src="../../assets/images/part4/fig17_long_lake_dam.jpeg" width="500" />
+<br />
+<figcaption>Figure 17. Long Lake Dam and Powerhouse.</figcaption>
+</figure>
 <h3 id="model-grid_3">Model Grid<a class="headerlink" href="#model-grid_3" title="Permanent link">&para;</a></h3>
-<p>Long Lake was modeled as a one-branch system.</p>
+<p>Long Lake was modeled as a one-branch system. Figure 18 shows a cross section of the model grid for Long Lake, and Figure 19 shows a plan view of the model grid indicating the segment orientation. Details of the grid setup are given in Table 6.</p>
 <p><strong>Table 6. Computational grid setup for Long Lake.</strong></p>
 <table>
 <thead>
@@ -3581,20 +3584,18 @@
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Long Lake segment and layers](../assets/images/part4/long_lake_grid.png){ width="700" }
-  <figcaption>Figure 18. Long Lake segment and layers.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Long Lake segment layout](../assets/images/part4/long_lake_segment_layout.png){ width="500" }
-  <figcaption>Figure 19. Long Lake segment layout.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Long Lake segment and layers" src="../../assets/images/part4/fig18_long_lake_segments.jpeg" width="700" />
+<br />
+<figcaption>Figure 18. Long Lake segment and layers.</figcaption>
+</figure>
+<figure>
+  <img alt="Long Lake segment layout" src="../../assets/images/part4/fig19_long_lake_layout.jpeg" width="500" />
+<br />
+<figcaption>Figure 19. Long Lake segment layout.</figcaption>
+</figure>
 <h3 id="initial-and-boundary-conditions">Initial and Boundary Conditions<a class="headerlink" href="#initial-and-boundary-conditions" title="Permanent link">&para;</a></h3>
-<p>Inflows to Long Lake consist of the upstream boundary condition from the Spokane River and a tributary inflow from the Little Spokane River.</p>
+<p>Inflows to Long Lake consist of the upstream boundary condition from the Spokane River and a tributary inflow from the Little Spokane River. Figure 20 and Figure 21 show the upstream inflow and temperature to Long Lake. Figure 22 and Figure 23 show the inflow and temperature from the Little Spokane River. Figure 24 shows the outflow from Long Lake.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Long Lake 2000 upstream inflow](../assets/images/part4/long_lake_inflow.png){ width="500" }
@@ -3626,6 +3627,7 @@
 </figure> -->
 
 <h3 id="input-and-output-files">Input and Output Files<a class="headerlink" href="#input-and-output-files" title="Permanent link">&para;</a></h3>
+<p>Table 7 shows the file names of the inputs to the Long Lake model and the output files generated by the model.</p>
 <p><strong>Table 7. Long Lake model input and output files.</strong></p>
 <table>
 <thead>
@@ -3785,30 +3787,28 @@
 </table>
 <h2 id="multiple-water-body-cascade">Multiple Water Body Cascade<a class="headerlink" href="#multiple-water-body-cascade" title="Permanent link">&para;</a></h2>
 <h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
-<p>This example demonstrates 3 waterbodies of a river system that cascade from one to the other in linear fashion using the multiple processor approach. <!-- TODO: Add link to Part 3 --> This approach is discussed in Part 3 of the User Manual. The purpose of this example is to show how to reduce computational time when running multiple waterbodies.</p>
+<p>This example focuses on using 3 waterbodies of a river system that cascade from one to the other in linear fashion with the multiple processor approach. <!-- TODO: Add link to Part 3 --> This approach is discussed in Part 3 of the User Manual. The purpose of this example is to show how to reduce computational time for running multiple waterbodies.</p>
 <p>The user has several choices for running this system of 3 waterbodies:</p>
 <ul>
 <li><strong>Run all 3 waterbodies as one model.</strong> This approach is simpler to manage since all files are in one directory, but the model takes the longest time to run since all waterbodies are limited to the shortest numerical time step in the 3-waterbody domain.</li>
-<li><strong>Run waterbodies sequentially.</strong> Run the upper waterbody (WB1) first, then copy the outflow from WB1 to the next waterbody (WB2) and run WB2. Repeat for the last waterbody (WB3). This approach is well-suited to using a batch file to transfer files automatically and setting <code>CLOSEC</code> to <code>ON</code> to close the dialog box automatically. Each waterbody runs at its maximum time step independent of the other waterbodies.</li>
+<li><strong>Run waterbodies sequentially.</strong> Run the upper waterbody (WB1) first, then copy the outflow from WB1 to the next waterbody (WB2) and run WB2. Repeat for the last waterbody (WB3). This approach is well-suited to using a batch file to transfer files automatically and setting <code>CLOSEC</code> to <code>ON</code> to close the dialog box automatically. Each waterbody will run at its maximum time step independent of the other waterbodies and hence will be faster than the first choice.</li>
 <li><strong>Use the multiple waterbody model.</strong> The code manages the transfer of information from one waterbody to the other and runs the models simultaneously based on upstream data availability. Instead of waiting for the upstream run to complete, the downstream model starts running when information is available from upstream. With multiple cores, the waterbodies run on separate computer cores and the run finishes close to the time of the limiting waterbody.</li>
 </ul>
 <h3 id="waterbody-description_4">Waterbody Description<a class="headerlink" href="#waterbody-description_4" title="Permanent link">&para;</a></h3>
-<p>The example is from a multiple waterbody model of the Chehalis River in Washington, USA. The Chehalis River Basin is located in southwest Washington State with a drainage area over 2,000 square miles spanning five counties: Lewis, Thurston, Grays Harbor, Pacific, and Cowlitz (WADOE, 2001).</p>
-<p>The Chehalis River originates in the Coast Range east of Willapa Bay and drains the western foothills of the Cascades and the southern Olympic Mountains. It flows into Grays Harbor and the Pacific Ocean, totaling over 125 miles in length.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Chehalis River study area](../assets/images/part4/chehalis_study_area.png){ width="600" }
-  <figcaption>Figure 25. Chehalis River study area from near Doty, through Centralia to Aberdeen in southwestern Washington State (Google Earth, 2017).</figcaption>
-</figure> -->
-
+<p>The example is from a multiple waterbody model of the Chehalis River in Washington, USA. The Chehalis River Basin is located in southwest Washington State (see Figure 25). The drainage area to the Chehalis River is over 2,000 square miles, with area existing within five counties: Lewis, Thurston, Grays Harbor, Pacific, and Cowlitz (WADOE, 2001).</p>
+<p>The Chehalis River originates in Coast Range east of Willapa Bay, and also drains the western foothills of the Cascades and the southern Olympic Mountains. It ultimately flows into Grays Harbor and the Pacific Ocean, totaling over 125 miles in length.</p>
+<figure>
+  <img alt="Chehalis River study area" src="../../assets/images/part4/fig25_chehalis_study_area.jpeg" width="600" />
+<br />
+<figcaption>Figure 25. Chehalis River study area from near Doty, through Centralia to Aberdeen in southwestern Washington State (Google Earth, 2017).</figcaption>
+</figure>
 <h3 id="model-grid_4">Model Grid<a class="headerlink" href="#model-grid_4" title="Permanent link">&para;</a></h3>
-<p>The Chehalis River was modeled from upstream of Pe Ell (RM 108) to Porter, WA (RM 33.3). Only the mainstem Chehalis River was modeled, discretized into 10 model branches and 9 waterbodies. Multiple branches allowed for separate physical characteristics (such as branch slope) unique to each reach. The upstream reaches had steep gradients with riffles and pools. Only the first 3 waterbodies (first 3 branches) were used in this example.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Longitudinal profile of the Chehalis River thalweg](../assets/images/part4/chehalis_profile.png){ width="700" }
-  <figcaption>Figure 26. Longitudinal profile of the Chehalis River thalweg (vertical lines show model branch breaks). Only the first 3 branches were modeled in this example.</figcaption>
-</figure> -->
-
+<p>The Chehalis River was modeled from upstream of Pe Ell (RM 108) to Porter, WA (RM 33.3). Only the mainstem Chehalis River was modeled and was discretized into 10 model branches and 9 waterbodies. The physical characteristics of the river varied widely, and multiple branches allowed for separate characteristics (such as branch slope) unique to each branch to be implemented in the model. The upstream reaches had steep gradients with riffles and pools. It is the first 3 waterbodies or first 3 branches that were used in this example (see Figure 26). Table 8 shows the characteristics of each waterbody.</p>
+<figure>
+  <img alt="Longitudinal profile of the Chehalis River thalweg" src="../../assets/images/part4/fig26_chehalis_thalweg.jpg" width="700" />
+<br />
+<figcaption>Figure 26. Longitudinal profile of the Chehalis River thalweg (vertical lines show model branch breaks). Only the first 3 branches were modeled in this example.</figcaption>
+</figure>
 <p><strong>Table 8. Summary of waterbody and branch segments and layers for the 3 waterbodies in this example.</strong></p>
 <table>
 <thead>
@@ -3861,14 +3861,14 @@
 </tbody>
 </table>
 <h3 id="running-the-example">Running the Example<a class="headerlink" href="#running-the-example" title="Permanent link">&para;</a></h3>
-<p>For this example, follow the steps outlined in User Manual Part 3 for using this model feature. Start running the first waterbody, then the second waterbody, and once output has started in the second waterbody, start the third waterbody. The model waits until sufficient output has been generated by the upstream model before proceeding with the downstream models.</p>
-<p>Each model waterbody runs on a different model processor. This approach saves considerable computational time compared to running all waterbodies under one model environment.</p>
+<p>For this example, follow the steps outlined in User Manual Part 3 for using this model feature. The model user starts running the first waterbody, then starts running the second waterbody, then once output has started in the second waterbody, the model user starts the third waterbody. The model waits until enough output has been generated by the upstream model before starting on the downstream models.</p>
+<p>Each model waterbody runs on a different model processor. Overall this approach has saved considerable computational time compared to running the model all under one model environment.</p>
 <h2 id="particle-tracking">Particle Tracking<a class="headerlink" href="#particle-tracking" title="Permanent link">&para;</a></h2>
 <h3 id="overview_1">Overview<a class="headerlink" href="#overview_1" title="Permanent link">&para;</a></h3>
-<p>This example demonstrates a reservoir with a particle release defined by the input file <code>particle.csv</code>. <!-- TODO: Add link to Part 3 --> The User Manual Part 3 describes the input file format and the model output files in detail. Output files describe the particle paths and histogram of the time history of particles in terms of temperature, velocity, and depth experienced over time.</p>
-<p>This example also demonstrates the feature where the longitudinal eddy viscosity and diffusivity scale with the predicted longitudinal velocity, which affects the random movement of particles in the x-direction.</p>
+<p>This example is for a reservoir that has a particle release defined by the input file, <code>particle.csv</code>. <!-- TODO: Add link to Part 3 --> The User Manual Part 3 describes in detail the input file format and the model output files that describe the particle paths and histogram of the time history of the particles in terms of temperature, velocity, and depth the particles experienced over time.</p>
+<p>This code also shows how to use the feature where the longitudinal eddy viscosity and diffusivity scale with the predicted longitudinal velocity, which affects the random movement of particles in the x-direction.</p>
 <h3 id="model-grid_5">Model Grid<a class="headerlink" href="#model-grid_5" title="Permanent link">&para;</a></h3>
-<p>The reservoir grid has one waterbody and 6 branches. The dam is located at the end of branch 1 at segment 64. A primary withdrawal is at segment 84 in branch 2. Hence, many of the particles released near the dam travel upstream into branch 2 to the withdrawal at segment 84.</p>
+<p>The reservoir grid with one waterbody and 6 branches is shown in Figure 27. The side view of branch 1 is shown in Figure 28. The dam is located at the end of branch 1 at segment 64. A primary withdrawal is at segment 84 in branch 2. Hence, many of the particles released near the dam travel upstream into branch 2 to the withdrawal at segment 84.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
   ![Particle tracking reservoir grid example](../assets/images/part4/particle_tracking_grid.png){ width="600" }
@@ -3882,30 +3882,34 @@
 </figure> -->
 
 <h3 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h3>
-<p>A typical example of using Tecplot to plot the particle paths is shown below. The figure shows branch temperature, velocity, and particles in a Tecplot frame.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Branch temperature, velocity and particles in Tecplot frame](../assets/images/part4/particle_tracking_tecplot.png){ width="700" }
-  <figcaption>Figure 29. Branch temperature, velocity, and particles in Tecplot frame.</figcaption>
-</figure> -->
-
+<p>A typical example of using Tecplot to plot the particle paths is shown in Figure 29.</p>
+<figure>
+  <img alt="Branch temperature, velocity and particles in Tecplot frame" src="../../assets/images/part4/fig29_particle_tecplot.png" width="700" />
+<br />
+<figcaption>Figure 29. Branch temperature, velocity, and particles in Tecplot frame.</figcaption>
+</figure>
 <h2 id="sediment-diagenesis-example">Sediment Diagenesis Example<a class="headerlink" href="#sediment-diagenesis-example" title="Permanent link">&para;</a></h2>
 <h3 id="model-grid_6">Model Grid<a class="headerlink" href="#model-grid_6" title="Permanent link">&para;</a></h3>
-<p>The sediment diagenesis model example grid consists of 270 segments, 1 waterbody, 7 branches, and 43 layers of 1 m vertical grid spacing.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Sediment diagenesis model grid example](../assets/images/part4/sed_diagenesis_grid.png){ width="600" }
-  <figcaption>Figure 30. Sediment diagenesis model grid example.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Side view of Branch 1 of sediment diagenesis example](../assets/images/part4/sed_diagenesis_side.png){ width="700" }
-  <figcaption>Figure 31. Side view of Branch 1 of sediment diagenesis example.</figcaption>
-</figure> -->
-
+<p>The sediment diagenesis model example plan view of the grid is shown in Figure 30. Figure 31 shows the side view of the main branch 1. The grid consists of 270 segments, 1 waterbody, 7 branches, and 43 layers of 1 m vertical grid spacing.</p>
+<figure>
+  <img alt="Sediment diagenesis model grid example" src="../../assets/images/part4/fig30_diagenesis_grid.png" width="600" />
+<br />
+<figcaption>Figure 30. Sediment diagenesis model grid example.</figcaption>
+</figure>
+<figure>
+  <img alt="Side view of Branch 1 of sediment diagenesis example" src="../../assets/images/part4/fig31_diagenesis_branch1.png" width="700" />
+<br />
+<figcaption>Figure 31. Side view of Branch 1 of sediment diagenesis example.</figcaption>
+</figure>
 <h3 id="key-input-and-output-files">Key Input and Output Files<a class="headerlink" href="#key-input-and-output-files" title="Permanent link">&para;</a></h3>
-<p>The file for setting up the sediment diagenesis example is <code>w2_diagenesis.npt</code>, described in detail in User Manual Part 3. <!-- TODO: Add link to Part 3 --> After a simulation completes, the model writes a set of output files for evaluating the sediment diagenesis results. Typical output files include:</p>
+<p>The file for setting up the sediment diagenesis example is <code>w2_diagenesis.npt</code>, which is described in detail in User Manual Part 3. <!-- TODO: Add link to Part 3 --> Once a simulation is performed, a set of files (also described in User Manual Part 3) are output by the model to evaluate the sediment diagenesis model. Some of these output files are shown in Figure 32.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span">
+  ![Typical output files from the sediment diagenesis example](../assets/images/part4/sed_diagenesis_output_files.png){ width="400" }
+  <figcaption>Figure 32. Typical output files from the sediment diagenesis example.</figcaption>
+</figure> -->
+
+<p>Typical output files include:</p>
 <ul>
 <li><code>Diagenesis_CH4_Sediments.csv</code></li>
 <li><code>Diagenesis_H2S_Sediments.csv</code></li>
@@ -3914,9 +3918,6 @@
 <li><code>Diagenesis_POP_Sediments.csv</code></li>
 <li><code>DiagenesisAerobicLayer.csv</code></li>
 <li><code>DiagenesisBottomLayer.csv</code></li>
-<li><code>DiagenesisAerobicLayer.csv</code></li>
-<li><code>DiagenesisBottomLayer.csv</code></li>
-<li><code>DiagenesisAerobicLayer.csv</code></li>
 <li><code>DiageneisisBubbleReleaseSummary.csv</code></li>
 <li><code>DiageneisisBubbles.csv</code></li>
 <li><code>DiageneisisBubblesAtmosphereRelease.csv</code></li>
@@ -3928,28 +3929,26 @@
 </ul>
 <h2 id="spokane-river">Spokane River<a class="headerlink" href="#spokane-river" title="Permanent link">&para;</a></h2>
 <h3 id="waterbody-description_5">Waterbody Description<a class="headerlink" href="#waterbody-description_5" title="Permanent link">&para;</a></h3>
-<p>This example demonstrates a river model and explores the periphyton and river shading features in CE-QUAL-W2. The first example uses old input file formats, while the second uses CSV format inputs.</p>
-<p>The Spokane River reach between Upper Falls Dam (RM 74.1) and Nine Mile Pool (RM 62.0) is simulated in this example. The Spokane wastewater treatment plant (WWTP) is located at RM 67.4 (segment 27), and Hangman Creek is located at RM 72.4 (segment 11).</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Spokane River between Upper Falls Dam and Nine Mile Dam](../assets/images/part4/spokane_river_map.png){ width="600" }
-  <figcaption>Figure 33. Spokane River between Upper Falls Dam and Nine Mile Dam.</figcaption>
-</figure> -->
-
+<p>This example shows how to use a river model and to explore the periphyton and river shading in the CE-QUAL-W2 model. The first example uses old input file formats, while the other example has CSV format inputs.</p>
+<p>The Spokane River reach between Upper Falls Dam (RM 74.1) and Nine Mile Pool (RM 62.0) is simulated in this example (Figure 33). The Spokane wastewater treatment plant (WWTP) is located at RM 67.4 (segment 27), and Hangman Creek is located at RM 72.4 (segment 11).</p>
+<figure>
+  <img alt="Spokane River between Upper Falls Dam and Nine Mile Dam" src="../../assets/images/part4/fig33_spokane_river.jpeg" width="600" />
+<br />
+<figcaption>Figure 33. Spokane River between Upper Falls Dam and Nine Mile Dam.</figcaption>
+</figure>
 <h3 id="model-grid_7">Model Grid<a class="headerlink" href="#model-grid_7" title="Permanent link">&para;</a></h3>
-<p>Tributary inputs are located at segments 11 and 27, representing a tributary (Hangman Creek) and the Spokane WWTP, respectively.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Spokane River model segment layout](../assets/images/part4/spokane_segment_layout.png){ width="500" }
-  <figcaption>Figure 34. Model segment layout.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Model vertical layers for Spokane River model](../assets/images/part4/spokane_vertical_layers.png){ width="700" }
-  <figcaption>Figure 35. Model vertical layers for Spokane River model.</figcaption>
-</figure> -->
-
+<p>The segments are oriented as shown in Figure 34. The side view of the grid is shown in Figure 35.</p>
+<figure>
+  <img alt="Spokane River model segment layout" src="../../assets/images/part4/fig34_spokane_segments.png" width="500" />
+<br />
+<figcaption>Figure 34. Model segment layout.</figcaption>
+</figure>
+<figure>
+  <img alt="Model vertical layers for Spokane River model" src="../../assets/images/part4/fig35_spokane_layers.png" width="700" />
+<br />
+<figcaption>Figure 35. Model vertical layers for Spokane River model.</figcaption>
+</figure>
+<p>Tributary inputs are located at segments 11 and 27 representing a tributary Hangman Creek and the Spokane WWTP, respectively. A listing of model files and their description is shown in Table 9.</p>
 <h3 id="input-and-output-files_1">Input and Output Files<a class="headerlink" href="#input-and-output-files_1" title="Permanent link">&para;</a></h3>
 <p><strong>Table 9. Model files for the Spokane River example.</strong></p>
 <table>
@@ -4105,22 +4104,20 @@
 </table>
 <h2 id="systdg-columbia-river-bonneville-reservoir">SysTDG Columbia River - Bonneville Reservoir<a class="headerlink" href="#systdg-columbia-river-bonneville-reservoir" title="Permanent link">&para;</a></h2>
 <h3 id="overview_2">Overview<a class="headerlink" href="#overview_2" title="Permanent link">&para;</a></h3>
-<p>This example applies the SysTDG model to the Columbia River for estimating discharge total dissolved gas (TDG) at Bonneville Dam. The model consists of 1 waterbody, 1 branch, and 77 model segments.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Bonneville pool CE-QUAL-W2 model](../assets/images/part4/bonneville_pool_model.png){ width="700" }
-  <figcaption>Figure 36. Bonneville pool CE-QUAL-W2 model.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Side view of Bonneville pool in the Columbia River](../assets/images/part4/bonneville_side_view.png){ width="700" }
-  <figcaption>Figure 37. Side view of Bonneville pool in the Columbia River.</figcaption>
-</figure> -->
-
+<p>This is an application on the Columbia River using the SYSTDG model for estimating the discharge total dissolved gas (TDG) at Bonneville Dam. The model consists of 1 waterbody, 1 branch, and 77 model segments as shown in Figure 36. The main branch 1 of the Columbia River side view is shown in Figure 37.</p>
+<figure>
+  <img alt="Bonneville pool CE-QUAL-W2 model" src="../../assets/images/part4/fig36_mcnary_pool.png" width="700" />
+<br />
+<figcaption>Figure 36. Bonneville pool CE-QUAL-W2 model.</figcaption>
+</figure>
+<figure>
+  <img alt="Side view of Bonneville pool in the Columbia River" src="../../assets/images/part4/fig37_mcnary_sideview.png" width="700" />
+<br />
+<figcaption>Figure 37. Side view of Bonneville pool in the Columbia River.</figcaption>
+</figure>
 <h3 id="key-features_2">Key Features<a class="headerlink" href="#key-features_2" title="Permanent link">&para;</a></h3>
-<p>This example illustrates how to enable TDG and use the state variables N₂ gas and O₂ gas to predict TDG concentrations in the pool area and at the dam as a result of spillway operation. The special input file <code>w2_systdg.npt</code> is described in User Manual Part 3. <!-- TODO: Add link to Part 3 --></p>
-<p>The SysTDG algorithm operates only on gates. Therefore, gates were used for the spillways and powerhouse withdrawals since specified flows can be prescribed for a gate in the same manner as a withdrawal or structure.</p>
+<p>This example illustrates how to turn on TDG and use the state variables N₂ gas and O₂ gas to predict TDG gas concentrations in the pool area and at the dam as a result of spillway operation. The special input file, <code>w2_systdg.npt</code>, is described in User Manual Part 3. <!-- TODO: Add link to Part 3 --></p>
+<p>The SysTDG algorithm only operates on gates. Hence, gates were used for the spillways and powerhouse withdrawals since specified flows can be prescribed for a gate just as a withdrawal or structure.</p>
 
 
 

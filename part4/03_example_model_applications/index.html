@@ -2734,7 +2734,7 @@
 <p>The next step is to begin calibration runs. Much of the literature refers to this step as calibration and verification, in which model coefficients are adjusted to match an observed data set (calibration) and then the model is run on another "independent" data set without adjusting model coefficients to see if the model reproduces observed data in the prototype (verification, or variously called confirmation, validation, or substantiation).</p>
 <p>This separation is artificial. If a model does not reproduce observed data (and, more importantly, trends in data) for the "verification" data, then any good modeler will adjust coefficients, review model assumptions, include new processes, or collect additional data to adequately match both sets of data. Often, application to additional sets of data improves the fit to the first.</p>
 <p>The artificiality of this concept has led to applications in which modelers have used May, June, and July data for "calibration" and August, September, and October data of the same year for "verification" so they can state the model has been "calibrated/verified."</p>
-<p>Consider the following summary of observed data:</p>
+<p>The following examples further illustrate the artificiality of the current concept of "calibration/verification." Consider the following summary of observed data:</p>
 <table>
 <thead>
 <tr>
@@ -2791,7 +2791,7 @@
 </tbody>
 </table>
 <p>Based on the currently accepted definition of calibration/verification, which of the years should be chosen for calibration and which should be chosen for verification? A case could be made for 1989 for calibration and 1994 for verification because of a fall phytoplankton bloom in 1989 and its absence in 1994. Additionally, the minimum dissolved oxygen at the dam was different between the years. However, both years were years of high flow, so using them would not test the model's ability to reproduce prototype behavior under different flow regimes.</p>
-<p>The correct answer is to model all the years continuously. Modeling them continuously eliminates separate calibration and verification years or data sets. If the model reproduces the wide variation in prototype behavior between all the years, a lot more confidence can be placed in the model's ability to reproduce prototype behavior for the correct reasons.</p>
+<p>Cases could be made for other combinations of calibration/verification years, and different modelers would probably choose different calibration/verification years, so there does not appear to be one "correct" answer. In actuality, there is a correct answer: model all the years and model them continuously. Modeling them continuously eliminates separate calibration and verification years or data sets. If the model reproduces the wide variation in prototype behavior between all the years, a lot more confidence can be placed in the model's ability to reproduce prototype behavior for the "right" reasons than if the model were calibrated for one year and verified for another year.</p>
 <p>Consider another example:</p>
 <table>
 <thead>
@@ -2823,19 +2823,19 @@
 </tr>
 </tbody>
 </table>
-<p>Again, the best approach would be to model all three years, but since data do not exist for all the intervening years from 1979 to 1994, the simulation could not be continuous. An analysis of the data indicates a clear progression of eutrophication from 1979 to 1994 based on phytoplankton progression and increasing hypoxia.</p>
+<p>Which year should be used for calibration and which year should be used for verification? Again, the best approach would be to model all three years, but since data do not exist for all the intervening years from 1979 to 1994, the simulation could not be continuous. An analysis of the data indicates a clear progression of eutrophication from 1979 to 1994 based on phytoplankton progression and increasing hypoxia.</p>
 <p>According to the current concept of "calibration/verification," all kinetic coefficients should be the same for all simulation years. However, the different dominant phytoplankton groups will have different growth, mortality, respiration, excretion, and settling rates and different light and nutrient growth rate half-saturation constants between the years. Keeping these values constant between calibration years would be inappropriate if only modeling one algae group. With multiple algae groups this would be a good test of the model's ability to model algal succession.</p>
 <p>Additionally, the sediment oxygen demand has clearly changed because of eutrophication, so the values used in the zero-order sediment compartment should be different for the three years if the modeler only used the zero-order model. This highlights a weakness of this approach since it does not change over time. The model can use the first-order and sediment diagenesis models which overcome this limitation.</p>
 <p>These two examples illustrate that all years should be considered calibration years and rate coefficients in some cases should change between different calibration data sets if the prototype is to be represented accurately.</p>
 <h3 id="post-audits">Post Audits<a class="headerlink" href="#post-audits" title="Permanent link">&para;</a></h3>
 <p>Post audits are recommended whenever management changes are made as a result of modeling studies. A post audit involves making the management changes and then collecting data to see if the hoped-for changes in prototype behavior based on model guidance have taken place. If the hoped-for changes occur, then a great deal of confidence can be placed in the model's simulation capabilities.</p>
 <p>However, if the changes in water quality, such as an improvement in minimum DO or extent of hypoxia, do not occur, one cannot conclude that the model is inadequate. No model can be used to predict the future. A model can only be used to determine what might have occurred if a particular set of boundary forcing functions were to occur in the prototype.</p>
-<p>For example, hypoxia in Chesapeake Bay is a result of not only nutrient and organic matter loading, but also the degree of stratification that inhibits vertical mixing and reaeration. The degree of stratification is in large part a function of freshwater inflow. Suppose a model of the Bay "predicted" that a 40% nitrogen loading reduction decreased the areal extent of hypoxia by 20%. Based on this result, loadings were then reduced by 40% for five years and hypoxia did not decrease but actually increased during this time period.</p>
+<p>For example, hypoxia in Chesapeake Bay is a result of not only nutrient and organic matter loading, but also the degree of stratification that inhibits vertical mixing and reaeration. The degree of stratification is in large part a function of freshwater inflow. The higher the inflow, the greater the areal extent of density stratification in the Bay, resulting in a greater areal extent of hypoxic waters. Suppose a model of the Bay "predicted" that a 40% nitrogen loading reduction decreased the areal extent of hypoxia by 20%. Based on this result, loadings were then reduced by 40% for five years and hypoxia did not decrease but actually increased during this time period.</p>
 <p>Since the exact opposite occurred from what the model predicted, the modeling study cannot be concluded to be a failure. If the model results assume average freshwater river inflows and the five years after implementing loading reductions were high flow years, which increased the extent of hypoxia compared to an average flow year due strictly to physical effects, then the conclusions based on the model study were erroneous.</p>
 <p>The only way to determine if the conclusions were erroneous would be to model the five years using observed boundary conditions for this period and see if the model reproduced the observed increase rather than decrease in hypoxia. If a post audit yielded water quality different from expected water quality based on model results, this has no reflection on a given model's ability to reproduce water quality in the prototype. Models cannot be used to predict the future, only what might have been.</p>
 <div class="admonition tip">
 <p class="admonition-title">Calibrate Against Multiple Data Sets</p>
-<p>Ideally, calibration should involve multiple data sets encompassing as many variations and extremes as possible in the prototype. A model's ability to reproduce prototype behavior under a variety of conditions gives the modeler more confidence in the model's ability to accurately simulate the prototype under proposed conditions. A theory is continuously tested against <em>all</em> observed data, and, if it does not match the data, then the theory should either be modified or a new one developed that more closely agrees with observed data.</p>
+<p>Ideally, calibration should involve multiple data sets encompassing as many variations and extremes as possible in the prototype. A model's ability to reproduce prototype behavior under a variety of conditions gives the modeler more confidence in the model's ability to accurately simulate the prototype under proposed conditions. To put it simply, a model is a theory about behavior in the real world. A theory is continuously tested against <em>all</em> observed data, and, if it does not match the data, then the theory should either be modified or a new one developed that more closely agrees with observed data.</p>
 </div>
 <h3 id="model-data-comparison">Model Data Comparison<a class="headerlink" href="#model-data-comparison" title="Permanent link">&para;</a></h3>
 <p>The model produces the following output files for displaying results:</p>
@@ -2853,12 +2853,11 @@
 <h3 id="calibration-philosophy">Calibration Philosophy<a class="headerlink" href="#calibration-philosophy" title="Permanent link">&para;</a></h3>
 <p>Calibration is an iterative process whereby model coefficients are adjusted until an adequate fit of observed versus predicted data is obtained. There are no hard and fast guidelines for determining when an adequate fit is obtained. The user must continually ask: "Is the model giving useful results based on model formulations, assumptions and input data?" If it is not, then the user must determine if the inability of the model to produce useful results is due to:</p>
 <ul>
-<li>Inappropriate use of the model (e.g., hydrostatic approximation is invalid, one phytoplankton group is not sufficient)</li>
-<li>Inappropriate wind speed function for evaporation</li>
+<li>Inappropriate use of the model (e.g., hydrostatic approximation is invalid, one phytoplankton group is not sufficient to capture phytoplankton/nutrient/DO interactions, wind speed function for evaporation is inappropriate for the waterbody)</li>
 <li>Insufficient model formulations to describe known prototype behavior</li>
 <li>Insufficient input data to describe the system dynamics</li>
 </ul>
-<p>Another important point is that a model may give inadequate results for a given spatial and/or temporal scale, but at another scale may reasonably represent the dynamics of the prototype. For example, the model may fail to predict a short-term phytoplankton bloom using monthly inflowing phytoplankton and nutrient concentrations but may adequately represent phytoplankton production over the summer stratification period. It is not always necessary for model output to match all of the observed data for the model to provide meaningful results.</p>
+<p>Another important point is that a model may give inadequate results for a given spatial and/or temporal scale, but at another scale may reasonably represent the dynamics of the prototype. For example, the model may fail to predict a short-term phytoplankton bloom using monthly inflowing phytoplankton and nutrient concentrations but may adequately represent phytoplankton production over the summer stratification period. The model may thus be useful in determining a waterbody's long-term response to nutrient loading reductions but be inadequate in addressing short-term responses to a nutrient reduction strategy. In summary, it is not always necessary for model output to match all of the observed data for the model to provide meaningful results.</p>
 <h3 id="calibration-sequence">Calibration Sequence<a class="headerlink" href="#calibration-sequence" title="Permanent link">&para;</a></h3>
 <p>The usual sequence for calibration is to:</p>
 <ol>
@@ -2900,7 +2899,7 @@
 <p class="admonition-title">Analyze Computed Flows</p>
 <p>Keep in mind that this method only provides the necessary flows to complete the water balance. The user must decide how to incorporate them into the model in a realistic fashion as the method of incorporation can have a large impact on temperature and water quality calibration. The recommended procedure is to first plot and analyze the computed flows to see if they provide any information as to the source of the error.</p>
 </div>
-<p>For example, if the majority of the computed flows are negative and the inflows are deemed accurate, then this would indicate that the outflow has been underestimated. It could be due to seepage into groundwater or seepage through the dam. If the hypolimnetic temperatures were also being underpredicted, which would indicate that the hypolimnetic residence time was being overpredicted, then incorporating the computed flows into an additional outflow could solve both problems at once. Various methods of incorporating the computed flows during temperature and water quality calibration should be tried to determine if they have an effect on temperature or water quality. Whichever method improves the calibration is the method to use.</p>
+<p>For example, if the majority of the computed flows are negative and the inflows are deemed accurate, then this would indicate that the outflow has been underestimated. It could be due to seepage into groundwater or seepage through the dam. If the hypolimnetic temperatures were also being underpredicted, which would indicate that the hypolimnetic residence time was being overpredicted, then incorporating the computed flows into an additional outflow could solve both problems at once. Various methods of incorporating the computed flows during temperature and water quality calibration should be tried to determine if they have an effect on temperature or water quality. Whichever method improves the calibration is the method to use. The following plot illustrates the accuracy normally expected for a reservoir water surface elevation calibration. The computed elevations overlay the observed elevations.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![Allatoona Reservoir computed (lines) vs. observed (symbols) water surface elevations for 1992, 1993, 1996, and 1997.](../assets/images/part4/fig38_allatoona_wse.png){ width="700" } -->
@@ -2920,8 +2919,8 @@
 <p>Computed velocities can be compared with velocity and flow measurements obtained from an acoustic Doppler current profiler (ADCP) to additionally evaluate the model's hydrodynamic performance. However, care must be taken when comparing model velocities with observed velocities to ensure ADCP measurements are comparable to the laterally averaged velocities generated by the model.</p>
 <h4 id="coefficients-affecting-temperature">Coefficients Affecting Temperature<a class="headerlink" href="#coefficients-affecting-temperature" title="Permanent link">&para;</a></h4>
 <p>Coefficients affecting temperature and their default values are given in the following table. The eddy viscosities, Chezy coefficient, and wind-sheltering coefficient directly affect hydrodynamics that affect heat and constituent transport. The remaining coefficients directly affect temperature that affects hydrodynamics. Of these, the last two coefficients affect temperature only if constituents are modeled.</p>
-<!-- TODO: Add link to Part 3 for more detailed description of these coefficients -->
-
+<p>See Part 3 of the User Manual for a more detailed description of these coefficients and their effects. <!-- TODO: Add link to Part 3 for more detailed description of these coefficients --></p>
+<p><strong>Table 10. Coefficients affecting thermal calibration.</strong></p>
 <table>
 <thead>
 <tr>
@@ -2996,6 +2995,7 @@
 <p>To illustrate the accuracy of reservoir temperature modeling with CE-QUAL-W2, the following table lists calibration results for 70 reservoir thermal simulations. The statistic presented is the absolute mean error (AME) computed as:</p>
 <div class="arithmatex">\[AME = \frac{\sum |Predicted - Observed|}{number\ of\ observations}\]</div>
 <p>Although a number of other statistics have been used when evaluating model results, the AME provides the best indication of model performance since it is directly interpretable. For example, an AME of 0.5 °C means that the model results are, on the average, within 0.5 °C of the observed data. Model predictions for all the reservoirs are within 1 °C, and most are considerably less.</p>
+<p><strong>Table 11. Reservoir thermal simulations with error statistics for station closest to dam.</strong></p>
 <table>
 <thead>
 <tr>
@@ -3405,12 +3405,11 @@
 <p>Results for 1989 show that the thermal regime exhibits two thermoclines starting in early spring. The reservoir was drawn down over 40 m during the summer. During 1993, the development of the two thermoclines was delayed until the end of summer. CE-QUAL-W2 correctly captured the thermal regimes for both years and the differences in the thermal regimes between the two years.</p>
 <p>Sensitivity analyses showed that temperature predictions were very sensitive to inflow temperatures. Calibration consisted of adjusting inflow temperatures to more closely match in-pool temperature profiles. Because calibration showed the importance of accurate inflow temperatures, additional fieldwork was done to obtain accurate inflow temperatures.</p>
 <p>During this effort, it was discovered that the location where inflow temperatures were taken showed a lateral variation in the river of over 5 °C due to hypolimnetic discharges from an upstream reservoir that did not completely mix laterally. Additionally, during extreme drawdown, inflow temperatures increased by nearly 2 °C from measured temperatures as the upstream boundary of the model moved downstream approximately 10 km due to the large drawdowns.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![1989 Pineflat Reservoir computed versus observed temperatures.](../assets/images/part4/fig39_pineflat_1989.png){ width="700" } -->
-<!--   <figcaption>Figure 39. 1989 Pineflat Reservoir computed versus observed temperatures.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="1989 Pineflat Reservoir computed versus observed temperatures." src="../../assets/images/part4/fig39_pineflat_temp.png" width="700" />
+<br />
+<figcaption>Figure 39. 1989 Pineflat Reservoir computed versus observed temperatures.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![1993 Pineflat Reservoir computed versus observed temperatures.](../assets/images/part4/fig40_pineflat_1993.png){ width="700" } -->
@@ -3420,12 +3419,11 @@
 <h4 id="bluestone-reservoir">Bluestone Reservoir<a class="headerlink" href="#bluestone-reservoir" title="Permanent link">&para;</a></h4>
 <p>Bluestone Reservoir is located in the mountains of West Virginia. The reservoir has an average hydraulic retention time of less than a week during the summer. When first calibrating for temperature, the model predicted essentially no thermal stratification during the summer whereas the observed data showed strong stratification beginning at a depth of about eight meters. Based on the short residence time during the summer, model predictions seemed quite reasonable. However, stratification was present in both 1981 and 1983 indicating that stratification was not a rare occurrence.</p>
 <p>A number of mechanisms were proposed to explain the observed stratification including groundwater seepage and extreme wind sheltering. Including these in the model did not result in any improvements in model predictions. Finally, the lower limit of selective withdrawal was set at the depth corresponding to the outlet elevation. Subsequent investigations at the reservoir revealed that accumulated debris at the level of the trash racks was acting like a submerged weir that limited the bottom of the withdrawal zone to the elevation of the trash racks. This is an example of a model providing insight into previously unknown behavior of the prototype.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![1981 Bluestone Reservoir computed versus observed temperatures.](../assets/images/part4/fig41_bluestone_1981.png){ width="700" } -->
-<!--   <figcaption>Figure 41. 1981 Bluestone Reservoir computed versus observed temperatures.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="1981 Bluestone Reservoir computed versus observed temperatures." src="../../assets/images/part4/fig41_bluestone_temp.png" width="700" />
+<br />
+<figcaption>Figure 41. 1981 Bluestone Reservoir computed versus observed temperatures.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![1983 Bluestone Reservoir computed versus observed temperatures.](../assets/images/part4/fig42_bluestone_1983.png){ width="700" } -->
@@ -3436,12 +3434,11 @@
 <p>Richard B. Russell (RBR) Reservoir is located immediately upstream of J. Strom Thurmond Reservoir (JST) on the Savannah River bordering Georgia and South Carolina. The model was used to investigate the effects of proposed pump-storage operations in which water would be pumped into RBR from JST and reused for hydropower operations during peak energy demands. An important concern was what effect pump-storage operations would have on the thermal regime in RBR. The model was subsequently applied to 1996, a year in which extensive pump-storage operations occurred. In order to simulate the effects of pump-storage, the model code was altered to allow dynamic linkage of RBR and JST reservoirs.</p>
 <p>This was a stringent test of the model's simulation capabilities because the dynamic linkage required accurate temperature simulations in RBR to provide accurate inflow temperatures to JST. Likewise, accurate temperature predictions were required in JST to provide accurate temperatures entering RBR during pumpback.</p>
 <p>The model correctly predicted the approximately 4 °C increase in hypolimnetic temperatures compared to previous years that did not have pump-storage operations. No calibration was involved for this simulation. Results are from the first run of the model for 1996 using default hydrodynamic/temperature calibration parameters and a wind-sheltering coefficient determined from calibration to two previous years that did not include pump-storage operations.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![1988 Richard B. Russell computed versus observed temperatures.](../assets/images/part4/fig43_rbr_1988.png){ width="700" } -->
-<!--   <figcaption>Figure 43. 1988 Richard B. Russell computed versus observed temperatures.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="1988 Richard B. Russell computed versus observed temperatures." src="../../assets/images/part4/fig43_russell_temp_1988.jpeg" width="700" />
+<br />
+<figcaption>Figure 43. 1988 Richard B. Russell computed versus observed temperatures.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![1994 Richard B. Russell computed versus observed temperatures.](../assets/images/part4/fig44_rbr_1994.png){ width="700" } -->
@@ -3457,22 +3454,20 @@
 <h4 id="paintsville-reservoir">Paintsville Reservoir<a class="headerlink" href="#paintsville-reservoir" title="Permanent link">&para;</a></h4>
 <p>Paintsville Reservoir is a US Army Corps of Engineers reservoir located in Kentucky. The reservoir's thermal regime is typical of deep-storage reservoirs with hydraulic retention times greater than four months. The model illustrates the ability to reproduce the springtime development of the thermocline, the strong thermocline present in late summer, and fall overturn.</p>
 <p>During initial calibration, the model consistently overpredicted hypolimnetic temperatures. No parameter adjustment (wind-sheltering or light absorption/extinction) resulted in an acceptable calibration. Realizing that hypolimnetic temperatures are influenced by residence time, a sensitivity analysis was performed in which the widths were increased uniformly (thus increasing hypolimnetic residence time) until the predicted hypolimnetic temperatures matched the observed temperatures. Subsequently, it was determined that the original development of the bathymetry did not include two branches that accounted for approximately 15% of the storage in the reservoir. In this case, calibration consisted of ensuring that the volume-elevation relationship was accurately described.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Paintsville Reservoir computed versus observed temperatures.](../assets/images/part4/fig46_paintsville.png){ width="700" } -->
-<!--   <figcaption>Figure 46. Paintsville Reservoir computed versus observed temperatures.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Paintsville Reservoir computed versus observed temperatures." src="../../assets/images/part4/fig46_paintsville_temp.png" width="700" />
+<br />
+<figcaption>Figure 46. Paintsville Reservoir computed versus observed temperatures.</figcaption>
+</figure>
 <h4 id="brownlee-reservoir">Brownlee Reservoir<a class="headerlink" href="#brownlee-reservoir" title="Permanent link">&para;</a></h4>
 <p>Brownlee Reservoir is located on the Snake River in Idaho and is operated by Idaho Power. Brownlee's thermal regime is very distinctive with the thermocline starting at approximately 30 m below the water surface.</p>
 <p>During initial temperature calibration, the model predicted hypolimnetic temperatures greater than 15 °C, whereas the observed temperatures were always near 5 °C. No parameter adjustment allowed for adequate temperature calibration. An analysis of the system showed that the theoretical residence time during the summer was less than two months indicating that model predictions of warmer hypolimnetic temperatures were more reasonable than the observed data.</p>
 <p>Additionally, the thermal structure in Brownlee exhibits a well-mixed epilimnion approximately 30 m in depth. Wind mixing could not supply sufficient energy to account for the depth of the epilimnion. Therefore, it was concluded that outflow dynamics had to be responsible for the observed thermal regime. As in the Bluestone application, the bottom layer for selective withdrawal was set at approximately the same depth as the thermocline. Subsequent investigations revealed the presence of a ledge below the outlet that was limiting the outflow to the level of the observed thermocline.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![1992 Brownlee Reservoir computed versus observed temperatures.](../assets/images/part4/fig47_brownlee_1992.png){ width="700" } -->
-<!--   <figcaption>Figure 47. 1992 Brownlee Reservoir computed versus observed temperatures.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="1992 Brownlee Reservoir computed versus observed temperatures." src="../../assets/images/part4/fig47_brownlee_temp.png" width="700" />
+<br />
+<figcaption>Figure 47. 1992 Brownlee Reservoir computed versus observed temperatures.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![1995 Brownlee Reservoir computed versus observed temperatures.](../assets/images/part4/fig48_brownlee_1995.png){ width="700" } -->
@@ -3518,104 +3513,88 @@
 <p>Particular care should be paid to the timing and duration of events involving phytoplankton, epiphyton, and DO. If the model does not represent the onset, extent, and duration of anoxic conditions, then nutrient dynamics will not be represented either. They in turn affect phytoplankton production that affects DO.</p>
 <p>Timing of the onset of DO depletion is greatly influenced by the temperature rate multipliers used for organic matter and the sediments. A change in the lower temperature <strong>[OMT1]</strong> of 1 °C in the temperature rate formulation can shift the initial uptake of water column DO by as much as two weeks. The same effect can be obtained by adjusting the value of the multiplier <strong>[OMK1]</strong>. Much of the art in water quality modeling is involved in calibrating phytoplankton/nutrient/DO dynamics.</p>
 <p>The following plots illustrate the model's ability to reproduce widely varying reservoir dissolved oxygen regimes. With the exception of the zero-order SOD rates, all kinetic coefficients were set to their default values thus ensuring that the model was applied with a minimum of "curve fitting." In all likelihood, using the same values for kinetic parameters such as phytoplankton growth and settling rates is not correct. However, the point to be made is that the model is capable of reproducing very different water quality regimes without having to resort to extensive, site-specific parameter manipulations.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Allatoona Reservoir computed vs. observed DO.](../assets/images/part4/fig50_allatoona_do.png){ width="700" } -->
-<!--   <figcaption>Figure 50. Allatoona Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Brownlee Reservoir computed vs. observed DO.](../assets/images/part4/fig51_brownlee_do.png){ width="700" } -->
-<!--   <figcaption>Figure 51. Brownlee Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![C.J. Strike Reservoir computed vs. observed DO.](../assets/images/part4/fig52_cjstrike_do.png){ width="700" } -->
-<!--   <figcaption>Figure 52. C.J. Strike Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![DeGray Reservoir computed vs. observed DO.](../assets/images/part4/fig53_degray_do.png){ width="700" } -->
-<!--   <figcaption>Figure 53. DeGray Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988.](../assets/images/part4/fig54_rbr_do_mar_jun.png){ width="700" } -->
-<!--   <figcaption>Figure 54. Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988.](../assets/images/part4/fig55_rbr_do_jun_oct.png){ width="700" } -->
-<!--   <figcaption>Figure 55. Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![1996 Richard B. Russell computed vs. observed DO.](../assets/images/part4/fig56_rbr_do_1996.png){ width="700" } -->
-<!--   <figcaption>Figure 56. 1996 Richard B. Russell computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Neely Henry Reservoir computed vs. observed DO.](../assets/images/part4/fig57_neelyhenry_do.png){ width="700" } -->
-<!--   <figcaption>Figure 57. Neely Henry Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![J. Strom Thurmond Reservoir computed vs. observed DO.](../assets/images/part4/fig58_thurmond_do.png){ width="700" } -->
-<!--   <figcaption>Figure 58. J. Strom Thurmond Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Monroe Reservoir computed vs. observed DO.](../assets/images/part4/fig59_monroe_do.png){ width="700" } -->
-<!--   <figcaption>Figure 59. Monroe Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed DO.](../assets/images/part4/fig60_rimov_do.png){ width="700" } -->
-<!--   <figcaption>Figure 60. Rimov Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Shepaug Reservoir computed vs. observed DO.](../assets/images/part4/fig61_shepaug_do.png){ width="700" } -->
-<!--   <figcaption>Figure 61. Shepaug Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Shepaug Reservoir computed vs. observed DO (continued).](../assets/images/part4/fig62_shepaug_do2.png){ width="700" } -->
-<!--   <figcaption>Figure 62. Shepaug Reservoir computed vs. observed DO (continued).</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Weiss Reservoir computed vs. observed DO.](../assets/images/part4/fig63_weiss_do.png){ width="700" } -->
-<!--   <figcaption>Figure 63. Weiss Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![West Point Reservoir computed vs. observed DO.](../assets/images/part4/fig64_westpoint_do.png){ width="700" } -->
-<!--   <figcaption>Figure 64. West Point Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Walter F. George Reservoir computed vs. observed DO.](../assets/images/part4/fig65_wfgeorge_do.png){ width="700" } -->
-<!--   <figcaption>Figure 65. Walter F. George Reservoir computed vs. observed DO.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Allatoona Reservoir computed vs. observed DO." src="../../assets/images/part4/fig50_allatoona_do.png" width="700" />
+<br />
+<figcaption>Figure 50. Allatoona Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Brownlee Reservoir computed vs. observed DO." src="../../assets/images/part4/fig51_brownlee_do.png" width="700" />
+<br />
+<figcaption>Figure 51. Brownlee Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="C.J. Strike Reservoir computed vs. observed DO." src="../../assets/images/part4/fig52_cjstrike_do.png" width="700" />
+<br />
+<figcaption>Figure 52. C.J. Strike Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="DeGray Reservoir computed vs. observed DO." src="../../assets/images/part4/fig53_degray_do.png" width="700" />
+<br />
+<figcaption>Figure 53. DeGray Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988." src="../../assets/images/part4/fig54_russell_do_mar_jun.png" width="700" />
+<br />
+<figcaption>Figure 54. Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988.</figcaption>
+</figure>
+<figure>
+  <img alt="Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988." src="../../assets/images/part4/fig55_russell_do_jun_oct.png" width="700" />
+<br />
+<figcaption>Figure 55. Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988.</figcaption>
+</figure>
+<figure>
+  <img alt="1996 Richard B. Russell computed vs. observed DO." src="../../assets/images/part4/fig56_russell_do_1996.png" width="700" />
+<br />
+<figcaption>Figure 56. 1996 Richard B. Russell computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Neely Henry Reservoir computed vs. observed DO." src="../../assets/images/part4/fig57_neely_henry_do.png" width="700" />
+<br />
+<figcaption>Figure 57. Neely Henry Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="J. Strom Thurmond Reservoir computed vs. observed DO." src="../../assets/images/part4/fig58_thurmond_do.png" width="700" />
+<br />
+<figcaption>Figure 58. J. Strom Thurmond Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Monroe Reservoir computed vs. observed DO." src="../../assets/images/part4/fig59_monroe_do.png" width="700" />
+<br />
+<figcaption>Figure 59. Monroe Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed DO." src="../../assets/images/part4/fig60_rimov_do.png" width="700" />
+<br />
+<figcaption>Figure 60. Rimov Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Shepaug Reservoir computed vs. observed DO." src="../../assets/images/part4/fig61_shepaug_do_1.png" width="700" />
+<br />
+<figcaption>Figure 61. Shepaug Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Shepaug Reservoir computed vs. observed DO (continued)." src="../../assets/images/part4/fig62_shepaug_do_2.png" width="700" />
+<br />
+<figcaption>Figure 62. Shepaug Reservoir computed vs. observed DO (continued).</figcaption>
+</figure>
+<figure>
+  <img alt="Weiss Reservoir computed vs. observed DO." src="../../assets/images/part4/fig63_weiss_do.png" width="700" />
+<br />
+<figcaption>Figure 63. Weiss Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="West Point Reservoir computed vs. observed DO." src="../../assets/images/part4/fig64_west_point_do.png" width="700" />
+<br />
+<figcaption>Figure 64. West Point Reservoir computed vs. observed DO.</figcaption>
+</figure>
+<figure>
+  <img alt="Walter F. George Reservoir computed vs. observed DO." src="../../assets/images/part4/fig65_walter_george_do.png" width="700" />
+<br />
+<figcaption>Figure 65. Walter F. George Reservoir computed vs. observed DO.</figcaption>
+</figure>
 <p>As the preceding computed versus observed DO comparisons show, the model has reproduced a wide range of DO regimes with a high degree of accuracy using mostly default kinetic parameters. The largest discrepancies between computed and observed DO occur in the epilimnion during middle to late summer, where the model consistently underpredicts supersaturated DO.</p>
-<p>The problem is that if the model is correctly predicting very low nutrient levels during these times (typically at detection levels), then there are insufficient nutrients in the water column to support the observed levels of primary production indicated by supersaturated conditions. This is a shortcoming of all currently used water quality models and indicates insufficient understanding of phytoplankton/nutrient dynamics in the photic zone.</p>
+<p>The problem is that if the model is correctly predicting very low nutrient levels during these times (typically at detection levels), then there are insufficient nutrients in the water column to support the observed levels of primary production indicated by supersaturated conditions. This is a shortcoming of all currently used water quality models and indicates insufficient understanding of phytoplankton/nutrient dynamics in the photic zone. A great deal of research needs to be done in this area in order to improve the ability to model phytoplankton primary productivity.</p>
 <p>Another possible problem during dissolved oxygen calibration is during fall overturn when anoxic hypolimnetic water mixes with epilimnetic water. For the most part, the model reproduces dissolved oxygen fairly well during overturn, but in some applications the model has consistently underpredicted dissolved oxygen and in other applications the model has consistently overpredicted hypolimnetic concentrations.</p>
 <p>There are three possible causes for this behavior:</p>
 <ul>
@@ -3629,119 +3608,101 @@
 <p>Epilimnetic concentrations of phosphorus during the growing season are typically at or below detection levels in both the model and the prototype, so they are also relatively easy to reproduce. Fall concentrations can be more complicated, particularly if iron and manganese have built up during the summer in an anoxic hypolimnion. In this case, the iron compartment should be turned on so that iron is released in the hypolimnion. The model includes phosphorus sorption onto iron hydroxides that form during fall overturn and settle into the sediments, thus removing phosphorus from the water column.</p>
 <p>Epilimnetic ammonium and nitrate levels are more difficult to reproduce as some phytoplankton show a preference for ammonium over nitrate and the degree to which they exhibit this preference is different between groups. In addition, water column nitrate undergoes denitrification when the water column goes anoxic and also diffuses into the sediments where it undergoes denitrification in the anaerobic layer under both oxic and anoxic conditions. The ammonium preference factor <strong>[ANPR]</strong>, the water column denitrification rate <strong>[NO3DK]</strong>, and the sediment nitrate uptake rate <strong>[NO3S]</strong> are calibration parameters that can be adjusted to better match observed concentrations of these nutrients.</p>
 <h4 id="phytoplankton">Phytoplankton<a class="headerlink" href="#phytoplankton" title="Permanent link">&para;</a></h4>
-<p>The following plots illustrate the model's ability to reproduce a spring phytoplankton bloom in Rimov Reservoir, Czech Republic. Tremendous amounts of data were collected to analyze the spring bloom. Chlorophyll <em>a</em> samples were taken at 1 m depth intervals over upper 10 m of the water column at six stations approximately every three days for over a month. The plots include six stations along the length of the reservoir starting upstream and progressing towards the dam.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (March 25 and April 2, 1991).](../assets/images/part4/fig66_rimov_phyto1.png){ width="700" } -->
-<!--   <figcaption>Figure 66. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 5 and April 8, 1991).](../assets/images/part4/fig67_rimov_phyto2.png){ width="700" } -->
-<!--   <figcaption>Figure 67. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 12 and April 15, 1991).](../assets/images/part4/fig68_rimov_phyto3.png){ width="700" } -->
-<!--   <figcaption>Figure 68. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 19 and April 22, 1991).](../assets/images/part4/fig69_rimov_phyto4.png){ width="700" } -->
-<!--   <figcaption>Figure 69. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 26 and April 29, 1991).](../assets/images/part4/fig70_rimov_phyto5.png){ width="700" } -->
-<!--   <figcaption>Figure 70. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (May 3 and May 6, 1991).](../assets/images/part4/fig71_rimov_phyto6.png){ width="700" } -->
-<!--   <figcaption>Figure 71. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
-<!-- </figure> -->
-
+<p>The following plots illustrate the model's ability to reproduce a spring phytoplankton bloom in Rimov Reservoir, Czech Republic. A tremendous amount of sampling was conducted to analyze the spring bloom. Chlorophyll <em>a</em> samples were taken at 1 m depth intervals over upper 10 m of the water column at six stations approximately every three days for over a month. The plots include six stations along the length of the reservoir starting upstream and progressing towards the dam.</p>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (March 25 and April 2, 1991)." src="../../assets/images/part4/fig66_rimov_phyto_1.png" width="700" />
+<br />
+<figcaption>Figure 66. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (April 5 and April 8, 1991)." src="../../assets/images/part4/fig67_rimov_phyto_2.png" width="700" />
+<br />
+<figcaption>Figure 67. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (April 12 and April 15, 1991)." src="../../assets/images/part4/fig68_rimov_phyto_3.png" width="700" />
+<br />
+<figcaption>Figure 68. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (April 19 and April 22, 1991)." src="../../assets/images/part4/fig69_rimov_phyto_4.png" width="700" />
+<br />
+<figcaption>Figure 69. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (April 26 and April 29, 1991)." src="../../assets/images/part4/fig70_rimov_phyto_5.png" width="700" />
+<br />
+<figcaption>Figure 70. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton biomass (May 3 and May 6, 1991)." src="../../assets/images/part4/fig71_rimov_phyto_6.png" width="700" />
+<br />
+<figcaption>Figure 71. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption>
+</figure>
 <h5 id="sensitivity-to-wind-direction">Sensitivity to Wind Direction<a class="headerlink" href="#sensitivity-to-wind-direction" title="Permanent link">&para;</a></h5>
 <p>The following plots illustrate how important it is to describe the system accurately. The plots show results of the Rimov phytoplankton simulation in which the wind direction was inadvertently changed by 90 degrees. The importance of wind direction and its influence on the spring phytoplankton bloom was noted by limnologists who originally collected the 1991 data. Note the difference at the most downstream station on April 8 compared to the previous plot using the correct wind direction. This also illustrates that the model can be a powerful limnological investigative tool when trying to determine how important different forcing functions are to the limnology of a reservoir.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (March 25 and April 2, 1991).](../assets/images/part4/fig72_rimov_wind1.png){ width="700" } -->
-<!--   <figcaption>Figure 72. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 5 and April 8, 1991).](../assets/images/part4/fig73_rimov_wind2.png){ width="700" } -->
-<!--   <figcaption>Figure 73. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 12 and April 15, 1991).](../assets/images/part4/fig74_rimov_wind3.png){ width="700" } -->
-<!--   <figcaption>Figure 74. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 19 and April 22, 1991).](../assets/images/part4/fig75_rimov_wind4.png){ width="700" } -->
-<!--   <figcaption>Figure 75. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 26 and April 29, 1991).](../assets/images/part4/fig76_rimov_wind5.png){ width="700" } -->
-<!--   <figcaption>Figure 76. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (May 3 and May 6, 1991).](../assets/images/part4/fig77_rimov_wind6.png){ width="700" } -->
-<!--   <figcaption>Figure 77. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (March 25 and April 2, 1991)." src="../../assets/images/part4/fig72_rimov_wind90_1.png" width="700" />
+<br />
+<figcaption>Figure 72. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 5 and April 8, 1991)." src="../../assets/images/part4/fig73_rimov_wind90_2.png" width="700" />
+<br />
+<figcaption>Figure 73. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 12 and April 15, 1991)." src="../../assets/images/part4/fig74_rimov_wind90_3.png" width="700" />
+<br />
+<figcaption>Figure 74. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 19 and April 22, 1991)." src="../../assets/images/part4/fig75_rimov_wind90_4.png" width="700" />
+<br />
+<figcaption>Figure 75. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 26 and April 29, 1991)." src="../../assets/images/part4/fig76_rimov_wind90_5.png" width="700" />
+<br />
+<figcaption>Figure 76. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (May 3 and May 6, 1991)." src="../../assets/images/part4/fig77_rimov_wind90_6.png" width="700" />
+<br />
+<figcaption>Figure 77. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption>
+</figure>
 <h5 id="sensitivity-to-inflow-phytoplankton-boundary-conditions">Sensitivity to Inflow Phytoplankton Boundary Conditions<a class="headerlink" href="#sensitivity-to-inflow-phytoplankton-boundary-conditions" title="Permanent link">&para;</a></h5>
 <p>The following plots illustrate the importance of accurate inflow boundary conditions for phytoplankton in Rimov Reservoir. Inflow phytoplankton concentrations were inadvertently set to 0.05 g m⁻³ rather than the observed concentrations when converting from V2 to V3. The researchers who collected the original data concluded that the spring phytoplankton bloom was first initiated in Rimov because of inflowing phytoplankton. The model concurs with this conclusion and again illustrates how powerful a limnological investigative tool the model can be.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (March 25 and April 2, 1991).](../assets/images/part4/fig78_rimov_nophyto1.png){ width="700" } -->
-<!--   <figcaption>Figure 78. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 5 and April 8, 1991).](../assets/images/part4/fig79_rimov_nophyto2.png){ width="700" } -->
-<!--   <figcaption>Figure 79. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 12 and April 15, 1991).](../assets/images/part4/fig80_rimov_nophyto3.png){ width="700" } -->
-<!--   <figcaption>Figure 80. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 19 and April 22, 1991).](../assets/images/part4/fig81_rimov_nophyto4.png){ width="700" } -->
-<!--   <figcaption>Figure 81. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 26 and April 29, 1991).](../assets/images/part4/fig82_rimov_nophyto5.png){ width="700" } -->
-<!--   <figcaption>Figure 82. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (May 3 and May 6, 1991).](../assets/images/part4/fig83_rimov_nophyto6.png){ width="700" } -->
-<!--   <figcaption>Figure 83. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (March 25 and April 2, 1991)." src="../../assets/images/part4/fig78_rimov_noinflow_1.png" width="700" />
+<br />
+<figcaption>Figure 78. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 5 and April 8, 1991)." src="../../assets/images/part4/fig79_rimov_noinflow_2.png" width="700" />
+<br />
+<figcaption>Figure 79. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 12 and April 15, 1991)." src="../../assets/images/part4/fig80_rimov_noinflow_3.png" width="700" />
+<br />
+<figcaption>Figure 80. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 19 and April 22, 1991)." src="../../assets/images/part4/fig81_rimov_noinflow_4.png" width="700" />
+<br />
+<figcaption>Figure 81. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 26 and April 29, 1991)." src="../../assets/images/part4/fig82_rimov_noinflow_5.png" width="700" />
+<br />
+<figcaption>Figure 82. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
+<figure>
+  <img alt="Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (May 3 and May 6, 1991)." src="../../assets/images/part4/fig83_rimov_noinflow_6.png" width="700" />
+<br />
+<figcaption>Figure 83. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption>
+</figure>
 <h2 id="estuary">Estuary<a class="headerlink" href="#estuary" title="Permanent link">&para;</a></h2>
 <p>Estuarine modeling is similar to reservoir and lake modeling for both bathymetry development and water quality modeling, but there are a few important differences in the hydrodynamic calibration. Salinity is commonly used to assess model hydrodynamic performance. However, as with reservoirs, water quality variables such as dissolved oxygen and phytoplankton can be used to also assess the accuracy of the hydrodynamics. When calibrating salinity, it is common practice to plot predicted versus observed time-series of surface and bottom salinity. While plots such as these are useful, vertical plots of computed versus observed salinity, if available, should always be included as part of the calibration process.</p>
 <h3 id="boundary-conditions">Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permanent link">&para;</a></h3>
@@ -3770,12 +3731,14 @@
 </div>
 <p>Typically, the user will first plot observed versus computed water surface elevations for the simulation period after all the inflow/outflow data have been collected and the model is running to completion. Distributed tributary flows <strong>[DTRC]</strong> may need to be added or subtracted if the mean flows over a tidal period are not correct. The model user should also check not only instantaneous flow rates, but tidal average rates to make sure the total flow coming into the system at the upstream boundary condition agrees with the net residual flow at different locations downstream. This could point to unaccounted inflows or outflows.</p>
 <p>The model user should always take the model segment next to the downstream boundary and compare it to the actual water level data used and the flow rate at the gage, if measured. This checks that the water level in the model is correct and the flow rate predicted by the model agrees with the field data at that location. If the water level matches but the flow does not, this could indicate channel bathymetry errors or incorrect channel friction near the head boundary condition.</p>
+<p>A typical comparison of field data to model predictions of water level is shown in Figure 84 for the Columbia River at Longview, Washington approximately 110 km from the Pacific Ocean. The absolute and root mean square errors were 0.12 m and 0.18 m, respectively, over the period of record with a maximum tidal range of 1.5 m.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![Water level data versus model predictions for Longview, WA during a 20-day period in 1993.](../assets/images/part4/fig84_longview_wl.png){ width="700" } -->
 <!--   <figcaption>Figure 84. Water level data versus model predictions for Longview, WA during a 20-day period in 1993.</figcaption> -->
 <!-- </figure> -->
 
+<p>Similarly, a typical comparison of model predictions and field data of flow rate is shown in Figure 85 for the Columbia River approximately 90 km from the Pacific Ocean.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![Model flow predictions versus data for a 20-day period during 1998 at Beaver Army Terminal near Quincy, OR.](../assets/images/part4/fig85_beaver_flow.png){ width="700" } -->
@@ -3786,27 +3749,26 @@
 <p>If at all possible, the model should be calibrated to a time-of-travel or dye study. This is important to ensure the model represents transport and mixing characteristics of the estuary accurately. Usually, the adjustment of bottom friction is the primary calibration parameter, but in some cases the bathymetry may need revision. The longitudinal eddy viscosity <strong>[AX]</strong> and diffusivity <strong>[DX]</strong> can also be adjusted during calibration. Since CE-QUAL-W2 uses a constant value for these coefficients for each waterbody, the user may need to include a longitudinal dispersion algorithm based on theoretical formulae if the constant value is not appropriate.</p>
 <p>In many cases a dye release will also vary vertically as a result of stratification. The model internally computes the vertical diffusion coefficient based on the eddy diffusivity using the Reynolds analogy. The model user should ensure that they are using the implicit solution technique for the transport of vertical momentum, <strong>[AZSLC]</strong> = <code>IMP</code>, and that the maximum value of the vertical eddy viscosity <strong>[AZMAX]</strong> is at least 1 m² s⁻¹ for estuarine systems.</p>
 <h3 id="temperature-and-salinity">Temperature and Salinity<a class="headerlink" href="#temperature-and-salinity" title="Permanent link">&para;</a></h3>
-<p>Calibrating the model for estuarine temperature and salinity includes the same caveats as for reservoirs with, as previously mentioned, the additional need for accurate boundary conditions at the ocean boundary. If the user has developed a good hydrodynamic calibration for water surface elevations and flows, then temperature and salinity calibrations should require a minimal effort. However, keep in mind that water surface elevation, flow, and time-of-travel calibrations are all affected by the adequacy of the temperature and salinity calibration.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Patuxent River computed versus observed vertical salinity distributions.](../assets/images/part4/fig86_patuxent_salinity.png){ width="700" } -->
-<!--   <figcaption>Figure 86. Patuxent River computed versus observed vertical salinity distributions.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Patuxent River computed versus observed vertical temperature distributions.](../assets/images/part4/fig87_patuxent_temp.png){ width="700" } -->
-<!--   <figcaption>Figure 87. Patuxent River computed versus observed vertical temperature distributions.</figcaption> -->
-<!-- </figure> -->
-
+<p>Calibrating the model for estuarine temperature and salinity includes the same caveats as for reservoirs with, as previously mentioned, the additional need for accurate boundary conditions at the ocean boundary. If the user has developed a good hydrodynamic calibration for water surface elevations and flows, then temperature and salinity calibrations should require minimal effort. However, keep in mind that water surface elevation, flow, and time-of-travel calibrations are all affected by the adequacy of the temperature and salinity calibration.</p>
+<p>Figures 86 and 87 are from an application of CE-QUAL-W2 to the estuarine portion of the Patuxent River that feeds into Chesapeake Bay (Lung and Bai, 2003). They illustrate the model's ability to reproduce vertical profiles of salinity and temperature over time.</p>
+<figure>
+  <img alt="Patuxent River computed versus observed vertical salinity distributions." src="../../assets/images/part4/fig86_patuxent_salinity.jpeg" width="700" />
+<br />
+<figcaption>Figure 86. Patuxent River computed versus observed vertical salinity distributions.</figcaption>
+</figure>
+<figure>
+  <img alt="Patuxent River computed versus observed vertical temperature distributions." src="../../assets/images/part4/fig87_patuxent_temperature.jpeg" width="700" />
+<br />
+<figcaption>Figure 87. Patuxent River computed versus observed vertical temperature distributions.</figcaption>
+</figure>
 <h3 id="water-quality_1">Water Quality<a class="headerlink" href="#water-quality_1" title="Permanent link">&para;</a></h3>
 <p>Water quality calibration for estuaries is again subject to the same caveats as for reservoirs with the additional importance of accurate downstream boundary conditions. Again, if at all possible, the downstream boundary should be located sufficiently downstream where vertical variations in water quality are negligible.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series.](../assets/images/part4/fig88_patuxent_wq.png){ width="700" } -->
-<!--   <figcaption>Figure 88. Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series.</figcaption> -->
-<!-- </figure> -->
-
+<p>Figure 88 presents results for nutrients, dissolved oxygen, and chlorophyll <em>a</em> concentrations for Lung and Bai's Patuxent River application of the model.</p>
+<figure>
+  <img alt="Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series." src="../../assets/images/part4/fig88_patuxent_wq.jpeg" width="700" />
+<br />
+<figcaption>Figure 88. Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series.</figcaption>
+</figure>
 <h3 id="calibration-problems_1">Calibration Problems<a class="headerlink" href="#calibration-problems_1" title="Permanent link">&para;</a></h3>
 <p>Modeling an estuarine system requires a tremendous amount of data, expertise, and patience for proper calibration. In previous estuarine applications, calibration consisted mainly of determining whether known inaccuracies in a given forcing function could be responsible for the discrepancies in the model predictions and then describing the forcing function more accurately. This procedure included the following:</p>
 <ol>
@@ -3925,12 +3887,11 @@
 <p>The system is complex hydraulically with three run-of-the-river impoundments used for power generation, significant groundwater inflows during low flow periods, a waterfall, and Long Lake, a deep storage impoundment. Although Long Lake is a long and fairly deep reservoir, residence times during the summer are relatively short (less than 1 month). Accurate inflow temperatures and constituent concentrations were therefore crucial for accurate simulations of temperature and water quality in Long Lake, which required accurate simulations of over 40 miles of the Spokane River upstream of Long Lake.</p>
 <p>The system is also complex with respect to water quality as epiphyton dominate nutrient and dissolved oxygen dynamics in the river and phytoplankton dominate their dynamics in Long Lake. Additionally, there are four point source discharges including the City of Spokane's wastewater effluent.</p>
 <p>The following figures illustrate the accuracy of the water balance at the City of Spokane and the accuracy of the computed flows at the same location.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Spokane River computed versus observed water surface elevations at Spokane.](../assets/images/part4/fig95_spokane_wse.png){ width="700" } -->
-<!--   <figcaption>Figure 95. Spokane River computed versus observed water surface elevations at Spokane.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Spokane River computed versus observed water surface elevations at Spokane." src="../../assets/images/part4/fig95_spokane_water_balance.png" width="700" />
+<br />
+<figcaption>Figure 95. Spokane River computed versus observed water surface elevations at Spokane.</figcaption>
+</figure>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
 <!--   ![Spokane River computed versus observed flows at the city of Spokane.](../assets/images/part4/fig96_spokane_flow.png){ width="700" } -->
@@ -3959,36 +3920,31 @@
 
 <h3 id="water-quality_2">Water Quality<a class="headerlink" href="#water-quality_2" title="Permanent link">&para;</a></h3>
 <p>Results for nutrients, dissolved oxygen, and chlorophyll <em>a</em> are given for the Snake River. The model is capturing much of the spatial and temporal changes in water quality for the river section where, unlike the Spokane River, phytoplankton rather than epiphyton dominate dissolved oxygen and nutrient dynamics.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Snake River computed versus observed dissolved oxygen at six stations.](../assets/images/part4/fig100_snake_do.png){ width="700" } -->
-<!--   <figcaption>Figure 100. Snake River computed versus observed dissolved oxygen at six stations.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Snake River computed versus observed orthophosphorus at six stations.](../assets/images/part4/fig101_snake_po4.png){ width="700" } -->
-<!--   <figcaption>Figure 101. Snake River computed versus observed orthophosphorus at six stations.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Snake River computed versus observed nitrate-nitrite at six stations.](../assets/images/part4/fig102_snake_no3.png){ width="700" } -->
-<!--   <figcaption>Figure 102. Snake River computed versus observed nitrate-nitrite at six stations.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Snake River computed versus observed chlorophyll a at six stations.](../assets/images/part4/fig103_snake_chla.png){ width="700" } -->
-<!--   <figcaption>Figure 103. Snake River computed versus observed chlorophyll a at six stations.</figcaption> -->
-<!-- </figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span"> -->
-<!--   ![Snake River computed versus total organic carbon.](../assets/images/part4/fig104_snake_toc.png){ width="700" } -->
-<!--   <figcaption>Figure 104. Snake River computed versus total organic carbon.</figcaption> -->
-<!-- </figure> -->
-
+<figure>
+  <img alt="Snake River computed versus observed dissolved oxygen at six stations." src="../../assets/images/part4/fig100_snake_do.png" width="700" />
+<br />
+<figcaption>Figure 100. Snake River computed versus observed dissolved oxygen at six stations.</figcaption>
+</figure>
+<figure>
+  <img alt="Snake River computed versus observed orthophosphorus at six stations." src="../../assets/images/part4/fig101_snake_phosphorus.png" width="700" />
+<br />
+<figcaption>Figure 101. Snake River computed versus observed orthophosphorus at six stations.</figcaption>
+</figure>
+<figure>
+  <img alt="Snake River computed versus observed nitrate-nitrite at six stations." src="../../assets/images/part4/fig102_snake_nitrate.png" width="700" />
+<br />
+<figcaption>Figure 102. Snake River computed versus observed nitrate-nitrite at six stations.</figcaption>
+</figure>
+<figure>
+  <img alt="Snake River computed versus observed chlorophyll a at six stations." src="../../assets/images/part4/fig103_snake_chlorophyll.png" width="700" />
+<br />
+<figcaption>Figure 103. Snake River computed versus observed chlorophyll a at six stations.</figcaption>
+</figure>
+<figure>
+  <img alt="Snake River computed versus total organic carbon." src="../../assets/images/part4/fig104_snake_toc.png" width="700" />
+<br />
+<figcaption>Figure 104. Snake River computed versus total organic carbon.</figcaption>
+</figure>
 <p>The following figures illustrate the model's ability to reproduce changes in dissolved oxygen over a year and also on a diel basis on the Spokane River. Note how the model has captured not only the diel swings in dissolved oxygen, but also the decrease in the magnitude of the diel variation, which indicates that the model is accurately reproducing epiphyton primary production. This is reinforced by the model reproducing diel variations in pH due to epiphyton growth and respiration and the decrease in diel variation over time.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span"> -->
@@ -4029,7 +3985,7 @@
 
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>The preceding examples demonstrate that CE-QUAL-W2 is capable of reproducing a wide range of complex hydrodynamics, temperature, dissolved oxygen, nutrient, and phytoplankton and epiphyton regimes in rivers, lakes, reservoirs, and estuaries. If the model is not adequately reproducing prototype behavior, the reason is most likely that the bathymetry or important boundary conditions are not being described with sufficient accuracy.</p>
-<p>For some applications, no amount of model adjustment or data reconstruction will provide acceptable calibration if data are insufficient to describe the dominant forcing functions in the prototype. For these cases, the model can still be used to provide information about the prototype by pointing out data inadequacies, important mechanisms not included in the model but important in the prototype, or inappropriate assumptions used in the model. In these cases, further fieldwork will be necessary to successfully apply the model.</p>
+<p>For some applications, no amount of model adjustment or data reconstruction will provide acceptable calibration if available observations are insufficient to describe the dominant forcing functions in the prototype. For these cases, the model can still be used to provide information about the prototype by pointing out data inadequacies, important mechanisms not included in the model but important in the prototype, or inappropriate assumptions used in the model. In these cases, further fieldwork will be necessary to successfully apply the model.</p>
 
 
 

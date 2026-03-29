@@ -2172,12 +2172,11 @@
 
 <h1 id="using-multiple-processors-for-a-cascade-of-waterbodies">Using Multiple Processors for a Cascade of Waterbodies<a class="headerlink" href="#using-multiple-processors-for-a-cascade-of-waterbodies" title="Permanent link">&para;</a></h1>
 <p>When a model domain includes a cascade of waterbodies, such as reservoirs in series or a river system with a cascade of reaches, CE-QUAL-W2 provides a feature to reduce overall model run time by running multiple waterbodies simultaneously on separate processor cores. This approach applies when the water level in the downstream waterbody does not influence the upstream waterbody (i.e., no backwater effects).</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Cascade of reservoirs or multiple waterbodies](../assets/images/part3/cascade_waterbodies.png){ width="700" }
-  <figcaption>Figure 55. Cascade of reservoirs or multiple waterbodies.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Cascade of reservoirs or multiple waterbodies" src="../../assets/images/part3/fig49_cascade_waterbodies.png" width="700" />
+<br />
+<figcaption>Figure 55. Cascade of reservoirs or multiple waterbodies.</figcaption>
+</figure>
 <h2 id="simulation-options">Simulation Options<a class="headerlink" href="#simulation-options" title="Permanent link">&para;</a></h2>
 <p>There are three options for simulating a series of waterbodies, summarized in Table 65.</p>
 <p><strong>Table 65. Techniques for using CE-QUAL-W2 to simulate a cascade of waterbodies.</strong></p>
@@ -2213,12 +2212,11 @@
 </table>
 <p>Option 3 allows the downstream model to run even before the upstream model has completed. The downstream model uses the input file <code>w2_multiple_WB.npt</code> to determine where to obtain the upstream inflow boundary conditions. The downstream code can accept inflow from both branch inflows and tributaries from other waterbodies.</p>
 <p>In model tests with multiple waterbodies, speed improvements from 22--90% have been seen.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Concept of running multiple waterbodies simultaneously](../assets/images/part3/multiple_wb_concept.png){ width="700" }
-  <figcaption>Figure 56. Concept of running multiple waterbodies simultaneously.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Concept of running multiple waterbodies simultaneously" src="../../assets/images/part3/fig50_multiple_wb_concept.png" width="700" />
+<br />
+<figcaption>Figure 56. Concept of running multiple waterbodies simultaneously.</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This approach assumes that the water level in the downstream waterbody does not influence the upstream waterbody. If backwater effects are significant, all waterbodies must be included in a single model (Option 1).</p>

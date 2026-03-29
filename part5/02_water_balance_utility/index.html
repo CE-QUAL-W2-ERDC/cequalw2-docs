@@ -2350,7 +2350,8 @@
 
 <h1 id="water-balance-utility">Water Balance Utility<a class="headerlink" href="#water-balance-utility" title="Permanent link">&para;</a></h1>
 <p><em>Primary author: Tom Cole</em></p>
-<p>The water balance utility computes the flows necessary to match observed water surface elevations in lakes and reservoirs where water surface elevations are a function of inflows and controlled outflows. The utility outputs a time series of Julian day and inflow (m³ s⁻¹) to the file <code>qwb.opt</code>. These flows can be positive or negative.</p>
+<p>The water balance utility can be used for lakes and reservoirs in which water surface elevations are a function of inflows and controlled outflows. The utility computes the flows necessary to match observed water surface elevations (typically taken at the dam) and outputs them to the <code>qwb.opt</code> file. This file contains a time series of Julian day and inflow (m³ s⁻¹). The flows can be either positive or negative.</p>
+<p>Temperatures and/or constituent concentrations must also be provided in the corresponding temperature and constituent concentration input files if the computed flows are incorporated as inflows to the system. <strong>The water balance utility does not provide this information</strong>; it must be provided by the user depending on how the computed flows are incorporated into the simulation. Considerable thought should go into how best to incorporate temperature and constituent concentrations, as discussed in the <a href="#incorporating-computed-flows-into-the-simulation">Incorporating Computed Flows into the Simulation</a> section below.</p>
 <p>Two versions of the utility are available:</p>
 <ul>
 <li><strong>Graphical user interface (GUI) application</strong> - a Windows dialog-based program for interactive use</li>
@@ -2359,18 +2360,16 @@
 <h2 id="gui-application">GUI Application<a class="headerlink" href="#gui-application" title="Permanent link">&para;</a></h2>
 <h3 id="running-the-program">Running the Program<a class="headerlink" href="#running-the-program" title="Permanent link">&para;</a></h3>
 <p>When the executable is run, a dialog box appears with editable fields for the input parameters. The executable runs under the Windows operating system only. Default values populate the edit boxes when the dialog first appears. Edit each field as needed, then select <strong>Run</strong> to execute the water balance computation.</p>
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Dialog box for water balance utility](../assets/images/part5/wb_dialog.png){ width="500" }
-  <figcaption>Figure 1. Dialog box for water balance utility.</figcaption>
-</figure> -->
-
-<!-- TODO: Add figure -->
-<!-- <figure markdown="span">
-  ![Dialog box for water balance utility after successful completion](../assets/images/part5/wb_dialog_complete.png){ width="500" }
-  <figcaption>Figure 2. Dialog box for water balance utility if successful completion.</figcaption>
-</figure> -->
-
+<figure>
+  <img alt="Dialog box for water balance utility" src="../../assets/images/part5/fig01_wb_dialog.png" width="500" />
+<br />
+<figcaption>Figure 1. Dialog box for water balance utility.</figcaption>
+</figure>
+<figure>
+  <img alt="Dialog box for water balance utility after successful completion" src="../../assets/images/part5/fig02_wb_dialog_complete.png" width="500" />
+<br />
+<figcaption>Figure 2. Dialog box for water balance utility if successful completion.</figcaption>
+</figure>
 <h3 id="input-parameters">Input Parameters<a class="headerlink" href="#input-parameters" title="Permanent link">&para;</a></h3>
 <h4 id="observed-elevations-filename">Observed Elevations Filename<a class="headerlink" href="#observed-elevations-filename" title="Permanent link">&para;</a></h4>
 <p>This file consists of a Julian day and observed water surface elevation. The format is similar to all other CE-QUAL-W2 time-varying inputs, with eight columns each for the <code>JDAY</code> and <code>ELO</code> values. The utility will also read values using variable field lengths as long as the <code>JDAY</code> and <code>ELO</code> values are separated by a space.</p>
@@ -2428,13 +2427,13 @@
 <h4 id="waterbody-number">Waterbody Number<a class="headerlink" href="#waterbody-number" title="Permanent link">&para;</a></h4>
 <p>In the case of multiple waterbodies, each with a separate bathymetry input file, specify which waterbody (and thus which bathymetry file) the water balance is being computed for. This capability is necessary for modeling systems with multiple reservoirs.</p>
 <h3 id="incorporating-computed-flows-into-the-simulation">Incorporating Computed Flows into the Simulation<a class="headerlink" href="#incorporating-computed-flows-into-the-simulation" title="Permanent link">&para;</a></h3>
-<p>The water balance utility outputs computed flows to the <code>qwb.opt</code> file. These flows are computed as a step function. They must be incorporated into the model as a flow type that is not linearly interpolated; otherwise, the resulting water balance will not be correct.</p>
+<p>The water balance utility outputs computed flows to the <code>qwb.opt</code> file. These flows are computed as a step function. If they are incorporated into the model as an additional inflow or outflow whose current values are linearly interpolated, such as a branch inflow, the resulting water balance will not be correct.</p>
 <h4 id="recommended-approach-distributed-tributary-inflow">Recommended Approach: Distributed Tributary Inflow<a class="headerlink" href="#recommended-approach-distributed-tributary-inflow" title="Permanent link">&para;</a></h4>
 <p>Typically, the flows in the <code>qwb.opt</code> file are included as a distributed tributary inflow assigned to the mainstem branch, with interpolation <strong>[DTRIC]</strong> set to <code>OFF</code>. Set the corresponding distributed tributary inflow temperatures in the <code>qdt_br1.npt</code> file, usually to observed air temperatures.</p>
 <p>Using a distributed tributary minimizes the impact of the flow, temperature, and water quality on the simulation by distributing the flow throughout all segments in a branch, weighted by surface area.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Be aware that large flows resulting from large errors in inflow/outflow measurements can have a significant impact on temperature and water quality calibration in the surface layers. Sensitivity analyses should be conducted to verify that the flow and associated temperature/constituent concentrations do not adversely affect simulation results.</p>
+<p>Be aware that large flows resulting from large errors in inflow/outflow measurements can have a significant impact on temperature and water quality calibration in the surface layers. Usually this is not a problem, but sensitivity analyses should be conducted to verify that the flow and associated temperature/constituent concentrations do not adversely affect simulation results.</p>
 </div>
 <h4 id="constituent-considerations-for-water-quality-runs">Constituent Considerations for Water Quality Runs<a class="headerlink" href="#constituent-considerations-for-water-quality-runs" title="Permanent link">&para;</a></h4>
 <p>When running water quality, take care in selecting which constituents to include in the corresponding inflow constituent concentration file:</p>
@@ -2444,12 +2443,12 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Negative flows use temperatures and concentrations from within the waterbody rather than the values in the corresponding inflow temperature and constituent concentration files. This ensures that negative flows generate no change in temperature or constituent concentrations.</p>
+<p>Negative flows use temperatures and concentrations from within the waterbody rather than the values in the corresponding inflow temperature and constituent concentration files. This ensures that negative flows generate no change in temperature or constituent concentrations. However, positive flows can impact simulation results, and care must be taken as to how they are incorporated into the simulation.</p>
 </div>
 <h4 id="strategies-for-incorporating-flows">Strategies for Incorporating Flows<a class="headerlink" href="#strategies-for-incorporating-flows" title="Permanent link">&para;</a></h4>
 <p>The best method for incorporating computed flows depends on the characteristics of the flows:</p>
 <ul>
-<li><strong>Consistently negative flows</strong> indicate that either inflows are consistently overestimated or outflows are consistently underestimated. Incorporating the flows as a positive increase in the outflows, as opposed to subtracting them from the inflows, can potentially have a significant impact on simulation results. Conduct sensitivity analyses to determine which method improves results.</li>
+<li><strong>Consistently negative flows</strong> indicate that either inflows are consistently overestimated or outflows are consistently underestimated. Incorporating the flows as a positive increase in the outflows, as opposed to subtracting them from the inflows, can potentially have a significant impact on simulation results. For example, if hypolimnetic temperatures are consistently underestimated, incorporating the flows into a hypolimnetic outflow could improve results. Conversely, if hypolimnetic temperatures are overpredicted, the inflows should probably be reduced. Conduct sensitivity analyses to determine which method improves results.</li>
 <li><strong>Consistently positive flows</strong> in a branch with significant ungauged inflows suggest that a sensitivity analysis should be performed to determine if incorporating the flows (or a portion of them) into the ungauged branch inflow improves model results.</li>
 </ul>
 <p>The model itself can often serve as a guide for how best to incorporate the computed flows. Multiple approaches should generally be tested.</p>

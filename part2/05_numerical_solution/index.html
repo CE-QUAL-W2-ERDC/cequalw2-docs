@@ -2597,7 +2597,7 @@ D = \Delta t \sum_{kt}^{kb} (UBH_r|_i - UBH_r|_{i-1}) + B_\eta \eta_i^{n-1} \Del
 <div class="arithmatex">\[
 + \Delta x \Delta t \sum_{kt}^{kb} qBH_r + \Delta x \Delta t^2 \frac{\partial}{\partial x} \sum_{kt}^{kb} qU_x BH_r + \frac{\Delta t^2}{\rho} \left[ \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_i - \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_{i-1} \right]
 \]</div>
-<p>This equation is applied at all cells in the branch, generating a system of equations that are solved for the water surface elevation at the <span class="arithmatex">\(n+1\)</span> time level using the Thomas algorithm. The resulting FDA is implicit in η because of the dependence of η in the momentum equation.</p>
+<p>This equation is applied at all cells in the branch, generating a system of equations that are solved for the water surface elevation at the <span class="arithmatex">\(n+1\)</span> time level using the Thomas algorithm. The resulting FDA is implicit in η because of the dependence of η in the momentum equation (see Figure 124).</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Solution of the water level eta](../assets/images/part2/fig124_eta_solution.png){ width="500" }
@@ -2606,20 +2606,16 @@ D = \Delta t \sum_{kt}^{kb} (UBH_r|_i - UBH_r|_{i-1}) + B_\eta \eta_i^{n-1} \Del
 -->
 
 <p>The boundary conditions of either flow or head boundary are accounted for in applying the above equation to the boundary cells as shown in Figure 125 and Figure 126, respectively. The boundary condition implementation is the same as described in Cole and Buchak (1995).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Grid for computation of a flow boundary in x](../assets/images/part2/fig125_flow_boundary_eta.png){ width="500" }
-  <figcaption>Figure 125. Grid for computation of a flow boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the flow rate.</figcaption>
+<figure>
+  <img alt="Grid for computation of a flow boundary in x" src="../../assets/images/part2/fig115_flow_boundary_grid.png" width="500" />
+<br />
+<figcaption>Figure 125. Grid for computation of a flow boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the flow rate.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Grid for computation of a head boundary in x](../assets/images/part2/fig126_head_boundary_eta.png){ width="500" }
-  <figcaption>Figure 126. Grid for computation of a head boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the head difference between the boundary head (at center of inactive segment 1) and the head at the first grid cell (segment 2).</figcaption>
+<figure>
+  <img alt="Grid for computation of a head boundary in x" src="../../assets/images/part2/fig116_head_boundary_grid.png" width="500" />
+<br />
+<figcaption>Figure 126. Grid for computation of a head boundary in x. U, the longitudinal velocity, at the flow boundary or at the right-hand side of inactive segment 1 is computed from the head difference between the boundary head (at center of inactive segment 1) and the head at the first grid cell (segment 2).</figcaption>
 </figure>
--->
-
 <h3 id="horizontal-momentum-numerical-solution-for-horizontal-velocity-u">Horizontal Momentum Numerical Solution for Horizontal Velocity U<a class="headerlink" href="#horizontal-momentum-numerical-solution-for-horizontal-velocity-u" title="Permanent link">&para;</a></h3>
 <p>The x-momentum equation:</p>
 <div class="arithmatex">\[
@@ -3157,17 +3153,19 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 \widetilde{\Phi}_R = \frac{\Phi_R - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} \tag{5-65}
 \]</div>
 <p>The conditions for a monotonic solution are:</p>
-<p>If <span class="arithmatex">\(\widetilde{\Phi}_R \leq \frac{\widetilde{\Phi}_i^n}{\left[\frac{U\Delta t}{\Delta x}\right]_R}\)</span> for <span class="arithmatex">\(0 &lt; \widetilde{\Phi}_i^n \leq 1\)</span>:</p>
 <div class="arithmatex">\[
-\widetilde{\Phi}_i^n \leq \widetilde{\Phi}_R \leq 1 \quad \text{for } 0 &lt; \widetilde{\Phi}_i^n \leq 1 \tag{5-66}
+\widetilde{\Phi}_R \leq \frac{\widetilde{\Phi}_i^n}{\left[\frac{U\Delta t}{\Delta x}\right]_R} \quad \text{for } 0 &lt; \widetilde{\Phi}_i^n \leq 1 \tag{5-66}
 \]</div>
 <div class="arithmatex">\[
-\widetilde{\Phi}_i^n = \widetilde{\Phi}_R \quad \text{for } \widetilde{\Phi}_i^n &lt; 0 \text{ or } \widetilde{\Phi}_i^n &gt; 1 \tag{5-67}
+\widetilde{\Phi}_i^n \leq \widetilde{\Phi}_R \leq 1 \quad \text{for } 0 &lt; \widetilde{\Phi}_i^n \leq 1 \tag{5-67}
+\]</div>
+<div class="arithmatex">\[
+\widetilde{\Phi}_i^n = \widetilde{\Phi}_R \quad \text{for } \widetilde{\Phi}_i^n &lt; 0 \text{ or } \widetilde{\Phi}_i^n &gt; 1 \tag{5-68}
 \]</div>
 <p>The face value is unadjusted from that computed by the numerical scheme and the QUICKEST value of <span class="arithmatex">\(\Phi_R\)</span> is used without alteration. These conditions are shown as the shaded region in Figure 135.</p>
 <p>If these conditions are not met, then <span class="arithmatex">\(\Phi_R\)</span> is adjusted to force a monotonic solution. The value of the face is replaced with the nearest allowable value of <span class="arithmatex">\(\widetilde{\Phi}_R\)</span> based on the above criteria that will ensure these criteria are met. The face value is determined by using:</p>
 <div class="arithmatex">\[
-\Phi_R = \Phi_{i-1}^n + \widetilde{\Phi}_R (\Phi_{i+1}^n - \Phi_{i-1}^n) \tag{5-68}
+\Phi_R = \Phi_{i-1}^n + \widetilde{\Phi}_R (\Phi_{i+1}^n - \Phi_{i-1}^n) \tag{5-69}
 \]</div>
 <!-- TODO: Add figure
 <figure markdown="span">
@@ -3197,15 +3195,15 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 <p>The following shows a straightforward procedure by Leonard to compute the right and left face values if they do not meet the monotonic criteria, as well as a procedure for variable velocities.</p>
 <p>Based on the sign of the velocity for each face, compute <code>DEL</code>:</p>
 <div class="arithmatex">\[
-\text{DEL} = \Phi_{i+1}^n - \Phi_{i-1}^n \tag{5-69}
+\text{DEL} = \Phi_{i+1}^n - \Phi_{i-1}^n \tag{5-70}
 \]</div>
 <p>If <span class="arithmatex">\(|\text{DEL}| &lt; 10^{-5}\)</span>, set <span class="arithmatex">\(\Phi_{face} = \Phi_i^n\)</span> and proceed to the next face (the face value is the L or R face). Otherwise, compute:</p>
 <div class="arithmatex">\[
-\widetilde{\Phi}_i^n = \frac{\Phi_i^n - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_i^n - \Phi_{i-1}^n}{\text{DEL}} \tag{5-70}
+\widetilde{\Phi}_i^n = \frac{\Phi_i^n - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_i^n - \Phi_{i-1}^n}{\text{DEL}} \tag{5-71}
 \]</div>
 <p>If <span class="arithmatex">\(\widetilde{\Phi}_i^n &lt; 0\)</span> or <span class="arithmatex">\(\widetilde{\Phi}_i^n &gt; 1\)</span>, set <span class="arithmatex">\(\Phi_{face} = \Phi_i^n\)</span> and proceed to the next face. If not, compute:</p>
 <div class="arithmatex">\[
-\widetilde{\Phi}_{face} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\text{DEL}} \tag{5-71}
+\widetilde{\Phi}_{face} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\Phi_{i+1}^n - \Phi_{i-1}^n} = \frac{\Phi_{face} - \Phi_{i-1}^n}{\text{DEL}} \tag{5-72}
 \]</div>
 <p>where <span class="arithmatex">\(\Phi_{face}\)</span> is computed based on the user's chosen numerical scheme (such as QUICKEST or another scheme).</p>
 <ol>
@@ -3237,30 +3235,30 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 <p>The procedure outlined above is based on unidirectional and uniform magnitude velocity and segment widths. If the velocity regime and widths are variable, then the following procedure is followed in order to maintain a monotonic solution.</p>
 <p>Assuming that <span class="arithmatex">\(U_R\)</span> is positive and the concentration times width (<span class="arithmatex">\(\Phi B\)</span>) increases monotonically, i.e., <span class="arithmatex">\((B\Phi)_{i-1}^n &lt; (B\Phi)_i^n &lt; (B\Phi)_{i+1}^n &lt; (B\Phi)_{i+2}^n\)</span>, between segment <span class="arithmatex">\(i-1\)</span> and <span class="arithmatex">\(i+2\)</span>, then the goal of the technique is to estimate <span class="arithmatex">\(\Phi_R\)</span>, or really <span class="arithmatex">\(B_R \Phi_R\)</span>, and to update the concentration using Equation 5-61. Equation 5-61 can be written as a condition for <span class="arithmatex">\(\Phi_R\)</span> as:</p>
 <div class="arithmatex">\[
-\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R = B_i^n \Phi_i^n - \Phi_i^{n+1} B_i^{n+1} + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-72}
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R = B_i^n \Phi_i^n - \Phi_i^{n+1} B_i^{n+1} + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-73}
 \]</div>
 <p>If it is assumed that <span class="arithmatex">\(B_i^n \Phi_i^n \leq B_R \Phi_R \leq B_{i+1} \Phi_{i+1}^n\)</span>, then this is equivalent to saying that <span class="arithmatex">\(B_i^n U_i^n \Phi_i^n \leq B_R^n U_R^n \Phi_R \leq B_{i+1}^n U_{i+1}^n \Phi_{i+1}^n\)</span>, or that the net flux into a segment is increasing.</p>
-<p>Using the monotonic limitation that <span class="arithmatex">\(B_i^{n+1} \Phi_i^{n+1} \geq B_{i-1} \Phi_{i-1}^n\)</span> then Equation 5-72 becomes:</p>
+<p>Using the monotonic limitation that <span class="arithmatex">\(B_i^{n+1} \Phi_i^{n+1} \geq B_{i-1} \Phi_{i-1}^n\)</span> then Equation 5-73 becomes:</p>
 <div class="arithmatex">\[
-\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-73}
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \tag{5-74}
 \]</div>
-<p>Then making a conservative assumption that <span class="arithmatex">\(B_L \Phi_L \geq B_{i-1} \Phi_{i-1}^n\)</span>, Equation 5-73 becomes:</p>
+<p>Then making a conservative assumption that <span class="arithmatex">\(B_L \Phi_L \geq B_{i-1} \Phi_{i-1}^n\)</span>, Equation 5-74 becomes:</p>
 <div class="arithmatex">\[
-\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{i-1}^n \Phi_{i-1}^n \tag{5-74}
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_i^n \Phi_i^n - \Phi_{i-1}^n B_{i-1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{i-1}^n \Phi_{i-1}^n \tag{5-75}
 \]</div>
 <p>Another condition is also imposed on <span class="arithmatex">\(B_R \Phi_R\)</span> by looking at the control volume segment centered at <span class="arithmatex">\(i+1\)</span>. Using similar reasoning as above and assuming that <span class="arithmatex">\(U_{RR} &gt; 0\)</span>, the other criterion for <span class="arithmatex">\(B_R \Phi_R\)</span> is:</p>
 <div class="arithmatex">\[
-\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_{i+2}^n \Phi_{i+2}^n - \Phi_{i+1}^n B_{i+1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{RR} \Phi_{i+1}^n \tag{5-75}
+\left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R \leq B_{i+2}^n \Phi_{i+2}^n - \Phi_{i+1}^n B_{i+1}^n + \left[\frac{UB\Delta t}{\Delta x}\right]_{RR} \Phi_{i+1}^n \tag{5-76}
 \]</div>
 <p>These criteria would be altered appropriately if the function were monotonically decreasing rather than increasing.</p>
 <h3 id="vertical-implicit-transport">Vertical Implicit Transport<a class="headerlink" href="#vertical-implicit-transport" title="Permanent link">&para;</a></h3>
 <p>Focusing on vertical advective and diffusive transport, constituent transport can be written as:</p>
 <div class="arithmatex">\[
-\frac{\partial B\Phi}{\partial t} + \frac{\partial WB\Phi}{\partial z} - \frac{\partial}{\partial z}\left(BD_z \frac{\partial \Phi}{\partial z}\right) = RHS \tag{5-76}
+\frac{\partial B\Phi}{\partial t} + \frac{\partial WB\Phi}{\partial z} - \frac{\partial}{\partial z}\left(BD_z \frac{\partial \Phi}{\partial z}\right) = RHS \tag{5-77}
 \]</div>
 <p>where <span class="arithmatex">\(RHS\)</span> represents horizontal transport and all sources/sinks. Integrating the transport equation vertically and over time gives:</p>
 <div class="arithmatex">\[
-BH\Phi^{n+1} + \theta H \Delta t \delta_z (WB\Phi^{n+1}) - H\Delta t \delta_z \left(BD_z \frac{\partial \Phi^{n+1}}{\partial z}\right) = BH\Phi^* \tag{5-77}
+BH\Phi^{n+1} + \theta H \Delta t \delta_z (WB\Phi^{n+1}) - H\Delta t \delta_z \left(BD_z \frac{\partial \Phi^{n+1}}{\partial z}\right) = BH\Phi^* \tag{5-78}
 \]</div>
 <p>where:</p>
 <ul>
@@ -3269,7 +3267,7 @@ BH\Phi^{n+1} + \theta H \Delta t \delta_z (WB\Phi^{n+1}) - H\Delta t \delta_z \l
 </ul>
 <p>Expanding the differential operators in terms of central differences and collecting terms, the above equation can be recast as:</p>
 <div class="arithmatex">\[
-A_{t_i} \Phi_{i-1}^{n+1} + V_{t_i} \Phi_i^{n+1} + C_{t_i} \Phi_{i+1}^{n+1} = D_{t_i} \tag{5-78}
+A_{t_i} \Phi_{i-1}^{n+1} + V_{t_i} \Phi_i^{n+1} + C_{t_i} \Phi_{i+1}^{n+1} = D_{t_i} \tag{5-79}
 \]</div>
 <p>where:</p>
 <div class="arithmatex">\[

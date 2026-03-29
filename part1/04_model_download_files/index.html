@@ -814,10 +814,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-usgs-documentation-for-auto-port-selection-algorithm" class="md-nav__link">
+  <a href="#7-usgs-documentation-for-the-auto-port-selection-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. USGS Documentation for Auto Port Selection Algorithm
+        7. USGS Documentation for the Auto Port Selection Algorithm
       
     </span>
   </a>
@@ -825,10 +825,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-usgs-model-examples-for-auto-port-selection" class="md-nav__link">
+  <a href="#8-usgs-model-examples-for-the-auto-port-selection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. USGS Model Examples for Auto Port Selection
+        8. USGS Model Examples for the Auto Port Selection
       
     </span>
   </a>
@@ -2351,10 +2351,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-usgs-documentation-for-auto-port-selection-algorithm" class="md-nav__link">
+  <a href="#7-usgs-documentation-for-the-auto-port-selection-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. USGS Documentation for Auto Port Selection Algorithm
+        7. USGS Documentation for the Auto Port Selection Algorithm
       
     </span>
   </a>
@@ -2362,10 +2362,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-usgs-model-examples-for-auto-port-selection" class="md-nav__link">
+  <a href="#8-usgs-model-examples-for-the-auto-port-selection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. USGS Model Examples for Auto Port Selection
+        8. USGS Model Examples for the Auto Port Selection
       
     </span>
   </a>
@@ -2482,38 +2482,41 @@
 
 <h1 id="model-download-files">Model Download Files<a class="headerlink" href="#model-download-files" title="Permanent link">&para;</a></h1>
 <h2 id="psu-v45-download-package">PSU V4.5 Download Package<a class="headerlink" href="#psu-v45-download-package" title="Permanent link">&para;</a></h2>
-<p>All files for CE-QUAL-W2 Version 4.5 are distributed from the Portland State University (PSU) website as a single compressed zip file. The download package is organized into directories containing source code, pre-compiled executables, the user manual, and example applications.</p>
+<p>All files for CE-QUAL-W2 Version 4.5 are distributed from the Portland State University (PSU) CE-QUAL-W2 website (<a href="http://www.ce.pdx.edu/w2">http://www.ce.pdx.edu/w2</a>) as a single compressed zip file. The download package is organized into directories containing source code, executables, the user manual, and example applications.</p>
 <div class="admonition note">
 <p class="admonition-title">Download Statistics</p>
 <p>As of 2018, model downloads from the PSU website averaged over 3 per day over the preceding 15 years. The website averaged 500--1,000 unique visitors per month.</p>
 </div>
 <h2 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h2>
-<p>The PSU V4.5 download package contains the following directories:</p>
+<p>After downloading the model package, the extracted zip file contains the following directory structure:</p>
+<!-- TODO: Add figure -->
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Directory structure of the CE-QUAL-W2 download package](../assets/images/part1/figure7_directory_structure.png){ width="700" }
+  <figcaption>Figure 7. Directory structure of the CE-QUAL-W2 download package.</figcaption>
+</figure>
+-->
+
+<p>The following sections describe each subdirectory and its files.</p>
 <h3 id="1-examples">1. Examples<a class="headerlink" href="#1-examples" title="Permanent link">&para;</a></h3>
-<p>Example applications demonstrating various model configurations:</p>
+<p>Model application examples include:</p>
 <ul>
-<li><strong>DeGray Reservoir:</strong> A stratified reservoir application</li>
-<li><strong>Spokane River:</strong> A river application</li>
-<li><strong>Columbia Slough Estuary:</strong> An estuarine application</li>
-<li><strong>Sediment Diagenesis Reservoir:</strong> A reservoir application with sediment diagenesis</li>
-<li><strong>Multiple Cascade Reservoir:</strong> A multi-reservoir cascade configuration</li>
+<li><strong>DeGray Reservoir:</strong> A reservoir with a single branch and a complete water quality application</li>
+<li><strong>Spokane River:</strong> An example of a river system with multiple river sections (available with input files in both fixed-format and CSV format)</li>
+<li><strong>Columbia Slough Estuary:</strong> A fresh-water estuary example</li>
+<li><strong>Sediment Diagenesis Reservoir:</strong> A reservoir model illustrating the sediment diagenesis model of Version 4.0</li>
+<li><strong>Multiple Cascade Reservoir:</strong> A multiple cascade reservoir example</li>
 <li><strong>SYSTDG Example:</strong> A system Total Dissolved Gas (TDG) application</li>
-<li><strong>USGS Auto-Port Selection Examples:</strong> Examples demonstrating the U.S. Geological Survey (USGS) automatic port selection algorithm</li>
+<li><strong>USGS Auto-Port Selection Examples:</strong> Several reservoirs that illustrate the U.S. Geological Survey (USGS) auto-port selection algorithm (introduced in Version 3.72)</li>
 </ul>
 <h3 id="2-excel-macro-utility">2. Excel Macro Utility<a class="headerlink" href="#2-excel-macro-utility" title="Permanent link">&para;</a></h3>
-<p>An Excel macro utility for writing input files in CE-QUAL-W2 format directly from Microsoft Excel. This utility was developed by Jeffrey Gregory.</p>
+<p>An Excel macro that aids in writing CE-QUAL-W2 compatible files from within Microsoft Excel. A short user manual describing how to use the macro is included. This macro was developed by Jeffrey Gregory, Civil Engineer, U.S. Army Corps of Engineers (USACE), Nashville District.</p>
 <h3 id="3-executables">3. Executables<a class="headerlink" href="#3-executables" title="Permanent link">&para;</a></h3>
-<p>Pre-compiled executables for Windows, including:</p>
-<ul>
-<li>Preprocessor executable</li>
-<li>Model executable</li>
-<li>Compiled with the Intel Fortran compiler</li>
-<li>Both 32-bit and 64-bit versions provided</li>
-</ul>
+<p>The executables for the preprocessor and the model were compiled using the latest Intel Fortran compiler and are available in both 32-bit and 64-bit versions. These executables must be placed into the directories of the model input files or be used with the command-line option for setting the default directory where the model files reside. See <a href="../07_batch_processing_and_command_line/">Batch Processing and Command Line</a> for details on the command-line option.</p>
 <h3 id="4-sediment-diagenesis-documentation">4. Sediment Diagenesis Documentation<a class="headerlink" href="#4-sediment-diagenesis-documentation" title="Permanent link">&para;</a></h3>
-<p>Documentation for the sediment diagenesis module.</p>
+<p>Reports and documents explaining the sediment diagenesis model in Version 4.</p>
 <h3 id="5-source-code">5. Source Code<a class="headerlink" href="#5-source-code" title="Permanent link">&para;</a></h3>
-<p>Fortran 90+ source code for the model and preprocessor. The source code is compiled with the Intel Fortran compiler using the following settings:</p>
+<p>The source code for the preprocessor and model, written in Fortran 90+. The compiler settings and files necessary to compile using the Intel compiler are also included. The following compiler settings are used for the Windows application:</p>
 <table>
 <thead>
 <tr>
@@ -2524,14 +2527,14 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>/O2</code> optimization</td>
-<td style="text-align: left;">Standard optimization level for most source files</td>
+<td style="text-align: left;">Maximum speed optimization for most source files</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>/O1</code> optimization</td>
 <td style="text-align: left;">Reduced optimization for <code>init-cond.f90</code> and <code>init-u-elws.f90</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">Double precision</td>
+<td style="text-align: left;">Default real is double precision</td>
 <td style="text-align: left;">All floating-point variables compiled in double precision</td>
 </tr>
 <tr>
@@ -2540,9 +2543,10 @@
 </tr>
 </tbody>
 </table>
+<p>The debug version is used for the released executable.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The files <code>init-cond.f90</code> and <code>init-u-elws.f90</code> require the <code>/O1</code> optimization level. Using <code>/O2</code> on these files may produce incorrect results or runtime errors.</p>
+<p>The subroutines <code>init-cond.f90</code> and <code>init-u-elws.f90</code> require the <code>/O1</code> optimization level. Using <code>/O2</code> on these files may produce incorrect results or runtime errors.</p>
 </div>
 <h3 id="6-user-manual">6. User Manual<a class="headerlink" href="#6-user-manual" title="Permanent link">&para;</a></h3>
 <p>The user manual, organized into five parts:</p>
@@ -2553,33 +2557,19 @@
 <li><strong>Part 4:</strong> Example Applications</li>
 <li><strong>Part 5:</strong> Appendices</li>
 </ul>
-<h3 id="7-usgs-documentation-for-auto-port-selection-algorithm">7. USGS Documentation for Auto Port Selection Algorithm<a class="headerlink" href="#7-usgs-documentation-for-auto-port-selection-algorithm" title="Permanent link">&para;</a></h3>
-<p>Documentation for the automatic selective withdrawal port selection algorithm developed by the USGS.</p>
-<h3 id="8-usgs-model-examples-for-auto-port-selection">8. USGS Model Examples for Auto Port Selection<a class="headerlink" href="#8-usgs-model-examples-for-auto-port-selection" title="Permanent link">&para;</a></h3>
-<p>Model example files demonstrating the USGS automatic port selection algorithm.</p>
+<h3 id="7-usgs-documentation-for-the-auto-port-selection-algorithm">7. USGS Documentation for the Auto Port Selection Algorithm<a class="headerlink" href="#7-usgs-documentation-for-the-auto-port-selection-algorithm" title="Permanent link">&para;</a></h3>
+<p>Technical report for the new USGS algorithm for auto port selection.</p>
+<h3 id="8-usgs-model-examples-for-the-auto-port-selection">8. USGS Model Examples for the Auto Port Selection<a class="headerlink" href="#8-usgs-model-examples-for-the-auto-port-selection" title="Permanent link">&para;</a></h3>
+<p>Four example problems using the USGS algorithm for auto port selection.</p>
 <h3 id="9-w2controlgui">9. W2ControlGUI<a class="headerlink" href="#9-w2controlgui" title="Permanent link">&para;</a></h3>
-<p>A graphical user interface (GUI) for preparing CE-QUAL-W2 input files:</p>
-<ul>
-<li>Developed in Visual Basic 6</li>
-<li>Installed via <code>setup.exe</code></li>
-<li>Includes the <code>W2CONTROL</code> preprocessor</li>
-<li>Includes a bathymetry editor</li>
-</ul>
+<p>The W2Control graphical user interface (GUI) was compiled using Visual Basic 6. The GUI directory also has an installation routine via <code>setup.exe</code> that installs the Visual Basic W2 V3.7 Model Preprocessor called <code>W2CONTROL</code>, which is also compatible with the V4 model.</p>
+<p>Once installed, the GUI preprocessor aids the model user in setting up the control file and in evaluating and changing the bathymetry of the system. This preprocessor does not automatically set up the bathymetry of the system, nor does it provide post-processing support. Significant effort is required to properly set up the model bathymetry prior to using the bathymetry editor within W2Control.</p>
+<p>A user manual in PDF format is included in this directory. A separate executable, W2Control, is provided in case an earlier version has already been installed. This GUI is part of the install routine for W2Tools.</p>
 <h3 id="10-w2tools-post-processor">10. W2Tools Post-Processor<a class="headerlink" href="#10-w2tools-post-processor" title="Permanent link">&para;</a></h3>
-<p>A post-processing tool developed by Dynamic Solutions-International (DSI) for visualizing model output:</p>
-<ul>
-<li>Reads W2L output files</li>
-<li>Generates contour plots</li>
-<li>Generates animation sequences</li>
-<li>Generates vertical profile plots</li>
-<li>Generates time series plots</li>
-</ul>
+<p>The W2 post-processor by Dynamic Solutions-International, LLC (<a href="http://www.ds-international.biz">www.ds-international.biz</a>). An installation routine is provided that includes both the post-processor and the W2ControlGUI. When the user selects W2L output (the old VPL output), the resulting post-processing file is used by W2Tool for all post-processing tasks, including contour plots, animations, profile plots, and time series plots.</p>
+<p>A brief user manual is included showing many of the features of this post-processor, as well as a directory that shows how to take field data and plot field data and model results in the post-processor. A zip file with an example from DeGray Reservoir is included, demonstrating how to include model predictions versus field data for reservoir profiles.</p>
 <h3 id="11-waterbalance-utility">11. Waterbalance Utility<a class="headerlink" href="#11-waterbalance-utility" title="Permanent link">&para;</a></h3>
-<p>A utility for performing water balance calculations. Available in two versions:</p>
-<ul>
-<li>Windows GUI version</li>
-<li>Console (command-line) version</li>
-</ul>
+<p>The Windows waterbalance utility and the more powerful updated console version of the waterbalance utility. Both are described in <!-- TODO: Add link to Part 5 --> Part 5 of this manual. The purpose of this code is to approximate the water balance for a reservoir or lake by computing flows (positive and negative) that will allow the model predicted water level to agree with water level observations for a reservoir.</p>
 <h2 id="erdc-v2026-distribution">ERDC V2026 Distribution<a class="headerlink" href="#erdc-v2026-distribution" title="Permanent link">&para;</a></h2>
 <div class="admonition erdc-feature">
 <p class="admonition-title">ERDC Feature</p>

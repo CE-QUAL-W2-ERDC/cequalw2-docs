@@ -3389,7 +3389,8 @@
 
 
 <h1 id="hydrodynamics-modeling">Hydrodynamics Modeling<a class="headerlink" href="#hydrodynamics-modeling" title="Permanent link">&para;</a></h1>
-<p>This chapter presents the theoretical basis for hydrodynamic computations in CE-QUAL-W2. The governing equations are derived from fundamental conservation laws for mass and momentum, simplified through lateral averaging and the hydrostatic assumption. Auxiliary functions for turbulent shear stress, hydraulic structures, density, selective withdrawal, and sediment resuspension are also described.</p>
+<p><em>Contributors: Scott A. Wells, Chris Berger, Tom M. Cole, Robert Annear, Sam Gould, John Edinger, Ed Buchak</em></p>
+<p>CE-QUAL-W2 uses the laterally averaged equations of fluid motion derived from the three-dimensional equations, which consist of six equations and six unknowns. The development of the final set of governing equations is described below.</p>
 <h2 id="coordinate-system">Coordinate System<a class="headerlink" href="#coordinate-system" title="Permanent link">&para;</a></h2>
 <p>The coordinate system used to derive the governing equations is shown in Figure 1. The x-axis is oriented east, the y-axis is oriented north, and the z-axis is oriented upward.</p>
 <!-- TODO: Add figure
@@ -3413,7 +3414,7 @@
 <li>Incompressible fluid (it is possible to develop compressible equations of motion for special cases; see Wells, 2009).</li>
 <li>Centripetal acceleration is a minor correction to gravity.</li>
 <li>Boussinesq approximation.</li>
-<li>All velocities (<span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>, <span class="arithmatex">\(w\)</span>) and pressure (<span class="arithmatex">\(p\)</span>) are the sum of turbulent time averages and deviations from that average, i.e., <span class="arithmatex">\(u = \bar{u} + u'\)</span>, where <span class="arithmatex">\(\bar{u} = \frac{1}{T}\int_t^{t+T} u \, dt\)</span>, <span class="arithmatex">\(v = \bar{v} + v'\)</span>, <span class="arithmatex">\(w = \bar{w} + w'\)</span>, and <span class="arithmatex">\(p = \bar{p} + p'\)</span>, where the overbar represents the time average and the prime represents deviation from the temporal average.</li>
+<li>All velocities (<span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>, <span class="arithmatex">\(w\)</span>) and pressure (<span class="arithmatex">\(p\)</span>) are the sum of turbulent time averages and deviations from that average, i.e., <span class="arithmatex">\(u = \bar{u} + u'\)</span>, where <span class="arithmatex">\(\bar{u} = \frac{1}{T}\int_t^{t+T} u \, dt\)</span> as shown in Figure 2, <span class="arithmatex">\(v = \bar{v} + v'\)</span>, <span class="arithmatex">\(w = \bar{w} + w'\)</span>, and <span class="arithmatex">\(p = \bar{p} + p'\)</span>, where the overbar represents the time average and the prime represents deviation from the temporal average.</li>
 </ol>
 <!-- TODO: Add figure
 <figure markdown="span">
@@ -3435,18 +3436,21 @@
 </ul>
 <h3 id="x-momentum-equation">x-Momentum Equation<a class="headerlink" href="#x-momentum-equation" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">\[
-\underbrace{\frac{\partial \bar{u}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{u}}{\partial x} + \bar{v}\frac{\partial \bar{u}}{\partial y} + \bar{w}\frac{\partial \bar{u}}{\partial z}}_{\text{convective acceleration}} - \underbrace{2\Omega_z \bar{v} + 2\Omega_y \bar{w}}_{\text{Coriolis}} = -\underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial x}}_{\text{pressure}} + \underbrace{\frac{\mu}{\rho}\left(\frac{\partial^2 \bar{u}}{\partial x^2} + \frac{\partial^2 \bar{u}}{\partial y^2} + \frac{\partial^2 \bar{u}}{\partial z^2}\right)}_{\text{viscous stresses}} + \frac{1}{\rho}\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right) \tag{2-2}
+\underbrace{\frac{\partial \bar{u}}{\partial t}}_{\text{unsteady}} + \underbrace{\bar{u}\frac{\partial \bar{u}}{\partial x} + \bar{v}\frac{\partial \bar{u}}{\partial y} + \bar{w}\frac{\partial \bar{u}}{\partial z}}_{\text{convective acceleration}} - \underbrace{2\Omega_z \bar{v} + 2\Omega_y \bar{w}}_{\text{Coriolis}} = -\underbrace{\frac{1}{\rho}\frac{\partial \bar{p}}{\partial x}}_{\text{pressure gradient}} + \underbrace{\frac{\mu}{\rho}\left(\frac{\partial^2 \bar{u}}{\partial x^2} + \frac{\partial^2 \bar{u}}{\partial y^2} + \frac{\partial^2 \bar{u}}{\partial z^2}\right)}_{\text{viscous stresses}} + \underbrace{\frac{1}{\rho}\left(\frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{xy}}{\partial y} + \frac{\partial \tau_{xz}}{\partial z}\right)}_{\text{turbulent stresses}} \tag{2-2}
 \]</div>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\tau_{xx}\)</span> = turbulent shear stress acting in x direction on the x-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{xy}\)</span> = turbulent shear stress acting in x direction on the y-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{xz}\)</span> = turbulent shear stress acting in x direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{xx}\)</span> = turbulent shear stress acting in x direction on the x-face of control volume (Figure 3)</li>
+<li><span class="arithmatex">\(\tau_{xy}\)</span> = turbulent shear stress acting in x direction on the y-face of control volume (Figure 3)</li>
+<li><span class="arithmatex">\(\tau_{xz}\)</span> = turbulent shear stress acting in x direction on the z-face of control volume (Figure 3)</li>
 <li><span class="arithmatex">\(\mu\)</span> = dynamic viscosity</li>
+<li><span class="arithmatex">\(\Omega\)</span> = component of Coriolis acceleration where:<ul>
 <li><span class="arithmatex">\(\Omega_z = \Omega_E \sin\varphi\)</span></li>
 <li><span class="arithmatex">\(\Omega_y = \Omega_E \cos\varphi\)</span></li>
 <li><span class="arithmatex">\(\varphi\)</span> = latitude</li>
 <li><span class="arithmatex">\(\Omega_E\)</span> = earth's rotation rate</li>
+</ul>
+</li>
 </ul>
 <!-- TODO: Add figure
 <figure markdown="span">
@@ -3461,9 +3465,9 @@
 \]</div>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\tau_{yx}\)</span> = turbulent shear stress acting in y direction on the x-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{yy}\)</span> = turbulent shear stress acting in y direction on the y-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{yz}\)</span> = turbulent shear stress acting in y direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{yx}\)</span> = turbulent shear stress acting in y direction on the x-face of control volume (Figure 4)</li>
+<li><span class="arithmatex">\(\tau_{yy}\)</span> = turbulent shear stress acting in y direction on the y-face of control volume (Figure 4)</li>
+<li><span class="arithmatex">\(\tau_{yz}\)</span> = turbulent shear stress acting in y direction on the z-face of control volume (Figure 4)</li>
 <li><span class="arithmatex">\(\Omega_x = 0\)</span></li>
 </ul>
 <!-- TODO: Add figure
@@ -3479,9 +3483,9 @@
 \]</div>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(\tau_{zx}\)</span> = turbulent shear stress acting in z direction on the x-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{zy}\)</span> = turbulent shear stress acting in z direction on the y-face of control volume</li>
-<li><span class="arithmatex">\(\tau_{zz}\)</span> = turbulent shear stress acting in z direction on the z-face of control volume</li>
+<li><span class="arithmatex">\(\tau_{zx}\)</span> = turbulent shear stress acting in z direction on the x-face of control volume (Figure 5)</li>
+<li><span class="arithmatex">\(\tau_{zy}\)</span> = turbulent shear stress acting in z direction on the y-face of control volume (Figure 5)</li>
+<li><span class="arithmatex">\(\tau_{zz}\)</span> = turbulent shear stress acting in z direction on the z-face of control volume (Figure 5)</li>
 <li><span class="arithmatex">\(\Omega_x = 0\)</span></li>
 </ul>
 <!-- TODO: Add figure
@@ -3530,6 +3534,7 @@ g_y = -g\frac{\partial h}{\partial y} \tag{2-7}
 <div class="arithmatex">\[
 g_z = -g\frac{\partial h}{\partial z} \tag{2-8}
 \]</div>
+<p>These gravity components can be applied to an arbitrary channel slope as shown in Figure 7.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Sketch of channel slope and coordinate system for W2 where the x-axis is oriented along the channel slope.](../assets/images/part2/fig7_channel_slope.png){ width="500" }
@@ -3652,9 +3657,13 @@ g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
 <div class="arithmatex">\[
 \overline{g\sin\alpha} = \frac{1}{B}\int_{y_1}^{y_2}g\sin\alpha\,dy = g\sin\alpha \tag{2-32}
 \]</div>
-<p>The pressure gradient term (assuming the derivative of the lateral average pressure gradient in the x-direction is not a function of y):</p>
+<p>The pressure gradient term:</p>
 <div class="arithmatex">\[
-\frac{\overline{\partial(\tilde{p}+p'')} }{\partial x} = \frac{\partial \tilde{p}}{\partial x} \tag{2-34}
+\frac{\overline{\partial(\tilde{p}+p'')} }{\partial x} = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial(\tilde{p}+p'')}{\partial x}\,dy = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial\tilde{p}}{\partial x}\,dy + \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial p''}{\partial x}\,dy = \frac{1}{B}\frac{\partial}{\partial x}\int_{y_1}^{y_2}\tilde{p}\,dy + \frac{1}{B}\frac{\partial}{\partial x}\int_{y_1}^{y_2}p''\,dy = \frac{1}{B}\frac{\partial B\tilde{p}}{\partial x} \tag{2-33}
+\]</div>
+<p>or the above equation can be written, assuming that the derivative of the lateral average pressure gradient in the x-direction is not a function of y:</p>
+<div class="arithmatex">\[
+\frac{\overline{\partial(\tilde{p}+p'')} }{\partial x} = \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial(\tilde{p}+p'')}{\partial x}\,dy = \frac{1}{B}\frac{\partial\tilde{p}}{\partial x}\int_{y_1}^{y_2}dy + \frac{1}{B}\int_{y_1}^{y_2}\frac{\partial p''}{\partial x}\,dy = \frac{1}{B}\frac{\partial\tilde{p}}{\partial x}B + \frac{1}{B}\frac{\partial}{\partial x}\int_{y_1}^{y_2}p''\,dy = \frac{\partial\tilde{p}}{\partial x} \tag{2-34}
 \]</div>
 <p>The shear stress terms:</p>
 <div class="arithmatex">\[
@@ -3848,7 +3857,7 @@ U_x = U\cos\beta \tag{2-51}
 <p>where:</p>
 <ul>
 <li><span class="arithmatex">\(U\)</span> = longitudinal velocity of the tributary at segment ID for the tributary branch</li>
-<li><span class="arithmatex">\(\beta\)</span> = difference in the angle between the main stem and tributary segments</li>
+<li><span class="arithmatex">\(\beta\)</span> = difference in the angle between the main stem and tributary segments (Figure 15)</li>
 </ul>
 <!-- TODO: Add figure
 <figure markdown="span">
@@ -3864,10 +3873,10 @@ qBU_x \tag{2-52}
 <p>where <span class="arithmatex">\(q\)</span> = lateral inflow per unit length.</p>
 <p>This arises from re-deriving the momentum equations and assuming that all the flow entering the segment is moving at the velocity <span class="arithmatex">\(U_x\)</span>. This correction to the x-momentum equation would be:</p>
 <div class="arithmatex">\[
-\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} + qBU_x \tag{2-53}
+\frac{\partial UB}{\partial t} + \frac{\partial UUB}{\partial x} + \frac{\partial WUB}{\partial z} = gB\sin\alpha + g\cos\alpha B\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha B}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz + \frac{1}{\rho}\frac{\partial B\tau_{xx}}{\partial x} + \frac{1}{\rho}\frac{\partial B\tau_{xz}}{\partial z} + \underbrace{qBU_x}_{\substack{\text{momentum from}\\\text{side tributaries}}} \tag{2-53}
 \]</div>
 <h3 id="cross-shear-of-tributary-inflow">Cross-Shear of Tributary Inflow<a class="headerlink" href="#cross-shear-of-tributary-inflow" title="Permanent link">&para;</a></h3>
-<p>Even though CE-QUAL-W2 assumes lateral averaging, the y-velocity entering a reservoir may also contribute to vertical mixing. The y-component of a tributary inflow is <span class="arithmatex">\(U_y = U\sin\beta\)</span>. Since there is no y-momentum equation, this lateral shear contributes to the vertical shear stress, analogous to how cross-shear stress from the wind (<span class="arithmatex">\(\tau_{wy} \cong C_D \rho_a W_h^2 \sin(\Theta_1 - \Theta_2)\)</span>) contributes to the vertical eddy viscosity.</p>
+<p>Even though CE-QUAL-W2 assumes lateral averaging, the y-velocity entering a reservoir may also contribute to vertical mixing. The y-component of a tributary inflow is <span class="arithmatex">\(U_y = U\sin\beta\)</span> (Figure 15). Since there is no y-momentum equation, this lateral shear contributes to the vertical shear stress, analogous to how cross-shear stress from the wind (<span class="arithmatex">\(\tau_{wy} \cong C_D \rho_a W_h^2 \sin(\Theta_1 - \Theta_2)\)</span>) contributes to the vertical eddy viscosity.</p>
 <p>For lateral inflow, the additional shear stress was parameterized as an interfacial shear:</p>
 <div class="arithmatex">\[
 \tau_{ytrib} \cong \rho\frac{f_i}{8}U_y^2 \tag{2-54}
@@ -3989,7 +3998,7 @@ C_D = 0.0044 W_{10}^{-1.15}
 <div class="arithmatex">\[
 C_D = \left\{\kappa^{-1}\ln\left[\frac{10g}{C_D W_{10}^2}\right] + 11.3\right\}^{-2}
 \]</div>
-<p>where <span class="arithmatex">\(\kappa\)</span> is the von Karman constant (0.41), and the constant 10 in the above equation has units of m. This equation for winds greater than 5 m s⁻¹ is considered a lower limit to the drag coefficient, since wind-wave effects at higher wind speeds likely increase <span class="arithmatex">\(C_D\)</span> beyond the value predicted by this implicit equation.</p>
+<p>where <span class="arithmatex">\(\kappa\)</span> is the von Karman constant (0.41), and the constant 10 in the above equation has units of m. This equation for winds greater than 5 m s⁻¹ is considered a lower limit to the drag coefficient, since wind-wave effects at higher wind speeds likely increase <span class="arithmatex">\(C_D\)</span> beyond the value predicted by this implicit equation. The difference between these two equations is shown in Figure 19.</p>
 <p>Since the W2 approximation for wind speeds above 4 m s⁻¹ is reasonable, for Version 3.6 and later the following drag coefficient formulation is used:</p>
 <ul>
 <li><span class="arithmatex">\(C_D = 0.01\)</span> if <span class="arithmatex">\(W_{10} &lt; 0.5\)</span> m s⁻¹</li>
@@ -3997,6 +4006,7 @@ C_D = \left\{\kappa^{-1}\ln\left[\frac{10g}{C_D W_{10}^2}\right] + 11.3\right\}^
 <li><span class="arithmatex">\(C_D = 0.005 W_{10}^{0.5}\)</span> if <span class="arithmatex">\(4 \le W_{10} &lt; 15\)</span> m s⁻¹</li>
 <li><span class="arithmatex">\(C_D = 0.0026\)</span> if <span class="arithmatex">\(W_{10} \ge 15\)</span> m s⁻¹</li>
 </ul>
+<p>This is shown as the dotted line in Figure 19. This formulation increases the drag coefficient at low wind speeds. The impact of this on the wind shear stress at the surface, <span class="arithmatex">\(\tau = \rho_a C_D W_{10}^2\)</span>, is shown in Figure 20.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).](../assets/images/part2/fig19_drag_coefficient.png){ width="500" }
@@ -4017,13 +4027,11 @@ C_D = \left\{\kappa^{-1}\ln\left[\frac{10g}{C_D W_{10}^2}\right] + 11.3\right\}^
 <p>For example, in Figure 21, the fetch distance of segment 5 (computed at the segment center) is: <span class="arithmatex">\(Fetch = \Delta x_2 + \Delta x_3 + \Delta x_4 + \frac{\Delta x_5}{2}\)</span>.</p>
 <p>A more complex fetch correction has been reviewed by Henry (2008) and will be part of an updated algorithm.</p>
 <p>A fetch correction to the wind velocity can be applied as determined by Fang and Stefan (1994). This correction is described in the dissolved oxygen lake/reservoir reaeration section <!-- TODO: Add link to reaeration section --> and is not applicable to rivers.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Illustration of fetch distance calculation.](../assets/images/part2/fig21_fetch_distance.png){ width="500" }
-  <figcaption>Figure 21. Illustration of fetch distance calculation.</figcaption>
+<figure>
+  <img alt="Illustration of fetch distance calculation." src="../../assets/images/part2/fig21_fetch_distance.png" width="500" />
+<br />
+<figcaption>Figure 21. Illustration of fetch distance calculation.</figcaption>
 </figure>
--->
-
 <h3 id="bottom-shear-stress">Bottom Shear Stress<a class="headerlink" href="#bottom-shear-stress" title="Permanent link">&para;</a></h3>
 <p>The shear stress is defined along the bottom of each cell (or for each cell in contact with side walls or channel bottom) as:</p>
 <div class="arithmatex">\[
@@ -4134,6 +4142,8 @@ C = (1/n)R^{1/6} \tag{2-61}
 <p>The user can also specify the maximum value of the vertical eddy viscosity <strong>[AZMAX]</strong>. This value is specified because the time step for numerical stability is greatly reduced when solving the momentum equations using an explicit numerical technique. The user can choose whether to compute vertical momentum transfer using an implicit or explicit numerical technique. The explicit formulation was used in Version 2 with a fixed <strong>[AZMAX]</strong> of 1.0 x 10⁻⁵ m² s⁻¹. The implicit solution code was originally developed by Chapman and Cole and revised/updated.</p>
 <p>Since its introduction, the k-ε turbulence closure model has worked well for all waterbody types and is the suggested default algorithm. Only the W2 and W2N formulations include the effects of cross-shear from wind explicitly and from tributary or branch inflows. The k-ε turbulence model accounts for total turbulent kinetic energy production from wind, not just the x-component.</p>
 <p>The W2 or W2N formulations can be used for waterbodies with deep sections that could be stratified. The NICK, PARAB, or RNG formulations are suitable for estuary or river systems where the maximum computed <strong>[AZMAX]</strong> could be as high as 1 to 5 m² s⁻¹. For river models, use the implicit solution technique. To reproduce results from Version 2 in a stratified reservoir, set <strong>[AZMAX]</strong> to 1.0 x 10⁻⁵ m² s⁻¹ and use the explicit solution.</p>
+<p>According to Hamblin and Salmon (1975), "the vertical diffusion of momentum is probably the most important internal parameter" for predicting internal circulation patterns. Because of the disarray in the literature over which formulation is best, Shanahan (1980) suggested to "use theory and literature as a guide to develop alternative viscosity functions and then test those functions in calibration runs against field data." In the absence of expensive-to-obtain current velocity measurements, the use of temperature profiles is often used to test the adequacy of the hydrodynamic regime against different formulations.</p>
+<p>Typical variations of these formulations as predicted by the model are shown in Figure 22 for Manning's friction factor and in Figure 23 for a Chezy friction factor. Comparison of the various turbulence closure theories to classical open channel flow theory for seven vertical layers is shown in Figure 24.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km (Manning's n=0.03 and S=0.0001).](../assets/images/part2/fig22_eddy_viscosity_mannings.png){ width="500" }
@@ -4196,7 +4206,11 @@ A_z = \kappa\frac{\ell^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 +
 <div class="arithmatex">\[
 \tau_{yz} = \tau_{wy}e^{-2kz} \tag{2-66}
 \]</div>
-<p>Then using <span class="arithmatex">\(\frac{\tau_{yz}}{\rho} = A_z\frac{\partial V}{\partial z}\)</span>:</p>
+<p>Then using:</p>
+<div class="arithmatex">\[
+\frac{\tau_{yz}}{\rho} = A_z\frac{\partial V}{\partial z} \tag{2-67}
+\]</div>
+<p>The lateral velocity gradient squared becomes:</p>
 <div class="arithmatex">\[
 \left(\frac{\partial V}{\partial z}\right)^2 = \left[\frac{\tau_{wy}e^{-2kz}}{\rho A_z}\right]^2 \tag{2-68}
 \]</div>
@@ -4205,6 +4219,7 @@ A_z = \kappa\frac{\ell^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 +
 A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \left(\frac{\tau_{y,wind}e^{-2kz}}{\rho A_z}\right)^2\right]^{1/2}e^{-CRi} \tag{2-69}
 \]</div>
 <p>The above equation is implicit. In the model, this equation is explicit since the value of <span class="arithmatex">\(A_z\)</span> in the lateral shear term is used from the previous time step. <span class="arithmatex">\(A_z\)</span> is never less than the molecular kinematic viscosity for water.</p>
+<p>The above formulation of wind shear in horizontal momentum and evaluation of <span class="arithmatex">\(A_z\)</span> leads to wind-driven surface currents that are three to ten percent of the surface wind velocity, with higher values appearing at higher wind speeds. This is in accordance with attempts to relate wind speed and surface current velocity from field observations appearing in the literature. With this formulation, the surface current does not reach abnormal values as it does for the case of wind shear applied only to the surface and as the surface layer thickness decreases. The depth of the wind-driven surface layer increases with wind speed, and mass transport due to wind appears to be insensitive to the finite difference layer thickness.</p>
 <h3 id="rng-turbulent-eddy-viscosity-formulation">RNG Turbulent Eddy Viscosity Formulation<a class="headerlink" href="#rng-turbulent-eddy-viscosity-formulation" title="Permanent link">&para;</a></h3>
 <p>The Re-Normalization Group (RNG) model was derived from the RNG model of Yakhot and Orszag (1986) by Simoes (1998). The turbulent eddy viscosity is derived from Yakhot and Orszag (1986) as:</p>
 <div class="arithmatex">\[
@@ -4253,6 +4268,7 @@ A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \l
 <li><span class="arithmatex">\(Ri\)</span> = Richardson number = <span class="arithmatex">\(\frac{g\frac{\partial\rho}{\partial z}}{\rho\left(\frac{\partial U}{\partial z}\right)^2}\)</span></li>
 <li><span class="arithmatex">\(C\)</span> = empirical constant, 1.5 (French [1985] shows a value of 0.4)</li>
 </ul>
+<p>The Richardson number accounts for the impact of density stratification on transfer of momentum between fluid parcels. In regions where there is no stratification, <span class="arithmatex">\(Ri = 0\)</span> and the exponential term is 1. For regions where there is strong stratification (or as <span class="arithmatex">\(\frac{d\rho}{dz} \to \infty\)</span>), the Richardson number becomes large and the exponential term approaches 0.</p>
 <h3 id="nickuradse-formulation">Nickuradse Formulation<a class="headerlink" href="#nickuradse-formulation" title="Permanent link">&para;</a></h3>
 <p>This model, as noted in Rodi (1993), is a mixing length model where the mixing length, <span class="arithmatex">\(\ell_m\)</span>, and eddy viscosity, <span class="arithmatex">\(\nu_t\)</span>, are determined from:</p>
 <div class="arithmatex">\[
@@ -4261,6 +4277,7 @@ A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \l
 <div class="arithmatex">\[
 \ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right] \tag{2-77}
 \]</div>
+<p>This results in a vertical distribution for the mixing length as shown in Figure 26.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Mixing length as a function of depth for the Nickuradse formulation.](../assets/images/part2/fig26_mixing_length_nick.png){ width="500" }
@@ -4285,6 +4302,7 @@ A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \l
 <div class="arithmatex">\[
 \nu_t = \kappa u_* z\left(1-\frac{z}{H}\right) \tag{2-81}
 \]</div>
+<p>Figure 27 shows the spatial distribution of <span class="arithmatex">\(A_z\)</span> for the parabolic model.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Variation of A_z with depth for the parabolic model of Engelund (1978).](../assets/images/part2/fig27_parabolic_az.png){ width="500" }
@@ -4371,11 +4389,44 @@ P = \nu_t\left(\frac{\partial U}{\partial z}\right)^2 \tag{2-91}
 <div class="arithmatex">\[
 G = -\frac{\nu_t}{\sigma_t}N^2 \tag{2-92}
 \]</div>
-<p>The production of turbulent kinetic energy and turbulent dissipation from boundary friction are represented by the terms <span class="arithmatex">\(P_k\)</span> and <span class="arithmatex">\(P_\varepsilon\)</span>.</p>
-<p>The equations above are solved using a split solution technique similar to the horizontal momentum equation in CE-QUAL-W2. Two methods are available:</p>
+<p>The production of turbulent kinetic energy and turbulent dissipation from boundary friction are represented by the terms <span class="arithmatex">\(P_k\)</span> and <span class="arithmatex">\(P_\varepsilon\)</span>. These terms are calculated using the following equations:</p>
+<div class="arithmatex">\[
+P_k = \frac{C_f |u^3|}{(0.5B)} \tag{2-93}
+\]</div>
+<div class="arithmatex">\[
+P_\varepsilon = \frac{10 C_f^{1.25} u^4}{(0.5B)^2} \tag{2-94}
+\]</div>
+<p>The friction coefficient <span class="arithmatex">\(C_f\)</span> is defined as:</p>
+<div class="arithmatex">\[
+C_f = \frac{g}{C^2} = \frac{gn^2}{R_h^{1/3}} \tag{2-95}
+\]</div>
+<p>where <span class="arithmatex">\(g\)</span> is gravitational acceleration, <span class="arithmatex">\(C\)</span> is a Chezy friction factor, <span class="arithmatex">\(n\)</span> is a Manning's friction factor, and <span class="arithmatex">\(R_h\)</span> is the hydraulic radius. The remaining terms <span class="arithmatex">\(C_\mu\)</span>, <span class="arithmatex">\(C_\varepsilon\)</span>, <span class="arithmatex">\(C_\varepsilon\)</span>, <span class="arithmatex">\(\sigma_k\)</span>, and <span class="arithmatex">\(\sigma_\varepsilon\)</span> are empirical constants and the values used in the current model are shown in Table 3 (Rodi, 1993).</p>
+<p><strong>Table 3. Constants in k-ε model (Rodi, 1993).</strong></p>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(C_\mu\)</span></th>
+<th><span class="arithmatex">\(C_{\varepsilon 1}\)</span></th>
+<th><span class="arithmatex">\(C_{\varepsilon 2}\)</span></th>
+<th><span class="arithmatex">\(\sigma_k\)</span></th>
+<th><span class="arithmatex">\(\sigma_\varepsilon\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.09</td>
+<td>1.44</td>
+<td>1.92</td>
+<td>1.0</td>
+<td>1.3</td>
+</tr>
+</tbody>
+</table>
+<p>Turbulent Prandtl/Schmidt number, <span class="arithmatex">\(\sigma_t\)</span> = 1.0.</p>
+<p>The equations above are solved using a split solution technique in a similar fashion to the horizontal momentum equation in CE-QUAL-W2. Two different methods for solving the equations were implemented.</p>
 <ol>
-<li>The vertical transport term is solved using an explicit finite difference along with the horizontal transport term.</li>
-<li>The vertical transport term is integrated into a fully implicit finite difference.</li>
+<li>In the first method, the vertical transport term was solved using an explicit finite difference along with the horizontal transport term.</li>
+<li>The second method involved integrating the vertical transport term into a fully implicit finite difference.</li>
 </ol>
 <p>Both methods are based on the solutions developed by Wells (2001). The computational grid used in these calculations is shown in Figure 28.</p>
 <!-- TODO: Add figure
@@ -4385,23 +4436,46 @@ G = -\frac{\nu_t}{\sigma_t}N^2 \tag{2-92}
 </figure>
 -->
 
+<h5 id="explicit-vertical-convection">Explicit Vertical Convection<a class="headerlink" href="#explicit-vertical-convection" title="Permanent link">&para;</a></h5>
+<p>The first method involved using an explicit finite difference for the vertical convection term. The turbulent kinetic energy transport equation (Equation 2-89) is split into convective/source-sink and diffusion components (Equations 2-96 and 2-97), then each is averaged over a layer (Equations 2-98 and 2-99). Finite differences replace the partial derivatives, yielding the explicit solution for <span class="arithmatex">\(k^*\)</span> (Equation 2-103). The diffusion equation is discretized (Equations 2-106 and 2-107) and simplified to a tridiagonal matrix (Equation 2-108), which is solved using the Thomas algorithm. The turbulent dissipation follows the same procedure (Equations 2-109 through 2-114).</p>
+<h5 id="implicit-vertical-convection">Implicit Vertical Convection<a class="headerlink" href="#implicit-vertical-convection" title="Permanent link">&para;</a></h5>
+<p>The second method integrates the vertical convection term into the implicit part of the solution (Equations 2-115 through 2-123). The turbulent dissipation follows the same procedure (Equations 2-124 through 2-129).</p>
 <h4 id="boundary-and-initial-conditions-for-k-model">Boundary and Initial Conditions for k-ε Model<a class="headerlink" href="#boundary-and-initial-conditions-for-k-model" title="Permanent link">&para;</a></h4>
-<p>To apply this algorithm to CE-QUAL-W2 hydraulic problems, boundary conditions for the bed, free surface, inlet, and outlet, as well as initial conditions, must be specified.</p>
+<p>To apply the algorithm developed above to the typical hydraulic problems investigated using CE-QUAL-W2, the appropriate boundary conditions for the bed, free surface, inlet, and outlet, as well as initial conditions, must be specified. This section outlines the boundary conditions and initial conditions implemented in the current version of the k-ε algorithm.</p>
 <p>At the bed, steep gradients of turbulent kinetic energy and turbulent dissipation are present in the viscous sublayer. To avoid this problem, an empirical law can be used to construct a simple wall function. The largest assumption is that the flow parallel to the wall obeys the law of the wall:</p>
 <div class="arithmatex">\[
 \frac{U}{U_*} = \frac{1}{\kappa}\ln\left(E\frac{yU_*}{\nu}\right) \tag{2-130}
 \]</div>
-<p>where <span class="arithmatex">\(U_*\)</span> is the bed friction velocity, <span class="arithmatex">\(\kappa\)</span> is the von Karman constant, <span class="arithmatex">\(y\)</span> is the distance of the grid point from the bed, <span class="arithmatex">\(E\)</span> is the roughness coefficient and <span class="arithmatex">\(\nu\)</span> is the kinematic viscosity.</p>
-<p>The boundary condition for turbulent kinetic energy at the first grid point is (Rodi, 1993):</p>
+<p>where <span class="arithmatex">\(U_*\)</span> is the bed friction velocity, <span class="arithmatex">\(\kappa\)</span> is the von Karman constant, <span class="arithmatex">\(y\)</span> is the distance of the grid point from the bed, <span class="arithmatex">\(E\)</span> is the roughness coefficient and <span class="arithmatex">\(\nu\)</span> is the kinematic viscosity. In addition to the assumption that the flow has a logarithmic velocity profile, it is necessary to assume that the total shear stress remains constant in the inner region and is equal to the bed stress. These assumptions can normally be made if the first grid point is in the range of <span class="arithmatex">\(30 &lt; y^+ &lt; 100\)</span> from the wall (Rodi, 1993):</p>
+<div class="arithmatex">\[
+y^+ = \frac{yU_*}{\nu} \tag{2-131}
+\]</div>
+<p>In the range of <span class="arithmatex">\(y^+\)</span> specified above, the Reynolds stresses are relatively constant. In this region local equilibrium prevails, so if buoyancy effects are negligible then the production equals dissipation, which implies that <span class="arithmatex">\(P = \varepsilon\)</span>. It is also assumed that the total shear stress remains constant and is approximately equal to the wall shear stress in this region. Using these assumptions and Equation 1 it is possible to derive the equation for turbulent kinetic energy at the first grid point (Rodi, 1993):</p>
 <div class="arithmatex">\[
 k = \frac{U_*^2}{\sqrt{C_\mu}} \tag{2-132}
 \]</div>
-<p>The boundary condition for turbulent dissipation is:</p>
+<p>The boundary condition for turbulent dissipation can be determined using <span class="arithmatex">\(\varepsilon = P = U_*^2 \frac{\partial U}{\partial y}\)</span> where <span class="arithmatex">\(\frac{\partial U}{\partial y}\)</span> is determined from Equation 2-130:</p>
 <div class="arithmatex">\[
 \varepsilon = \frac{U_*^3}{\kappa y} \tag{2-133}
 \]</div>
-<p>For hydraulically smooth beds the roughness coefficient <span class="arithmatex">\(E\)</span> is set to 9.535 (Ferziger and Peric, 2002). For rough boundaries a smaller value of <span class="arithmatex">\(E\)</span> is used. Two options are available in the current algorithm for specifying the roughness coefficient: a uniform constant value applied to all segments, or a value calculated based on the Manning's coefficients specified in the bathymetry file.</p>
-<p>For the free surface boundary conditions, the following apply:</p>
+<p>Since <span class="arithmatex">\(y\)</span>, <span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(E\)</span>, <span class="arithmatex">\(\kappa\)</span>, <span class="arithmatex">\(\nu\)</span> and <span class="arithmatex">\(E\)</span> are known, a very simple wall function can be implemented by solving Equation 2-130 for <span class="arithmatex">\(U_*\)</span>. In the current version of the k-ε model <span class="arithmatex">\(U_*\)</span> was found using a root solver based on the bisection method from Press et al. (1996). Then Equations 2-132 and 2-133 are used to determine the turbulent kinetic energy and the turbulent dissipation at the first grid point. This simple approach has some limitations, such as not being able to handle separated flow, but seemed like a reasonable first approximation.</p>
+<p>The wall function outlined above is valid for both smooth and rough boundaries. For hydraulically smooth beds the roughness coefficient <span class="arithmatex">\(E\)</span> is set to 9.535 (Ferziger and Peric, 2002). For rough boundaries a smaller value of <span class="arithmatex">\(E\)</span> is used. Two options are available in the current algorithm for specifying the roughness coefficient: a uniform constant value applied to all segments, or a value calculated based on the Manning's coefficients specified in the bathymetry file.</p>
+<p>In the first option the user specifies the roughness coefficient and this value is used to calculate the bed friction velocity using Equation 2-130. After the bed friction velocity has been determined a new Manning's coefficient is calculated using Equation 2-134 below. This method was used primarily for experimental channel test cases where the bed was hydraulically smooth and had a roughness coefficient equal to 9.535:</p>
+<div class="arithmatex">\[
+n = \frac{R_h^{1/6}}{\sqrt{\left(\frac{U_*}{U_m}\right)^2}} \tag{2-134}
+\]</div>
+<p>In the second option the roughness coefficient is calculated using a Strickler relationship and an approximation of the Nikuradse formulation (Krishnappan and Lau, 1986):</p>
+<div class="arithmatex">\[
+E = \exp\left(\frac{(\kappa B_s)}{\left(\frac{U_* k_s}{\nu}\right)}\right) \tag{2-135}
+\]</div>
+<div class="arithmatex">\[
+B_s = \left[5.50 + 2.5\ln\left(\frac{U_* k_s}{\nu}\right)\right]\exp\left\{-0.217\left[\ln\left(\frac{U_* k_s}{\nu}\right)\right]^2\right\} + 8.5\left\{1 - \exp\left\{-0.217\left[\ln\left(\frac{U_* k_s}{\nu}\right)\right]^2\right\}\right\} \tag{2-136}
+\]</div>
+<div class="arithmatex">\[
+k_s = (n \cdot 24.04)^6 \quad (k_s \text{ in m}) \tag{2-137}
+\]</div>
+<p>The appropriate boundary condition for the free surface is harder to determine. Unfortunately, there is very little experimental information available for turbulent statistics at the free surface (Rodi, 1993).</p>
+<p>A first approximation for the boundary conditions at the free surface in the absence of wind-induced shear is to use a symmetry plane where both turbulent kinetic energy and turbulent dissipation are found using a zero-gradient condition (Rodi, 1993). However, the presence of the free surface is generally thought to reduce the length scale of turbulence and reduce the turbulent dissipation. An attempt to take this into account was made in the empirically determined boundary conditions shown below (Celik and Rodi, 1984):</p>
 <div class="arithmatex">\[
 \frac{\partial k}{\partial y} = 0 \tag{2-138}
 \]</div>
@@ -4409,6 +4483,24 @@ k = \frac{U_*^2}{\sqrt{C_\mu}} \tag{2-132}
 \varepsilon = \frac{k^{3/2}}{aH} \tag{2-139}
 \]</div>
 <p>where <span class="arithmatex">\(a\)</span> is an empirical constant and <span class="arithmatex">\(H\)</span> is the depth of the shear layer (channel depth). The coefficient <span class="arithmatex">\(a\)</span> was originally set to a value of 0.18 by Celik and Rodi (1984) and then later changed to a value of 0.43 by Celik and Rodi (1988).</p>
+<p>For a free surface with wind-induced surface shear, the boundary conditions similar to those used for wall boundaries, Equations 2-130, 2-132, and 2-133, are appropriate. The free surface can be seen as a moving wall. The bed friction velocity in Equations 2-132 and 2-133 can be replaced with the wind-induced surface friction velocity (Rodi, 1993).</p>
+<p>Rodi presented a set of boundary conditions that could be used for free surfaces with or without wind-induced surface shear. When the wind-induced surface shear is large then the following boundary condition is used for turbulent kinetic energy:</p>
+<div class="arithmatex">\[
+k = \frac{U_{*s}^2}{\sqrt{C_\mu}} \tag{2-140}
+\]</div>
+<p>When the surface shear is small, <span class="arithmatex">\(k_s\sqrt{C_\mu} &gt; U_{*s}^2\)</span>, then the symmetry condition for turbulent kinetic energy shown in Equation 2-138 is used. Where <span class="arithmatex">\(U_{*s}\)</span> is the wind-induced surface friction velocity. In a similar fashion the turbulent dissipation boundary condition for a free surface with and without wind-induced surface shear was developed and is given as:</p>
+<div class="arithmatex">\[
+\varepsilon = \frac{(k_s\sqrt{C_\mu})^{3/2}}{\kappa\left[y+aH\left(1-\frac{U_{*s}^2}{k_s\sqrt{C_\mu}}\right)\right]} \tag{2-141}
+\]</div>
+<p>The coefficient <span class="arithmatex">\(a\)</span> was set to a value of 0.07 by Rodi in 1983. When surface shear is present, Equation 2-141 reduces to <span class="arithmatex">\(\varepsilon = \frac{U_{*s}^3}{\kappa \cdot y}\)</span>. When surface shear is not present, Equation 2-141 becomes <span class="arithmatex">\(\varepsilon = \frac{k^{3/2}}{\kappa(y+aH)}\)</span> which is similar to Equation 2-139 above.</p>
+<p>The original CE-QUALW2 free surface boundary conditions were:</p>
+<div class="arithmatex">\[
+k = \frac{(U_{*s}^2 + U_{*boundary}^2)}{\sqrt{C_\mu}}
+\]</div>
+<div class="arithmatex">\[
+\varepsilon = \frac{(U_{*s}^3 + U_{*boundary}^2)}{\kappa \cdot y}
+\]</div>
+<p>These are similar to the boundary conditions presented in Equations 2-140 and 2-141 when wind-induced shear is present. The only difference is that both the turbulent kinetic energy and turbulent dissipation boundary conditions include an additional term for the friction velocity of the lateral boundaries.</p>
 <p>The initial conditions and inlet boundary conditions are specified by setting the eddy viscosity, turbulent kinetic energy, and turbulent dissipation terms to the following values:</p>
 <ul>
 <li><span class="arithmatex">\(\nu_t = 1.4 \times 10^{-6}\)</span></li>
@@ -4454,6 +4546,7 @@ k = \frac{U_*^2}{\sqrt{C_\mu}} \tag{2-132}
 </figure>
 -->
 
+<p>Figure 33 shows how the change in the number of vertical layers affects the water surface slope over the domain length for a steady-state flow. In order to model the water surface slope of the 1-layer model with the 7-layer model, the apparent value of Manning's friction factor would have to be reduced. Hence, the apparent friction decreases as the number of layers increase.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.](../assets/images/part2/fig33_elevation_drop.png){ width="500" }
@@ -4461,6 +4554,7 @@ k = \frac{U_*^2}{\sqrt{C_\mu}} \tag{2-132}
 </figure>
 -->
 
+<p>CE-QUAL-W2 has also been compared to the 1D models DYNHYD (Ambrose et al., 1988) and CE-QUAL-RIV1 (Environmental Laboratory, 1995) by running W2 with only a single vertical layer. The average velocities between the three models agreed well with theory but the water surface slopes are different. W2 predicts an elevation difference of 2.93 m, compared to 2.07 m for DYNHYD and 2.05 m for RIV1 over 30 km for a flow of 2574 m³ s⁻¹, a Manning's n of 0.03, a slope of 0.001, and a channel width of 100 m. Based on steady-state theory, the actual difference should be 2.9 m. Both the DYNHYD and RIV1 models require friction factors greater than expected to correspond to classical theory. This may be a result of these models not incorporating sidewall friction that was important during these test runs where the depth was 15 m and the width was 100 m.</p>
 <h2 id="longitudinal-shear-stress">Longitudinal Shear Stress<a class="headerlink" href="#longitudinal-shear-stress" title="Permanent link">&para;</a></h2>
 <p>The longitudinal turbulent shear stress is defined as:</p>
 <div class="arithmatex">\[
@@ -4535,7 +4629,16 @@ S_m = k\frac{u|u|}{2g}\frac{1}{L} \tag{2-146}
 <li>Requires computation of two equations (continuity and momentum) for each of the reaches of the sewer when the sewer is full surcharged</li>
 <li>Hypothetical rather than real</li>
 </ol>
+<p>The Preissmann slot concept has been applied to other models for surcharged flow including the model described by Abbot (1982) and SWMM EXTRAN (Roesner et al. 1988).</p>
 <p>The boundary condition used for solving the governing equations is the head or water level at each end of the culvert. However, if the water level at the downstream end of the culvert is less than the critical depth, the critical depth is used. Momentum is not transferred between model segments and the culverts. Initial conditions are the calculated velocities and heads at the previous time step.</p>
+<p>The governing equations cannot be solved analytically and an implicit finite difference scheme is used to approximate the solution. The solution method employs the "leap-frog scheme" which calculates the head and velocity at alternating computational nodes (Anderson et al., 1984). The finite difference forms of the continuity and momentum equations are:</p>
+<div class="arithmatex">\[
+0 = \frac{h_i^{n+1} - h_i^n}{\Delta t} + \theta u_i^n \frac{h_{i+2}^{n+1} - h_{i-2}^{n+1}}{2\Delta x} + (1-\theta) u_i^n \frac{h_{i+2}^n - h_{i-2}^n}{2\Delta x} + \theta \frac{A_i^n}{T_i^n} \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{\Delta x} + (1-\theta) \frac{A_i^n}{T_i^n} \frac{u_{i+1}^n - u_{i-1}^n}{\Delta x} \tag{2-147}
+\]</div>
+<div class="arithmatex">\[
+0 = \frac{u_i^{n+1} - u_i^n}{\Delta t} + \theta u_{i+1}^n \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{\Delta x} + (1-\theta) u_{i+1}^n \frac{u_{i+1}^n - u_{i-1}^n}{\Delta x} + \theta g \frac{h_{i+2}^{n+1} - h_i^{n+1}}{\Delta x} + (1-\theta) g \frac{h_{i+2}^n - h_i^n}{\Delta x} + \theta g \frac{n^2}{R^{4/3}} u_{i+1}^{n+1} |u_{i+1}^n| + (1-\theta) g \frac{n^2}{R^{4/3}} u_{i+1}^n |u_{i+1}^n| + \theta \frac{k}{L} u_{i+1}^{n+1} |u_{i+1}^n| + (1-\theta) \frac{k}{L} u_{i+1}^n |u_{i+1}^n| \tag{2-148}
+\]</div>
+<p>where <span class="arithmatex">\(n\)</span> refers to the time level and <span class="arithmatex">\(i\)</span> references the spatial node (Figure 35).</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Linkage schematic of model segments with a culvert.](../assets/images/part2/fig35_culvert_linkage.png){ width="500" }
@@ -4543,6 +4646,7 @@ S_m = k\frac{u|u|}{2g}\frac{1}{L} \tag{2-146}
 </figure>
 -->
 
+<p>Figure 36 compares flow predictions using the dynamic culvert model with flow measurements taken within a culvert at NE 47th bridge in the Upper Columbia Slough, Portland, Oregon. The flow was recorded using a flow meter placed directly in a culvert. The cyclical flows are the result of turning pumps on and off at a downstream pump station. The culvert was calibrated by adjusting the minor loss parameter.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Computed versus observed flow using dynamic culvert model.](../assets/images/part2/fig36_culvert_flow.png){ width="500" }
@@ -4612,13 +4716,112 @@ Q_{weir} = C_w FW\left((1-K)Z_u + KZ_d - Z_{sp}\right)H^{1/2} \tag{2-152}
 <li><span class="arithmatex">\(F = 1\)</span> when <span class="arithmatex">\(K = 0\)</span></li>
 </ul>
 <p>For a concrete spillway, HEC (1997a) suggests using a weir coefficient value of 4. Note that the above two equations are considered equivalent whenever <span class="arithmatex">\(B = 0.8H\)</span>.</p>
-<p>HEC-RAS (Hydrologic Engineering Center River Analysis System), a one-dimensional, steady-state hydraulic model (HEC, 1997b), includes the ability to model flow over spillways including tainter and sluice gates, broad-crested weirs, and an ogee crest. A summary of the equations used by HEC-RAS is shown in Table 4.</p>
+<p>HEC-RAS (Hydrologic Engineering Center River Analysis System), a one-dimensional, steady-state hydraulic model (HEC, 1997b), includes the ability to model flow over spillways including tainter and sluice gates, broad-crested weirs, and an ogee crest. Ineffective flow area, that area below the weir or gate opening, is used to block a part of the channel until it reaches the level of a spillway or weir. A summary of the equations used by HEC-RAS is shown in Table 4.</p>
+<p><strong>Table 4. HEC-RAS flow rates through weirs and sluice gates.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Equation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radial flow gate, flowing freely</td>
+<td><span class="arithmatex">\(Q = C\sqrt{2g}WT^{T_E}B^{B_E}H^{H_E}\)</span></td>
+<td>When upstream water surface is ≥1.25 times the gate opening height above the spillway crest. <span class="arithmatex">\(Q\)</span> = flow; <span class="arithmatex">\(C\)</span> = discharge coefficient (0.6--0.8); <span class="arithmatex">\(W\)</span> = gated spillway width; <span class="arithmatex">\(T\)</span> = trunnion height; <span class="arithmatex">\(B\)</span> = gate opening height; <span class="arithmatex">\(H\)</span> = upstream energy head above spillway crest (<span class="arithmatex">\(Z_u - Z_{sp}\)</span>); <span class="arithmatex">\(T_E\)</span> = empirical trunnion height exponent, 0.16; <span class="arithmatex">\(B_E\)</span> = gate opening coefficient, 0.72; <span class="arithmatex">\(H_E\)</span> = head exponent, 0.62</td>
+</tr>
+<tr>
+<td>Radial gate flowing under submerged conditions</td>
+<td><span class="arithmatex">\(Q = 3C\sqrt{2g}WT^{T_E}B^{B_E}H^{H_E}\)</span></td>
+<td>When the tailwater depth divided by the energy depth above the spillway is greater than 0.67. <span class="arithmatex">\(H = Z_u - Z_d\)</span></td>
+</tr>
+<tr>
+<td>Freely flowing sluice gate</td>
+<td><span class="arithmatex">\(Q = C\sqrt{2gH}WB\)</span></td>
+<td><span class="arithmatex">\(H\)</span> = upstream energy head above the spillway (<span class="arithmatex">\(Z_u - Z_{sp}\)</span>); <span class="arithmatex">\(C\)</span> = discharge coefficient, 0.5--0.7</td>
+</tr>
+<tr>
+<td>Submerged sluice gate</td>
+<td><span class="arithmatex">\(Q = 3C\sqrt{2gH}WB\)</span></td>
+<td>When the tailwater depth divided by the energy depth above the spillway is greater than 0.67. <span class="arithmatex">\(H = Z_u - Z_d\)</span></td>
+</tr>
+<tr>
+<td>Low flow through gated structure</td>
+<td><span class="arithmatex">\(Q = CLH^{3/2}\)</span></td>
+<td>When upstream water level is equal to or less than the top of the gate opening. <span class="arithmatex">\(C\)</span> = weir coefficient, 2.6--4.0; <span class="arithmatex">\(H\)</span> = upstream energy head above spillway crest. For Ogee spillways, values of <span class="arithmatex">\(C\)</span> are adjusted according to a 1977 Bureau of Reclamation study. Suggested values of <span class="arithmatex">\(C\)</span>: 2.6 for Ogee spillways, bridge decks, and 3.0 for flow over elevated roadways</td>
+</tr>
+</tbody>
+</table>
 <h3 id="spillwaysweirs">Spillways/Weirs<a class="headerlink" href="#spillwaysweirs" title="Permanent link">&para;</a></h3>
 <p>Analysis of flow over weirs has been studied extensively. Martin and McCutcheon (1999) show that a typical relationship between the pool depth and flow over a weir is:</p>
 <div class="arithmatex">\[
 Q = C_e W_c h_w^\eta \tag{2-153}
 \]</div>
-<p>where <span class="arithmatex">\(C_e\)</span> and <span class="arithmatex">\(\eta\)</span> are empirical coefficients, <span class="arithmatex">\(W_c\)</span> is the length of the weir crest, and <span class="arithmatex">\(h_w\)</span> is the height of the pool above the weir crest. Theoretical calculations of steady-state flow over a weir can be complex depending on whether the weirs are sharp-crested, broad-crested, V-notched, rectangular, Cipolletti, parabolic, or some other type.</p>
+<p>where <span class="arithmatex">\(C_e\)</span> and <span class="arithmatex">\(\eta\)</span> are empirical coefficients, <span class="arithmatex">\(W_c\)</span> is the length of the weir crest, and <span class="arithmatex">\(h_w\)</span> is the height of the pool above the weir crest. Theoretical calculations of steady-state flow over a weir can be complex depending on whether the weirs are sharp-crested, broad-crested, V-notched, rectangular, Cipolletti, parabolic, or some other type. Table 5 shows some examples from French (1985) and USBR (2001) on typical equations used for the different weir types. For many regular weir types, formulae exist for accurate estimation of the flow. However, in most cases a rating curve for a given installation is necessary because of the uncertainty of end effects, flow alignments, shallowness in the upstream pool, and other unique features of the installation (Martin and McCutcheon, 1999).</p>
+<p><strong>Table 5. List of weir types (French, 1985; USBR, 2001).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Weir type</th>
+<th>Weir Equation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectangular broad-crested weir</td>
+<td><span class="arithmatex">\(Q = C_D C_v \frac{2}{3}\sqrt{\frac{2}{3}g}WH^{3/2}\)</span></td>
+<td>Valid when 0.08 &lt; H/L &lt; 0.5. <span class="arithmatex">\(Q\)</span> = flow rate; <span class="arithmatex">\(C_D\)</span> = discharge coefficient (0.84--1.06); <span class="arithmatex">\(C_v\)</span> = velocity coefficient (1.0--1.2); <span class="arithmatex">\(W\)</span> = width at surface; <span class="arithmatex">\(H\)</span> = upstream head above spillway crest; <span class="arithmatex">\(g\)</span> = gravity acceleration</td>
+</tr>
+<tr>
+<td>Rectangular sharp-crested weir</td>
+<td><span class="arithmatex">\(Q = C_e \frac{2}{3}\sqrt{2g}BH^{3/2}\)</span></td>
+<td>Where <span class="arithmatex">\(B\)</span> = width at bottom of weir crest. <span class="arithmatex">\(C_v\)</span> = 0.611 + 0.075*(H/Z); <span class="arithmatex">\(H\)</span> = weir head; <span class="arithmatex">\(Z\)</span> = weir crest head measured from the channel bottom</td>
+</tr>
+<tr>
+<td>Parabolic, broad-crested</td>
+<td><span class="arithmatex">\(Q = C_D C_v \sqrt{\frac{3}{4}f}gH^2\)</span></td>
+<td><span class="arithmatex">\(f\)</span> = distance from bottom point of weir to weir focal point</td>
+</tr>
+<tr>
+<td>Parabolic, sharp-crested</td>
+<td><span class="arithmatex">\(Q = C_e \frac{1}{2}\pi\sqrt{f}gH^2\)</span></td>
+<td><span class="arithmatex">\(C_e\)</span> = effective discharge coefficient</td>
+</tr>
+<tr>
+<td>Triangular, broad-crested</td>
+<td><span class="arithmatex">\(Q = C_D C_v \frac{16}{25}\sqrt{\frac{2}{5}g}\tan(0.5\Theta)H^{5/2}\)</span></td>
+<td><span class="arithmatex">\(\Theta\)</span> = half angle of the triangular notch</td>
+</tr>
+<tr>
+<td>Triangular, sharp-crested</td>
+<td><span class="arithmatex">\(Q = C_e \frac{8}{25}\sqrt{2g}\tan(0.5\Theta)H^{5/2}\)</span></td>
+<td><span class="arithmatex">\(C_e\)</span> = function of notch angle, varies from 0.59 to 0.57 for angles between 20 and 100 degrees</td>
+</tr>
+<tr>
+<td>Trapezoidal, broad-crested</td>
+<td><span class="arithmatex">\(Q = C_D(Wy_c + my_c^2)[2g(H - y_c)]^{1/2}\)</span></td>
+<td><span class="arithmatex">\(W\)</span> = top width; <span class="arithmatex">\(m\)</span> = slope of trapezoidal weir; <span class="arithmatex">\(y_c\)</span> = depth of water at the weir; <span class="arithmatex">\(H\)</span> = energy head upstream of weir</td>
+</tr>
+<tr>
+<td>Trapezoidal, sharp-crested</td>
+<td><span class="arithmatex">\(Q = C_e \frac{2}{3}\sqrt{2g}(B + \frac{4}{5}H\tan 0.5\Theta)H^{1/2}\)</span></td>
+<td><span class="arithmatex">\(B\)</span> = bottom width of trapezoidal weir; <span class="arithmatex">\(\Theta\)</span> = half angle</td>
+</tr>
+<tr>
+<td>Cipolletti</td>
+<td><span class="arithmatex">\(Q = C_D C_v \frac{2}{3}\sqrt{2g}WH^{3/2}\)</span></td>
+<td>A modified contracted, rectangular, sharp-crested weir with a trapezoidal control section and sides sloping outward with slopes of 4:1. <span class="arithmatex">\(C_D \approx 0.63\)</span>; <span class="arithmatex">\(C_v\)</span> varies from 1 to 1.2</td>
+</tr>
+<tr>
+<td>Proportional or sutro weir</td>
+<td><span class="arithmatex">\(Q = C_D B\sqrt{2ga}(H - \frac{1}{3}a)\)</span></td>
+<td><span class="arithmatex">\(a\)</span> = distance from weir bottom to top of the rectangular weir section; <span class="arithmatex">\(B\)</span> = bottom width of weir; <span class="arithmatex">\(C_D\)</span> = drag coefficient, 0.597--0.619 for symmetrical weirs</td>
+</tr>
+</tbody>
+</table>
 <p>Since all weirs in practice are calibrated and a head discharge relationship is usually determined, the flow versus head relationship is used rather than an equation from Table 5. The user must then analyze the weir or spillway and input a relationship based on the weir or spillway geometry. The model accepts equations in the form of a power function for freely flowing conditions:</p>
 <div class="arithmatex">\[
 Q = \alpha_1\Delta h^{\beta_1} \tag{A-2-154}
@@ -4655,6 +4858,14 @@ Q = \alpha_2\Delta h^{\beta_2} \tag{A-2-155}
 </figure>
 -->
 
+<p>Consider the following weir flow condition in Figure 40.</p>
+<!-- TODO: Add figure
+<figure markdown="span">
+  ![Flow at a submerged weir.](../assets/images/part2/fig40_submerged_weir.png){ width="500" }
+  <figcaption>Figure 40. Flow at a submerged weir.</figcaption>
+</figure>
+-->
+
 <p>For a smooth transition, the two flows must be equal at the transition point. Using:</p>
 <div class="arithmatex">\[
 H_2 - H_{weir} = 0.67\left(\Delta h_1 + \frac{u^2}{2g}\right) \approx 0.67(H_1 - H_{weir}) \tag{2-156}
@@ -4671,7 +4882,11 @@ Q = \alpha_1 H^{\beta_1} \tag{2-158}
 <div class="arithmatex">\[
 H = aQ^b = \left(\frac{Q}{\alpha_1}\right)^{1/\beta_1} \tag{2-159}
 \]</div>
-<p>Then the a and b coefficients become:</p>
+<p>Writing this equation in a form compatible with the stage discharge relationship using the <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> coefficients:</p>
+<div class="arithmatex">\[
+H = \left(\frac{1}{\alpha_1}\right)^{1/\beta_1}Q^{1/\beta_1} \tag{2-160}
+\]</div>
+<p>Then the <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> coefficients become:</p>
 <div class="arithmatex">\[
 a = \left(\frac{1}{\alpha_1}\right)^{1/\beta_1} \tag{2-161}
 \]</div>
@@ -4723,7 +4938,7 @@ Q = \alpha_2\Delta h^{\beta_2}B^{\gamma_2} \tag{2-166}
 </figure>
 -->
 
-<p>In some reservoir systems, an outlet valve is connected to the reservoir and a head-discharge relationship is used based on the gate opening or number of gate turns. In this case, the outlet level is usually at a different elevation than the withdrawal elevation. The above gate formulation can still be used if no reverse flow occurs through the needle valve.</p>
+<p>In some reservoir systems, an outlet valve is connected to the reservoir and a head-discharge relationship is used based on the gate opening or number of gate turns. In this case, the outlet level is usually at a different elevation than the withdrawal elevation. The above gate formulation can still be used if no reverse flow occurs through the needle valve. This situation is illustrated in Figure 42. In this case, the elevation of the outflow is required in addition to the elevation at which the outflow is taken if a rating curve is used in the model. This use is described in the section on gates in the control file.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Selective withdrawal with outflow connected to a valve with a gate.](../assets/images/part2/fig42_selective_withdrawal_valve.png){ width="500" }
@@ -4731,7 +4946,7 @@ Q = \alpha_2\Delta h^{\beta_2}B^{\gamma_2} \tag{2-166}
 </figure>
 -->
 
-<p>The user can insert weirs and/or spillways, specify connectivity to other model segments, and provide rating curve parameters for each structure. The model treats each spillway, weir, or gate as a selective withdrawal outflow and uses the selective withdrawal algorithm to determine flow from each vertical layer adjacent to the structure.</p>
+<p>The user can insert weirs and/or spillways, specify connectivity to other model segments, and insert the ratings curve parameters for each weir/spillway. The model treats each spillway, weir, or gate as a selective withdrawal outflow and uses the selective withdrawal algorithm for determining water flow from each vertical layer adjacent to the structure.</p>
 <p>Inflows from hydraulic control structures are treated as tributary inflows. The user must specify whether the inflow is placed according to density, distributed equally between all vertical layers, or distributed between a given elevation range.</p>
 <p>Weir equations are used when gates are open and the open gate does not interfere with the flow (when <span class="arithmatex">\(B \ge 0.8\Delta h\)</span>).</p>
 <p>Gates can also be used to move flows around to different parts of the model domain, including different branches. In that case the specification of gate openings is interpreted as specification of flow rates.</p>
