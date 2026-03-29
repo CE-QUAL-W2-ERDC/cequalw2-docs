@@ -2849,10 +2849,10 @@
 <h2 id="how-to-use-this-manual">How to Use This Manual<a class="headerlink" href="#how-to-use-this-manual" title="Permanent link">&para;</a></h2>
 <p>This manual is organized into four parts:</p>
 <ul>
-<li><strong><a href="../">Part 1: Introduction</a></strong> -- Model overview, capabilities and limitations, data preparation, model download package, how to run the model, and version history.</li>
-<li><strong><a href="../../part2/">Part 2: Theory</a></strong> -- Theoretical basis for CE-QUAL-W2 including hydrodynamics, water quality kinetics, particle transport, and numerical solution schemes.</li>
-<li><strong><a href="../../part3/">Part 3: Input/Output Files</a></strong> -- Detailed descriptions of all model input and output files with format specifications and examples.</li>
-<li><strong><a href="../../part4/">Part 4: Model Examples</a></strong> -- Example applications distributed with the model release, along with calibration guidance for different waterbody types.</li>
+<li><strong><a href="../">Part 1: Introduction</a></strong>: Model overview, capabilities and limitations, data preparation, model download package, how to run the model, and version history.</li>
+<li><strong><a href="../../part2/">Part 2: Theory</a></strong>: Theoretical basis for CE-QUAL-W2 including hydrodynamics, water quality kinetics, particle transport, and numerical solution schemes.</li>
+<li><strong><a href="../../part3/">Part 3: Input/Output Files</a></strong>: Detailed descriptions of all model input and output files with format specifications and examples.</li>
+<li><strong><a href="../../part4/">Part 4: Model Examples</a></strong>: Example applications distributed with the model release, along with calibration guidance for different waterbody types.</li>
 </ul>
 <h2 id="typical-applications">Typical Applications<a class="headerlink" href="#typical-applications" title="Permanent link">&para;</a></h2>
 <p>CE-QUAL-W2 is commonly applied to two broad categories of waterbodies:</p>
@@ -2949,7 +2949,7 @@
 <ul>
 <li>An algorithm that calculated the maximum allowable timestep and adjusted the timestep to ensure hydrodynamic stability requirements were not violated (autostepping)</li>
 <li>A selective withdrawal algorithm that calculated a withdrawal zone based on outflow, outlet geometry, and upstream density gradients</li>
-<li>A higher-order transport scheme (QUICKEST) that reduced numerical diffusion (Leonard, 1979)</li>
+<li>A higher-order transport scheme (<code>QUICKEST</code>) that reduced numerical diffusion (Leonard, 1979)</li>
 <li>Time-weighted vertical advection and fully implicit vertical diffusion</li>
 <li>Step function or linear interpolation of inputs</li>
 <li>Improved ice-cover algorithm</li>
@@ -2964,7 +2964,7 @@
 <p>Version 3.0 introduced improvements to the numerical solution scheme and water quality algorithms and extended the model to support entire basin modeling in two dimensions. New capabilities included:</p>
 <ul>
 <li>An implicit solution for the effects of vertical eddy viscosity in the horizontal momentum equation</li>
-<li>Addition of Leonard's ULTIMATE algorithm that eliminates over/undershoots in the numerical solution scheme</li>
+<li>Addition of Leonard's <code>ULTIMATE</code> algorithm that eliminates over/undershoots in the numerical solution scheme</li>
 <li>Inclusion of momentum transfer between branches</li>
 <li>The ability to model multiple waterbodies in the same computational grid including multiple reservoirs, steeply sloping riverine sections between reservoirs, and estuaries</li>
 <li>Additional vertical turbulence algorithms more appropriate for rivers</li>
@@ -2977,7 +2977,7 @@
 <li>Nine inorganic suspended solids groups</li>
 <li>Dissolved and particulate biogenic silica</li>
 <li>Age of water</li>
-<li>Derived constituents such as total DOC, organic nitrogen, organic phosphorus, etc. that are not state variables</li>
+<li>Derived constituents such as total dissolved organic carbon (DOC), organic nitrogen, organic phosphorus, etc. that are not state variables</li>
 <li>A graphical pre/postprocessor</li>
 <li>Converted to FORTRAN 90/95 with dynamic array allocation, eliminating the need to recompile the code for each application</li>
 <li>User-defined evaporation models including the Ryan-Harleman model</li>
@@ -2994,7 +2994,7 @@
 </li>
 <li>Any number of user-defined phytoplankton groups</li>
 <li>Any number of user-defined epiphyton/periphyton groups</li>
-<li>Any number of user-defined CBOD groups</li>
+<li>Any number of user-defined carbonaceous biochemical oxygen demand (CBOD) groups</li>
 <li>Any number of user-defined inorganic suspended solids groups</li>
 <li>Dissolved and particulate biogenic silica</li>
 <li>Derived constituents such as total DOC, organic nitrogen, organic phosphorus, etc. that are not state variables</li>
@@ -3039,14 +3039,14 @@
 <li>Spreadsheet output improvements</li>
 <li>Preprocessor improvements</li>
 <li>For the generic constituent, added temperature dependence on 0th-order decay</li>
-<li>Added the kinetic flux rates to the TSR file output</li>
+<li>Added the kinetic flux rates to the time series result (TSR) file output</li>
 <li>Revised the computation of the drag coefficient for low wind speeds</li>
 <li>The light extinction coefficient (in m⁻¹) is now included as an output variable in the TSR opt file</li>
 <li>A new option for output in the format required for Tecplot</li>
-<li>A new variable for determining the fraction of NO₃-N that is diffused into the sediments that becomes organic matter, or SED-N</li>
+<li>A new variable for determining the fraction of NO₃-N that is diffused into the sediments that becomes organic matter, or <code>SED-N</code></li>
 <li>The sediment decay rate can be computed dynamically or held constant using the <code>DYNSEDK</code> variable</li>
 <li>Added kinetic flux output that sums up fluxes for all cells of a waterbody</li>
-<li>The selective withdrawal algorithm computation was adjusted to more closely follow the Corps' model code SELECT</li>
+<li>The selective withdrawal algorithm computation was adjusted to more closely follow the Corps' model code <code>SELECT</code></li>
 <li>Command-line working directory specification is now active for the preprocessor, GUI, and W2 Windows versions</li>
 </ul>
 <h3 id="version-37">Version 3.7<a class="headerlink" href="#version-37" title="Permanent link">&para;</a></h3>
@@ -3081,16 +3081,16 @@
 <h3 id="version-40">Version 4.0<a class="headerlink" href="#version-40" title="Permanent link">&para;</a></h3>
 <p>Version 4.0 is file-compatible with Version 3.72. All new model options are contained in new control files separate from the existing model files. New features include:</p>
 <ul>
-<li>Sediment diagenesis model of Prakash et al. (2015) and Berger and Wells (2014). This model includes bubble formation and rise in the water column, sediment consolidation, and sediment diagenesis. It includes new state variables for sediment and water column CH₄, H₂S, SO₄, sulfide, FeOOH(s), Fe²⁺, MnO₂(s), Mn²⁺, sediment organic P, sediment organic N, sediment NO₃, sediment NH₄, sediment PO₄, sediment temperature, sediment pH, sediment alkalinity, sediment total inorganic C, sediment organic C, and mature fine tailings (turbidity based on correlation with TSS)</li>
+<li>Sediment diagenesis model of Prakash et al. (2015) and Berger and Wells (2014). This model includes bubble formation and rise in the water column, sediment consolidation, and sediment diagenesis. It includes new state variables for sediment and water column CH₄, H₂S, SO₄, sulfide, FeOOH(s), Fe²⁺, MnO₂(s), Mn²⁺, sediment organic P, sediment organic N, sediment NO₃, sediment NH₄, sediment PO₄, sediment temperature, sediment pH, sediment alkalinity, sediment total inorganic C, sediment organic C, and mature fine tailings (turbidity based on correlation with total suspended solids [TSS])</li>
 <li>Non-conservative alkalinity from the work of Sullivan et al. (2013)</li>
 <li>Wind-induced and boundary-induced shear causing scour of organic matter from sediments and resulting oxygen demand</li>
-<li>The new sediment model largely deprecates the older state variable Fe(total) since the model now has different state variables for Fe and Mn</li>
-<li>Ice formation and ice melting now affect the waterbody through loss or gain of water mass. This feature can be turned ON/OFF.</li>
+<li>The new sediment model largely deprecates the older state variable <code>Fe(total)</code> since the model now has different state variables for Fe and Mn</li>
+<li>Ice formation and ice melting now affect the waterbody through loss or gain of water mass. This feature can be turned <code>ON</code>/<code>OFF</code>.</li>
 <li>Periphyton and macrophyte variable areal density/concentration can be set for each model cell as well as setting a global initial concentration</li>
 <li>Output files TSR, QWO, TWO, CWO, structure, gate, pipe, pump, and spreadsheet files are now in comma-delimited format rather than the older fixed format</li>
 <li>TSR file output now includes the limiting nutrient term for N, P, and light, which is between 0 and 1</li>
 <li>Photodegradation and gas transfer (volatilization) are now options for generic constituents</li>
-<li>N₂ gas is now an option for a generic constituent. If this option is used, the model automatically computes %TDG using both N₂ and O₂ state variables</li>
+<li>N₂ gas is now an option for a generic constituent. If this option is used, the model automatically computes percent Total Dissolved Gas (%TDG) using both N₂ and O₂ state variables</li>
 <li>A floating skimmer weir can be used and is set up in the main control file section on internal weirs</li>
 <li>A new output file format for longitudinal profiles of water level, temperature, flow rate, and water quality</li>
 <li>A new output file that provides a P and N mass balance for each waterbody</li>
@@ -3114,7 +3114,7 @@
 <li>Multiple waterbody cascade modeling using multiple processors</li>
 <li>The User Manual was updated to a new format and organization with hundreds of additions, updates, and corrections</li>
 <li>The Corps of Engineers SYSTDG program for evaluating Total Dissolved Gas at spillways was added to the release version of the model</li>
-<li>The restart feature with sediment diagenesis and Tecplot CPL output is now working</li>
+<li>The restart feature with sediment diagenesis and Tecplot <code>CPL</code> output is now working</li>
 </ul>
 <h3 id="version-421">Version 4.2.1<a class="headerlink" href="#version-421" title="Permanent link">&para;</a></h3>
 <p>Version 4.2.1 is file-compatible with Version 3.72 except for the new Excel version of the control file. New features include:</p>
@@ -3123,9 +3123,9 @@
 <li>A new control file, <code>w2_con.csv</code>, is now available for use in CE-QUAL-W2</li>
 <li>The model examples and User Manual were updated with a new example problem from Long Lake, WA</li>
 <li>The preprocessor now spawns a window showing the <code>pre.err</code> file in case there are errors detected</li>
-<li>Output file format has been improved for the <code>w2.wrn</code> and the <code>W2errordump.opt</code> files</li>
+<li>Output file format has been improved for the <code>w2.wrn</code> and <code>W2errordump.opt</code> files</li>
 <li>The pump algorithm has a new enhancement allowing water to be pumped from the upstream to downstream based on downstream water level</li>
-<li>Tecplot output through the CPL output can now specify which branches to write out</li>
+<li>Tecplot output through the <code>CPL</code> output can now specify which branches to write out</li>
 </ul>
 <h3 id="version-422">Version 4.2.2<a class="headerlink" href="#version-422" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -3158,7 +3158,7 @@
 <li>SYSTDG input files updated to CSV input format</li>
 <li>Updates to particle settling and P adsorption onto inorganic SS</li>
 <li>All external control files are included in an Excel master sheet for ease of writing out as CSV files</li>
-<li>Added derived variables to the W2_post post-processor for time series, profiles, animations, and contour plots</li>
+<li>Added derived variables to the <code>W2_post</code> post-processor for time series, profiles, animations, and contour plots</li>
 </ul>
 <h2 id="new-features">New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <p>The table below provides a quick-reference summary of significant new model features since Version 3.7. For detailed descriptions, see the version-by-version entries in the <a href="#historical-background">Historical Background</a> section above.</p>
@@ -3232,7 +3232,7 @@
 <td>4.1</td>
 </tr>
 <tr>
-<td><code>Ax</code> and <code>Dx</code> scale with U</td>
+<td><code>Ax</code> and <code>Dx</code> scale with <code>U</code></td>
 <td>The longitudinal eddy viscosity and eddy diffusivity can now scale with the longitudinal velocity.</td>
 <td>4.1</td>
 </tr>

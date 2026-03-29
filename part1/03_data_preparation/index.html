@@ -2725,7 +2725,7 @@
 
 
 <h1 id="overview-of-data-preparation">Overview of Data Preparation<a class="headerlink" href="#overview-of-data-preparation" title="Permanent link">&para;</a></h1>
-<p>The following data are needed for a CE-QUAL-W2 (Corps of Engineers Quality Model for Width-Averaged 2-Dimensional Waterbodies) model application:</p>
+<p>The following data are needed for a CE-QUAL-W2 model application:</p>
 <ol>
 <li>Geometric data</li>
 <li>Initial conditions</li>
@@ -2748,7 +2748,6 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Description</th>
 <th>Control File Variable</th>
 </tr>
 </thead>
@@ -2756,22 +2755,18 @@
 <tr>
 <td>Longitudinal spacing (segment length)</td>
 <td><strong>[DLX]</strong></td>
-<td><code>DLX</code></td>
 </tr>
 <tr>
 <td>Vertical spacing (layer height)</td>
 <td><strong>[H]</strong></td>
-<td><code>H</code></td>
 </tr>
 <tr>
 <td>Average cross-sectional width (cell width)</td>
 <td><strong>[B]</strong></td>
-<td><code>B</code></td>
 </tr>
 <tr>
 <td>Waterbody slope</td>
 <td><strong>[SLOPE]</strong></td>
-<td><code>SLOPE</code></td>
 </tr>
 </tbody>
 </table>
@@ -2783,13 +2778,13 @@
 <p><strong>Areas of strongest gradients.</strong> This factor applies particularly to the metalimnion in freshwater and the pycnocline in saltwater. If the model is not capturing water quality gradients in these regions, vertical resolution may need to be increased. Similar reasoning applies to areas of longitudinal gradients.</p>
 </li>
 <li>
-<p><strong>Computational and memory requirements.</strong> The model penalizes the user in two ways when increasing grid resolution. As the number of grid cells increases, so do computational and memory requirements. In addition, as the dimensions of a grid cell decrease, the timestep must also decrease to maintain numerical stability. As a rule of thumb, it is always desirable to err on the side of finer grid resolution, but the user must balance that with the available computer resources and the time available for completing the project.</p>
+<p><strong>Computational and memory requirements.</strong> Increasing grid resolution has two computational costs. As the number of grid cells increases, so do computational and memory requirements. In addition, as the dimensions of a grid cell decrease, the timestep must also decrease to maintain numerical stability. Finer grid resolution is generally preferable, but balance resolution against available computer resources and project schedule.</p>
 </li>
 <li>
 <p><strong>Bottom slope.</strong> For reservoirs and some estuaries, the waterbody bottom slope is more accurately modeled as the ratio of cell thickness to cell length <strong>[H]</strong>/<strong>[DLX]</strong> approaches the overall bottom slope. For sloping streams and rivers, the ratio is accurately represented by the slope or a hydraulic equivalent slope.</p>
 </li>
 <li>
-<p><strong>Results.</strong> Results should not be a function of the computational grid's resolution. With the development of the bathymetry editor, finely discretized grids can be easily coarsened. The coarser grid will have fewer computational cells and larger average timesteps, resulting in decreased runtimes. The computational grid should initially be of high resolution and, if runtimes are excessive, reduced in resolution until the results change substantially. Results should never be a function of the grid resolution.</p>
+<p><strong>Results.</strong> Results should not be a function of the computational grid resolution. Start with a high-resolution grid and, if runtimes are excessive, reduce resolution incrementally. The bathymetry editor facilitates coarsening finely discretized grids. Use the coarsest grid that reproduces essentially the same results as the finest grid.</p>
 </li>
 </ol>
 <div class="admonition tip">
@@ -2805,7 +2800,7 @@
 <li><strong>Contour plotting packages.</strong> Other methods have been developed for generating grids using contour plotting packages such as Surfer, ArcGIS, and AutoCAD.</li>
 </ul>
 <h3 id="sample-computational-grid">Sample Computational Grid<a class="headerlink" href="#sample-computational-grid" title="Permanent link">&para;</a></h3>
-<p>A sample computational grid in the longitudinal/vertical plane with four branches is shown in Figure 6. The Fortran variables associated with the grid are also included. The grid consists of 25 longitudinal segments <strong>[IMX]</strong> and 22 vertical layers <strong>[KMX]</strong>. These constitute the total number of cells in the computational grid. This is exactly how the model sees the grid layout even though this is not the correct physical representation of the system. Branch 2 and Branch 3 join Branch 1. Branch setup is described in more detail below.</p>
+<p>A sample computational grid in the longitudinal/vertical plane with four branches is shown in Figure 6. The Fortran variables associated with the grid are also included. The grid consists of 25 longitudinal segments <strong>[IMX]</strong> and 22 vertical layers <strong>[KMX]</strong>. These constitute the total number of cells in the computational grid. The grid layout represents the model's internal indexing, not the physical arrangement of the waterbody. Branch 2 and Branch 3 join Branch 1. Branch setup is described in more detail below.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Sample computational grid in the x-z plane showing active and inactive cells](../assets/images/part1/sample-grid-xz.png){ width="700" }
@@ -2942,13 +2937,13 @@
 <p>The model recognizes the following outflows:</p>
 <ol>
 <li>
-<p><strong>Downstream outflows (optional).</strong> Downstream outflows <strong>[QOUT]</strong> occur only at the downstream segment <strong>[DS]</strong> of a branch. Selective withdrawal where the vertical extent of and flow distribution in the withdrawal zone is calculated by the model is used for all outflows. Additionally, the bottom <strong>[KBSTR]</strong> and top layers <strong>[KTSTR]</strong> below and above which outflow cannot occur can be specified by the user to include the effects of upstream structures that restrict the selective withdrawal zone. Outflow will occur even if the outlet location is above the current water surface layer <code>KT</code>. This is a necessity when calibrating water surface elevations. A separate file for each branch is required.</p>
+<p><strong>Downstream outflows (optional).</strong> Downstream outflows <strong>[QOUT]</strong> occur only at the downstream segment <strong>[DS]</strong> of a branch. The model uses selective withdrawal for all outflows, computing the vertical extent and flow distribution within the withdrawal zone. The bottom <strong>[KBSTR]</strong> and top layers <strong>[KTSTR]</strong> can be specified to restrict the selective withdrawal zone, accounting for upstream structures. Outflow will occur even if the outlet location is above the current water surface layer <code>KT</code>, which is necessary for calibrating water surface elevations. A separate file for each branch is required.</p>
 </li>
 <li>
 <p><strong>Lateral withdrawals (optional).</strong> Lateral withdrawals <strong>[QWD]</strong> may be specified for any active cell. The number of withdrawals <strong>[NWD]</strong>, their segment location <strong>[IWD]</strong>, and their centerline elevation <strong>[EWD]</strong> must be specified in the control file. If this option is used, a separate file for each withdrawal is required. Version 3 and later use selective withdrawal for lateral withdrawals.</p>
 </li>
 <li>
-<p><strong>Evaporation (optional).</strong> Evaporation is calculated by the model from air <strong>[TAIR]</strong> and dew point <strong>[TDEW]</strong> temperature and wind speed <strong>[WIND]</strong>. If a waterbody loses a significant amount of water from evaporation that is not accounted for in the inflows, then the user should include evaporation. Evaporative heat loss is always included in the heat budget.</p>
+<p><strong>Evaporation (optional).</strong> The model calculates evaporation from air temperature <strong>[TAIR]</strong>, dew point temperature <strong>[TDEW]</strong>, and wind speed <strong>[WIND]</strong>. Include evaporation if a waterbody loses a significant amount of water that is not accounted for in the inflows. Evaporative heat loss is always included in the heat budget regardless of this setting.</p>
 </li>
 <li>
 <p><strong>Internal outflows (optional).</strong> Flows from gates, pipes, pumps, and over spillways and weirs can be routed internally in the computational grid from one segment to another. This allows application of the model to highly engineered systems. <!-- TODO: Add link to Part 3 hydraulic structure input files --></p>
@@ -2998,13 +2993,13 @@
 <p>A complete description of kinetic coefficients along with guidelines for appropriate defaults and a range of literature values is given in Part 3 of the User Manual. <!-- TODO: Add link to Part 3 kinetic coefficients --></p>
 </div>
 <h2 id="calibration-data">Calibration Data<a class="headerlink" href="#calibration-data" title="Permanent link">&para;</a></h2>
-<p>Calibration data are used to provide initial and boundary conditions and to assess model performance during calibration. A great deal of thought should go into assessing the amount and type of data necessary to adequately characterize and understand the limnology of a waterbody and to develop the database required to support a water quality modeling effort. Gaugush (1986; 1987; 1993) provides detailed information on sampling design and frequency.</p>
+<p>Calibration data are used to provide initial and boundary conditions and to assess model performance during calibration. Carefully assess the amount and type of data necessary to adequately characterize the limnology of a waterbody and to develop the database required to support a water quality modeling effort. Gaugush (1986; 1987; 1993) provides detailed information on sampling design and frequency.</p>
 <div class="admonition warning">
 <p class="admonition-title">Data Availability</p>
-<p>Determining the availability of adequate calibration data should be done as early in the study as possible. If the user determines calibration data are inadequate, then immediate steps should be taken to collect sufficient data. Results will be suspect at best and will not withstand scrutiny at worst if the model is applied with insufficient and/or inadequate calibration data.</p>
+<p>Determine the availability of adequate calibration data as early in the study as possible. If calibration data are inadequate, take immediate steps to collect sufficient data. Model results are unreliable when the model is applied with insufficient or inadequate calibration data.</p>
 </div>
 <h3 id="in-pool-data">In-Pool Data<a class="headerlink" href="#in-pool-data" title="Permanent link">&para;</a></h3>
-<p>Proper application of mechanistic water quality models requires at least one set of in-pool observed data. The preferred method is at least two sets of data encompassing different extremes in the prototype (i.e., high and low flow years, warm and cold years, spring phytoplankton bloom and no spring phytoplankton bloom, etc.). In-pool data is used to set initial conditions and assess the model's ability to reproduce observed conditions. Given sufficient time and funding, all years in which sufficient data are available should be included during model calibration.</p>
+<p>Proper application of mechanistic water quality models requires at least one set of in-pool observed data. The preferred method is at least two sets of data encompassing different extremes in the prototype (i.e., high and low flow years, warm and cold years, spring phytoplankton bloom and no spring phytoplankton bloom, etc.). In-pool data are used to set initial conditions and assess the model's ability to reproduce observed conditions. Given sufficient time and funding, all years in which sufficient data are available should be included during model calibration.</p>
 <h3 id="time-varying-boundary-conditions">Time-Varying Boundary Conditions<a class="headerlink" href="#time-varying-boundary-conditions" title="Permanent link">&para;</a></h3>
 <p>The accuracy of data used to drive the model is critical. For temperature calibration, this typically means using continuous inflow temperatures or developing regression relationships for inflow temperatures based on flow and air or equilibrium temperature to generate at least daily inflow temperatures (see Ford and Stein, 1984). Equilibrium temperature is preferred since it includes more of the mechanisms affecting water temperature.</p>
 <p>For meteorological data, use the most frequent data available. Previously, daily average values were used to drive the model because earlier 1-D models used daily timesteps. Many modelers still take hourly or three-hourly data and generate daily averages for model input.</p>
@@ -3020,7 +3015,7 @@
 <p>Ideally, a model should be used as a starting point for limnological investigations of a waterbody, with the data and formulations continuously refined to reflect the increased understanding of the system and processes gained over time.</p>
 <div class="admonition note">
 <p class="admonition-title">Collaborative Approach</p>
-<p>The cooperative approach between experimentalists and theoreticians is the main impetus behind the tremendous advances in physics, chemistry, and, to some extent, biology during the last century. This approach is seldom seen in water quality modeling. One notable example where it has been applied successfully is the Chesapeake Bay Modeling Study (Cerco and Cole, 1994), in which biologists and engineers were actively involved in data acquisition, water quality formulations, and model feedback. This cooperative arrangement should serve as a model for all future water quality model development.</p>
+<p>Collaboration between experimentalists and modelers significantly improves water quality model outcomes. One notable example is the Chesapeake Bay Modeling Study (Cerco and Cole, 1994), in which biologists and engineers were actively involved in data acquisition, water quality formulations, and model feedback. This cooperative arrangement is recommended for water quality model development efforts.</p>
 </div>
 <h4 id="process-understanding">Process Understanding<a class="headerlink" href="#process-understanding" title="Permanent link">&para;</a></h4>
 <p>Since water quality compartments are coupled, calibration of one compartment may affect other compartments, making calibration difficult. An understanding of the processes modeled as well as knowledge of the system being simulated is essential if the modeling effort is to succeed. A complete description of kinetic coefficients along with guidelines for appropriate defaults and a range of literature values is given in Part 3 of the User Manual. <!-- TODO: Add link to Part 3 kinetic coefficients --></p>
@@ -3253,10 +3248,10 @@
 </tbody>
 </table>
 <h3 id="data-analysis">Data Analysis<a class="headerlink" href="#data-analysis" title="Permanent link">&para;</a></h3>
-<p>An often overlooked step in model applications is plotting and analyzing observed data for all stations and times for which data are available. Do not plot up just the data chosen for calibration, as the additional data may reveal important information about the prototype.</p>
+<p>An often overlooked step in model applications is plotting and analyzing observed data for all stations and times for which data are available. Do not plot only the data chosen for calibration, as the additional data may reveal important information about the prototype.</p>
 <div class="admonition tip">
 <p class="admonition-title">Consult a Limnologist</p>
-<p>Most mechanistic water quality modelers come from an engineering background with only cursory exposure to limnology. If a limnologist is available, they should be consulted during the data analysis stage to help in identifying the dominant processes occurring in the system. Once these have been identified, ensure the dominant forcing functions are represented as accurately as possible in the model, either as accurate boundary conditions or as additional water quality formulations.</p>
+<p>If a limnologist is available, consult them during the data analysis stage to help identify the dominant processes occurring in the system. Once identified, ensure these forcing functions are represented as accurately as possible in the model, either as boundary conditions or as additional water quality formulations.</p>
 </div>
 <p>Checks for reasonableness should go beyond outlier checks to include checks to see if changes in concentrations over space and time make limnological sense. For example, if reservoir hypolimnetic nitrate concentrations increase during anoxic conditions and inflow temperatures are warmer than epilimnetic temperatures and/or inflow nitrate concentrations are less than the hypolimnetic concentrations, then there is no way for nitrate concentrations to increase during this time in either the prototype or in the model. Do not waste time during calibration trying to reproduce such behavior; the failure of the model to reproduce this behavior should not be viewed as a shortcoming of the model.</p>
 <p>Another example would be observed reservoir hypolimnetic release temperatures that were greater than the hypolimnetic temperatures. It would be impossible for the model to match these temperatures during calibration.</p>
