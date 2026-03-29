@@ -1,0 +1,3851 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CE-QUAL-W2 Water Quality and Hydrodynamic Model Documentation">
+      
+      
+        <meta name="author" content="Environmental Modeling Team, U.S. Army Engineer Research and Development Center">
+      
+      
+        <link rel="canonical" href="https://CE-QUAL-W2-ERDC.github.io/cequalw2-docs/part4/03_example_model_applications/">
+      
+      
+        <link rel="prev" href="../02_model_examples/">
+      
+      
+        <link rel="next" href="../04_references/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Examples of Model Applications - CE-QUAL-W2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#examples-of-model-applications" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-header__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CE-QUAL-W2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Examples of Model Applications
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 1: Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 2: Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../part3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 3: Input/Output Files
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Part 4: Model Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../release-notes/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CE-QUAL-W2 Documentation" class="md-nav__button md-logo" aria-label="CE-QUAL-W2 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CE-QUAL-W2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CE-QUAL-W2-ERDC/cequalw2-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cequalw2-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1: Introduction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1: Introduction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/00_preface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to CE-QUAL-W2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/02_capabilities_and_limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities and Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/03_data_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Data Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/04_model_download_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Download Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/05_getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/06_setting_up_and_running_a_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting Up and Running a Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/07_batch_processing_and_command_line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch Processing and Command Line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/08_including_relative_directory_paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative Directory Paths
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/09_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/10_appendix_a_contributors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix A: Contributors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part1/11_appendix_b_publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix B: Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2: Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2: Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/02_hydrodynamics_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydrodynamics Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/03_particle_tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Particle Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/04_temperature_and_water_quality_modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Temperature and Water Quality Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/05_numerical_solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numerical Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part2/06_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../part3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 3: Input/Output Files
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 3: Input/Output Files
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/02_input_and_output_files_data_description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input and Output Files Data Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/03_using_particle_transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Particle Transport
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/04_using_multiple_processors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Multiple Processors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../part3/05_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 4: Model Examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 4: Model Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_model_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples of Model Applications
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples of Model Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Preparation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration-vs-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration vs. Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-audits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post Audits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-data-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Data Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lakereservoir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lake/Reservoir
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lake/Reservoir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#water-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrodynamics-and-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamics and Temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estuary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estuary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estuary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-surface-elevations-and-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Surface Elevations and Flows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-of-travel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time of Travel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-and-salinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temperature and Salinity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-problems_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#river" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        River
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="River">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-slope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Slope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Bottom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions-for-setting-up-a-river-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggestions for Setting Up a River Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrodynamics-and-temperature_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamics and Temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../release-notes/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/2026.02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERDC 2026.02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release-notes/version-lineage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version Lineage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Preparation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input Checks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calibration-vs-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration vs. Verification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-audits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post Audits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-data-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Data Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-philosophy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Philosophy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lakereservoir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lake/Reservoir
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lake/Reservoir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#water-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrodynamics-and-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamics and Temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estuary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estuary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estuary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-surface-elevations-and-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Surface Elevations and Flows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-of-travel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time of Travel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temperature-and-salinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temperature and Salinity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-problems_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Problems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#river" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        River
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="River">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-slope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Slope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Bottom
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suggestions-for-setting-up-a-river-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suggestions for Setting Up a River Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hydrodynamics-and-temperature_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydrodynamics and Temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#water-quality_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Water Quality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="examples-of-model-applications">Examples of Model Applications<a class="headerlink" href="#examples-of-model-applications" title="Permanent link">&para;</a></h1>
+<p>This section was authored by Tom Cole, retired Environmental Laboratory, Waterways Experiment Station. It provides an overview of using the model and guidance on calibrating CE-QUAL-W2 for reservoir, estuary, and river systems.</p>
+<h2 id="model-preparation">Model Preparation<a class="headerlink" href="#model-preparation" title="Permanent link">&para;</a></h2>
+<h3 id="input-checks">Input Checks<a class="headerlink" href="#input-checks" title="Permanent link">&para;</a></h3>
+<p>The preprocessor program, <code>pre.exe</code>, performs checks of the control file for many errors that can be detected automatically. Errors are written to <code>pre.err</code> and warnings are written to <code>pre.wrn</code>. If no errors are detected, input from the control file is written to <code>pre.opt</code>.</p>
+<ol>
+<li>Correct all errors before proceeding further.</li>
+<li>Investigate all warnings to ensure that input to the model matches the intended configuration.</li>
+<li>Run the preprocessor periodically during calibration to ensure that errors have not been introduced into the input files.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Absence of Errors Does Not Guarantee Correctness</p>
+<p>Do not assume that all inputs are correct simply because the preprocessor reports no warnings or errors. The preprocessor cannot detect all possible input problems.</p>
+</div>
+<p>Additionally, check preprocessor output against inputs to ensure they are correct. Further evaluation of control file input data must be performed to ensure that the data being input to the model is what the model is actually receiving. Plot and screen <em>all</em> time-varying input data for errors. These plots will need to be included in any final report and can eliminate many problems early in the project.</p>
+<h2 id="calibration">Calibration<a class="headerlink" href="#calibration" title="Permanent link">&para;</a></h2>
+<h3 id="calibration-vs-verification">Calibration vs. Verification<a class="headerlink" href="#calibration-vs-verification" title="Permanent link">&para;</a></h3>
+<p>The next step is to begin calibration runs. Much of the literature refers to this step as calibration and verification, in which model coefficients are adjusted to match an observed data set (calibration) and then the model is run on another "independent" data set without adjusting model coefficients to see if the model reproduces observed data in the prototype (verification, or variously called confirmation, validation, or substantiation).</p>
+<p>This separation is artificial. If a model does not reproduce observed data (and, more importantly, trends in data) for the "verification" data, then any good modeler will adjust coefficients, review model assumptions, include new processes, or collect additional data to adequately match both sets of data. Often, application to additional sets of data improves the fit to the first.</p>
+<p>The artificiality of this concept has led to applications in which modelers have used May, June, and July data for "calibration" and August, September, and October data of the same year for "verification" so they can state the model has been "calibrated/verified."</p>
+<p>Consider the following summary of observed data:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Flow</th>
+<th>Stratification</th>
+<th>Fall algal bloom</th>
+<th>Minimum dissolved oxygen (DO) at dam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1989</td>
+<td>high</td>
+<td>weak</td>
+<td>yes</td>
+<td>0 ppm</td>
+</tr>
+<tr>
+<td>1990</td>
+<td>low</td>
+<td>strong</td>
+<td>no</td>
+<td>3 ppm</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>average</td>
+<td>medium</td>
+<td>yes</td>
+<td>1 ppm</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>average</td>
+<td>medium</td>
+<td>yes</td>
+<td>1 ppm</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>low</td>
+<td>strong</td>
+<td>yes</td>
+<td>1 ppm</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>high</td>
+<td>weak</td>
+<td>no</td>
+<td>3 ppm</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the currently accepted definition of calibration/verification, which of the years should be chosen for calibration and which should be chosen for verification? A case could be made for 1989 for calibration and 1994 for verification because of a fall phytoplankton bloom in 1989 and its absence in 1994. Additionally, the minimum dissolved oxygen at the dam was different between the years. However, both years were years of high flow, so using them would not test the model's ability to reproduce prototype behavior under different flow regimes.</p>
+<p>The correct answer is to model all the years continuously. Modeling them continuously eliminates separate calibration and verification years or data sets. If the model reproduces the wide variation in prototype behavior between all the years, a lot more confidence can be placed in the model's ability to reproduce prototype behavior for the correct reasons.</p>
+<p>Consider another example:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Dominant algae</th>
+<th>Flow</th>
+<th>Minimum DO at dam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1979</td>
+<td>diatoms</td>
+<td>average</td>
+<td>5 ppm</td>
+</tr>
+<tr>
+<td>1986</td>
+<td>greens</td>
+<td>average</td>
+<td>3 ppm</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>bluegreens</td>
+<td>average</td>
+<td>0 ppm</td>
+</tr>
+</tbody>
+</table>
+<p>Again, the best approach would be to model all three years, but since data do not exist for all the intervening years from 1979 to 1994, the simulation could not be continuous. An analysis of the data indicates a clear progression of eutrophication from 1979 to 1994 based on phytoplankton progression and increasing hypoxia.</p>
+<p>According to the current concept of "calibration/verification," all kinetic coefficients should be the same for all simulation years. However, the different dominant phytoplankton groups will have different growth, mortality, respiration, excretion, and settling rates and different light and nutrient growth rate half-saturation constants between the years. Keeping these values constant between calibration years would be inappropriate if only modeling one algae group. With multiple algae groups this would be a good test of the model's ability to model algal succession.</p>
+<p>Additionally, the sediment oxygen demand has clearly changed because of eutrophication, so the values used in the zero-order sediment compartment should be different for the three years if the modeler only used the zero-order model. This highlights a weakness of this approach since it does not change over time. The model can use the first-order and sediment diagenesis models which overcome this limitation.</p>
+<p>These two examples illustrate that all years should be considered calibration years and rate coefficients in some cases should change between different calibration data sets if the prototype is to be represented accurately.</p>
+<h3 id="post-audits">Post Audits<a class="headerlink" href="#post-audits" title="Permanent link">&para;</a></h3>
+<p>Post audits are recommended whenever management changes are made as a result of modeling studies. A post audit involves making the management changes and then collecting data to see if the hoped-for changes in prototype behavior based on model guidance have taken place. If the hoped-for changes occur, then a great deal of confidence can be placed in the model's simulation capabilities.</p>
+<p>However, if the changes in water quality, such as an improvement in minimum DO or extent of hypoxia, do not occur, one cannot conclude that the model is inadequate. No model can be used to predict the future. A model can only be used to determine what might have occurred if a particular set of boundary forcing functions were to occur in the prototype.</p>
+<p>For example, hypoxia in Chesapeake Bay is a result of not only nutrient and organic matter loading, but also the degree of stratification that inhibits vertical mixing and reaeration. The degree of stratification is in large part a function of freshwater inflow. Suppose a model of the Bay "predicted" that a 40% nitrogen loading reduction decreased the areal extent of hypoxia by 20%. Based on this result, loadings were then reduced by 40% for five years and hypoxia did not decrease but actually increased during this time period.</p>
+<p>Since the exact opposite occurred from what the model predicted, the modeling study cannot be concluded to be a failure. If the model results assume average freshwater river inflows and the five years after implementing loading reductions were high flow years, which increased the extent of hypoxia compared to an average flow year due strictly to physical effects, then the conclusions based on the model study were erroneous.</p>
+<p>The only way to determine if the conclusions were erroneous would be to model the five years using observed boundary conditions for this period and see if the model reproduced the observed increase rather than decrease in hypoxia. If a post audit yielded water quality different from expected water quality based on model results, this has no reflection on a given model's ability to reproduce water quality in the prototype. Models cannot be used to predict the future, only what might have been.</p>
+<div class="admonition tip">
+<p class="admonition-title">Calibrate Against Multiple Data Sets</p>
+<p>Ideally, calibration should involve multiple data sets encompassing as many variations and extremes as possible in the prototype. A model's ability to reproduce prototype behavior under a variety of conditions gives the modeler more confidence in the model's ability to accurately simulate the prototype under proposed conditions. A theory is continuously tested against <em>all</em> observed data, and, if it does not match the data, then the theory should either be modified or a new one developed that more closely agrees with observed data.</p>
+</div>
+<h3 id="model-data-comparison">Model Data Comparison<a class="headerlink" href="#model-data-comparison" title="Permanent link">&para;</a></h3>
+<p>The model produces the following output files for displaying results:</p>
+<ol>
+<li><strong>Profile file</strong> <strong>[PRFFN]</strong> - Used to plot observed versus predicted vertical profiles for temperature and constituents at a given segment. It is rarely used for this purpose now. See the spreadsheet output file instead for plotting profile data.</li>
+<li><strong>Time series file</strong> <strong>[TSRFN]</strong> - Used to plot time histories of water surface elevations, flows, temperatures, and constituent concentrations for user-specified computational cells. This file also contains information to plot the time history of the variable timestep and average timestep.</li>
+<li><strong>Contour plot file</strong> <strong>[CPLFN]</strong> - Used to plot contours of temperature and constituents along the waterbody length.</li>
+<li><strong>Vector plot file</strong> <strong>[VPLFN]</strong> - Used to plot velocity vectors determined from horizontal and vertical velocities in model versions up to and including Version 3.6. Since Version 3.7, this file is used by the W2Tools post-processor to output all information of a model run to produce contours, profiles, velocity vectors, time series, contour animations, and model-data comparisons.</li>
+<li><strong>Spreadsheet file</strong> <strong>[SPRFN]</strong> - Similar to the profile output except the output is suitable for importing into a spreadsheet-type database for subsequent plotting.</li>
+<li><strong>Withdrawal output files</strong> <strong>[WDOFN]</strong> - For each water withdrawal, the model outputs the flow, temperature, and concentration over time.</li>
+</ol>
+<!-- TODO: Add link to Part 3 for output file descriptions -->
+
+<p>A description of the output from each file and how to use the information is given in Part 3 of the User Manual. This is most often done using the spreadsheet output file and time series output file and developing macros to process the data.</p>
+<h3 id="calibration-philosophy">Calibration Philosophy<a class="headerlink" href="#calibration-philosophy" title="Permanent link">&para;</a></h3>
+<p>Calibration is an iterative process whereby model coefficients are adjusted until an adequate fit of observed versus predicted data is obtained. There are no hard and fast guidelines for determining when an adequate fit is obtained. The user must continually ask: "Is the model giving useful results based on model formulations, assumptions and input data?" If it is not, then the user must determine if the inability of the model to produce useful results is due to:</p>
+<ul>
+<li>Inappropriate use of the model (e.g., hydrostatic approximation is invalid, one phytoplankton group is not sufficient)</li>
+<li>Inappropriate wind speed function for evaporation</li>
+<li>Insufficient model formulations to describe known prototype behavior</li>
+<li>Insufficient input data to describe the system dynamics</li>
+</ul>
+<p>Another important point is that a model may give inadequate results for a given spatial and/or temporal scale, but at another scale may reasonably represent the dynamics of the prototype. For example, the model may fail to predict a short-term phytoplankton bloom using monthly inflowing phytoplankton and nutrient concentrations but may adequately represent phytoplankton production over the summer stratification period. It is not always necessary for model output to match all of the observed data for the model to provide meaningful results.</p>
+<h3 id="calibration-sequence">Calibration Sequence<a class="headerlink" href="#calibration-sequence" title="Permanent link">&para;</a></h3>
+<p>The usual sequence for calibration is to:</p>
+<ol>
+<li>First calibrate the water budget (or water surface elevation).</li>
+<li>Then calibrate temperature (preferably salinity for estuarine applications).</li>
+<li>Finally calibrate water quality.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Water quality calibration can affect temperature/salinity calibration. Keep this in mind throughout the calibration process.</p>
+</div>
+<p>Calibration is separated into different sections for river, lake/reservoir, and estuarine applications.</p>
+<h2 id="lakereservoir">Lake/Reservoir<a class="headerlink" href="#lakereservoir" title="Permanent link">&para;</a></h2>
+<h3 id="water-budget">Water Budget<a class="headerlink" href="#water-budget" title="Permanent link">&para;</a></h3>
+<p>The water budget is checked by comparing predicted elevations with observed elevations. Errors in the water budget are generated by the following:</p>
+<ol>
+<li>
+<p><strong>Incorrect bathymetry.</strong> Carefully check the volume-area-elevation table produced by the model to ensure it closely matches the project volume-area-elevation table. If it does not, check the bathymetry for errors. In some cases, additional sediment range surveys may be necessary to adequately define the bathymetry. It may also be necessary to include branches that were not included in the initial bathymetry. Development of the original volume-area-elevation table was subject to the same errors used in developing the volume-area-elevation table for the application. In some applications, the new volume-area-elevation table was deemed more accurate than the original.</p>
+</li>
+<li>
+<p><strong>Storm events.</strong> Errors in the water budget due to storm events can be determined by comparing predicted with observed elevations using output from the time series plots. If the error is generated during storm events, check to see if precipitation must be included and/or if more tributaries need to be included than were originally specified. The user may need to use a hydrologic model to determine inflows during storm events for ungaged tributaries. An alternative method is to apportion inflows for ungaged tributaries based on their watershed areas.</p>
+</li>
+<li>
+<p><strong>Incomplete inflow data.</strong> A substantial amount of inflow is often unaccounted for when using gauged inflows. The unaccounted inflows can include minor tributary, precipitation, stormwater, and wastewater treatment plant contributions. The distributed tributary option provides the user with a means to account for these contributions. This option distributes inflows into every branch segment weighted by the segment surface area.</p>
+</li>
+<li>
+<p><strong>Evaporation.</strong> If evaporation in the region is significant and is not accounted for in inflows, then it should be included using the evaporation option <strong>[EVC]</strong>.</p>
+</li>
+<li>
+<p><strong>Seepage.</strong> Seepage gains or losses can be significant for some waterbodies. The model user can specify a withdrawal or a low-level structure to simulate seepage losses at a dam face. Several applications required specifying seepage losses through the dam to properly calibrate temperature.</p>
+</li>
+<li>
+<p><strong>Inaccurate inflow/outflow measurements.</strong> Gauged inflows and reservoir outflows are notoriously inaccurate with typical measurement errors of 5--10%. The model is very sensitive to inflow/outflow error measurements that can result in significant errors in water level predictions.</p>
+</li>
+</ol>
+<p>Typically, the user will first plot observed versus predicted water surface elevations for the simulation period after all the inflow/outflow data have been collected and the model is running to completion. The latest version contains a program for computing reservoir water balances that will initially compute the additional flows necessary for reproducing observed water surface elevations, but it will not normally generate a perfect water balance. The computed flows can then be manually adjusted to more closely match observed water surface elevations.</p>
+<p>Normally, the computed flows are initially incorporated in the model with the distributed tributary option with interpolation turned off so that the model sees the flows as a step function since this is how the flow is computed by the utility. Using this option, the flows necessary to compute the water balance are distributed into the surface layer weighted according to segment surface area.</p>
+<div class="admonition tip">
+<p class="admonition-title">Analyze Computed Flows</p>
+<p>Keep in mind that this method only provides the necessary flows to complete the water balance. The user must decide how to incorporate them into the model in a realistic fashion as the method of incorporation can have a large impact on temperature and water quality calibration. The recommended procedure is to first plot and analyze the computed flows to see if they provide any information as to the source of the error.</p>
+</div>
+<p>For example, if the majority of the computed flows are negative and the inflows are deemed accurate, then this would indicate that the outflow has been underestimated. It could be due to seepage into groundwater or seepage through the dam. If the hypolimnetic temperatures were also being underpredicted, which would indicate that the hypolimnetic residence time was being overpredicted, then incorporating the computed flows into an additional outflow could solve both problems at once. Various methods of incorporating the computed flows during temperature and water quality calibration should be tried to determine if they have an effect on temperature or water quality. Whichever method improves the calibration is the method to use.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Allatoona Reservoir computed (lines) vs. observed (symbols) water surface elevations for 1992, 1993, 1996, and 1997.](../assets/images/part4/fig38_allatoona_wse.png){ width="700" } -->
+<!--   <figcaption>Figure 38. Allatoona Reservoir computed (lines) vs. observed (symbols) water surface elevations for 1992, 1993, 1996, and 1997.</figcaption> -->
+<!-- </figure> -->
+
+<h3 id="hydrodynamics-and-temperature">Hydrodynamics and Temperature<a class="headerlink" href="#hydrodynamics-and-temperature" title="Permanent link">&para;</a></h3>
+<p>The earliest one-dimensional mechanistic reservoir models included only temperature. As a result, temperature was the only model prediction that could be used for hydrodynamic calibration. Since temperature is affected by surface and bottom heat exchange and is therefore nonconservative, it is not the best parameter for calibrating hydrodynamics. Salinity, which is conservative, has historically been considered the ideal constituent for hydrodynamic calibration. However, this is generally feasible only for estuarine applications where salinity is routinely monitored. Dissolved solids are not conservative and are generally <em>not</em> a good substitute for salinity during calibration except in waterbodies where the conservative assumption is appropriate.</p>
+<p>In reality, there is no "ideal" constituent that should be used for hydrodynamic calibration. Each constituent can contribute knowledge about the system and can have an impact on the hydrodynamic calibration.</p>
+<p>Experience has shown that dissolved oxygen and phytoplankton are often much better indicators of proper hydrodynamic calibration than either temperature or salinity. There are several reasons for this:</p>
+<ul>
+<li>Gradients in dissolved oxygen and phytoplankton are often present at different locations in the water column than either temperature or salinity gradients. Consequently, they can provide additional information as to the correctness of the hydrodynamic calibration beyond either temperature and/or salinity alone.</li>
+<li>Dissolved oxygen is much more dynamic than either temperature or salinity and readily responds to wind events including seiching, with the anoxic zone often moving several kilometers over a day in response to the hydrodynamics.</li>
+<li>Phytoplankton distributions are also affected by the hydrodynamics.</li>
+</ul>
+<p>Further discussion and examples will be presented in the section on water quality calibration. Nevertheless, temperature and/or salinity should always be the first step during hydrodynamic calibration, with the hydrodynamic calibration further refined during water quality calibration.</p>
+<p>Computed velocities can be compared with velocity and flow measurements obtained from an acoustic Doppler current profiler (ADCP) to additionally evaluate the model's hydrodynamic performance. However, care must be taken when comparing model velocities with observed velocities to ensure ADCP measurements are comparable to the laterally averaged velocities generated by the model.</p>
+<h4 id="coefficients-affecting-temperature">Coefficients Affecting Temperature<a class="headerlink" href="#coefficients-affecting-temperature" title="Permanent link">&para;</a></h4>
+<p>Coefficients affecting temperature and their default values are given in the following table. The eddy viscosities, Chezy coefficient, and wind-sheltering coefficient directly affect hydrodynamics that affect heat and constituent transport. The remaining coefficients directly affect temperature that affects hydrodynamics. Of these, the last two coefficients affect temperature only if constituents are modeled.</p>
+<!-- TODO: Add link to Part 3 for more detailed description of these coefficients -->
+
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>FORTRAN Name</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longitudinal eddy viscosity</td>
+<td><code>[AX]</code></td>
+<td>1 m² s⁻¹</td>
+</tr>
+<tr>
+<td>Longitudinal eddy diffusivity</td>
+<td><code>[DX]</code></td>
+<td>1 m² s⁻¹</td>
+</tr>
+<tr>
+<td>Chezy coefficient or Manning's n</td>
+<td><code>[FRICT]</code></td>
+<td>70 m² s⁻¹ or 0.035</td>
+</tr>
+<tr>
+<td>Wind-sheltering coefficient</td>
+<td><code>[WSC]</code></td>
+<td>Calibration parameter</td>
+</tr>
+<tr>
+<td>Solar radiation absorbed in surface layer</td>
+<td><code>[BETA]</code></td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>Extinction coefficient for pure water</td>
+<td><code>[EXH2O]</code></td>
+<td>0.45 m⁻¹</td>
+</tr>
+<tr>
+<td>Extinction coefficient for inorganic solids</td>
+<td><code>[EXINOR]</code></td>
+<td>0.01 m⁻¹</td>
+</tr>
+<tr>
+<td>Extinction coefficient for organic solids</td>
+<td><code>[EXORG]</code></td>
+<td>0.2 m⁻¹</td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the above coefficients, temperature predictions are also affected by the surface heat exchange algorithm specified, mainstem and tributary inflows, inflow temperatures and their placement, outlet and withdrawal specifications, the numerical solution scheme, and bathymetric and meteorological data. Always represent the prototype as accurately as possible.</p>
+<p>Applications on over 400 waterbodies under a wide variety of conditions have shown the model generates remarkably accurate temperature predictions using default values when provided accurate geometry and boundary conditions. The wind-sheltering coefficient <strong>[WSC]</strong> has the most effect on temperature during calibration and should be adjusted first. Previous applications varied the wind-sheltering coefficient from 0.5--0.9 for mountainous and/or dense vegetative canopy and 1.0 for open terrain. In a very few cases, the wind-sheltering coefficient <strong>[WSC]</strong> has been increased above 1.0 to account for funneling effects on systems with steep banks (or when measured wind data do not reflect the wind field on the lake). The user should also run sensitivity analyses on the other coefficients to gain a "feel" for how they affect temperature predictions.</p>
+<h4 id="calibration-problems">Calibration Problems<a class="headerlink" href="#calibration-problems" title="Permanent link">&para;</a></h4>
+<p>Difficulties during temperature calibration can often be traced to the following:</p>
+<ol>
+<li>
+<p><strong>Inflows and inflow temperatures.</strong> Accurate inflows and inflow temperatures are desirable for all applications, but they are critical for waterbodies with short residence times or during high inflow periods. Temperature calibration will be difficult using monthly inflow temperatures for a waterbody with a one-week residence time. Methods exist for generating more frequent inflow temperatures based on flow and meteorological data (Ford and Stein, 1986), but there is no substitute for actual measurements.</p>
+</li>
+<li>
+<p><strong>Meteorological data.</strong> Many difficulties are associated with extrapolating weather station meteorological data to a waterbody site. Weather stations are typically located in different terrain and at large distances from the prototype. Frontal movements can occur at different times over the waterbody and meteorological station, resulting in model predictions that are in closer agreement either earlier or later than the actual comparison date.</p>
+<p>Methods for addressing these problems include adjustment of the wind-sheltering coefficient <strong>[WSC]</strong>, use of an alternative meteorological station, averaging data from several meteorological stations, separating a waterbody into regions applying data from different meteorological stations, and comparison of observed data using model output either before or after the observed date. If the user has the opportunity to obtain calibration data before applying the model, portable weather stations can be deployed on the waterbody. This is the preferred method.</p>
+</li>
+<li>
+<p><strong>Outflow data.</strong> The addition of the selective withdrawal algorithm in Version 2.0 has reduced many of the previous problems of accurately representing outflows. However, problems still arise. In the application of CE-QUAL-W2 to Bluestone Reservoir, Tillman and Cole (1994) were unable to reproduce observed temperature stratification without limiting the lower withdrawal layer. Subsequent investigation showed that withdrawal was limited by trash accumulation that effectively acted as a submerged weir. This was a problem generated by inadequate knowledge of the prototype and not a problem with the model. Indeed, this is an example of a model giving insight into the behavior of the prototype.</p>
+</li>
+<li>
+<p><strong>Bathymetry.</strong> Several previous applications of the model encountered difficulties during temperature calibration until the bathymetry was revisited. Check the assumptions made during the development of the bathymetry to ensure they are not the source of the problem. Starting points include grid resolution that affects the model's ability to define sharp thermal gradients and bottom slope, volume-area-elevation accuracy that can have a marked effect on hypolimnetic temperatures since the volumes are generally small near the bottom, and water surface areas that affect the area available for surface heat exchange. Branch definition has also been found to have an effect on temperature predictions.</p>
+</li>
+</ol>
+<h4 id="reservoir-temperature-calibration-results">Reservoir Temperature Calibration Results<a class="headerlink" href="#reservoir-temperature-calibration-results" title="Permanent link">&para;</a></h4>
+<p>To illustrate the accuracy of reservoir temperature modeling with CE-QUAL-W2, the following table lists calibration results for 70 reservoir thermal simulations. The statistic presented is the absolute mean error (AME) computed as:</p>
+<div class="arithmatex">\[AME = \frac{\sum |Predicted - Observed|}{number\ of\ observations}\]</div>
+<p>Although a number of other statistics have been used when evaluating model results, the AME provides the best indication of model performance since it is directly interpretable. For example, an AME of 0.5 °C means that the model results are, on the average, within 0.5 °C of the observed data. Model predictions for all the reservoirs are within 1 °C, and most are considerably less.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Reservoir</th>
+<th>Years</th>
+<th>AME, °C</th>
+<th></th>
+<th>#</th>
+<th>Reservoir</th>
+<th>Years</th>
+<th>AME, °C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Allatoona</td>
+<td>4</td>
+<td>0.6</td>
+<td></td>
+<td>36</td>
+<td>Monroe</td>
+<td>4</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Alum Creek</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>37</td>
+<td>Neely Henry</td>
+<td>2</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Barklay</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>38</td>
+<td>Neversink</td>
+<td>3</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bluestone</td>
+<td>2</td>
+<td>0.5</td>
+<td></td>
+<td>39</td>
+<td>Norman</td>
+<td>3</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Brownlee</td>
+<td>2</td>
+<td>0.6</td>
+<td></td>
+<td>40</td>
+<td>Oxbow</td>
+<td>1</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bull Run 1</td>
+<td>2</td>
+<td>0.5</td>
+<td></td>
+<td>41</td>
+<td>Oahe</td>
+<td>2</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Bull Run 2</td>
+<td>2</td>
+<td>0.7</td>
+<td></td>
+<td>42</td>
+<td>Occoquan</td>
+<td>1</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Burnsville</td>
+<td>1</td>
+<td>0.9</td>
+<td></td>
+<td>43</td>
+<td>Paint Creek</td>
+<td>1</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Caesar Creek</td>
+<td>1</td>
+<td>0.6</td>
+<td></td>
+<td>44</td>
+<td>Paintsville</td>
+<td>1</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Cannonsville</td>
+<td>5</td>
+<td>0.7</td>
+<td></td>
+<td>45</td>
+<td>Patoka</td>
+<td>3</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Cave Run</td>
+<td>4</td>
+<td>0.8</td>
+<td></td>
+<td>46</td>
+<td>Pepacton</td>
+<td>3</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>C.J. Strike</td>
+<td>2</td>
+<td>0.7</td>
+<td></td>
+<td>47</td>
+<td>Pineflat</td>
+<td>5</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Croton</td>
+<td>1</td>
+<td>0.7</td>
+<td></td>
+<td>48</td>
+<td>Powell</td>
+<td>1</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Cumberland</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>49</td>
+<td>J. Percy Priest</td>
+<td>3</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Deer Creek, OH</td>
+<td>1</td>
+<td>0.4</td>
+<td></td>
+<td>50</td>
+<td>Quabbin</td>
+<td>1</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Deer Creek, ID</td>
+<td>5</td>
+<td>0.8</td>
+<td></td>
+<td>51</td>
+<td>Richard B. Russell</td>
+<td>3</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>17</td>
+<td>DeGray</td>
+<td>8</td>
+<td>0.9</td>
+<td></td>
+<td>52</td>
+<td>Rhodiss</td>
+<td>2</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Fishtrap</td>
+<td>1</td>
+<td>0.8</td>
+<td></td>
+<td>53</td>
+<td>Riffe</td>
+<td>1</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Fort Peck</td>
+<td>2</td>
+<td>0.7</td>
+<td></td>
+<td>54</td>
+<td>Rimov</td>
+<td>1</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Francis Case</td>
+<td>2</td>
+<td>0.7</td>
+<td></td>
+<td>55</td>
+<td>Rondout</td>
+<td>3</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Herrington</td>
+<td>1</td>
+<td>0.7</td>
+<td></td>
+<td>56</td>
+<td>Sakakawea</td>
+<td>2</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Hickory</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>57</td>
+<td>Schoharie</td>
+<td>2</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>23</td>
+<td>J.W. Flanagan</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>58</td>
+<td>Shasta</td>
+<td>1</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Jordanelle</td>
+<td>3</td>
+<td>0.7</td>
+<td></td>
+<td>59</td>
+<td>Shepaug</td>
+<td>1</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>25</td>
+<td>J. Strom Thurmond</td>
+<td>5</td>
+<td>0.9</td>
+<td></td>
+<td>60</td>
+<td>Stonewall Jackson</td>
+<td>2</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>26</td>
+<td>James</td>
+<td>1</td>
+<td>0.6</td>
+<td></td>
+<td>61</td>
+<td>Toledo Bend</td>
+<td>1</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Houston</td>
+<td>6</td>
+<td>0.5</td>
+<td></td>
+<td>62</td>
+<td>Taylorsville</td>
+<td>2</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Lanier</td>
+<td>2</td>
+<td>0.9</td>
+<td></td>
+<td>63</td>
+<td>Tolt</td>
+<td>1</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Loch Raven</td>
+<td>1</td>
+<td>0.9</td>
+<td></td>
+<td>64</td>
+<td>Travis</td>
+<td>1</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Long Lake</td>
+<td>1</td>
+<td>0.5</td>
+<td></td>
+<td>65</td>
+<td>Wabush</td>
+<td>1</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Lost Creek</td>
+<td>1</td>
+<td>0.6</td>
+<td></td>
+<td>66</td>
+<td>Wachusett</td>
+<td>4</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Maumelle</td>
+<td>2</td>
+<td>0.7</td>
+<td></td>
+<td>67</td>
+<td>Weiss</td>
+<td>2</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Mayfield</td>
+<td>1</td>
+<td>0.6</td>
+<td></td>
+<td>68</td>
+<td>West Point</td>
+<td>3</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Moehnetalsperre</td>
+<td>1</td>
+<td>0.4</td>
+<td></td>
+<td>69</td>
+<td>Walter F. George</td>
+<td>2</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Mountain Island</td>
+<td>1</td>
+<td>0.7</td>
+<td></td>
+<td>70</td>
+<td>Youghiogheny</td>
+<td>2</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<p>The following examples illustrate CE-QUAL-W2's ability to reproduce observed temperatures on a variety of systems with widely varying temperature regimes. On all plots, x's represent observed data and their widths are scaled to represent +/- 0.5 °C. The dotted lines represent computed model values. The AME and root mean square error (RMS) are also included for each date to help interpret the predictive capability of the model.</p>
+<p>These statistics should always be included in plots of computed versus observed data since plots can often be misleading depending upon the scale of the x and y axes and the size of the marker used to represent the observed data.</p>
+<h4 id="pineflat-reservoir">Pineflat Reservoir<a class="headerlink" href="#pineflat-reservoir" title="Permanent link">&para;</a></h4>
+<p>Pineflat Reservoir is located in California near the base of the Sierra Madre mountain range. One of its primary uses is for providing irrigation water during the summer growing season. Consequently, the reservoir is drawn down as much as 70 m over the summer during drought years. The model was used to provide operational guidance for a temperature control device that will be installed in the reservoir to optimize the storage of cold water for downstream releases at the end of summer.</p>
+<p>Results for 1989 show that the thermal regime exhibits two thermoclines starting in early spring. The reservoir was drawn down over 40 m during the summer. During 1993, the development of the two thermoclines was delayed until the end of summer. CE-QUAL-W2 correctly captured the thermal regimes for both years and the differences in the thermal regimes between the two years.</p>
+<p>Sensitivity analyses showed that temperature predictions were very sensitive to inflow temperatures. Calibration consisted of adjusting inflow temperatures to more closely match in-pool temperature profiles. Because calibration showed the importance of accurate inflow temperatures, additional fieldwork was done to obtain accurate inflow temperatures.</p>
+<p>During this effort, it was discovered that the location where inflow temperatures were taken showed a lateral variation in the river of over 5 °C due to hypolimnetic discharges from an upstream reservoir that did not completely mix laterally. Additionally, during extreme drawdown, inflow temperatures increased by nearly 2 °C from measured temperatures as the upstream boundary of the model moved downstream approximately 10 km due to the large drawdowns.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1989 Pineflat Reservoir computed versus observed temperatures.](../assets/images/part4/fig39_pineflat_1989.png){ width="700" } -->
+<!--   <figcaption>Figure 39. 1989 Pineflat Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1993 Pineflat Reservoir computed versus observed temperatures.](../assets/images/part4/fig40_pineflat_1993.png){ width="700" } -->
+<!--   <figcaption>Figure 40. 1993 Pineflat Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="bluestone-reservoir">Bluestone Reservoir<a class="headerlink" href="#bluestone-reservoir" title="Permanent link">&para;</a></h4>
+<p>Bluestone Reservoir is located in the mountains of West Virginia. The reservoir has an average hydraulic retention time of less than a week during the summer. When first calibrating for temperature, the model predicted essentially no thermal stratification during the summer whereas the observed data showed strong stratification beginning at a depth of about eight meters. Based on the short residence time during the summer, model predictions seemed quite reasonable. However, stratification was present in both 1981 and 1983 indicating that stratification was not a rare occurrence.</p>
+<p>A number of mechanisms were proposed to explain the observed stratification including groundwater seepage and extreme wind sheltering. Including these in the model did not result in any improvements in model predictions. Finally, the lower limit of selective withdrawal was set at the depth corresponding to the outlet elevation. Subsequent investigations at the reservoir revealed that accumulated debris at the level of the trash racks was acting like a submerged weir that limited the bottom of the withdrawal zone to the elevation of the trash racks. This is an example of a model providing insight into previously unknown behavior of the prototype.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1981 Bluestone Reservoir computed versus observed temperatures.](../assets/images/part4/fig41_bluestone_1981.png){ width="700" } -->
+<!--   <figcaption>Figure 41. 1981 Bluestone Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1983 Bluestone Reservoir computed versus observed temperatures.](../assets/images/part4/fig42_bluestone_1983.png){ width="700" } -->
+<!--   <figcaption>Figure 42. 1983 Bluestone Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="richard-b-russell-reservoir">Richard B. Russell Reservoir<a class="headerlink" href="#richard-b-russell-reservoir" title="Permanent link">&para;</a></h4>
+<p>Richard B. Russell (RBR) Reservoir is located immediately upstream of J. Strom Thurmond Reservoir (JST) on the Savannah River bordering Georgia and South Carolina. The model was used to investigate the effects of proposed pump-storage operations in which water would be pumped into RBR from JST and reused for hydropower operations during peak energy demands. An important concern was what effect pump-storage operations would have on the thermal regime in RBR. The model was subsequently applied to 1996, a year in which extensive pump-storage operations occurred. In order to simulate the effects of pump-storage, the model code was altered to allow dynamic linkage of RBR and JST reservoirs.</p>
+<p>This was a stringent test of the model's simulation capabilities because the dynamic linkage required accurate temperature simulations in RBR to provide accurate inflow temperatures to JST. Likewise, accurate temperature predictions were required in JST to provide accurate temperatures entering RBR during pumpback.</p>
+<p>The model correctly predicted the approximately 4 °C increase in hypolimnetic temperatures compared to previous years that did not have pump-storage operations. No calibration was involved for this simulation. Results are from the first run of the model for 1996 using default hydrodynamic/temperature calibration parameters and a wind-sheltering coefficient determined from calibration to two previous years that did not include pump-storage operations.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1988 Richard B. Russell computed versus observed temperatures.](../assets/images/part4/fig43_rbr_1988.png){ width="700" } -->
+<!--   <figcaption>Figure 43. 1988 Richard B. Russell computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1994 Richard B. Russell computed versus observed temperatures.](../assets/images/part4/fig44_rbr_1994.png){ width="700" } -->
+<!--   <figcaption>Figure 44. 1994 Richard B. Russell computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1996 Richard B. Russell computed versus observed temperatures.](../assets/images/part4/fig45_rbr_1996.png){ width="700" } -->
+<!--   <figcaption>Figure 45. 1996 Richard B. Russell computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="paintsville-reservoir">Paintsville Reservoir<a class="headerlink" href="#paintsville-reservoir" title="Permanent link">&para;</a></h4>
+<p>Paintsville Reservoir is a US Army Corps of Engineers reservoir located in Kentucky. The reservoir's thermal regime is typical of deep-storage reservoirs with hydraulic retention times greater than four months. The model illustrates the ability to reproduce the springtime development of the thermocline, the strong thermocline present in late summer, and fall overturn.</p>
+<p>During initial calibration, the model consistently overpredicted hypolimnetic temperatures. No parameter adjustment (wind-sheltering or light absorption/extinction) resulted in an acceptable calibration. Realizing that hypolimnetic temperatures are influenced by residence time, a sensitivity analysis was performed in which the widths were increased uniformly (thus increasing hypolimnetic residence time) until the predicted hypolimnetic temperatures matched the observed temperatures. Subsequently, it was determined that the original development of the bathymetry did not include two branches that accounted for approximately 15% of the storage in the reservoir. In this case, calibration consisted of ensuring that the volume-elevation relationship was accurately described.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Paintsville Reservoir computed versus observed temperatures.](../assets/images/part4/fig46_paintsville.png){ width="700" } -->
+<!--   <figcaption>Figure 46. Paintsville Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="brownlee-reservoir">Brownlee Reservoir<a class="headerlink" href="#brownlee-reservoir" title="Permanent link">&para;</a></h4>
+<p>Brownlee Reservoir is located on the Snake River in Idaho and is operated by Idaho Power. Brownlee's thermal regime is very distinctive with the thermocline starting at approximately 30 m below the water surface.</p>
+<p>During initial temperature calibration, the model predicted hypolimnetic temperatures greater than 15 °C, whereas the observed temperatures were always near 5 °C. No parameter adjustment allowed for adequate temperature calibration. An analysis of the system showed that the theoretical residence time during the summer was less than two months indicating that model predictions of warmer hypolimnetic temperatures were more reasonable than the observed data.</p>
+<p>Additionally, the thermal structure in Brownlee exhibits a well-mixed epilimnion approximately 30 m in depth. Wind mixing could not supply sufficient energy to account for the depth of the epilimnion. Therefore, it was concluded that outflow dynamics had to be responsible for the observed thermal regime. As in the Bluestone application, the bottom layer for selective withdrawal was set at approximately the same depth as the thermocline. Subsequent investigations revealed the presence of a ledge below the outlet that was limiting the outflow to the level of the observed thermocline.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1992 Brownlee Reservoir computed versus observed temperatures.](../assets/images/part4/fig47_brownlee_1992.png){ width="700" } -->
+<!--   <figcaption>Figure 47. 1992 Brownlee Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1995 Brownlee Reservoir computed versus observed temperatures.](../assets/images/part4/fig48_brownlee_1995.png){ width="700" } -->
+<!--   <figcaption>Figure 48. 1995 Brownlee Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="cj-strike-reservoir">C.J. Strike Reservoir<a class="headerlink" href="#cj-strike-reservoir" title="Permanent link">&para;</a></h4>
+<p>C.J. Strike Reservoir is located on the Snake River in Idaho upstream of Brownlee Reservoir and is also operated by Idaho Power. Stratification is not nearly as pronounced as in Brownlee Reservoir due to the smaller volume of C.J. Strike and subsequent shorter residence time.</p>
+<p>As noted in the discussion for Brownlee Reservoir, the relatively short residence time during the summer should result in considerable hypolimnetic heating as cold water is withdrawn and replaced by warmer waters from above. Temperature calibration consisted of adjusting the wind-sheltering coefficient until adequate agreement was obtained between computed and observed temperatures.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![C.J. Strike Reservoir computed versus observed temperatures.](../assets/images/part4/fig49_cjstrike.png){ width="700" } -->
+<!--   <figcaption>Figure 49. C.J. Strike Reservoir computed versus observed temperatures.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="summary-of-temperature-calibration-lessons">Summary of Temperature Calibration Lessons<a class="headerlink" href="#summary-of-temperature-calibration-lessons" title="Permanent link">&para;</a></h4>
+<p>These examples illustrate the model's ability to reproduce complex thermal regimes that differ widely depending upon a particular reservoir's morphometry, location, surrounding terrain, and operations with a minimum of parameter adjustment. The only parameter adjusted was the wind-sheltering coefficient that was used to adjust wind speeds taken at a given meteorological station to the reservoir surface. Values ranged from 0.6 for small reservoirs located in mountainous terrains to 1.0 for large reservoirs located in open terrain.</p>
+<p>The preceding discussion is not meant to imply that the model is "plug and play" and requires no calibration with regards to temperature. Greater discrepancies between computed and observed temperature profiles were always present at the beginning of thermal calibration for all the presented examples.</p>
+<p>Aside from adjustment of wind sheltering, calibration consisted of determining whether known inaccuracies in a given forcing function could be responsible for the discrepancies in the computed temperature profiles and then describing the forcing function more accurately. This procedure included the following:</p>
+<ol>
+<li>Adjustment of volume-elevation relationship to ensure that residence time was accurately represented</li>
+<li>Adjustment of bottom elevation to ensure that computed and observed bottom elevations for the deepest station were at least as deep as the observed data</li>
+<li>Adjustment of inflow temperatures to more closely match temperatures at the most upstream station</li>
+<li>Generation of more frequent inflow temperatures based on equilibrium temperature</li>
+<li>Using more frequent outflow data than daily average values, particularly for peaking hydropower systems</li>
+<li>Ensuring that the outflow distribution for multi-level outlets was accurately described</li>
+<li>Ensuring sufficient longitudinal/vertical grid resolution</li>
+<li>Obtaining more frequent meteorological data than daily average values</li>
+<li>Limiting the bottom zone for selective withdrawal (all instances were eventually physically justified in the prototype)</li>
+<li>Including additional sources of outflow due to dam leakage or seepage to groundwater</li>
+<li>Ensuring multiple branch descriptions were accurately represented</li>
+<li>Using the most accurate numerical scheme (ULTIMATE with <strong>[THETA]</strong> set to 0.55) and including the effects of vertical turbulence <strong>[VISC]</strong> and internal gravity waves <strong>[CELC]</strong> in the autostepping stability requirements</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Key Calibration Principle</p>
+<p>As a result of the numerous thermal applications of the model, an important concept that has emerged is that the more accurately the behavior of the prototype is described, the more accurately the model responds. Always keep this in mind during model calibration.</p>
+</div>
+<h3 id="water-quality">Water Quality<a class="headerlink" href="#water-quality" title="Permanent link">&para;</a></h3>
+<p>The following discussion can serve as a starting point for reservoir water quality calibration. However, each application is different and requires knowledge about prototype behavior and the dominant water quality processes that are occurring in the prototype before ever attempting to model water quality. Black box application of any model is a recipe for failure.</p>
+<h4 id="dissolved-oxygen">Dissolved Oxygen<a class="headerlink" href="#dissolved-oxygen" title="Permanent link">&para;</a></h4>
+<p>Once the user has a good understanding of the dominant water quality processes occurring in the prototype and ensures they are accurately represented in the model, begin DO calibration. The zero-order sediment oxygen demand (SOD) should be used initially as it is essentially a pure calibration parameter that allows for back-calculating the oxygen uptake rate in the water column. If DO profiles in the water column are exactly matched, then the values for SOD used in calibration are very close to the actual uptake rates of DO in the water column.</p>
+<p>The problem with using only the zero-order SOD for water column DO calibration is that the model will not be sensitive to load increases/decreases that directly affect water column DO uptake and sediment nutrient recycling that affect phytoplankton primary production. This is seldom the case, particularly where loadings to the system in the form of allochthonous organic matter (or carbonaceous biochemical oxygen demand, CBOD), autochthonous organic matter due to phytoplankton production, and/or ammonium are important forcing functions for water column DO that are subject to change over time. Unfortunately, for systems where allochthonous loadings of organic matter are important, rarely are there sufficient boundary condition data to adequately represent the loadings to the system.</p>
+<p>Particular care should be paid to the timing and duration of events involving phytoplankton, epiphyton, and DO. If the model does not represent the onset, extent, and duration of anoxic conditions, then nutrient dynamics will not be represented either. They in turn affect phytoplankton production that affects DO.</p>
+<p>Timing of the onset of DO depletion is greatly influenced by the temperature rate multipliers used for organic matter and the sediments. A change in the lower temperature <strong>[OMT1]</strong> of 1 °C in the temperature rate formulation can shift the initial uptake of water column DO by as much as two weeks. The same effect can be obtained by adjusting the value of the multiplier <strong>[OMK1]</strong>. Much of the art in water quality modeling is involved in calibrating phytoplankton/nutrient/DO dynamics.</p>
+<p>The following plots illustrate the model's ability to reproduce widely varying reservoir dissolved oxygen regimes. With the exception of the zero-order SOD rates, all kinetic coefficients were set to their default values thus ensuring that the model was applied with a minimum of "curve fitting." In all likelihood, using the same values for kinetic parameters such as phytoplankton growth and settling rates is not correct. However, the point to be made is that the model is capable of reproducing very different water quality regimes without having to resort to extensive, site-specific parameter manipulations.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Allatoona Reservoir computed vs. observed DO.](../assets/images/part4/fig50_allatoona_do.png){ width="700" } -->
+<!--   <figcaption>Figure 50. Allatoona Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Brownlee Reservoir computed vs. observed DO.](../assets/images/part4/fig51_brownlee_do.png){ width="700" } -->
+<!--   <figcaption>Figure 51. Brownlee Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![C.J. Strike Reservoir computed vs. observed DO.](../assets/images/part4/fig52_cjstrike_do.png){ width="700" } -->
+<!--   <figcaption>Figure 52. C.J. Strike Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![DeGray Reservoir computed vs. observed DO.](../assets/images/part4/fig53_degray_do.png){ width="700" } -->
+<!--   <figcaption>Figure 53. DeGray Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988.](../assets/images/part4/fig54_rbr_do_mar_jun.png){ width="700" } -->
+<!--   <figcaption>Figure 54. Richard B. Russell Reservoir computed vs. observed DO, March through June, 1988.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988.](../assets/images/part4/fig55_rbr_do_jun_oct.png){ width="700" } -->
+<!--   <figcaption>Figure 55. Richard B. Russell Reservoir computed vs. observed DO, June through October, 1988.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![1996 Richard B. Russell computed vs. observed DO.](../assets/images/part4/fig56_rbr_do_1996.png){ width="700" } -->
+<!--   <figcaption>Figure 56. 1996 Richard B. Russell computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Neely Henry Reservoir computed vs. observed DO.](../assets/images/part4/fig57_neelyhenry_do.png){ width="700" } -->
+<!--   <figcaption>Figure 57. Neely Henry Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![J. Strom Thurmond Reservoir computed vs. observed DO.](../assets/images/part4/fig58_thurmond_do.png){ width="700" } -->
+<!--   <figcaption>Figure 58. J. Strom Thurmond Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Monroe Reservoir computed vs. observed DO.](../assets/images/part4/fig59_monroe_do.png){ width="700" } -->
+<!--   <figcaption>Figure 59. Monroe Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed DO.](../assets/images/part4/fig60_rimov_do.png){ width="700" } -->
+<!--   <figcaption>Figure 60. Rimov Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Shepaug Reservoir computed vs. observed DO.](../assets/images/part4/fig61_shepaug_do.png){ width="700" } -->
+<!--   <figcaption>Figure 61. Shepaug Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Shepaug Reservoir computed vs. observed DO (continued).](../assets/images/part4/fig62_shepaug_do2.png){ width="700" } -->
+<!--   <figcaption>Figure 62. Shepaug Reservoir computed vs. observed DO (continued).</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Weiss Reservoir computed vs. observed DO.](../assets/images/part4/fig63_weiss_do.png){ width="700" } -->
+<!--   <figcaption>Figure 63. Weiss Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![West Point Reservoir computed vs. observed DO.](../assets/images/part4/fig64_westpoint_do.png){ width="700" } -->
+<!--   <figcaption>Figure 64. West Point Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Walter F. George Reservoir computed vs. observed DO.](../assets/images/part4/fig65_wfgeorge_do.png){ width="700" } -->
+<!--   <figcaption>Figure 65. Walter F. George Reservoir computed vs. observed DO.</figcaption> -->
+<!-- </figure> -->
+
+<p>As the preceding computed versus observed DO comparisons show, the model has reproduced a wide range of DO regimes with a high degree of accuracy using mostly default kinetic parameters. The largest discrepancies between computed and observed DO occur in the epilimnion during middle to late summer, where the model consistently underpredicts supersaturated DO.</p>
+<p>The problem is that if the model is correctly predicting very low nutrient levels during these times (typically at detection levels), then there are insufficient nutrients in the water column to support the observed levels of primary production indicated by supersaturated conditions. This is a shortcoming of all currently used water quality models and indicates insufficient understanding of phytoplankton/nutrient dynamics in the photic zone.</p>
+<p>Another possible problem during dissolved oxygen calibration is during fall overturn when anoxic hypolimnetic water mixes with epilimnetic water. For the most part, the model reproduces dissolved oxygen fairly well during overturn, but in some applications the model has consistently underpredicted dissolved oxygen and in other applications the model has consistently overpredicted hypolimnetic concentrations.</p>
+<p>There are three possible causes for this behavior:</p>
+<ul>
+<li>The reaeration formula is not appropriate for the waterbody. For reservoirs, the model has accurately reproduced epilimnetic dissolved oxygen concentrations on so many systems that this is probably not the case.</li>
+<li>The volumes of epilimnetic and hypolimnetic volumes are sufficiently off to affect the final mixed dissolved oxygen concentration. Depending upon the direction of the volume error, this can result in either over or underprediction.</li>
+<li>Reduced substances including ammonium (NH₄⁺), iron (Fe²⁺), manganese (Mn²⁺), and sulfides (H₂S) have been released from the sediments in sufficient quantities to exert an appreciable oxygen demand. The model includes only the effect of ammonium on dissolved oxygen. In this case, the code would need to be altered to include their effects on dissolved oxygen.</li>
+</ul>
+<p>All of these scenarios should be investigated if accurate reproduction of dissolved oxygen during fall overturn is important to simulate.</p>
+<h4 id="nutrients">Nutrients<a class="headerlink" href="#nutrients" title="Permanent link">&para;</a></h4>
+<p>Given accurate boundary conditions for phosphorus, ammonium, and iron and accurate simulations of metalimnetic/hypolimnetic dissolved oxygen, hypolimnetic concentrations of these nutrients are relatively easy to reproduce. Again, this is basically a back calculation of the sediment fluxes to match observed hypolimnetic concentrations.</p>
+<p>Epilimnetic concentrations of phosphorus during the growing season are typically at or below detection levels in both the model and the prototype, so they are also relatively easy to reproduce. Fall concentrations can be more complicated, particularly if iron and manganese have built up during the summer in an anoxic hypolimnion. In this case, the iron compartment should be turned on so that iron is released in the hypolimnion. The model includes phosphorus sorption onto iron hydroxides that form during fall overturn and settle into the sediments, thus removing phosphorus from the water column.</p>
+<p>Epilimnetic ammonium and nitrate levels are more difficult to reproduce as some phytoplankton show a preference for ammonium over nitrate and the degree to which they exhibit this preference is different between groups. In addition, water column nitrate undergoes denitrification when the water column goes anoxic and also diffuses into the sediments where it undergoes denitrification in the anaerobic layer under both oxic and anoxic conditions. The ammonium preference factor <strong>[ANPR]</strong>, the water column denitrification rate <strong>[NO3DK]</strong>, and the sediment nitrate uptake rate <strong>[NO3S]</strong> are calibration parameters that can be adjusted to better match observed concentrations of these nutrients.</p>
+<h4 id="phytoplankton">Phytoplankton<a class="headerlink" href="#phytoplankton" title="Permanent link">&para;</a></h4>
+<p>The following plots illustrate the model's ability to reproduce a spring phytoplankton bloom in Rimov Reservoir, Czech Republic. Tremendous amounts of data were collected to analyze the spring bloom. Chlorophyll <em>a</em> samples were taken at 1 m depth intervals over upper 10 m of the water column at six stations approximately every three days for over a month. The plots include six stations along the length of the reservoir starting upstream and progressing towards the dam.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (March 25 and April 2, 1991).](../assets/images/part4/fig66_rimov_phyto1.png){ width="700" } -->
+<!--   <figcaption>Figure 66. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 5 and April 8, 1991).](../assets/images/part4/fig67_rimov_phyto2.png){ width="700" } -->
+<!--   <figcaption>Figure 67. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 12 and April 15, 1991).](../assets/images/part4/fig68_rimov_phyto3.png){ width="700" } -->
+<!--   <figcaption>Figure 68. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 19 and April 22, 1991).](../assets/images/part4/fig69_rimov_phyto4.png){ width="700" } -->
+<!--   <figcaption>Figure 69. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (April 26 and April 29, 1991).](../assets/images/part4/fig70_rimov_phyto5.png){ width="700" } -->
+<!--   <figcaption>Figure 70. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton biomass (May 3 and May 6, 1991).](../assets/images/part4/fig71_rimov_phyto6.png){ width="700" } -->
+<!--   <figcaption>Figure 71. Rimov Reservoir computed vs. observed phytoplankton biomass.</figcaption> -->
+<!-- </figure> -->
+
+<h5 id="sensitivity-to-wind-direction">Sensitivity to Wind Direction<a class="headerlink" href="#sensitivity-to-wind-direction" title="Permanent link">&para;</a></h5>
+<p>The following plots illustrate how important it is to describe the system accurately. The plots show results of the Rimov phytoplankton simulation in which the wind direction was inadvertently changed by 90 degrees. The importance of wind direction and its influence on the spring phytoplankton bloom was noted by limnologists who originally collected the 1991 data. Note the difference at the most downstream station on April 8 compared to the previous plot using the correct wind direction. This also illustrates that the model can be a powerful limnological investigative tool when trying to determine how important different forcing functions are to the limnology of a reservoir.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (March 25 and April 2, 1991).](../assets/images/part4/fig72_rimov_wind1.png){ width="700" } -->
+<!--   <figcaption>Figure 72. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 5 and April 8, 1991).](../assets/images/part4/fig73_rimov_wind2.png){ width="700" } -->
+<!--   <figcaption>Figure 73. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 12 and April 15, 1991).](../assets/images/part4/fig74_rimov_wind3.png){ width="700" } -->
+<!--   <figcaption>Figure 74. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 19 and April 22, 1991).](../assets/images/part4/fig75_rimov_wind4.png){ width="700" } -->
+<!--   <figcaption>Figure 75. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (April 26 and April 29, 1991).](../assets/images/part4/fig76_rimov_wind5.png){ width="700" } -->
+<!--   <figcaption>Figure 76. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees (May 3 and May 6, 1991).](../assets/images/part4/fig77_rimov_wind6.png){ width="700" } -->
+<!--   <figcaption>Figure 77. Rimov Reservoir computed vs. observed phytoplankton with wind rotated 90 degrees.</figcaption> -->
+<!-- </figure> -->
+
+<h5 id="sensitivity-to-inflow-phytoplankton-boundary-conditions">Sensitivity to Inflow Phytoplankton Boundary Conditions<a class="headerlink" href="#sensitivity-to-inflow-phytoplankton-boundary-conditions" title="Permanent link">&para;</a></h5>
+<p>The following plots illustrate the importance of accurate inflow boundary conditions for phytoplankton in Rimov Reservoir. Inflow phytoplankton concentrations were inadvertently set to 0.05 g m⁻³ rather than the observed concentrations when converting from V2 to V3. The researchers who collected the original data concluded that the spring phytoplankton bloom was first initiated in Rimov because of inflowing phytoplankton. The model concurs with this conclusion and again illustrates how powerful a limnological investigative tool the model can be.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (March 25 and April 2, 1991).](../assets/images/part4/fig78_rimov_nophyto1.png){ width="700" } -->
+<!--   <figcaption>Figure 78. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 5 and April 8, 1991).](../assets/images/part4/fig79_rimov_nophyto2.png){ width="700" } -->
+<!--   <figcaption>Figure 79. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 12 and April 15, 1991).](../assets/images/part4/fig80_rimov_nophyto3.png){ width="700" } -->
+<!--   <figcaption>Figure 80. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 19 and April 22, 1991).](../assets/images/part4/fig81_rimov_nophyto4.png){ width="700" } -->
+<!--   <figcaption>Figure 81. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (April 26 and April 29, 1991).](../assets/images/part4/fig82_rimov_nophyto5.png){ width="700" } -->
+<!--   <figcaption>Figure 82. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton (May 3 and May 6, 1991).](../assets/images/part4/fig83_rimov_nophyto6.png){ width="700" } -->
+<!--   <figcaption>Figure 83. Rimov Reservoir computed vs. observed phytoplankton with no inflowing phytoplankton.</figcaption> -->
+<!-- </figure> -->
+
+<h2 id="estuary">Estuary<a class="headerlink" href="#estuary" title="Permanent link">&para;</a></h2>
+<p>Estuarine modeling is similar to reservoir and lake modeling for both bathymetry development and water quality modeling, but there are a few important differences in the hydrodynamic calibration. Salinity is commonly used to assess model hydrodynamic performance. However, as with reservoirs, water quality variables such as dissolved oxygen and phytoplankton can be used to also assess the accuracy of the hydrodynamics. When calibrating salinity, it is common practice to plot predicted versus observed time-series of surface and bottom salinity. While plots such as these are useful, vertical plots of computed versus observed salinity, if available, should always be included as part of the calibration process.</p>
+<h3 id="boundary-conditions">Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permanent link">&para;</a></h3>
+<p>Ocean boundary conditions play a critical role in estuarine modeling and the data should be frequent and of high quality. At a minimum, downstream head boundary elevations should be available on an hourly basis. The model can be used to linearly interpolate <strong>[HDIC]</strong> between observed elevations. Alternatively, formulas can be used to compute elevations at any frequency based on various components of the tidal cycle.</p>
+<p>Equally important are salinity concentrations specified at the downstream boundary. It is always preferable to set the boundary sufficiently downstream so that there is no vertical variation in salinity and only small temporal changes. However, the boundary needs to be set where the head elevations are measured, and oftentimes there are significant vertical and temporal variations in salinity at the site.</p>
+<p>Weekly vertical profiles are usually of insufficient frequency to reproduce the hydrodynamics of the estuary with any accuracy in this case. The same will hold true for temperature and constituents if they exhibit vertical and temporal variations.</p>
+<p>Upstream freshwater inflows need to be accurately gaged, and evaporation and precipitation should be included in the simulation if possible. Because of the inaccuracies associated with gaged inflows, sensitivity analyses should be run by increasing and decreasing upstream inflows to determine their impacts on hydrodynamics and water quality rather than initially turning to a model "knob" to adjust model results, particularly for vertical salinity distributions in a stratified estuary.</p>
+<p>In many cases the model has provided information as to where forcing functions need to be more accurately measured for a successful model application.</p>
+<h3 id="water-surface-elevations-and-flows">Water Surface Elevations and Flows<a class="headerlink" href="#water-surface-elevations-and-flows" title="Permanent link">&para;</a></h3>
+<p>In an estuarine system, the first step is to make certain the model correctly replicates tidal elevations and flows at various stations along the length of the system. Usually these stations have continuous data for comparison. Problems in water level and flow calibration can be caused by the following:</p>
+<ol>
+<li>
+<p><strong>Incorrect or inadequate bathymetry.</strong> Ensure that the model correctly reproduces cross-sections where these are measured. The model is very sensitive to small changes in the cross-section and more frequent cross-sectional data may be necessary for accurate water level and flow simulations.</p>
+</li>
+<li>
+<p><strong>Incomplete inflow/outflow data.</strong> A substantial amount of flow can often be unaccounted for as a result of not including tributaries, point sources, precipitation, stormwater, irrigation users, and groundwater. Although precipitation and evaporation will normally be minor sources and sinks, they should be included by turning on the precipitation <strong>[PRC]</strong> and evaporation options <strong>[EVC]</strong>. In an estuary, flow is very dependent on the cross-sectional area at a given location, so grid evaluation should also be part of the calibration process.</p>
+</li>
+<li>
+<p><strong>Bottom friction.</strong> Bottom friction values <strong>[FRICT]</strong> for an estuary significantly affect the water level. Bottom friction can be used to calibrate the model to observed water levels at gages along the length of the estuary.</p>
+</li>
+</ol>
+<p>In most cases, the initial water level <strong>[WSEL]</strong> in the estuary is specified as flat with a velocity field of zero. The model should be run for several days with steady-state inflows <strong>[QIN]</strong>, inflow temperature <strong>[TIN]</strong>, inflow salinity <strong>[CIN]</strong>, meteorology, and downstream head boundary conditions for temperature <strong>[TDH]</strong> and salinity <strong>[CDH]</strong>. Once the temperature and salinity distributions are no longer changing, the simulation can continue with observed boundary conditions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Initial Water Surface Elevation</p>
+<p>The initial water surface elevation should be the same elevation as the external downstream elevation <strong>[EDH]</strong> at the start of the simulation. If there is a large elevation difference between the initial condition water level and the first head boundary condition, the model can quickly become unstable because of large flows generated as a result of the water level differences at the head boundary.</p>
+</div>
+<p>Typically, the user will first plot observed versus computed water surface elevations for the simulation period after all the inflow/outflow data have been collected and the model is running to completion. Distributed tributary flows <strong>[DTRC]</strong> may need to be added or subtracted if the mean flows over a tidal period are not correct. The model user should also check not only instantaneous flow rates, but tidal average rates to make sure the total flow coming into the system at the upstream boundary condition agrees with the net residual flow at different locations downstream. This could point to unaccounted inflows or outflows.</p>
+<p>The model user should always take the model segment next to the downstream boundary and compare it to the actual water level data used and the flow rate at the gage, if measured. This checks that the water level in the model is correct and the flow rate predicted by the model agrees with the field data at that location. If the water level matches but the flow does not, this could indicate channel bathymetry errors or incorrect channel friction near the head boundary condition.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Water level data versus model predictions for Longview, WA during a 20-day period in 1993.](../assets/images/part4/fig84_longview_wl.png){ width="700" } -->
+<!--   <figcaption>Figure 84. Water level data versus model predictions for Longview, WA during a 20-day period in 1993.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Model flow predictions versus data for a 20-day period during 1998 at Beaver Army Terminal near Quincy, OR.](../assets/images/part4/fig85_beaver_flow.png){ width="700" } -->
+<!--   <figcaption>Figure 85. Model flow predictions versus data for a 20-day period during 1998 at Beaver Army Terminal near Quincy, OR.</figcaption> -->
+<!-- </figure> -->
+
+<h3 id="time-of-travel">Time of Travel<a class="headerlink" href="#time-of-travel" title="Permanent link">&para;</a></h3>
+<p>If at all possible, the model should be calibrated to a time-of-travel or dye study. This is important to ensure the model represents transport and mixing characteristics of the estuary accurately. Usually, the adjustment of bottom friction is the primary calibration parameter, but in some cases the bathymetry may need revision. The longitudinal eddy viscosity <strong>[AX]</strong> and diffusivity <strong>[DX]</strong> can also be adjusted during calibration. Since CE-QUAL-W2 uses a constant value for these coefficients for each waterbody, the user may need to include a longitudinal dispersion algorithm based on theoretical formulae if the constant value is not appropriate.</p>
+<p>In many cases a dye release will also vary vertically as a result of stratification. The model internally computes the vertical diffusion coefficient based on the eddy diffusivity using the Reynolds analogy. The model user should ensure that they are using the implicit solution technique for the transport of vertical momentum, <strong>[AZSLC]</strong> = <code>IMP</code>, and that the maximum value of the vertical eddy viscosity <strong>[AZMAX]</strong> is at least 1 m² s⁻¹ for estuarine systems.</p>
+<h3 id="temperature-and-salinity">Temperature and Salinity<a class="headerlink" href="#temperature-and-salinity" title="Permanent link">&para;</a></h3>
+<p>Calibrating the model for estuarine temperature and salinity includes the same caveats as for reservoirs with, as previously mentioned, the additional need for accurate boundary conditions at the ocean boundary. If the user has developed a good hydrodynamic calibration for water surface elevations and flows, then temperature and salinity calibrations should require a minimal effort. However, keep in mind that water surface elevation, flow, and time-of-travel calibrations are all affected by the adequacy of the temperature and salinity calibration.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Patuxent River computed versus observed vertical salinity distributions.](../assets/images/part4/fig86_patuxent_salinity.png){ width="700" } -->
+<!--   <figcaption>Figure 86. Patuxent River computed versus observed vertical salinity distributions.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Patuxent River computed versus observed vertical temperature distributions.](../assets/images/part4/fig87_patuxent_temp.png){ width="700" } -->
+<!--   <figcaption>Figure 87. Patuxent River computed versus observed vertical temperature distributions.</figcaption> -->
+<!-- </figure> -->
+
+<h3 id="water-quality_1">Water Quality<a class="headerlink" href="#water-quality_1" title="Permanent link">&para;</a></h3>
+<p>Water quality calibration for estuaries is again subject to the same caveats as for reservoirs with the additional importance of accurate downstream boundary conditions. Again, if at all possible, the downstream boundary should be located sufficiently downstream where vertical variations in water quality are negligible.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series.](../assets/images/part4/fig88_patuxent_wq.png){ width="700" } -->
+<!--   <figcaption>Figure 88. Patuxent River computed versus observed nutrient, dissolved oxygen, and chlorophyll a time series.</figcaption> -->
+<!-- </figure> -->
+
+<h3 id="calibration-problems_1">Calibration Problems<a class="headerlink" href="#calibration-problems_1" title="Permanent link">&para;</a></h3>
+<p>Modeling an estuarine system requires a tremendous amount of data, expertise, and patience for proper calibration. In previous estuarine applications, calibration consisted mainly of determining whether known inaccuracies in a given forcing function could be responsible for the discrepancies in the model predictions and then describing the forcing function more accurately. This procedure included the following:</p>
+<ol>
+<li>Ensuring the model reproduces flow and water level at various control points in the model domain and involved detailed evaluation of inflows and outflows, head boundary conditions, channel bathymetry, and channel friction</li>
+<li>Adjusting channel friction or longitudinal dispersivity to match time-of-travel data or dye study field data</li>
+<li>Ensuring accurate vertical profiles for the downstream boundary</li>
+<li>Ensuring grid refinement does not affect the model results</li>
+<li>Ensuring accurate meteorological data for the estuary especially if the model domain extends over a large geographical area. Wind variability is extremely important and can be reflected in the wind-sheltering coefficient that varies by segment and time</li>
+<li>Using an implicit eddy viscosity solution scheme, <strong>[AZSLC]</strong> = <code>IMP</code>, and a maximum vertical eddy viscosity <strong>[AZMAX]</strong> of 1 m² s⁻¹</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Time Step Sensitivity</p>
+<p>Since the model can be susceptible to accuracy issues using an implicit water surface solution scheme with a large time step, the user should ensure results are not impacted by using a smaller maximum time step <strong>[DLTMAX]</strong>. Again, keep in mind that the more accurately the behavior of the prototype is described, the more accurately the model responds.</p>
+</div>
+<h2 id="river">River<a class="headerlink" href="#river" title="Permanent link">&para;</a></h2>
+<p>Dynamic river modeling can be a challenging endeavor because:</p>
+<ol>
+<li>Velocities are generally high resulting in a lower time step for numerical stability</li>
+<li>Shear and bottom friction effects are significant requiring a considerable calibration effort</li>
+<li>Channel slopes accelerate the fluid</li>
+<li>Changes in river bathymetry can dramatically affect the velocity field</li>
+<li>Dynamic flow rates at low flows can dry up segments causing the model to stop running</li>
+</ol>
+<p>One of the original motivations for development of the capability of modeling sloping rivers was to eliminate vertical accelerations in the fluid since the model does not solve the full vertical momentum equation. Keeping this in mind, the grid slope should be chosen to minimize the vertical fluid acceleration.</p>
+<h3 id="channel-slope">Channel Slope<a class="headerlink" href="#channel-slope" title="Permanent link">&para;</a></h3>
+<p>The channel slope is used to compute the gravity force of the channel. This slope should be the slope of the water surface, that is the slope used to accelerate fluid parcels, or the energy grade line, rather than the bottom slope from segment to segment. As an example, consider the slope of a section of the Snake River.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River water level comparison between CE-QUAL-W2 V3 and USGS field data.](../assets/images/part4/fig89_snake_wl.png){ width="700" } -->
+<!--   <figcaption>Figure 89. Snake River water level comparison between CE-QUAL-W2 V3 and USGS field data.</figcaption> -->
+<!-- </figure> -->
+
+<p>The slope of the vertical grid as well as the different branch slopes is shown in the following figure.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Channel vertical grid where every slope change is a new branch.](../assets/images/part4/fig90_snake_grid.png){ width="700" } -->
+<!--   <figcaption>Figure 90. Channel vertical grid where every slope change is a new branch.</figcaption> -->
+<!-- </figure> -->
+
+<p>Rather than going from segment to segment with varying slopes, a general channel slope is used for a collection of segments with similar water slope. As the variability in water slope changes, so does the grid slope. A regression line can be used to fit the channel slope for a given section. For example, the regression line fit the channel slope for the section between RM 390 and 445 for the Snake River.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River channel slope determination.](../assets/images/part4/fig91_snake_slope.png){ width="700" } -->
+<!--   <figcaption>Figure 91. Snake River channel slope determination.</figcaption> -->
+<!-- </figure> -->
+
+<p>Why does W2 not use a segment-by-segment slope? Consider the "noise" in the cross-sections. Even though the geometry could be set up with a variable channel slope for each segment (in the current application this means creating multiple waterbodies or branches for each slope), setting a general channel grade is often simpler and one still has the noise of the bathymetry. Computing the slope from one segment to a deep hole would not be correct since the water is flowing along its energy grade line and not the channel slope. Bottom elevations for many of the channel segments rise or have a negative channel slope following a depression. In using a segment-by-segment slope, these variations become unrealistic when represented using a slope for each segment. Therefore, the proper channel slope should be that of the water surface.</p>
+<p>In estuarine flow, one usually uses a channel slope of zero and considers fluid accelerations as a result of water surface elevation changes rather than gravity flow down a slope, at least in the estuary section below the head of tide. This is similar in a reservoir, which may have a sloping channel, but a relatively flat water surface.</p>
+<p>In some cases, the average channel slope changes and the user must separate the different sections into separate branches or waterbodies. The model can be set up to have almost continuous changes in channel slope by making branches with two segments and changing the slope where it is required. If the choice is to create separate branches, then the surface layer and grid will be the same for all branches. If the choice is to create separate waterbodies, then each waterbody computes a surface layer independently of the other and there can be different vertical grids between water bodies.</p>
+<h3 id="channel-bottom">Channel Bottom<a class="headerlink" href="#channel-bottom" title="Permanent link">&para;</a></h3>
+<p>When there are problems keeping water in upstream segments, which is a very common problem, the model takes the lowest water level in a waterbody and subtracts layers such that the lowest water level resides in the surface layer. If the surface layer is below the bottom layer in a segment, the model will subtract that segment and all segments above it from the active computational grid. If this occurs in a shallow location in the middle of a branch, the model will not run since it dries up a segment in the middle of a branch.</p>
+<p>This can be corrected by decoupling one branch from another by splitting them into waterbodies. By splitting the system into more than one waterbody, water can be maintained at various levels throughout the domain since each waterbody has its own separate surface layer.</p>
+<p>This is another reason why the model does not use segment-by-segment slopes, since the surface layer defines the upper layer for a waterbody and in many cases these need to be broken apart into waterbodies to keep water in all segments. In addition, the translation from one waterbody to another introduces some small error into the solution since concentrations, temperatures, and velocities are interpolated from one 2D grid onto another. If the model were run in 1D mode with only one vertical layer, this problem would not exist.</p>
+<p>Consider the Bull Run system, where the reservoirs were modeled with a channel slope of zero. Instead of a constant slope of 1.4%, the river is really divided into a large number of small-scale changes including pools and riffles. A section of the river is shown with the assumed model grid divided into branches and waterbodies. In most cases, different waterbodies were used between branches of different slope. This allowed the water surface layer determination to be based on the water level in the branch with the given slope.</p>
+<p>However, the steeply sloping section may not have a slope equal to the grid slope shown. If the steeply sloping section were modeled in more detail, it would really be a series of "flat" pools with small water drops (or falls) between the pools. If all the fine-scale variability is ignored and the system is modeled on a larger scale, the problem becomes one of trying to estimate the "equivalent" channel slope that represents the channel.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Channel slope for the Bull Run system.](../assets/images/part4/fig92_bullrun_slope.png){ width="700" } -->
+<!--   <figcaption>Figure 92. Channel slope for the Bull Run system.</figcaption> -->
+<!-- </figure> -->
+
+<p>This is similar to modeling a network of pipes and ignoring all the details but inserting pipes of "equivalent" slope and diameter. In this case, the channel slope is used as a calibration tool to match water level or dye study data. If channel friction were used to hold the water back, the values would have to be enormous to reproduce the complicated pool-waterfall system.</p>
+<p>In addition, if the grid is broken into different waterbodies, discontinuities in the water surface such as waterfalls can be simulated.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Vertical grid for W2 model of Bull Run Lower River.](../assets/images/part4/fig93_bullrun_grid.png){ width="700" } -->
+<!--   <figcaption>Figure 93. Vertical grid for W2 model of Bull Run Lower River.</figcaption> -->
+<!-- </figure> -->
+
+<p>Modeling of shallow streams with large slopes is difficult and takes patience. The model drying out at intermediate sections is often the cause of problems and can be remedied by breaking the system into smaller pieces or waterbodies and/or by adding additional computational cells below the bottom layer at a given segment. Matching river data is accomplished by adjusting friction factors, refining the geometry, and in some cases refining the "equivalent" channel slope if detail has been sacrificed in setting up the model. The quality of the model geometry is essential for good model-data reproducibility in a river system, especially one that is highly irregular in slope and channel width.</p>
+<p>Developing a river model is also difficult at low flows since the model may become either unstable during the initial time steps or dry in a segment. An initial water surface elevation is set and the river is "frozen" at that elevation until the model is started, at which point the water starts moving downstream. If a conservatively high water level is set initially in all segments, a wall of water will be sent downstream. If inflows are so small that at the upstream edge of this wave there is too little water, segments can dry out.</p>
+<p>The model includes a warning file (<code>w2.wrn</code>) and error file (<code>w2.err</code>) that contain information for debugging river model problems.</p>
+<h3 id="suggestions-for-setting-up-a-river-model">Suggestions for Setting Up a River Model<a class="headerlink" href="#suggestions-for-setting-up-a-river-model" title="Permanent link">&para;</a></h3>
+<p>The following are suggestions for setting up a river model:</p>
+<ol>
+<li>
+<p>For the first 0.1 Julian day (JDAY) or so of the simulation, choose a maximum timestep <strong>[DLTMAX]</strong> that is small (10 s or less). This should be done only if the code seems to go unstable soon after starting the model. Alternatively, one can lower the fraction of the timestep <strong>[DLTF]</strong> used as this can provide numerical stability and allow for higher timesteps. The maximum timestep should be lowered if the number of time step violations is greater than 10% for an extended period of time.</p>
+</li>
+<li>
+<p>Start with high flow rates gradually approaching the lower flow regime if model stability is a problem at low flows.</p>
+</li>
+<li>
+<p>In order to keep water in the model, friction factors and geometry are very important considerations. The goal is to have sufficient model friction so that water does not quickly drain out of the system.</p>
+</li>
+<li>
+<p>Add active computational cells at the bottom of the grid using small widths to prevent the section of the river from drying up or subtracting segments unnecessarily because the water surface layer <code>KT</code> is below the bottom <code>KB</code>.</p>
+</li>
+<li>
+<p>For a river that has sloping sections followed by flat sections (slope = 0), set the slope to a non-zero value of 0.000001. This activates the model's ability for <code>KT</code> to be below <code>KB</code> when the segment is still hydrated.</p>
+</li>
+<li>
+<p>If the water surface elevation becomes unstable as evidenced by a negative surface layer thickness, try reducing the maximum timestep <strong>[DLTMAX]</strong> to 5--10 seconds or less during the unstable time period. Alternatively, the fraction of the timestep <strong>[DLTF]</strong> can be set to 0.5 or less during this period.</p>
+</li>
+<li>
+<p>For the end of the river, often a weir/spillway condition is used. This allows the specification of the stage-discharge relationship for the river. See Part 2 of the User Manual under Spillways for an example of how to do this.</p>
+</li>
+<li>
+<p>Set <strong>[AZSLC]</strong> = <code>IMP</code> and <strong>[AZMAX]</strong> = 1.0. Do not use <code>W2</code> for the vertical eddy viscosity closure scheme; use one of the other formulations.</p>
+</li>
+</ol>
+<h3 id="hydrodynamics-and-temperature_1">Hydrodynamics and Temperature<a class="headerlink" href="#hydrodynamics-and-temperature_1" title="Permanent link">&para;</a></h3>
+<p>The following discussion illustrates the model's ability to accurately simulate river hydrodynamics, temperature, and water quality and includes a synopsis of the model's application to the Bull Run River, Snake River, and Spokane River.</p>
+<h4 id="bull-run-river">Bull Run River<a class="headerlink" href="#bull-run-river" title="Permanent link">&para;</a></h4>
+<p>The Bull Run River is located in Oregon and the two existing reservoirs located on the river provide water for the city of Portland. A third reservoir upstream of the existing reservoirs is in the planning stage. The two portions of the free-flowing river that were modeled had slopes of 1.4% and 2.2%. The model was used to address temperature and suspended solids questions about the system.</p>
+<p>Results of a dye study conducted as part of the hydrodynamic calibration for the Bull Run River show that the QUICKEST/ULTIMATE transport algorithm does not suffer from excessive numerical dispersion nor does it generate over/undershoots and that the model is capable of accurate river hydrodynamic simulations.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Bull Run River computed versus observed tracer at three stations progressing downstream.](../assets/images/part4/fig94_bullrun_tracer.png){ width="700" } -->
+<!--   <figcaption>Figure 94. Bull Run River computed versus observed tracer at three stations progressing downstream.</figcaption> -->
+<!-- </figure> -->
+
+<h4 id="snake-river">Snake River<a class="headerlink" href="#snake-river" title="Permanent link">&para;</a></h4>
+<p>The Lower Snake River from C.J. Strike to Brownlee Reservoir suffers from eutrophication problems below the city of Boise. Chlorophyll <em>a</em> concentrations in the river often exceed 100 µg L⁻¹ and ultimately can cause severe dissolved oxygen depletion in the upper reaches of Brownlee Reservoir leading to fish kills. The model was used to determine how inflowing algae and nutrients affect chlorophyll <em>a</em> and dissolved oxygen concentrations in Brownlee Reservoir.</p>
+<h4 id="spokane-river">Spokane River<a class="headerlink" href="#spokane-river" title="Permanent link">&para;</a></h4>
+<p>The Spokane River from the Idaho border to Long Lake was modeled as part of a Total Maximum Daily Load (TMDL) allocation study and was conducted by Portland State University, the Washington State Department of Ecology, and the U.S. Army Corps of Engineers. Epiphyton were added to the model because of their importance to nutrient and DO dynamics in the river.</p>
+<p>The system is complex hydraulically with three run-of-the-river impoundments used for power generation, significant groundwater inflows during low flow periods, a waterfall, and Long Lake, a deep storage impoundment. Although Long Lake is a long and fairly deep reservoir, residence times during the summer are relatively short (less than 1 month). Accurate inflow temperatures and constituent concentrations were therefore crucial for accurate simulations of temperature and water quality in Long Lake, which required accurate simulations of over 40 miles of the Spokane River upstream of Long Lake.</p>
+<p>The system is also complex with respect to water quality as epiphyton dominate nutrient and dissolved oxygen dynamics in the river and phytoplankton dominate their dynamics in Long Lake. Additionally, there are four point source discharges including the City of Spokane's wastewater effluent.</p>
+<p>The following figures illustrate the accuracy of the water balance at the City of Spokane and the accuracy of the computed flows at the same location.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed water surface elevations at Spokane.](../assets/images/part4/fig95_spokane_wse.png){ width="700" } -->
+<!--   <figcaption>Figure 95. Spokane River computed versus observed water surface elevations at Spokane.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed flows at the city of Spokane.](../assets/images/part4/fig96_spokane_flow.png){ width="700" } -->
+<!--   <figcaption>Figure 96. Spokane River computed versus observed flows at the city of Spokane.</figcaption> -->
+<!-- </figure> -->
+
+<p>Computed versus observed temperatures are shown for the Snake and Spokane rivers. As for reservoirs, temperature predictions are in close agreement with observed data.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus observed temperature at six stations.](../assets/images/part4/fig97_snake_temp.png){ width="700" } -->
+<!--   <figcaption>Figure 97. Snake River computed versus observed temperature at six stations.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Computed versus observed temperatures for the Spokane River at Stateline Bridge (upstream boundary), City of Spokane, Fort Wright Bridge, and Riverside State Park.](../assets/images/part4/fig98_spokane_temp.png){ width="700" } -->
+<!--   <figcaption>Figure 98. Computed versus observed temperatures for the Spokane River at Stateline Bridge (upstream boundary), City of Spokane, Fort Wright Bridge, and Riverside State Park.</figcaption> -->
+<!-- </figure> -->
+
+<p>For the Spokane study, conductivity was an important indicator of not only the hydrodynamics but also of the water balance. The model is accurately reproducing the temporal variation in conductivity and is probably more accurate than any other method for determining groundwater inflows.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed conductivity below Nine Mile Dam.](../assets/images/part4/fig99_spokane_cond.png){ width="700" } -->
+<!--   <figcaption>Figure 99. Spokane River computed versus observed conductivity below Nine Mile Dam.</figcaption> -->
+<!-- </figure> -->
+
+<h3 id="water-quality_2">Water Quality<a class="headerlink" href="#water-quality_2" title="Permanent link">&para;</a></h3>
+<p>Results for nutrients, dissolved oxygen, and chlorophyll <em>a</em> are given for the Snake River. The model is capturing much of the spatial and temporal changes in water quality for the river section where, unlike the Spokane River, phytoplankton rather than epiphyton dominate dissolved oxygen and nutrient dynamics.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus observed dissolved oxygen at six stations.](../assets/images/part4/fig100_snake_do.png){ width="700" } -->
+<!--   <figcaption>Figure 100. Snake River computed versus observed dissolved oxygen at six stations.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus observed orthophosphorus at six stations.](../assets/images/part4/fig101_snake_po4.png){ width="700" } -->
+<!--   <figcaption>Figure 101. Snake River computed versus observed orthophosphorus at six stations.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus observed nitrate-nitrite at six stations.](../assets/images/part4/fig102_snake_no3.png){ width="700" } -->
+<!--   <figcaption>Figure 102. Snake River computed versus observed nitrate-nitrite at six stations.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus observed chlorophyll a at six stations.](../assets/images/part4/fig103_snake_chla.png){ width="700" } -->
+<!--   <figcaption>Figure 103. Snake River computed versus observed chlorophyll a at six stations.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Snake River computed versus total organic carbon.](../assets/images/part4/fig104_snake_toc.png){ width="700" } -->
+<!--   <figcaption>Figure 104. Snake River computed versus total organic carbon.</figcaption> -->
+<!-- </figure> -->
+
+<p>The following figures illustrate the model's ability to reproduce changes in dissolved oxygen over a year and also on a diel basis on the Spokane River. Note how the model has captured not only the diel swings in dissolved oxygen, but also the decrease in the magnitude of the diel variation, which indicates that the model is accurately reproducing epiphyton primary production. This is reinforced by the model reproducing diel variations in pH due to epiphyton growth and respiration and the decrease in diel variation over time.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed dissolved oxygen at Riverside State Park.](../assets/images/part4/fig105_spokane_do_rsp.png){ width="700" } -->
+<!--   <figcaption>Figure 105. Spokane River computed versus observed dissolved oxygen at Riverside State Park.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed dissolved oxygen below Nine Mile Dam.](../assets/images/part4/fig106_spokane_do_9mile.png){ width="700" } -->
+<!--   <figcaption>Figure 106. Spokane River computed versus observed dissolved oxygen below Nine Mile Dam.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed pH upstream of Nine Mile Dam.](../assets/images/part4/fig107_spokane_ph.png){ width="700" } -->
+<!--   <figcaption>Figure 107. Spokane River computed versus observed pH upstream of Nine Mile Dam.</figcaption> -->
+<!-- </figure> -->
+
+<p>The following figures illustrate the model's ability to reproduce nutrient dynamics that are impacted by upstream inflows, groundwater inflows, point source loadings, and epiphyton interactions.</p>
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed nitrate-nitrite at Riverside State Park.](../assets/images/part4/fig108_spokane_no3.png){ width="700" } -->
+<!--   <figcaption>Figure 108. Spokane River computed versus observed nitrate-nitrite at Riverside State Park.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed soluble reactive phosphorus below Nine Mile Dam.](../assets/images/part4/fig109_spokane_srp.png){ width="700" } -->
+<!--   <figcaption>Figure 109. Spokane River computed versus observed soluble reactive phosphorus below Nine Mile Dam.</figcaption> -->
+<!-- </figure> -->
+
+<!-- TODO: Add figure -->
+<!-- <figure markdown="span"> -->
+<!--   ![Spokane River computed versus observed total nitrogen below Nine Mile Dam.](../assets/images/part4/fig110_spokane_tn.png){ width="700" } -->
+<!--   <figcaption>Figure 110. Spokane River computed versus observed total nitrogen below Nine Mile Dam.</figcaption> -->
+<!-- </figure> -->
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The preceding examples demonstrate that CE-QUAL-W2 is capable of reproducing a wide range of complex hydrodynamics, temperature, dissolved oxygen, nutrient, and phytoplankton and epiphyton regimes in rivers, lakes, reservoirs, and estuaries. If the model is not adequately reproducing prototype behavior, the reason is most likely that the bathymetry or important boundary conditions are not being described with sufficient accuracy.</p>
+<p>For some applications, no amount of model adjustment or data reconstruction will provide acceptable calibration if data are insufficient to describe the dominant forcing functions in the prototype. For these cases, the model can still be used to provide information about the prototype by pointing out data inadequacies, important mechanisms not included in the model but important in the prototype, or inappropriate assumptions used in the model. In these cases, further fieldwork will be necessary to successfully apply the model.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02_model_examples/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Model Examples">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Model Examples
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04_references/" class="md-footer__link md-footer__link--next" aria-label="Next: References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      U.S. Army Engineer Research and Development Center (ERDC)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/CE-QUAL-W2-ERDC" target="_blank" rel="noopener" title="CE-QUAL-W2-ERDC on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
