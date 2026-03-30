@@ -1126,6 +1126,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Adjusting the Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gravity-components-in-the-slope-aligned-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gravity Components in the Slope-Aligned System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2777,6 +2794,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Adjusting the Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gravity-components-in-the-slope-aligned-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gravity Components in the Slope-Aligned System
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3467,24 +3501,32 @@
 <h3 id="coriolis-effect">Coriolis Effect<a class="headerlink" href="#coriolis-effect" title="Permanent link">&para;</a></h3>
 <p>All the <span class="arithmatex">\(\Omega_x\)</span> terms are zero and can be eliminated from the y and z momentum equations. If one integrates over the y-direction (therefore assuming the net velocity in y is zero) and assumes that the horizontal length scale is much greater than the vertical length scale, it can be shown by using scaling arguments that the Coriolis acceleration forces are negligible (Cushman-Roisin, 1994). Hence, prior to lateral averaging, the Coriolis acceleration terms will be neglected.</p>
 <h2 id="adjusting-the-coordinate-system">Adjusting the Coordinate System<a class="headerlink" href="#adjusting-the-coordinate-system" title="Permanent link">&para;</a></h2>
-<p>The coordinate system is transformed into a form compatible with the original W2 development where the vertical axis is in the direction of gravity. In addition, as shown in Figure 6, the coordinate system is oriented along an arbitrary slope.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![General coordinate system with z-axis compatible with original derivation of W2 model.](../assets/images/part2/fig6_general_coord_system.png){ width="500" }
-  <figcaption>Figure 6. General coordinate system with z-axis compatible with original derivation of W2 model.</figcaption>
+<p>The geographic coordinate system used above (Figures 1–5) — with <span class="arithmatex">\(x\)</span> oriented east, <span class="arithmatex">\(y\)</span> oriented north, and <span class="arithmatex">\(z\)</span> oriented upward — is now transformed into a slope-aligned coordinate system compatible with the original W2 development (Cole and Buchak, 1995). Two changes are made:</p>
+<ol>
+<li>
+<p><strong>The axes are rotated to align with the channel slope.</strong> The <span class="arithmatex">\(x\)</span>-axis is oriented along the channel bottom slope, the <span class="arithmatex">\(y\)</span>-axis remains lateral (cross-channel), and the <span class="arithmatex">\(z\)</span>-axis is oriented perpendicular to the slope surface, pointing into the water body (generally downward). The velocity components <span class="arithmatex">\(u\)</span>, <span class="arithmatex">\(v\)</span>, and <span class="arithmatex">\(w\)</span> correspond to the <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(y\)</span>, and <span class="arithmatex">\(z\)</span> directions, respectively.</p>
+</li>
+<li>
+<p><strong>The <span class="arithmatex">\(z\)</span>-axis direction is reversed</strong> from the geographic convention. In Figures 1–5, <span class="arithmatex">\(z\)</span> pointed upward (opposite gravity). In the W2 coordinate system, <span class="arithmatex">\(z\)</span> points generally downward — perpendicular to the slope surface. For small channel slopes (typical of most reservoirs and rivers), <span class="arithmatex">\(z\)</span> is approximately aligned with the direction of gravity.</p>
+</li>
+</ol>
+<p>The resulting coordinate system is shown in Figure 6. The angle <span class="arithmatex">\(\alpha\)</span> is the channel slope angle, measured between the <span class="arithmatex">\(x\)</span>-axis and horizontal (equivalently, between the <span class="arithmatex">\(z\)</span>-axis and the true vertical). The variable <span class="arithmatex">\(h\)</span> represents the true vertical direction (the surface normal from the earth's surface), which is opposite to gravity.</p>
+<figure>
+  <img alt="W2 coordinate system showing x along the channel slope, z perpendicular to the slope surface, h as the true vertical, and the slope angle α." src="../../assets/images/part2/fig006_general_coord_system.png" width="550" />
+<br />
+<figcaption>Figure 6. W2 coordinate system. The x-axis is along the channel slope, the z-axis is perpendicular to the slope surface (pointing into the water body), and h is the true vertical (surface normal). The slope angle α appears between x and horizontal, and equivalently between z and the vertical. The inset shows the previous geographic convention (Figures 1–5) with z oriented upward.</figcaption>
 </figure>
--->
-
+<h3 id="gravity-components-in-the-slope-aligned-system">Gravity Components in the Slope-Aligned System<a class="headerlink" href="#gravity-components-in-the-slope-aligned-system" title="Permanent link">&para;</a></h3>
 <p>The gravity acceleration is a body force represented by a vector:</p>
 <div class="arithmatex">\[
 \vec{g} = -g\vec{\nabla}h \tag{2-5}
 \]</div>
 <p>where:</p>
 <ul>
-<li><span class="arithmatex">\(h\)</span> = surface normal from the earth's surface</li>
+<li><span class="arithmatex">\(h\)</span> = distance along the true vertical (surface normal from earth's surface)</li>
 <li><span class="arithmatex">\(g\)</span> = gravitational acceleration, 9.8 m s⁻²</li>
 </ul>
-<p>This term can be written as three vector components:</p>
+<p>Because the coordinate axes are not aligned with the vertical, the gravity vector has components along both the <span class="arithmatex">\(x\)</span>-axis (down the slope) and the <span class="arithmatex">\(z\)</span>-axis (perpendicular to the slope):</p>
 <div class="arithmatex">\[
 g_x = -g\frac{\partial h}{\partial x} \tag{2-6}
 \]</div>
@@ -3494,7 +3536,6 @@ g_y = -g\frac{\partial h}{\partial y} \tag{2-7}
 <div class="arithmatex">\[
 g_z = -g\frac{\partial h}{\partial z} \tag{2-8}
 \]</div>
-<p>These gravity components can be applied to an arbitrary channel slope as shown in Figure 7.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
   ![Sketch of channel slope and coordinate system for W2 where the x-axis is oriented along the channel slope.](../assets/images/part2/fig7_channel_slope.png){ width="500" }
@@ -3502,18 +3543,18 @@ g_z = -g\frac{\partial h}{\partial z} \tag{2-8}
 </figure>
 -->
 
-<p>The channel slope, <span class="arithmatex">\(S_o\)</span>, can be incorporated into the definition of the gravity vector if the x-axis is chosen parallel to the channel slope. The channel slope is defined as:</p>
+<p>The channel slope, <span class="arithmatex">\(S_o\)</span>, is defined as:</p>
 <div class="arithmatex">\[
 S_o = \tan\alpha \tag{2-9}
 \]</div>
-<p>and in terms of the gravity components:</p>
+<p>Projecting the gravity vector onto the slope-aligned axes yields:</p>
 <div class="arithmatex">\[
 g_x = -g\frac{\partial h}{\partial x} = g\sin\alpha \tag{2-10}
 \]</div>
 <div class="arithmatex">\[
 g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
 \]</div>
-<p>The gravity acceleration in y is assumed negligible since <span class="arithmatex">\(\frac{\partial h}{\partial y} = 0\)</span> in the lateral direction of the channel.</p>
+<p>Note that <span class="arithmatex">\(g_z = g\cos\alpha\)</span> (not simply <span class="arithmatex">\(g\)</span>), confirming that the <span class="arithmatex">\(z\)</span>-axis is perpendicular to the slope surface rather than aligned with the vertical. The gravity component along <span class="arithmatex">\(y\)</span> is assumed negligible since <span class="arithmatex">\(\frac{\partial h}{\partial y} = 0\)</span> in the lateral direction of the channel. For typical channel slopes (<span class="arithmatex">\(\alpha &lt; 1°\)</span>), <span class="arithmatex">\(\cos\alpha \approx 1\)</span> and <span class="arithmatex">\(\sin\alpha \approx \alpha\)</span>, so the <span class="arithmatex">\(z\)</span>-direction is nearly vertical and the gravity component along the slope is small.</p>
 <h2 id="governing-equations-for-general-coordinate-system">Governing Equations for General Coordinate System<a class="headerlink" href="#governing-equations-for-general-coordinate-system" title="Permanent link">&para;</a></h2>
 <p>After redefining the coordinate system, eliminating Coriolis effects, and neglecting viscous shear stresses, the governing equations become:</p>
 <h3 id="continuity_1">Continuity<a class="headerlink" href="#continuity_1" title="Permanent link">&para;</a></h3>
