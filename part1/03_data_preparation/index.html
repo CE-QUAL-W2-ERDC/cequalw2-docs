@@ -2802,11 +2802,10 @@
 <h3 id="sample-computational-grid">Sample Computational Grid<a class="headerlink" href="#sample-computational-grid" title="Permanent link">&para;</a></h3>
 <p>A sample computational grid in the longitudinal/vertical plane with four branches is shown in Figure 6. The Fortran variables associated with the grid are also included. The grid consists of 25 longitudinal segments <strong>[IMX]</strong> and 22 vertical layers <strong>[KMX]</strong>. These constitute the total number of cells in the computational grid. The grid layout represents the model's internal indexing, not the physical arrangement of the waterbody. Branch 2 and Branch 3 join Branch 1. Branch setup is described in more detail below.</p>
 <figure>
-<img alt="Sample computational grid in the x-z plane showing active and inactive cells" src="../../assets/images/part1/bathymetry_example.png" width="700" />
+<img alt="Sample computational grid in the x-z plane showing active and inactive cells" src="../../assets/images/part1/computational_grid_xz.png" width="700" />
 
 <figcaption>Figure 6. Sample computational grid in the x-z plane showing active and inactive cells.</figcaption>
 </figure>
-<p>--&gt;</p>
 <h3 id="grid-cell-types">Grid Cell Types<a class="headerlink" href="#grid-cell-types" title="Permanent link">&para;</a></h3>
 <p>The computational grid (Figure 6) contains two kinds of cells: those with either a single or a double line border.</p>
 <ul>
@@ -2835,13 +2834,11 @@
 </ul>
 <p>The current upstream segment <strong>[CUS]</strong> is calculated by the model and may vary over time to meet restrictions imposed by the solution scheme. Typically, segment numbers increase going from upstream to downstream in the branch.</p>
 <p>A branch may connect to other branches at its upstream <strong>[UHS]</strong> and/or downstream segment <strong>[DHS]</strong>. In Figure 7, the downstream segment of Branch 2 (<code>DS</code> = 15) connects to Branch 1 at segment 7 (<code>DHS</code> = 7).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Sample computational grid in the x-y plane showing cell numbering and branch and waterbody connections](../assets/images/part1/sample-grid-xy.png){ width="700" }
-  <figcaption>Figure 7. Sample computational grid in the x-y plane showing cell numbering and branch and waterbody connections.</figcaption>
-</figure>
--->
+<figure>
+<img alt="Sample computational grid in the x-y plane showing cell numbering and branch and waterbody connections" src="../../assets/images/part1/computational_grid_xy.png" width="700" />
 
+<figcaption>Figure 7. Sample computational grid in the x-y plane showing cell numbering and branch and waterbody connections.</figcaption>
+</figure>
 <h3 id="grid-restrictions">Grid Restrictions<a class="headerlink" href="#grid-restrictions" title="Permanent link">&para;</a></h3>
 <p>The grid must satisfy the following restrictions:</p>
 <ol>
