@@ -3686,13 +3686,11 @@ g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
 P = P_a + g\cos\alpha\int_{\eta}^{z}\rho\,dz \tag{2-40}
 \]</div>
 <p>after integration from a depth <span class="arithmatex">\(z\)</span> to the water surface defined as <span class="arithmatex">\(z=\eta\)</span>. <span class="arithmatex">\(P_a\)</span> is the atmospheric pressure at the water surface.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Schematization for simplification of pressure term.](../assets/images/part2/fig9_pressure_term.png){ width="600" }
-  <figcaption>Figure 9. Schematization for simplification of pressure term.</figcaption>
-</figure>
--->
+<figure>
+<img alt="Schematization for simplification of pressure term." src="../../assets/images/part2/fig009_pressure_term.png" width="600" />
 
+<figcaption>Figure 9. Schematization for simplification of pressure term.</figcaption>
+</figure>
 <p>This equation for pressure is now substituted into the x-momentum equation and simplified using the Leibnitz rule. The pressure gradient term in the x-momentum equation then becomes:</p>
 <div class="arithmatex">\[
 -\frac{1}{\rho}\frac{\partial P}{\partial x} = -\frac{1}{\rho}\frac{\partial P_a}{\partial x} + g\cos\alpha\frac{\partial\eta}{\partial x} - \frac{g\cos\alpha}{\rho}\int_{\eta}^{z}\frac{\partial\rho}{\partial x}\,dz \tag{2-41}
@@ -3714,20 +3712,16 @@ P = P_a + g\cos\alpha\int_{\eta}^{z}\rho\,dz \tag{2-40}
 <p>Effectively, pressure has been removed from the unknowns by combining the z-momentum and x-momentum equations, but <span class="arithmatex">\(\eta\)</span> has been added as an unknown.</p>
 <h2 id="free-water-surface">Free Water Surface<a class="headerlink" href="#free-water-surface" title="Permanent link">&para;</a></h2>
 <p>This equation is a simplification of the continuity equation. The continuity equation integrated over the depth from the water surface to the bottom is called the free water surface equation. Figures 10 and 11 are definition sketches for the computational grid without and with a channel slope, respectively.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Coordinate system without channel slope.](../assets/images/part2/fig10_coord_no_slope.png){ width="600" }
-  <figcaption>Figure 10. Coordinate system without channel slope.</figcaption>
-</figure>
--->
+<figure>
+<img alt="Coordinate system without channel slope." src="../../assets/images/part2/fig010_coord_no_slope.png" width="600" />
 
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Coordinate system with channel slope.](../assets/images/part2/fig11_coord_with_slope.png){ width="600" }
-  <figcaption>Figure 11. Coordinate system with channel slope.</figcaption>
+<figcaption>Figure 10. Coordinate system without channel slope.</figcaption>
 </figure>
--->
+<figure>
+<img alt="Coordinate system with channel slope." src="../../assets/images/part2/fig011_coord_with_slope.png" width="600" />
 
+<figcaption>Figure 11. Coordinate system with channel slope.</figcaption>
+</figure>
 <p>The continuity equation is integrated over the depth as follows:</p>
 <div class="arithmatex">\[
 \int_{\eta}^{h}\frac{\partial UB}{\partial x}\,dz + \int_{\eta}^{h}\frac{\partial WB}{\partial z}\,dz = \int_{\eta}^{h}qB\,dz \tag{2-44}
@@ -3813,13 +3807,11 @@ B_\eta\frac{\partial\eta}{\partial t} = \frac{\partial}{\partial x}\int_{\eta}^{
 <li><span class="arithmatex">\(\rho\)</span> = density</li>
 <li><span class="arithmatex">\(\eta\)</span> = water surface</li>
 </ul>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Definition sketch for channel slope.](../assets/images/part2/fig12_channel_slope_def.png){ width="500" }
-  <figcaption>Figure 12. Definition sketch for channel slope.</figcaption>
-</figure>
--->
+<figure>
+<img alt="Definition sketch for channel slope." src="../../assets/images/part2/fig012_channel_slope_def.png" width="500" />
 
+<figcaption>Figure 12. Definition sketch for channel slope.</figcaption>
+</figure>
 <h2 id="linkage-of-mainstem-branches-with-internal-head-boundary-conditions">Linkage of Mainstem Branches with Internal Head Boundary Conditions<a class="headerlink" href="#linkage-of-mainstem-branches-with-internal-head-boundary-conditions" title="Permanent link">&para;</a></h2>
 <p>Since the CE-QUAL-W2 model can represent neighboring waterbodies with different vertical grids, the vertical grids must be linked together to transfer volume, mass, and heat accurately.</p>
 <p>In order for the volume, heat, and mass to be passed from one cell to another, the flow, temperature, and concentration from the downstream segment <strong>[ID]</strong> of the upstream branch are transferred to the upstream segment <strong>[IU]</strong> of the downstream branch. Spatial averaging to conserve flow, heat, and mass is illustrated in Figure 13.</p>
