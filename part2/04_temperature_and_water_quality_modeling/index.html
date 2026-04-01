@@ -4668,7 +4668,7 @@ D_z = 0.14 A_z
 <h4 id="surface-heat-exchange">Surface Heat Exchange<a class="headerlink" href="#surface-heat-exchange" title="Permanent link">&para;</a></h4>
 <p>The surface heat exchange is treated as a flux boundary condition at the water surface. Surface heat exchange can be formulated as a term-by-term process (see Figure 52) using the explicit adjacent cell transport computation as long as the integration timestep is shorter than or equal to the frequency of the meteorological input. Surface heat exchange processes depending on water surface temperatures are computed using computations from the prior time step.</p>
 <figure>
-  <img alt="Surface heat exchange term-by-term formulation" src="../../assets/images/part2/fig52_surface_heat_exchange.png" width="600" />
+  <img alt="Surface heat exchange term-by-term formulation" src="../../assets/images/part2/fig052_surface_heat_exchange.png" width="600" />
 <br />
 <figcaption>Figure 52. Surface heat exchange term-by-term formulation.</figcaption>
 </figure>
@@ -4727,7 +4727,7 @@ D_z = 0.14 A_z
 \]</div>
 <p>where <span class="arithmatex">\(\phi_s(z)\)</span> = short-wave radiation at depth z (W m⁻²), <span class="arithmatex">\(\beta\)</span> = fraction absorbed at the water surface, <span class="arithmatex">\(\eta\)</span> = extinction coefficient (m⁻¹), and <span class="arithmatex">\(\phi_{sn}\)</span> = net short-wave solar radiation reaching the surface (W m⁻²).</p>
 <figure>
-  <img alt="Short-wave solar penetration in a water body" src="../../assets/images/part2/fig53_solar_penetration.png" width="500" />
+  <img alt="Short-wave solar penetration in a water body" src="../../assets/images/part2/fig053_solar_penetration.png" width="500" />
 <br />
 <figcaption>Figure 54. Short-wave solar penetration in a water body.</figcaption>
 </figure>
@@ -4817,7 +4817,7 @@ b_{2m} = \alpha^c b_z \tag{4-29}
 <h4 id="equilibrium-temperature">Equilibrium Temperature<a class="headerlink" href="#equilibrium-temperature" title="Permanent link">&para;</a></h4>
 <p>The equilibrium temperature, <span class="arithmatex">\(T_E\)</span>, is defined as the temperature at which the net rate of surface heat exchange is zero (see Figure 56).</p>
 <figure>
-  <img alt="Concept of the equilibrium temperature" src="../../assets/images/part2/fig55_equilibrium_temperature.png" width="500" />
+  <img alt="Concept of the equilibrium temperature" src="../../assets/images/part2/fig055_equilibrium_temperature.png" width="500" />
 <br />
 <figcaption>Figure 56. Concept of the equilibrium temperature, T<sub>E</sub>, where the net surface heat flux is defined as zero.</figcaption>
 </figure>
@@ -5121,7 +5121,7 @@ T_f = -0.3146 - 0.0417 TDS - 0.000166 TDS^2
 <h3 id="gain-and-loss-of-water">Gain and Loss of Water<a class="headerlink" href="#gain-and-loss-of-water" title="Permanent link">&para;</a></h3>
 <p>As ice forms, water is removed from the waterbody. There is a removal of 0.917 m³ of water for every 1 m³ of ice formed. The reverse occurs as ice melts and comes back into the water body. The model does not account for ablation nor on snow accumulation.</p>
 <figure>
-  <img alt="Ice formation and melting water balance" src="../../assets/images/part2/fig60_ice_water_balance.png" width="600" />
+  <img alt="Ice formation and melting water balance" src="../../assets/images/part2/fig060_azimuth_angle.png" width="600" />
 <br />
 <figcaption>Figure 62. Ice formation and melting water balance.</figcaption>
 </figure>
@@ -5394,7 +5394,7 @@ T_f = -0.3146 - 0.0417 TDS - 0.000166 TDS^2
 <h2 id="generic-constituent">Generic Constituent<a class="headerlink" href="#generic-constituent" title="Permanent link">&para;</a></h2>
 <p>Any number of generic constituents <strong>[NGC]</strong> can be defined that can settle, decay (using either zero order and/or first order decay and/or photochemical reactions), transfer across the air/water interface, and/or be released from the sediment during anoxic conditions (just for the zero order SOD model). Generic constituents do not interact with the hydrodynamics nor any other water quality state variables.</p>
 <figure>
-  <img alt="Internal flux for generic constituent compartment" src="../../assets/images/part2/fig61_generic_constituent_flux.png" width="500" />
+  <img alt="Internal flux for generic constituent compartment" src="../../assets/images/part2/fig061_azimuth_shadow_length.png" width="500" />
 <br />
 <figcaption>Figure 63. Internal flux for generic constituent compartment.</figcaption>
 </figure>
@@ -5560,7 +5560,7 @@ K_{Lg} = K_{LO2}\sqrt{\frac{D_g}{D_{O2}}}
 <h2 id="bacteria">Bacteria<a class="headerlink" href="#bacteria" title="Permanent link">&para;</a></h2>
 <p>Coliform bacteria are commonly used as an indicator of pathogen contamination. Safety standards and criteria for drinking and recreational purposes are based upon coliform concentrations.</p>
 <figure>
-  <img alt="Internal flux for coliform bacteria" src="../../assets/images/part2/fig62_coliform_bacteria_flux.png" width="400" />
+  <img alt="Internal flux for coliform bacteria" src="../../assets/images/part2/fig062_ice_water_balance.png" width="400" />
 <br />
 <figcaption>Figure 64. Internal flux for coliform bacteria.</figcaption>
 </figure>
@@ -5835,7 +5835,7 @@ S_{RDOM} = \underbrace{K_{L \to R}\Phi_{LDOM}}_{\substack{\text{labile to refrac
 <p>Labile particulate organic matter (LPOM) represents particulate organic material in the water column. Decaying particulate organic matter is a source of refractory particulate organic matter, nitrogen, phosphorus, and inorganic carbon. A stoichiometric relationship governs mineralization of ammonium, phosphorus, and inorganic carbon, and an oxygen demand is exerted as LPOM decomposes.</p>
 <p>When LPOM settles to the bottom, it accumulates and decays in the sediment compartment or the sediment diagenesis compartment if activated for the simulation.</p>
 <figure>
-  <img alt="Internal flux between labile POM and other compartments" src="../../assets/images/part2/fig71_labile_pom_flux.png" width="600" />
+  <img alt="Internal flux between labile POM and other compartments" src="../../assets/images/part2/fig071_h2s_sulfate_sources_sinks.png" width="600" />
 <br />
 <figcaption>Figure 78. Internal flux between labile POM and other compartments.</figcaption>
 </figure>
@@ -6621,7 +6621,7 @@ C_{intra} = \sum_{i=1}^{n \text{ algal groups}} (CTP) \cdot \Phi_a \cdot \beta
 <h2 id="periphytonepiphyton">Periphyton/Epiphyton<a class="headerlink" href="#periphytonepiphyton" title="Permanent link">&para;</a></h2>
 <p>Any number of user-defined periphyton/epiphyton groups can be modeled. Similar to the first-order sediment compartment, periphyton/epiphyton are not transported in the water column.</p>
 <figure>
-  <img alt="Internal flux between epiphyton and other compartments" src="../../assets/images/part2/fig79_epiphyton_organic_matter.png" width="600" />
+  <img alt="Internal flux between epiphyton and other compartments" src="../../assets/images/part2/fig079_refractory_pom_flux.png" width="600" />
 <br />
 <figcaption>Figure 90. Internal flux between epiphyton and other compartments.</figcaption>
 </figure>
@@ -7003,7 +7003,7 @@ V_m = \frac{m}{\rho_m}
 <h2 id="zooplankton">Zooplankton<a class="headerlink" href="#zooplankton" title="Permanent link">&para;</a></h2>
 <p>The zooplankton compartment was adapted from the U.S. Army Corps of Engineers (USACE) reservoir model CE-QUAL-R1 (Environmental Laboratory, 1995). Zooplankton are assumed to be non-motile and are transported only by advection and dispersion. Zooplankton can graze algae, detritus (POM), and other zooplankton. Losses occur through mortality and respiration. Algae vertical settling or floating can also be specified through a settling velocity and dynamic vertical migration.</p>
 <figure>
-  <img alt="Zooplankton source/sinks" src="../../assets/images/part2/fig81_zooplankton_sources_sinks.png" width="600" />
+  <img alt="Zooplankton source/sinks" src="../../assets/images/part2/fig081_rpoc_kinetics.png" width="600" />
 <br />
 <figcaption>Figure 93. Zooplankton source/sinks.</figcaption>
 </figure>
@@ -7286,7 +7286,7 @@ S_{PSi} = \underbrace{P_{am}\delta_{Sia}K_{am}\Phi_a}_{\text{algae mortality}} +
 <p>Oxygen is one of the most important elements in aquatic ecosystems. It is essential for higher forms of life, controls many chemical reactions through oxidation, and is a surrogate variable indicating the general health of aquatic systems.</p>
 <p>CE-QUAL-W2 includes both aerobic and anaerobic processes. The ability to model anaerobic periods is important since it provides information on potential problems with water quality. Simulations can be used to identify possibilities for both metalimnetic and hypolimnetic oxygen depletion and its impact on various water control management alternatives.</p>
 <figure>
-  <img alt="Internal flux between dissolved oxygen and other compartments" src="../../assets/images/part2/fig88_dissolved_oxygen_flux.png" width="600" />
+  <img alt="Internal flux between dissolved oxygen and other compartments" src="../../assets/images/part2/fig088_algae_flux.png" width="600" />
 <br />
 <figcaption>Figure 99. Internal flux between dissolved oxygen and other compartments.</figcaption>
 </figure>
@@ -7493,7 +7493,7 @@ K_a = 2592US \text{ for } Q &gt; 3000 \text{ cfs}
 \]</div>
 <p>where <span class="arithmatex">\(S\)</span> is the slope in ft/ft and <span class="arithmatex">\(U\)</span> is velocity in ft/s.</p>
 <figure>
-  <img alt="Reaeration coefficient as a function of flow rate" src="../../assets/images/part2/fig89_reaeration_vs_flow.png" width="600" />
+  <img alt="Reaeration coefficient as a function of flow rate" src="../../assets/images/part2/fig089_reaeration_vs_flow.png" width="600" />
 <br />
 <figcaption>Figure 100. Reaeration coefficient as a function of flow rate.</figcaption>
 </figure>
@@ -7517,25 +7517,25 @@ f(fetch) = \frac{\ln\frac{10}{z_{o2}}\ln\frac{\delta}{z_{o1}}}{\ln\frac{10}{z_{o
 </ul>
 <p>The function <span class="arithmatex">\(f(fetch)\)</span> varies from 1.056 for small lakes to 1.123 for large lakes. The fetch is the length in m of the wind over the water surface from one bank to the other.</p>
 <figure>
-  <img alt="Variation of wind speed and KL for lake/reservoir equations" src="../../assets/images/part2/fig90_wind_speed_kl.png" width="600" />
+  <img alt="Variation of wind speed and KL for lake/reservoir equations" src="../../assets/images/part2/fig090_epiphyton_flux.png" width="600" />
 <br />
 <figcaption>Figure 101. Variation of wind speed and KL for lake/reservoir equations.</figcaption>
 </figure>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Wind speed of 5 m/s and a fetch of 5 km corrected to 10 m as a function of measuring height on land](../assets/images/part2/fig102_wind_height.png){ width="500" }
+  ![Wind speed of 5 m/s and a fetch of 5 km corrected to 10 m as a function of measuring height on land](../assets/images/part2/fig102_wind_height_correction.png){ width="500" }
   <figcaption>Figure 102. Wind speed of 5 m s⁻¹ and a fetch of 5 km corrected to 10 m as a function of measuring height on land.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Wind speed of 5 m/s corrected to 10 m as a function of fetch](../assets/images/part2/fig103_wind_fetch.png){ width="500" }
+  ![Wind speed of 5 m/s corrected to 10 m as a function of fetch](../assets/images/part2/fig103_wind_fetch_correction.png){ width="500" }
   <figcaption>Figure 103. Wind speed of 5 m s⁻¹ corrected to 10 m as a function of fetch.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Wind corrected to 10 m based on wind measured on land](../assets/images/part2/fig104_wind_correction.png){ width="500" }
+  ![Wind corrected to 10 m based on wind measured on land](../assets/images/part2/fig104_wind_land_correction.png){ width="500" }
   <figcaption>Figure 104. Wind corrected to 10 m based on wind measured on land.</figcaption>
 </figure> -->
 
@@ -7598,7 +7598,7 @@ D_{O2} = 4.58 \times 10^{-11} T + 1.2 \times 10^{-9}
 <p>where <span class="arithmatex">\(D_{O2}\)</span> is molecular diffusivity of oxygen (m² s⁻¹) and <span class="arithmatex">\(T\)</span> is temperature (°C).</p>
 <p>No temperature correction was made to the calculated value of <span class="arithmatex">\(K_L\)</span> in earlier versions of the model. The latest version includes the correction with theta set to 1.024.</p>
 <figure>
-  <img alt="Variation of KLT/KL20 as a function of temperature" src="../../assets/images/part2/fig94_kl_temperature.png" width="500" />
+  <img alt="Variation of KLT/KL20 as a function of temperature" src="../../assets/images/part2/fig094_phosphorus_flux.png" width="500" />
 <br />
 <figcaption>Figure 105. Variation of K<sub>LT</sub>/K<sub>L20</sub> as a function of temperature.</figcaption>
 </figure>
@@ -8123,7 +8123,7 @@ S_{Csed} = \frac{\omega_{POMR}A_{bottom}}{Vol_{cell}}\gamma_{COM}\Phi_{RPOM} + \
 <p>Sediment state variables include organic matter (labile, refractory, and inert), P, N, inorganic C, alkalinity, oxidized forms of Fe and Mn, reduced forms of Fe and Mn, CH₄, H₂S, sulfate, and temperature. There are also options in the sediment diagenesis model for bubble formation and organic sediment resuspension.</p>
 <h3 id="sediment-phosphorus-diagenesis">Sediment Phosphorus (Diagenesis)<a class="headerlink" href="#sediment-phosphorus-diagenesis" title="Permanent link">&para;</a></h3>
 <figure>
-  <img alt="Schematic of sediment phosphate model" src="../../assets/images/part2/fig97_sediment_phosphate_model.png" width="500" />
+  <img alt="Schematic of sediment phosphate model" src="../../assets/images/part2/fig097_dissolved_silica_flux.png" width="500" />
 <br />
 <figcaption>Figure 108. Schematic of sediment phosphate model (DiToro, 2001).</figcaption>
 </figure>
@@ -8194,7 +8194,7 @@ H_2\frac{d\Phi_{POCi}}{dt} = -k_{POCi}\theta_{POCi}^{(T-20)}\Phi_{POCi}H_2 - w_2
 <p>The dynamic calculation of pH was implemented using a pH model similar to one developed by the United States Geological Survey (Sullivan et al., 2013). In order to calculate pH, sediment organic carbon, sediment alkalinity, and sediment temperature also had to be modeled.</p>
 <h4 id="sediment-total-inorganic-carbon">Sediment Total Inorganic Carbon<a class="headerlink" href="#sediment-total-inorganic-carbon" title="Permanent link">&para;</a></h4>
 <figure>
-  <img alt="Schematic of sediment inorganic carbon model" src="../../assets/images/part2/fig101_sediment_inorganic_carbon.png" width="500" />
+  <img alt="Schematic of sediment inorganic carbon model" src="../../assets/images/part2/fig111_sediment_inorganic_carbon_model.png" width="500" />
 <br />
 <figcaption>Figure 111. Schematic of sediment inorganic carbon model.</figcaption>
 </figure>
@@ -8211,6 +8211,11 @@ S_{TIC2} = \underbrace{\sum k_{POCm2}\gamma_{POC}\Phi_{POC}}_{\text{Methanogenes
 K_{L12} = \frac{D}{\Delta z} = \frac{D}{\frac{1}{2}(H_1 + H_2)}
 \]</div>
 <h4 id="sediment-alkalinity">Sediment Alkalinity<a class="headerlink" href="#sediment-alkalinity" title="Permanent link">&para;</a></h4>
+<figure>
+  <img alt="Schematic of sediment alkalinity model" src="../../assets/images/part2/fig112_sediment_alkalinity_model.png" width="500" />
+<br />
+<figcaption>Figure 112. Schematic of sediment alkalinity model showing diffusion between water column, aerobic sediment layer, and anaerobic sediment layer, with nitrification (decrease in alkalinity) and denitrification (increase in alkalinity) processes.</figcaption>
+</figure>
 <p>Sources and sinks for non-conservative sediment alkalinity include nitrification (decreases alkalinity) and denitrification (increases alkalinity). Alkalinity is in units of g m⁻³ as CaCO₃.</p>
 <p>The rate equation for alkalinity in the aerobic sediment layer 1 is:</p>
 <div class="arithmatex">\[
@@ -8221,6 +8226,11 @@ S_{ALK1} = -\underbrace{\left(\frac{2 \text{ equivalents alkalinity}}{1 \text{ m
 S_{ALK2} = \underbrace{\left(\frac{1 \text{ equivalent alkalinity}}{1 \text{ mole nitrate denitrified}}\right)k_{NOx}\gamma_{NOx}\Phi_{NOx}}_{\text{denitrification}}
 \]</div>
 <h4 id="sediment-temperature">Sediment Temperature<a class="headerlink" href="#sediment-temperature" title="Permanent link">&para;</a></h4>
+<figure>
+  <img alt="Schematic of sediment temperature model" src="../../assets/images/part2/fig113_sediment_temperature_model.png" width="500" />
+<br />
+<figcaption>Figure 113. Schematic of sediment temperature model showing diffusion between water column (T<sub>0</sub>), aerobic sediment layer (T<sub>1</sub>), anaerobic sediment layer (T<sub>2</sub>), and underlying sediment temperature (T<sub>sed</sub>).</figcaption>
+</figure>
 <p>The heat balances for the aerobic layer 1 and anaerobic layer 2 are:</p>
 <div class="arithmatex">\[
 \rho C_p H_1 \frac{dT_1}{dt} = -K_{L01}\rho C_p(T_1 - T_0) + K_{L12}\rho C_p(T_2 - T_1)
@@ -8239,7 +8249,7 @@ S_{ALK2} = \underbrace{\left(\frac{1 \text{ equivalent alkalinity}}{1 \text{ mol
 <h4 id="ferrous-iron-feii">Ferrous Iron Fe(II)<a class="headerlink" href="#ferrous-iron-feii" title="Permanent link">&para;</a></h4>
 <p>Iron is modeled using two constituents: iron oxyhydroxide, FeOOH(s), and ferrous iron Fe(II). FeOOH(s) is very insoluble and is modeled as a particulate whereas Fe(II) is more soluble.</p>
 <figure>
-  <img alt="Schematic of iron model" src="../../assets/images/part2/fig106_iron_model.png" width="600" />
+  <img alt="Schematic of iron model" src="../../assets/images/part2/fig116_iron_model.png" width="600" />
 <br />
 <figcaption>Figure 116. Schematic of iron model (DiToro, 2001).</figcaption>
 </figure>
@@ -8412,7 +8422,7 @@ P_a = \left(1 - \frac{H}{44.3}\right)^{5.25}
 <p>where <span class="arithmatex">\(H\)</span> is the reservoir elevation from sea level in km.</p>
 <p>The model user can input a value of CO₂ in the atmosphere in ppm or can use a regression equation based on the measured global average CO₂ in the atmosphere. The global CO₂ average values are from NOAA/ESRL (2020) and represent a spatial global average for each year.</p>
 <figure>
-  <img alt="Global average CO2 gas concentration from 1920 to 2019 from NOAA/ESRL (2020) data" src="../../assets/images/part2/fig109_co2_1920_2019.png" width="600" />
+  <img alt="Global average CO2 gas concentration from 1920 to 2019 from NOAA/ESRL (2020) data" src="../../assets/images/part2/fig119_co2_1920_2019.png" width="600" />
 <br />
 <figcaption>Figure 119. Global average CO₂ gas concentration from 1920 to 2019 from NOAA/ESRL (2020) data.</figcaption>
 </figure>
@@ -8420,7 +8430,7 @@ P_a = \left(1 - \frac{H}{44.3}\right)^{5.25}
 <p>CO₂ global average concentration in ppm = (0.000041392 x Year³) - (0.231409975 x Year²) + (430.804190829 x Year) - 266735.857433224</p>
 <p>where Year is the 4-digit year, such as 2015.</p>
 <figure>
-  <img alt="Global average CO2 gas concentration between 1980 and 2019 from NOAA/ESRL (2020) data" src="../../assets/images/part2/fig110_co2_1980_2019.png" width="600" />
+  <img alt="Global average CO2 gas concentration between 1980 and 2019 from NOAA/ESRL (2020) data" src="../../assets/images/part2/fig120_co2_1980_2019.png" width="600" />
 <br />
 <figcaption>Figure 120. Global average CO₂ gas concentration between 1980 and 2019 from NOAA/ESRL (2020) data.</figcaption>
 </figure>
