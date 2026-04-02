@@ -3593,7 +3593,7 @@ g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
 <li><span class="arithmatex">\(y_1\)</span> = left bank coordinate</li>
 <li><span class="arithmatex">\(y_2\)</span> = right bank coordinate</li>
 </ul>
-<p>The double overbars represent the spatial average of the temporal average quantity. The double prime represents the deviation from the lateral average and is a function of y.</p>
+<p>The double overbars represent the spatial average of the temporal average quantity. The double prime represents the deviation from the lateral average and is a function of y (Figure 8).</p>
 <figure>
 <img alt="Lateral average and deviation from lateral average components of longitudinal velocity." src="../../assets/images/part2/fig008_lateral_avg.png" width="500" />
 
@@ -3685,7 +3685,7 @@ g_z = -g\frac{\partial h}{\partial z} = g\cos\alpha \tag{2-11}
 <div class="arithmatex">\[
 P = P_a + g\cos\alpha\int_{\eta}^{z}\rho\,dz \tag{2-40}
 \]</div>
-<p>after integration from a depth <span class="arithmatex">\(z\)</span> to the water surface defined as <span class="arithmatex">\(z=\eta\)</span>. <span class="arithmatex">\(P_a\)</span> is the atmospheric pressure at the water surface.</p>
+<p>after integration from a depth <span class="arithmatex">\(z\)</span> to the water surface defined as <span class="arithmatex">\(z=\eta\)</span> (Figure 9). <span class="arithmatex">\(P_a\)</span> is the atmospheric pressure at the water surface.</p>
 <figure>
 <img alt="Schematization for simplification of pressure term." src="../../assets/images/part2/fig009_pressure_term.png" width="600" />
 
@@ -3815,23 +3815,19 @@ B_\eta\frac{\partial\eta}{\partial t} = \frac{\partial}{\partial x}\int_{\eta}^{
 <h2 id="linkage-of-mainstem-branches-with-internal-head-boundary-conditions">Linkage of Mainstem Branches with Internal Head Boundary Conditions<a class="headerlink" href="#linkage-of-mainstem-branches-with-internal-head-boundary-conditions" title="Permanent link">&para;</a></h2>
 <p>Since the CE-QUAL-W2 model can represent neighboring waterbodies with different vertical grids, the vertical grids must be linked together to transfer volume, mass, and heat accurately.</p>
 <p>In order for the volume, heat, and mass to be passed from one cell to another, the flow, temperature, and concentration from the downstream segment <strong>[ID]</strong> of the upstream branch are transferred to the upstream segment <strong>[IU]</strong> of the downstream branch. Spatial averaging to conserve flow, heat, and mass is illustrated in Figure 13.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Transfer of mass and momentum between branches with unequal vertical grid spacing.](../assets/images/part2/fig013_transfer_of_mass_and_momentum_between_branches_with_unequal.png){ width="500" }
-  <figcaption>Figure 13. Transfer of mass and momentum between branches with unequal vertical grid spacing.</figcaption>
+<figure>
+  <img alt="Transfer of mass and momentum between branches with unequal vertical grid spacing." src="../../assets/images/part2/fig013_transfer_of_mass_and_momentum_between_branches_with_unequal.png" width="500" />
+<br />
+<figcaption>Figure 13. Transfer of mass and momentum between branches with unequal vertical grid spacing.</figcaption>
 </figure>
--->
-
 <h2 id="linkage-of-tributary-or-side-branches">Linkage of Tributary or Side Branches<a class="headerlink" href="#linkage-of-tributary-or-side-branches" title="Permanent link">&para;</a></h2>
 <p>Tributary or side branches are not defined as "tributaries" in the model. "Tributaries" are inflows into a branch, whereas side or tributary branches are modeled as part of the model domain.</p>
-<p>Version 2 of CE-QUAL-W2 assumed all tributary branches entered at right angles to the main channel, resulting in no longitudinal momentum exchange between branches. Version 3 and later include momentum transfer between the side branch and the main branch based on segment orientation.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Linkage of tributary or side branch coming in at an angle to main branch.](../assets/images/part2/fig014_linkage_of_tributary_or_side_branch_coming_in_at_an_angle_to.png){ width="500" }
-  <figcaption>Figure 14. Linkage of tributary or side branch coming in at an angle to main branch.</figcaption>
+<p>Version 2 of CE-QUAL-W2 assumed all tributary branches entered at right angles to the main channel, resulting in no longitudinal momentum exchange between branches. Version 3 and later include momentum transfer between the side branch and the main branch based on segment orientation (Figure 14).</p>
+<figure>
+  <img alt="Linkage of tributary or side branch coming in at an angle to main branch." src="../../assets/images/part2/fig014_linkage_of_tributary_or_side_branch_coming_in_at_an_angle_to.png" width="500" />
+<br />
+<figcaption>Figure 14. Linkage of tributary or side branch coming in at an angle to main branch.</figcaption>
 </figure>
--->
-
 <p>The tributary branch inflow can create shear stress along both the longitudinal axis of the main stem branch and along the y-axis of the segment. The cross-shear mixing has been added to the cross-shear wind stress for the computation involving the vertical eddy viscosity and vertical diffusivity. This involves determining the y and x velocity components of the entering branch.</p>
 <h3 id="longitudinal-momentum">Longitudinal Momentum<a class="headerlink" href="#longitudinal-momentum" title="Permanent link">&para;</a></h3>
 <p>The vector component of velocity in the x-direction of the main channel, <span class="arithmatex">\(U_x\)</span>, can be computed by analysis of the channel orientations. This component in the x-direction would be:</p>
@@ -3843,13 +3839,11 @@ U_x = U\cos\beta \tag{2-51}
 <li><span class="arithmatex">\(U\)</span> = longitudinal velocity of the tributary at segment ID for the tributary branch</li>
 <li><span class="arithmatex">\(\beta\)</span> = difference in the angle between the main stem and tributary segments (Figure 15)</li>
 </ul>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment.](../assets/images/part2/fig015_schematic_of_x_and_y_velocity_components_where_main_is_the.png){ width="500" }
-  <figcaption>Figure 15. Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment. U_x is the x-velocity component of the tributary branch into the main segment. U_y is the y-velocity component of the tributary branch into the main segment.</figcaption>
+<figure>
+  <img alt="Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment." src="../../assets/images/part2/fig015_schematic_of_x_and_y_velocity_components_where_main_is_the.png" width="500" />
+<br />
+<figcaption>Figure 15. Schematic of x and y velocity components where θ_main is the angle of the main branch segment and θ_trib is the angle of the tributary segment. U_x is the x-velocity component of the tributary branch into the main segment. U_y is the y-velocity component of the tributary branch into the main segment.</figcaption>
 </figure>
--->
-
 <p>The conservation of momentum about a control volume (the main stem segment) would result in an additional source of momentum. Lai (1986) shows that the correction to the x-momentum equation would be:</p>
 <div class="arithmatex">\[
 qBU_x \tag{2-52}
@@ -3913,13 +3907,11 @@ U_{avg} = \frac{Q_i}{A_i}
 <li><span class="arithmatex">\(C_D\)</span> = drag coefficient, [-]</li>
 <li><span class="arithmatex">\(\rho_a\)</span> = air density, kg m⁻³</li>
 </ul>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Shear stress at the air-water surface.](../assets/images/part2/fig016_shear_stress_at_the_air_water_surface.png){ width="500" }
-  <figcaption>Figure 16. Shear stress at the air-water surface.</figcaption>
+<figure>
+  <img alt="Shear stress at the air-water surface." src="../../assets/images/part2/fig016_shear_stress_at_the_air_water_surface.png" width="500" />
+<br />
+<figcaption>Figure 16. Shear stress at the air-water surface.</figcaption>
 </figure>
--->
-
 <p>Note that this relationship leads to the "3% rule" for surface currents:</p>
 <div class="arithmatex">\[
 \tau_s = C_D\rho_a(W_h - u_s)^2 = C_D\rho_W u_s^2 \quad \text{if} \quad C_{D_{air}} \sim C_{D_{water}}, \quad \text{then} \quad u_s \sim 0.03 W_h \tag{2-56}
@@ -3952,20 +3944,16 @@ U_{avg} = \frac{Q_i}{A_i}
 <li><span class="arithmatex">\(\Theta_2\)</span> = segment orientation relative to North, radians</li>
 </ul>
 <p>Segment and wind orientation are illustrated in Figures 17 and 18, respectively. The angles are measured in radians clockwise from north. A wind from the east would have an angle of π/2 radians, π radians from the south, 3π/2 radians from the west, and 0 or 2π radians from the north.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Segment orientation.](../assets/images/part2/fig017_segment_orientation.png){ width="500" }
-  <figcaption>Figure 17. Segment orientation.</figcaption>
+<figure>
+  <img alt="Segment orientation." src="../../assets/images/part2/fig017_segment_orientation.png" width="500" />
+<br />
+<figcaption>Figure 17. Segment orientation.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Wind orientation.](../assets/images/part2/fig018_wind_orientation.png){ width="400" }
-  <figcaption>Figure 18. Wind orientation.</figcaption>
+<figure>
+  <img alt="Wind orientation." src="../../assets/images/part2/fig018_wind_orientation.png" width="400" />
+<br />
+<figcaption>Figure 18. Wind orientation.</figcaption>
 </figure>
--->
-
 <h4 id="drag-coefficient-formulations">Drag Coefficient Formulations<a class="headerlink" href="#drag-coefficient-formulations" title="Permanent link">&para;</a></h4>
 <p>The CE-QUAL-W2 model Version 3.5 and earlier included a drag coefficient, <span class="arithmatex">\(C_D\)</span>, based on the following formulae:</p>
 <ul>
@@ -3991,20 +3979,16 @@ C_D = \left\{\kappa^{-1}\ln\left[\frac{10g}{C_D W_{10}^2}\right] + 11.3\right\}^
 <li><span class="arithmatex">\(C_D = 0.0026\)</span> if <span class="arithmatex">\(W_{10} \ge 15\)</span> m s⁻¹</li>
 </ul>
 <p>This is shown as the dotted line in Figure 19. This formulation increases the drag coefficient at low wind speeds. The impact of this on the wind shear stress at the surface, <span class="arithmatex">\(\tau = \rho_a C_D W_{10}^2\)</span>, is shown in Figure 20.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).](../assets/images/part2/fig019_comparison_of_current_w2_model_computation_of_cd_and_that_re.png){ width="500" }
-  <figcaption>Figure 19. Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).</figcaption>
+<figure>
+  <img alt="Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003)." src="../../assets/images/part2/fig019_comparison_of_current_w2_model_computation_of_cd_and_that_re.png" width="500" />
+<br />
+<figcaption>Figure 19. Comparison of current W2 model computation of C_D and that recommended as a lower limit by Wuest and Lorke (2003).</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier.](../assets/images/part2/fig020_surface_shear_stress_for_ce_qual_w2_version_3_6_and_later_co.png){ width="500" }
-  <figcaption>Figure 20. Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier.</figcaption>
+<figure>
+  <img alt="Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier." src="../../assets/images/part2/fig020_surface_shear_stress_for_ce_qual_w2_version_3_6_and_later_co.png" width="500" />
+<br />
+<figcaption>Figure 20. Surface shear stress for CE-QUAL-W2 Version 3.6 and later compared to Version 3.5 and earlier.</figcaption>
 </figure>
--->
-
 <h3 id="wind-fetch-calculation">Wind Fetch Calculation<a class="headerlink" href="#wind-fetch-calculation" title="Permanent link">&para;</a></h3>
 <p>The wind fetch is the distance along a lake or reservoir where the wind blows unobstructed. This can contribute to enhanced wind-wave generation as the fetch distance is increased. The vertical shear stress can be enhanced as fetch increases.</p>
 <p>CE-QUAL-W2 always calculates fetch distance for the vertical shear stress algorithm and for reaeration calculations. The calculation is based on the prevailing wind direction. The fetch at a segment is the sum of the lengths of the segments either upstream or downstream of it.</p>
@@ -4128,36 +4112,28 @@ C = (1/n)R^{1/6} \tag{2-61}
 <p>The W2 or W2N formulations can be used for waterbodies with deep sections that could be stratified. The NICK, PARAB, or RNG formulations are suitable for estuary or river systems where the maximum computed <strong>[AZMAX]</strong> could be as high as 1 to 5 m² s⁻¹. For river models, use the implicit solution technique. To reproduce results from Version 2 in a stratified reservoir, set <strong>[AZMAX]</strong> to 1.0 x 10⁻⁵ m² s⁻¹ and use the explicit solution.</p>
 <p>According to Hamblin and Salmon (1975), "the vertical diffusion of momentum is probably the most important internal parameter" for predicting internal circulation patterns. Because of the disarray in the literature over which formulation is best, Shanahan (1980) suggested to "use theory and literature as a guide to develop alternative viscosity functions and then test those functions in calibration runs against field data." In the absence of expensive-to-obtain current velocity measurements, the use of temperature profiles is often used to test the adequacy of the hydrodynamic regime against different formulations.</p>
 <p>Typical variations of these formulations as predicted by the model are shown in Figure 22 for Manning's friction factor and in Figure 23 for a Chezy friction factor. Comparison of the various turbulence closure theories to classical open channel flow theory for seven vertical layers is shown in Figure 24.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km (Manning's n=0.03 and S=0.0001).](../assets/images/part2/fig022_variation_of_turbulent_vertical_eddy_viscosity_for_flow_of_2.png){ width="500" }
-  <figcaption>Figure 22. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km.</figcaption>
+<figure>
+  <img alt="Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km (Manning's n=0.03 and S=0.0001)." src="../../assets/images/part2/fig022_variation_of_turbulent_vertical_eddy_viscosity_for_flow_of_2.png" width="500" />
+<br />
+<figcaption>Figure 22. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m at x=15 km.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km (Chezy=50 and S=0.0001).](../assets/images/part2/fig023_variation_of_turbulent_vertical_eddy_viscosity_for_flow_of_2.png){ width="500" }
-  <figcaption>Figure 23. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km.</figcaption>
+<figure>
+  <img alt="Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km (Chezy=50 and S=0.0001)." src="../../assets/images/part2/fig023_variation_of_turbulent_vertical_eddy_viscosity_for_flow_of_2.png" width="500" />
+<br />
+<figcaption>Figure 23. Variation of turbulent vertical eddy viscosity for flow of 2574 m³ s⁻¹ flow down a channel of length 30 km and width of 100 m measured at x=15 km.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory.](../assets/images/part2/fig024_comparison_of_vertical_velocity_predictions_of_w2_model_with.png){ width="500" }
-  <figcaption>Figure 24. Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory.</figcaption>
+<figure>
+  <img alt="Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory." src="../../assets/images/part2/fig024_comparison_of_vertical_velocity_predictions_of_w2_model_with.png" width="500" />
+<br />
+<figcaption>Figure 24. Comparison of vertical velocity predictions of W2 model with various eddy viscosity models compared to theory.</figcaption>
 </figure>
--->
-
 <h3 id="formulation">Formulation<a class="headerlink" href="#formulation" title="Permanent link">&para;</a></h3>
-<p>In CE-QUAL-W2, the shear stress term includes the contribution to the shear stress from surface waves induced by the wind. The wind can produce waves that produce decaying motions with depth.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Conceptual diagram of wind induced motion.](../assets/images/part2/fig025_conceptual_diagram_of_wind_induced_motion.png){ width="500" }
-  <figcaption>Figure 25. Conceptual diagram of wind induced motion.</figcaption>
+<p>In CE-QUAL-W2, the shear stress term includes the contribution to the shear stress from surface waves induced by the wind (Figure 25). The wind can produce waves that produce decaying motions with depth.</p>
+<figure>
+  <img alt="Conceptual diagram of wind induced motion." src="../../assets/images/part2/fig025_conceptual_diagram_of_wind_induced_motion.png" width="500" />
+<br />
+<figcaption>Figure 25. Conceptual diagram of wind induced motion.</figcaption>
 </figure>
--->
-
 <p>The total longitudinal shear stress for a layer is defined as having contributions from interfacial velocity shear, wind wave generated shear, and friction shear along boundaries:</p>
 <div class="arithmatex">\[
 \frac{\tau_{xz}}{\rho} = A_z\frac{\partial U}{\partial z} + \frac{\tau_{wx}}{\rho}e^{-2kz} + \frac{\tau_b}{\rho} \tag{2-63}
@@ -4262,13 +4238,11 @@ A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \l
 \ell_m = H\left[0.14 - 0.08\left(1-\frac{z}{H}\right)^2 - 0.06\left(1-\frac{z}{H}\right)^4\right] \tag{2-77}
 \]</div>
 <p>This results in a vertical distribution for the mixing length as shown in Figure 26.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Mixing length as a function of depth for the Nickuradse formulation.](../assets/images/part2/fig026_mixing_length_as_a_function_of_depth_for_the_nikuradse_formu.png){ width="500" }
-  <figcaption>Figure 26. Mixing length as a function of depth for the Nickuradse formulation.</figcaption>
+<figure>
+  <img alt="Mixing length as a function of depth for the Nickuradse formulation." src="../../assets/images/part2/fig026_mixing_length_as_a_function_of_depth_for_the_nikuradse_formu.png" width="500" />
+<br />
+<figcaption>Figure 26. Mixing length as a function of depth for the Nickuradse formulation.</figcaption>
 </figure>
--->
-
 <p>The stability of the water column affects the mixing length. A Richardson number criteria has been applied to correct the mixing length for stability effects such as:</p>
 <div class="arithmatex">\[
 \ell_m = \ell_{mo}(1-7Ri) \quad \text{if } Ri \ge 0 \tag{2-78}
@@ -4287,13 +4261,11 @@ A_z = \kappa\frac{l^2}{2}\left[\left(\frac{\partial U}{\partial z}\right)^2 + \l
 \nu_t = \kappa u_* z\left(1-\frac{z}{H}\right) \tag{2-81}
 \]</div>
 <p>Figure 27 shows the spatial distribution of <span class="arithmatex">\(A_z\)</span> for the parabolic model.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Variation of A_z with depth for the parabolic model of Engelund (1978).](../assets/images/part2/fig027_variation_of_az_with_depth_for_the_parabolic_model_of_engelu.png){ width="500" }
-  <figcaption>Figure 27. Variation of A_z with depth for the parabolic model of Engelund (1978).</figcaption>
+<figure>
+  <img alt="Variation of A_z with depth for the parabolic model of Engelund (1978)." src="../../assets/images/part2/fig027_variation_of_az_with_depth_for_the_parabolic_model_of_engelu.png" width="500" />
+<br />
+<figcaption>Figure 27. Variation of A_z with depth for the parabolic model of Engelund (1978).</figcaption>
 </figure>
--->
-
 <p>For compatibility with the original model formulation, the computed value of <span class="arithmatex">\(A_z\)</span> is corrected using the Mamayev formulation:</p>
 <div class="arithmatex">\[
 \nu_t = \max\left(\nu, \nu_{t_{PARAB}}e^{-CRi}\right) \tag{2-82}
@@ -4413,13 +4385,11 @@ C_f = \frac{g}{C^2} = \frac{gn^2}{R_h^{1/3}} \tag{2-95}
 <li>The second method involved integrating the vertical transport term into a fully implicit finite difference.</li>
 </ol>
 <p>Both methods are based on the solutions developed by Wells (2001). The computational grid used in these calculations is shown in Figure 28.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![CE-QUAL-W2 computational grid.](../assets/images/part2/fig028_ce_qual_w2_computational_grid_width_density_pressure_and.png){ width="600" }
-  <figcaption>Figure 28. CE-QUAL-W2 computational grid. Width, density, pressure and water quality state variables are defined at cell centers. Horizontal velocity, longitudinal eddy viscosity and diffusivity, and longitudinal shear stress are defined at the right-hand side of the cell. Vertical velocity and vertical diffusivity are defined at the bottom of the cell, and the vertical eddy viscosity is defined at the lower right corner of the cell.</figcaption>
+<figure>
+  <img alt="CE-QUAL-W2 computational grid." src="../../assets/images/part2/fig028_ce_qual_w2_computational_grid_width_density_pressure_and.png" width="600" />
+<br />
+<figcaption>Figure 28. CE-QUAL-W2 computational grid. Width, density, pressure and water quality state variables are defined at cell centers. Horizontal velocity, longitudinal eddy viscosity and diffusivity, and longitudinal shear stress are defined at the right-hand side of the cell. Vertical velocity and vertical diffusivity are defined at the bottom of the cell, and the vertical eddy viscosity is defined at the lower right corner of the cell.</figcaption>
 </figure>
--->
-
 <h5 id="explicit-vertical-convection">Explicit Vertical Convection<a class="headerlink" href="#explicit-vertical-convection" title="Permanent link">&para;</a></h5>
 <p>The first method involved using an explicit finite difference for the vertical convection term. The turbulent kinetic energy transport equation (Equation 2-89) is split into convective/source-sink and diffusion components (Equations 2-96 and 2-97), then each is averaged over a layer (Equations 2-98 and 2-99). Finite differences replace the partial derivatives, yielding the explicit solution for <span class="arithmatex">\(k^*\)</span> (Equation 2-103). The diffusion equation is discretized (Equations 2-106 and 2-107) and simplified to a tridiagonal matrix (Equation 2-108), which is solved using the Thomas algorithm. The turbulent dissipation follows the same procedure (Equations 2-109 through 2-114).</p>
 <h5 id="implicit-vertical-convection">Implicit Vertical Convection<a class="headerlink" href="#implicit-vertical-convection" title="Permanent link">&para;</a></h5>
@@ -4495,49 +4465,39 @@ k = \frac{(U_{*s}^2 + U_{*boundary}^2)}{\sqrt{C_\mu}}
 <div class="arithmatex">\[
 \frac{\partial k}{\partial x} = 0, \quad \frac{\partial\varepsilon}{\partial x} = 0
 \]</div>
-<p>This is done by setting the value of turbulent kinetic energy and turbulent dissipation at the outlet cell equal to the value of the cell in the upstream segment.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975).](../assets/images/part2/fig029_comparison_of_ce_qual_w2_model_predictions_of_turbulent_diss.png){ width="500" }
-  <figcaption>Figure 29. Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
+<p>This is done by setting the value of turbulent kinetic energy and turbulent dissipation at the outlet cell equal to the value of the cell in the upstream segment. Figures 29 and 30 compare model predictions of turbulent dissipation and turbulent kinetic energy with field data.</p>
+<figure>
+  <img alt="Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975)." src="../../assets/images/part2/fig029_comparison_of_ce_qual_w2_model_predictions_of_turbulent_diss.png" width="500" />
+<br />
+<figcaption>Figure 29. Comparison of CE-QUAL-W2 model predictions of turbulent dissipation with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975).](../assets/images/part2/fig030_comparison_of_ce_qual_w2_model_predictions_of_turbulent_kine.png){ width="500" }
-  <figcaption>Figure 30. Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
+<figure>
+  <img alt="Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975)." src="../../assets/images/part2/fig030_comparison_of_ce_qual_w2_model_predictions_of_turbulent_kine.png" width="500" />
+<br />
+<figcaption>Figure 30. Comparison of CE-QUAL-W2 model predictions of turbulent kinetic energy with field data from Nakagawa, Neuzu, and Ueda (1975).</figcaption>
 </figure>
--->
-
 <h3 id="effect-of-vertical-layer-numbers-on-vertical-turbulence">Effect of Vertical Layer Numbers on Vertical Turbulence<a class="headerlink" href="#effect-of-vertical-layer-numbers-on-vertical-turbulence" title="Permanent link">&para;</a></h3>
 <p>In contrast to other riverine models that assume vertically well-mixed systems, CE-QUAL-W2 accounts for the vertical variation of velocity in a riverine reach. Even though there is an added computational burden of computing the 2D velocity profile, the advantage of making this computation is that the friction factor (Manning's or Chezy) for a segment can be flow or stage invariant depending on the number of vertical layers schematized.</p>
-<p>Many one-dimensional (1D) hydraulic flow models, such as CE-QUAL-RIV1 and UNET (Barkau, 1997), allow the user to specify how Manning's friction factor changes with depth. The Manning's friction factor, <span class="arithmatex">\(n\)</span>, has been thought to vary as a function of depth, Reynolds number, and roughness factor or scale of bed grain size (Ugarte and Madrid, 1994; Soong et al., 1995).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Variation of Manning's friction factor using formulae from Limerinos (1970) and Jarrett (1984, 1985) for a channel slope, S, of 0.0005 and 84th percentile diameter of the bed material, d_84, of 50.](../assets/images/part2/fig031_variation_of_manning_s_friction_factor_using_formulae_from_l.png){ width="500" }
-  <figcaption>Figure 31. Variation of Manning's friction factor with hydraulic radius.</figcaption>
+<p>Figure 31 shows the variation of Manning's friction factor with hydraulic radius. Many one-dimensional (1D) hydraulic flow models, such as CE-QUAL-RIV1 and UNET (Barkau, 1997), allow the user to specify how Manning's friction factor changes with depth. The Manning's friction factor, <span class="arithmatex">\(n\)</span>, has been thought to vary as a function of depth, Reynolds number, and roughness factor or scale of bed grain size (Ugarte and Madrid, 1994; Soong et al., 1995).</p>
+<figure>
+  <img alt="Variation of Manning's friction factor using formulae from Limerinos (1970) and Jarrett (1984, 1985) for a channel slope, S, of 0.0005 and 84th percentile diameter of the bed material, d_84, of 50." src="../../assets/images/part2/fig031_variation_of_manning_s_friction_factor_using_formulae_from_l.png" width="500" />
+<br />
+<figcaption>Figure 31. Variation of Manning's friction factor with hydraulic radius.</figcaption>
 </figure>
--->
-
 <p>However, in a two-dimensional, longitudinal-vertical river model, Manning's friction factor does not have to vary with stage to produce the effect that apparent friction decreases as river stage increases. The water surface setup changes significantly with the number of layers. In general, water surface slope increases as the number of computational layers decreases, because the average eddy viscosity in the water column increases with fewer layers. At the limit of a one-layer system, the average vertical eddy viscosity is infinite.</p>
 <p>The model allows choosing between six different vertical eddy viscosity formulations. These formulations are shown in Table 2. Typical variation of these formulations is shown in Figure 24 for Manning's friction factor for an open-channel, non-stratified flow regime as compared to theory of steady, uniform channel flow.</p>
 <p>The number of vertical layers significantly affects model predictions. For example, Figure 32 shows a comparison of vertical velocity profiles from a model with one, three, and seven vertical layers using the parabolic eddy viscosity model.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of vertical velocity predictions with one, three, and seven vertical layers.](../assets/images/part2/fig032_comparison_of_vertical_velocity_predictions_with_one_three.png){ width="500" }
-  <figcaption>Figure 32. Comparison of vertical velocity predictions with one, three, and seven vertical layers.</figcaption>
+<figure>
+  <img alt="Comparison of vertical velocity predictions with one, three, and seven vertical layers." src="../../assets/images/part2/fig032_comparison_of_vertical_velocity_predictions_with_one_three.png" width="500" />
+<br />
+<figcaption>Figure 32. Comparison of vertical velocity predictions with one, three, and seven vertical layers.</figcaption>
 </figure>
--->
-
 <p>Figure 33 shows how the change in the number of vertical layers affects the water surface slope over the domain length for a steady-state flow. In order to model the water surface slope of the 1-layer model with the 7-layer model, the apparent value of Manning's friction factor would have to be reduced. Hence, the apparent friction decreases as the number of layers increase.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.](../assets/images/part2/fig033_comparison_of_elevation_drop_of_w2_model_with_one_three_an.png){ width="500" }
-  <figcaption>Figure 33. Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.</figcaption>
+<figure>
+  <img alt="Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor." src="../../assets/images/part2/fig033_comparison_of_elevation_drop_of_w2_model_with_one_three_an.png" width="500" />
+<br />
+<figcaption>Figure 33. Comparison of elevation drop of W2 model with one, three, and seven vertical layers with same Manning's friction factor.</figcaption>
 </figure>
--->
-
 <p>CE-QUAL-W2 has also been compared to the 1D models DYNHYD (Ambrose et al., 1988) and CE-QUAL-RIV1 (Environmental Laboratory, 1995) by running W2 with only a single vertical layer. The average velocities between the three models agreed well with theory but the water surface slopes are different. W2 predicts an elevation difference of 2.93 m, compared to 2.07 m for DYNHYD and 2.05 m for RIV1 over 30 km for a flow of 2574 m³ s⁻¹, a Manning's n of 0.03, a slope of 0.001, and a channel width of 100 m. Based on steady-state theory, the actual difference should be 2.9 m. Both the DYNHYD and RIV1 models require friction factors greater than expected to correspond to classical theory. This may be a result of these models not incorporating sidewall friction that was important during these test runs where the depth was 15 m and the width was 100 m.</p>
 <h2 id="longitudinal-shear-stress">Longitudinal Shear Stress<a class="headerlink" href="#longitudinal-shear-stress" title="Permanent link">&para;</a></h2>
 <p>The longitudinal turbulent shear stress is defined as:</p>
@@ -4554,14 +4514,12 @@ A_x = \alpha\bar{U}\Delta z
 <p>where α is a user input value, <span class="arithmatex">\(U\)</span> with double bars are the time-averaged, lateral averaged longitudinal velocity at a segment and layer.</p>
 <h2 id="hydraulic-structures">Hydraulic Structures<a class="headerlink" href="#hydraulic-structures" title="Permanent link">&para;</a></h2>
 <h3 id="pipes">Pipes<a class="headerlink" href="#pipes" title="Permanent link">&para;</a></h3>
-<p>The user can specify a pipe or culvert between model segments (Berger and Wells, 1999) using a 1D, unsteady hydraulic model that computes the flow between the two linked segments. The model computes the selective withdrawal outflow from the upstream segment. The user specifies whether the inflow to the downstream segment is mixed over the depth, placed at the depth determined from inflow density, or distributed between an upper and lower elevation.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Schematic of linkage of model segments with a culvert.](../assets/images/part2/fig034_schematic_of_linkage_of_model_segments_with_a_culvert.png){ width="600" }
-  <figcaption>Figure 34. Schematic of linkage of model segments with a culvert.</figcaption>
+<p>The user can specify a pipe or culvert between model segments (Berger and Wells, 1999) using a 1D, unsteady hydraulic model (Figure 34) that computes the flow between the two linked segments. The model computes the selective withdrawal outflow from the upstream segment. The user specifies whether the inflow to the downstream segment is mixed over the depth, placed at the depth determined from inflow density, or distributed between an upper and lower elevation.</p>
+<figure>
+  <img alt="Schematic of linkage of model segments with a culvert." src="../../assets/images/part2/fig034_schematic_of_linkage_of_model_segments_with_a_culvert.png" width="600" />
+<br />
+<figcaption>Figure 34. Schematic of linkage of model segments with a culvert.</figcaption>
 </figure>
--->
-
 <p>This model is only appropriate for simple piping systems that are not suddenly under a large hydraulic head. The governing equations for computing the flow and the numerical solution technique are shown below.</p>
 <p>The governing equations used to predict flow through culverts are the 1D, time-dependent conservation of momentum and continuity equations (Yen, 1973):</p>
 <div class="arithmatex">\[
@@ -4623,42 +4581,34 @@ S_m = k\frac{u|u|}{2g}\frac{1}{L} \tag{2-146}
 0 = \frac{u_i^{n+1} - u_i^n}{\Delta t} + \theta u_{i+1}^n \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{\Delta x} + (1-\theta) u_{i+1}^n \frac{u_{i+1}^n - u_{i-1}^n}{\Delta x} + \theta g \frac{h_{i+2}^{n+1} - h_i^{n+1}}{\Delta x} + (1-\theta) g \frac{h_{i+2}^n - h_i^n}{\Delta x} + \theta g \frac{n^2}{R^{4/3}} u_{i+1}^{n+1} |u_{i+1}^n| + (1-\theta) g \frac{n^2}{R^{4/3}} u_{i+1}^n |u_{i+1}^n| + \theta \frac{k}{L} u_{i+1}^{n+1} |u_{i+1}^n| + (1-\theta) \frac{k}{L} u_{i+1}^n |u_{i+1}^n| \tag{2-148}
 \]</div>
 <p>where <span class="arithmatex">\(n\)</span> refers to the time level and <span class="arithmatex">\(i\)</span> references the spatial node (Figure 35).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Linkage schematic of model segments with a culvert.](../assets/images/part2/fig035_computational_grid_showing_surface_layer.png){ width="500" }
-  <figcaption>Figure 35. Linkage schematic of model segments with a culvert.</figcaption>
+<figure>
+  <img alt="Linkage schematic of model segments with a culvert." src="../../assets/images/part2/fig035_computational_grid_showing_surface_layer.png" width="500" />
+<br />
+<figcaption>Figure 35. Linkage schematic of model segments with a culvert.</figcaption>
 </figure>
--->
-
 <p>Figure 36 compares flow predictions using the dynamic culvert model with flow measurements taken within a culvert at NE 47th bridge in the Upper Columbia Slough, Portland, Oregon. The flow was recorded using a flow meter placed directly in a culvert. The cyclical flows are the result of turning pumps on and off at a downstream pump station. The culvert was calibrated by adjusting the minor loss parameter.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Computed versus observed flow using dynamic culvert model.](../assets/images/part2/fig036_computed_versus_observed_flow_using_dynamic_culvert_model.png){ width="500" }
-  <figcaption>Figure 36. Computed versus observed flow using dynamic culvert model.</figcaption>
+<figure>
+  <img alt="Computed versus observed flow using dynamic culvert model." src="../../assets/images/part2/fig036_computed_versus_observed_flow_using_dynamic_culvert_model.png" width="500" />
+<br />
+<figcaption>Figure 36. Computed versus observed flow using dynamic culvert model.</figcaption>
 </figure>
--->
-
 <h3 id="internal-weirs">Internal Weirs<a class="headerlink" href="#internal-weirs" title="Permanent link">&para;</a></h3>
-<p>The model can be used to set internal weirs at specified cell locations. The user specifies the location of the internal weir by providing a segment and layer number. The "weir" effectively acts as a barrier to flow and diffusion of mass/heat across the width of the waterbody. This can be used to simulate submerged and curtain weirs within a waterbody.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Schematic representation of internal weirs.](../assets/images/part2/fig037_schematic_representation_of_internal_weirs.png){ width="500" }
-  <figcaption>Figure 37. Schematic representation of internal weirs.</figcaption>
+<p>The model can be used to set internal weirs at specified cell locations (Figure 37). The user specifies the location of the internal weir by providing a segment and layer number. The "weir" effectively acts as a barrier to flow and diffusion of mass/heat across the width of the waterbody. This can be used to simulate submerged and curtain weirs within a waterbody.</p>
+<figure>
+  <img alt="Schematic representation of internal weirs." src="../../assets/images/part2/fig037_schematic_representation_of_internal_weirs.png" width="500" />
+<br />
+<figcaption>Figure 37. Schematic representation of internal weirs.</figcaption>
 </figure>
--->
-
 <h3 id="water-level-control-or-pumps">Water Level Control or Pumps<a class="headerlink" href="#water-level-control-or-pumps" title="Permanent link">&para;</a></h3>
 <p>In many reservoir systems, outflows are controlled by water levels. A water level control or pump algorithm allows the user to specify the upstream and downstream segments for water transfer at a given flow rate based on the water level at the upstream segment. This is essentially a pump based on a float controller.</p>
 <p>Reverse flow is not allowed. The withdrawal is treated as a lateral selective withdrawal, and the receiving segment is treated as a tributary inflow.</p>
 <h3 id="outlet-structures">Outlet Structures<a class="headerlink" href="#outlet-structures" title="Permanent link">&para;</a></h3>
-<p>Outflows through hydraulic structures can either be specified or computed by the model based on user-supplied rating curves.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Radial gates and spillway flow.](../assets/images/part2/fig038_radial_gates_and_spillway_flow.png){ width="500" }
-  <figcaption>Figure 38. Radial gates and spillway flow.</figcaption>
+<p>Outflows through hydraulic structures can either be specified or computed by the model based on user-supplied rating curves (Figure 38).</p>
+<figure>
+  <img alt="Radial gates and spillway flow." src="../../assets/images/part2/fig038_radial_gates_and_spillway_flow.png" width="500" />
+<br />
+<figcaption>Figure 38. Radial gates and spillway flow.</figcaption>
 </figure>
--->
-
 <p>The UNET model (Hydrologic Engineering Center [HEC], 1997a), a one-dimensional unsteady hydraulic model, formally accounts for spillway flow from weirs and spillways. For free or submerged flow from a spillway with a radial gate, UNET uses a general equation of the form:</p>
 <div class="arithmatex">\[
 Q_{sp} = CWA^\alpha B^\beta H^\eta \tag{2-149}
@@ -4833,23 +4783,19 @@ Q = \alpha_2\Delta h^{\beta_2} \tag{A-2-155}
 <p>Submerged conditions are defined when the tailwater depth over the upstream energy head (static head and velocity head) is greater than 0.67 (HEC, 1997b). Negative flow rates are possible using the second equation whenever <span class="arithmatex">\(Z_d &gt; Z_u\)</span>; however, use these results with caution since rating curves are rarely calibrated for reverse flow over a spillway.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Ensure a smooth transition between submerged and free flowing conditions by proper choice of model coefficients.</p>
+<p>Ensure a smooth transition between submerged and free flowing conditions by proper choice of model coefficients (see Figure 39).</p>
 </div>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Flow rate over a spillway or weir for submerged and free flowing conditions.](../assets/images/part2/fig039_flow_rate_over_a_spillway_or_weir_for_submerged_and_free_flo.png){ width="500" }
-  <figcaption>Figure 39. Flow rate over a spillway or weir for submerged and free flowing conditions.</figcaption>
+<figure>
+  <img alt="Flow rate over a spillway or weir for submerged and free flowing conditions." src="../../assets/images/part2/fig039_flow_rate_over_a_spillway_or_weir_for_submerged_and_free_flo.png" width="500" />
+<br />
+<figcaption>Figure 39. Flow rate over a spillway or weir for submerged and free flowing conditions.</figcaption>
 </figure>
--->
-
 <p>Consider the following weir flow condition in Figure 40.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Flow at a submerged weir.](../assets/images/part2/fig040_flow_at_a_submerged_weir.png){ width="500" }
-  <figcaption>Figure 40. Flow at a submerged weir.</figcaption>
+<figure>
+  <img alt="Flow at a submerged weir." src="../../assets/images/part2/fig040_flow_at_a_submerged_weir.png" width="500" />
+<br />
+<figcaption>Figure 40. Flow at a submerged weir.</figcaption>
 </figure>
--->
-
 <p>For a smooth transition, the two flows must be equal at the transition point. Using:</p>
 <div class="arithmatex">\[
 H_2 - H_{weir} = 0.67\left(\Delta h_1 + \frac{u^2}{2g}\right) \approx 0.67(H_1 - H_{weir}) \tag{2-156}
@@ -4914,35 +4860,29 @@ Q = \alpha_2\Delta h^{\beta_2}B^{\gamma_2} \tag{2-166}
 <li><span class="arithmatex">\(Z_d\)</span> = downstream head</li>
 <li><span class="arithmatex">\(B\)</span> = gate opening, m</li>
 </ul>
-<p>In defining these parameters, the user also has to generate a time series file with the gate opening in m where a gate opening of 0 m is closed. Whenever the gate opening is equal to or greater than <span class="arithmatex">\(0.8\Delta h\)</span>, a weir equation is used with no functional dependency on the gate opening. In this case, a rating curve must be supplied when the gate acts like a weir.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Flow rate variation with gate opening.](../assets/images/part2/fig041_flow_rate_variation_with_gate_opening.png){ width="500" }
-  <figcaption>Figure 41. Flow rate variation with gate opening.</figcaption>
+<p>In defining these parameters, the user also has to generate a time series file with the gate opening in m where a gate opening of 0 m is closed. Whenever the gate opening is equal to or greater than <span class="arithmatex">\(0.8\Delta h\)</span>, a weir equation is used with no functional dependency on the gate opening. In this case, a rating curve must be supplied when the gate acts like a weir. Figure 41 shows the flow rate variation with gate opening.</p>
+<figure>
+  <img alt="Flow rate variation with gate opening." src="../../assets/images/part2/fig041_flow_rate_variation_with_gate_opening.png" width="500" />
+<br />
+<figcaption>Figure 41. Flow rate variation with gate opening.</figcaption>
 </figure>
--->
-
 <p>In some reservoir systems, an outlet valve is connected to the reservoir and a head-discharge relationship is used based on the gate opening or number of gate turns. In this case, the outlet level is usually at a different elevation than the withdrawal elevation. The above gate formulation can still be used if no reverse flow occurs through the needle valve. This situation is illustrated in Figure 42. In this case, the elevation of the outflow is required in addition to the elevation at which the outflow is taken if a rating curve is used in the model. This use is described in the section on gates in the control file.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Selective withdrawal with outflow connected to a valve with a gate.](../assets/images/part2/fig042_selective_withdrawal_with_outflow_connected_to_a_valve_with.png){ width="500" }
-  <figcaption>Figure 42. Selective withdrawal with outflow connected to a valve with a gate.</figcaption>
+<figure>
+  <img alt="Selective withdrawal with outflow connected to a valve with a gate." src="../../assets/images/part2/fig042_selective_withdrawal_with_outflow_connected_to_a_valve_with.png" width="500" />
+<br />
+<figcaption>Figure 42. Selective withdrawal with outflow connected to a valve with a gate.</figcaption>
 </figure>
--->
-
 <p>The user can insert weirs and/or spillways, specify connectivity to other model segments, and insert the ratings curve parameters for each weir/spillway. The model treats each spillway, weir, or gate as a selective withdrawal outflow and uses the selective withdrawal algorithm for determining water flow from each vertical layer adjacent to the structure.</p>
 <p>Inflows from hydraulic control structures are treated as tributary inflows. The user must specify whether the inflow is placed according to density, distributed equally between all vertical layers, or distributed between a given elevation range.</p>
 <p>Weir equations are used when gates are open and the open gate does not interfere with the flow (when <span class="arithmatex">\(B \ge 0.8\Delta h\)</span>).</p>
 <p>Gates can also be used to move flows around to different parts of the model domain, including different branches. In that case the specification of gate openings is interpreted as specification of flow rates.</p>
 <h2 id="branch-momentum-exchange">Branch Momentum Exchange<a class="headerlink" href="#branch-momentum-exchange" title="Permanent link">&para;</a></h2>
-<p>Starting with CE-QUAL-W2 Version 3, CE-QUAL-W2 conserves longitudinal momentum at branch intersections. The vector component of velocity in the x-direction of the main channel, <span class="arithmatex">\(U_x\)</span>, can be computed from the channel orientations. The x-direction component is <span class="arithmatex">\(U_x = U\cos\beta\)</span> where <span class="arithmatex">\(U\)</span> is the longitudinal velocity of the tributary at the downstream segment that intersects the main branch and <span class="arithmatex">\(\beta\)</span> is the difference in the angle between the main stem and tributary segments.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Schematic of branch connection.](../assets/images/part2/fig043_schematic_of_branch_connection.png){ width="500" }
-  <figcaption>Figure 43. Schematic of branch connection.</figcaption>
+<p>Starting with CE-QUAL-W2 Version 3, CE-QUAL-W2 conserves longitudinal momentum at branch intersections (Figure 43). The vector component of velocity in the x-direction of the main channel, <span class="arithmatex">\(U_x\)</span>, can be computed from the channel orientations. The x-direction component is <span class="arithmatex">\(U_x = U\cos\beta\)</span> where <span class="arithmatex">\(U\)</span> is the longitudinal velocity of the tributary at the downstream segment that intersects the main branch and <span class="arithmatex">\(\beta\)</span> is the difference in the angle between the main stem and tributary segments.</p>
+<figure>
+  <img alt="Schematic of branch connection." src="../../assets/images/part2/fig043_schematic_of_branch_connection.png" width="500" />
+<br />
+<figcaption>Figure 43. Schematic of branch connection.</figcaption>
 </figure>
--->
-
 <p>The conservation of momentum about a control volume (the main stem segment) would result in an additional source of momentum. Lai (1986) shows that the correction to the x-momentum equation would be:</p>
 <div class="arithmatex">\[
 qBU_x \tag{2-167}
@@ -5090,8 +5030,7 @@ L = \frac{gT_s^2}{2\pi}\tanh\left[\frac{2\pi H}{L}\right] \tag{2-182}
 <div class="arithmatex">\[
 \varepsilon = \frac{\alpha_o}{\tau_d^4}(\tau - \tau_c)^3 \quad \tau &gt; \tau_c \tag{2-186}
 \]</div>
-<div class="language-text highlight"><pre><span></span><code>where $\alpha_o$ is an empirical constant (0.008), $\tau_d$ = 7, and $\tau_c$ is the user-defined critical shear stress in dynes cm⁻².
-</code></pre></div>
+<p>where <span class="arithmatex">\(\alpha_o\)</span> is an empirical constant (0.008), <span class="arithmatex">\(\tau_d\)</span> = 7, and <span class="arithmatex">\(\tau_c\)</span> is the user-defined critical shear stress in dynes cm⁻².</p>
 <p>Resuspension is assumed to occur only during the first hour after wind shear exceeds the critical shear stress. The rate of resuspension, <span class="arithmatex">\(E\)</span> in g m⁻² hr⁻¹, is:</p>
 <div class="arithmatex">\[
 E = \frac{\varepsilon}{1hr}
