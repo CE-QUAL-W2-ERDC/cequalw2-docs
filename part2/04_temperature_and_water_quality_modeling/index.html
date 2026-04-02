@@ -4541,7 +4541,7 @@
 <p>The instantaneous velocity and concentration are decomposed into a mean and an unsteady component:</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Concentration variability with time](../assets/images/part2/fig49_concentration_variability.png){ width="500" }
+  ![Concentration variability with time](../assets/images/part2/fig049_concentration_variability_with_time.png){ width="500" }
   <figcaption>Figure 49. Concentration variability with time.</figcaption>
 </figure> -->
 
@@ -4582,13 +4582,13 @@ v = \bar{v} + v', \quad w = \bar{w} + w', \quad c = \bar{c} + c'
 <p>where the double overbar is a spatial average over y and the double prime is the deviation from the spatial mean.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Lateral average of the velocity field](../assets/images/part2/fig50_lateral_avg_velocity.png){ width="500" }
+  ![Lateral average of the velocity field](../assets/images/part2/fig050_lateral_average_of_the_velocity_field.png){ width="500" }
   <figcaption>Figure 50. Lateral average of the velocity field.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Lateral average of the concentration field](../assets/images/part2/fig51_lateral_avg_concentration.png){ width="500" }
+  ![Lateral average of the concentration field](../assets/images/part2/fig051_lateral_average_of_the_concentration_field.png){ width="500" }
   <figcaption>Figure 51. Lateral average of the concentration field.</figcaption>
 </figure> -->
 
@@ -4698,7 +4698,7 @@ D_z = 0.14 A_z
 <p>The long-wave atmospheric radiation, <span class="arithmatex">\(\phi_a\)</span>, is computed from air temperature and cloud cover using Brunt's formula: <span class="arithmatex">\(\varphi_a = \varepsilon\sigma T^{*4}\)</span> where <span class="arithmatex">\(\varepsilon\)</span> is the average emittance of atmosphere, <span class="arithmatex">\(\sigma\)</span> is the Stefan-Boltzmann constant (5.62 x 10⁻⁸ W m⁻² °K⁻⁴), and <span class="arithmatex">\(T^*\)</span> is air temperature in absolute scale (°K). The model uses the clear sky formulae of Swinbank (1963): <span class="arithmatex">\(\varphi_{ac} = 5.31 \times 10^{-13}(T_a + 273)^6\)</span>. Below 5 °C the formula of Idso and Jackson (1969) is used: <span class="arithmatex">\(\varphi_{ac} = \sigma(T_a + 273)^4(1 - 0.261\exp[-7.77 \times 10^{-4}T_a^2])\)</span>. The effect of clouds is: <span class="arithmatex">\(\phi_a = \phi_{ac}(1 + kC^2)\)</span> where k = 0.17 (average). The reflection is assumed to be 3%, i.e., <span class="arithmatex">\(\phi_{an} = 0.97\phi_a\)</span>.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Difference in incoming long-wave atmospheric radiation formulae](../assets/images/part2/fig53_longwave_comparison.png){ width="500" }
+  ![Difference in incoming long-wave atmospheric radiation formulae](../assets/images/part2/fig053_solar_penetration.png){ width="500" }
   <figcaption>Figure 53. Difference in incoming long-wave atmospheric radiation formulae between Swinbank and Idso and Jackson.</figcaption>
 </figure> -->
 
@@ -4727,7 +4727,7 @@ D_z = 0.14 A_z
 \]</div>
 <p>where <span class="arithmatex">\(\phi_s(z)\)</span> = short-wave radiation at depth z (W m⁻²), <span class="arithmatex">\(\beta\)</span> = fraction absorbed at the water surface, <span class="arithmatex">\(\eta\)</span> = extinction coefficient (m⁻¹), and <span class="arithmatex">\(\phi_{sn}\)</span> = net short-wave solar radiation reaching the surface (W m⁻²).</p>
 <figure>
-  <img alt="Short-wave solar penetration in a water body" src="../../assets/images/part2/fig053_solar_penetration.png" width="500" />
+  <img alt="Short-wave solar penetration in a water body" src="../../assets/images/part2/fig054_short_wave_solar_penetration_in_a_water_body.png" width="500" />
 <br />
 <figcaption>Figure 54. Short-wave solar penetration in a water body.</figcaption>
 </figure>
@@ -4747,7 +4747,7 @@ b_{2m} = \alpha^c b_z \tag{4-29}
 <p>where <span class="arithmatex">\(z_0\)</span> = wind roughness height. Typical roughness values: 0.001 m for wind &lt; 2.3 m/s and 0.005 m for wind &gt; 2.3 m/s. The Ryan-Harleman (1974) formulation is: <span class="arithmatex">\(f(W_z) = a + bW_z\)</span> (Eq. 4-31) where <span class="arithmatex">\(b\)</span> = 4.1 W m⁻² mmHg⁻¹ m⁻¹ s⁻¹, <span class="arithmatex">\(a = \lambda(T_v - T_{av})^{1/3}\)</span>, and <span class="arithmatex">\(\lambda\)</span> = 3.59 W m² mmHg °C⁻¹/³. For Lake Hefner, <span class="arithmatex">\(a\)</span> = 0 and <span class="arithmatex">\(b\)</span> = 4.99.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Comparison of wind speed formulations](../assets/images/part2/fig55_wind_speed_comparison.png){ width="500" }
+  ![Comparison of wind speed formulations](../assets/images/part2/fig055_equilibrium_temperature.png){ width="500" }
   <figcaption>Figure 55. Comparison of the wind speed formulation for Ryan-Harleman and W2 default (for T<sub>air</sub>=15 °C, T<sub>dew</sub>=-5 °C, T<sub>surface</sub>=25 °C).</figcaption>
 </figure> -->
 
@@ -4817,7 +4817,7 @@ b_{2m} = \alpha^c b_z \tag{4-29}
 <h4 id="equilibrium-temperature">Equilibrium Temperature<a class="headerlink" href="#equilibrium-temperature" title="Permanent link">&para;</a></h4>
 <p>The equilibrium temperature, <span class="arithmatex">\(T_E\)</span>, is defined as the temperature at which the net rate of surface heat exchange is zero (see Figure 56).</p>
 <figure>
-  <img alt="Concept of the equilibrium temperature" src="../../assets/images/part2/fig055_equilibrium_temperature.png" width="500" />
+  <img alt="Concept of the equilibrium temperature" src="../../assets/images/part2/fig056_concept_of_the_equilibrium_temperature_te_where_the_net_su.png" width="500" />
 <br />
 <figcaption>Figure 56. Concept of the equilibrium temperature, T<sub>E</sub>, where the net surface heat flux is defined as zero.</figcaption>
 </figure>
@@ -4850,7 +4850,7 @@ H_{sw} = -K_{sw}(T_w - T_s)
 <p>The variable <span class="arithmatex">\(K_{sw}\)</span> is defined as <span class="arithmatex">\(\left[\frac{\rho c_p D}{L}\right]\)</span> where D is the diffusion coefficient, <span class="arithmatex">\(\rho\)</span> is the density, <span class="arithmatex">\(c_p\)</span> is the coefficient of specific heat, and L is a length scale (typically the distance between the water cell center and sediment cell layer).</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Schematic of sediment heat exchange](../assets/images/part2/fig57_sediment_heat_exchange.png){ width="500" }
+  ![Schematic of sediment heat exchange](../assets/images/part2/fig057_schematic_of_sediment_heat_exchange.png){ width="500" }
   <figcaption>Figure 57. Schematic of sediment heat exchange.</figcaption>
 </figure> -->
 
@@ -4925,7 +4925,7 @@ H = \frac{2\pi}{24}\left[HOUR + (Long - \varphi)\frac{24}{360} + EQT - 12\right]
 \]</div>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Schematic of solar altitude and azimuth](../assets/images/part2/fig58_solar_altitude_azimuth.png){ width="500" }
+  ![Schematic of solar altitude and azimuth](../assets/images/part2/fig058_schematic_of_solar_altitude_ao_and_azimuth_az.png){ width="500" }
   <figcaption>Figure 58. Schematic of solar altitude, A<sub>o</sub>, and azimuth, A<sub>z</sub>.</figcaption>
 </figure> -->
 
@@ -4942,7 +4942,7 @@ X = \frac{\sin(\delta)\cos\left(\frac{Lat \cdot \pi}{180}\right) - \cos(\delta)\
 <p>If <span class="arithmatex">\(X &gt; 1\)</span>, <span class="arithmatex">\(X = 1\)</span>; if <span class="arithmatex">\(X &lt; -1\)</span>, <span class="arithmatex">\(X = -1\)</span> (Eq. 4-40). Then <span class="arithmatex">\(A = A\cos X\)</span> (Eq. 4-41) and <span class="arithmatex">\(AZ = 2\pi - A\)</span>; if <span class="arithmatex">\(H &lt; 0\)</span>, <span class="arithmatex">\(AZ = A\)</span> (Eq. 4-42).</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Schematic of topographic and vegetative shading](../assets/images/part2/fig59_shading_schematic.png){ width="600" }
+  ![Schematic of topographic and vegetative shading](../assets/images/part2/fig059_schematic_of_topographic_and_vegetative_shading_solar_altit.png){ width="600" }
   <figcaption>Figure 59. Schematic of topographic and vegetative shading, solar altitude (α<sub>o</sub>), and vegetation height (T) and their effect on shadow length.</figcaption>
 </figure> -->
 
@@ -4971,13 +4971,13 @@ SRO_{net} = SRO \times Shade \tag{4-49}
 \]</div>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Azimuth angle and stream orientation](../assets/images/part2/fig60_azimuth_orientation.png){ width="500" }
+  ![Azimuth angle and stream orientation](../assets/images/part2/fig060_azimuth_angle.png){ width="500" }
   <figcaption>Figure 60. Azimuth angle, α<sub>A</sub>, and stream orientation, Θ<sub>o</sub>.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Relationship between azimuth, stream orientation, and shadow length](../assets/images/part2/fig61_shadow_length.png){ width="500" }
+  ![Relationship between azimuth, stream orientation, and shadow length](../assets/images/part2/fig061_azimuth_shadow_length.png){ width="500" }
   <figcaption>Figure 61. Relationship between azimuth, stream orientation, and shadow length.</figcaption>
 </figure> -->
 
@@ -5121,7 +5121,7 @@ T_f = -0.3146 - 0.0417 TDS - 0.000166 TDS^2
 <h3 id="gain-and-loss-of-water">Gain and Loss of Water<a class="headerlink" href="#gain-and-loss-of-water" title="Permanent link">&para;</a></h3>
 <p>As ice forms, water is removed from the waterbody. There is a removal of 0.917 m³ of water for every 1 m³ of ice formed. The reverse occurs as ice melts and comes back into the water body. The model does not account for ablation nor on snow accumulation.</p>
 <figure>
-  <img alt="Ice formation and melting water balance" src="../../assets/images/part2/fig060_azimuth_angle.png" width="600" />
+  <img alt="Ice formation and melting water balance" src="../../assets/images/part2/fig062_ice_water_balance.png" width="600" />
 <br />
 <figcaption>Figure 62. Ice formation and melting water balance.</figcaption>
 </figure>
@@ -5394,7 +5394,7 @@ T_f = -0.3146 - 0.0417 TDS - 0.000166 TDS^2
 <h2 id="generic-constituent">Generic Constituent<a class="headerlink" href="#generic-constituent" title="Permanent link">&para;</a></h2>
 <p>Any number of generic constituents <strong>[NGC]</strong> can be defined that can settle, decay (using either zero order and/or first order decay and/or photochemical reactions), transfer across the air/water interface, and/or be released from the sediment during anoxic conditions (just for the zero order SOD model). Generic constituents do not interact with the hydrodynamics nor any other water quality state variables.</p>
 <figure>
-  <img alt="Internal flux for generic constituent compartment" src="../../assets/images/part2/fig061_azimuth_shadow_length.png" width="500" />
+  <img alt="Internal flux for generic constituent compartment" src="../../assets/images/part2/fig063_generic_constituent_flux.png" width="500" />
 <br />
 <figcaption>Figure 63. Internal flux for generic constituent compartment.</figcaption>
 </figure>
@@ -5560,7 +5560,7 @@ K_{Lg} = K_{LO2}\sqrt{\frac{D_g}{D_{O2}}}
 <h2 id="bacteria">Bacteria<a class="headerlink" href="#bacteria" title="Permanent link">&para;</a></h2>
 <p>Coliform bacteria are commonly used as an indicator of pathogen contamination. Safety standards and criteria for drinking and recreational purposes are based upon coliform concentrations.</p>
 <figure>
-  <img alt="Internal flux for coliform bacteria" src="../../assets/images/part2/fig062_ice_water_balance.png" width="400" />
+  <img alt="Internal flux for coliform bacteria" src="../../assets/images/part2/fig064_coliform_bacteria_flux.png" width="400" />
 <br />
 <figcaption>Figure 64. Internal flux for coliform bacteria.</figcaption>
 </figure>
@@ -5598,7 +5598,7 @@ S_{N2} = \frac{A_{sur}}{V_{sur}}K_{LN2}(\Phi_{sN2} - \Phi_{N2})
 </ul>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![N₂ gas exchange](../assets/images/part2/fig65_n2_gas_exchange.png){ width="400" }
+  ![N₂ gas exchange](../assets/images/part2/fig065_n2_gas_exchange.png){ width="400" }
   <figcaption>Figure 65. N₂ gas exchange.</figcaption>
 </figure> -->
 
@@ -5610,20 +5610,20 @@ P(atm) = \left[1 - \frac{Altitude, km}{44.3}\right]^{5.25}
 <p>Combining with Henry's Law: <span class="arithmatex">\(C_{N2} = 55.6 \times 28 \times 10^3 P_{N2} K_H = 1.5568E6 \cdot P_{N2} K_H\)</span>. The Henry's Law constant is temperature dependent: <span class="arithmatex">\(K_H(\text{atm}^{-1}) = 1.8816E\text{-}005 - 4.116E\text{-}007 \times T + 4.6E\text{-}009 \times T^2\)</span> where T is the surface temperature in °C.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Henry's Law constant dependence on temperature](../assets/images/part2/fig66_henrys_law.png){ width="500" }
+  ![Henry's Law constant dependence on temperature](../assets/images/part2/fig066_henrys_law_constant.png){ width="500" }
   <figcaption>Figure 66. Henry's Law constant dependence on temperature.</figcaption>
 </figure> -->
 
 <p>The %N₂ in the atmosphere needs to be corrected for water vapor. The vapor pressure is computed using the air temperature in °C as (Chapra, 1997): <span class="arithmatex">\(P_{watervapor}(mmHg) = 4.596\exp\left(\frac{17.27T}{237.3+T}\right)\)</span>. The relative humidity (RH) was computed based on dew point temperature, <span class="arithmatex">\(T_d\)</span>, and air temperature, T: (Singh, 1992): <span class="arithmatex">\(RH = \left[\frac{112 - 0.1T + T_d}{112 + 0.9T}\right]^8\)</span>.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Vapor pressure as a function of air temperature and relative humidity](../assets/images/part2/fig67_vapor_pressure.png){ width="500" }
+  ![Vapor pressure as a function of air temperature and relative humidity](../assets/images/part2/fig067_vapor_pressure.png){ width="500" }
   <figcaption>Figure 67. Vapor pressure as a function of air temperature and relative humidity.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Atmospheric pressure correction as a result of vapor pressure correction](../assets/images/part2/fig68_atmospheric_pressure_correction.png){ width="500" }
+  ![Atmospheric pressure correction as a result of vapor pressure correction](../assets/images/part2/fig068_atmospheric_pressure_correction.png){ width="500" }
   <figcaption>Figure 68. Atmospheric pressure correction as a result of vapor pressure correction assuming original atmospheric pressure is 1 atm.</figcaption>
 </figure> -->
 
@@ -5641,7 +5641,7 @@ S_{age} = -1\ day^{-1}
 \]</div>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Water age in Chester Morse Lake, WA](../assets/images/part2/fig69_water_age.png){ width="600" }
+  ![Water age in Chester Morse Lake, WA](../assets/images/part2/fig069_water_age_chester_morse_lake.png){ width="600" }
   <figcaption>Figure 69. Water age in Chester Morse Lake, WA.</figcaption>
 </figure> -->
 
@@ -5657,13 +5657,13 @@ S_{age} = -1\ day^{-1}
 <p>Methane (CH₄) and hydrogen sulfide (H₂S) constituents are state variables for the water column. CH₄ is modeled as mg/L as C. H₂S is modeled as mg/L as S. For both constituents, the anaerobic release from the sediments, aerobic decay, and reaeration were modeled (Figure 70 and Figure 71).</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Sources and sinks for methane](../assets/images/part2/fig70_methane.png){ width="400" }
+  ![Sources and sinks for methane](../assets/images/part2/fig070_methane_sources_sinks.png){ width="400" }
   <figcaption>Figure 70. Sources and sinks for methane.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Sources and sinks for hydrogen sulfide and sulfate](../assets/images/part2/fig71_h2s_so4.png){ width="400" }
+  ![Sources and sinks for hydrogen sulfide and sulfate](../assets/images/part2/fig071_h2s_sulfate_sources_sinks.png){ width="400" }
   <figcaption>Figure 71. Sources and sinks for hydrogen sulfide and sulfate.</figcaption>
 </figure> -->
 
@@ -5692,13 +5692,13 @@ S = SOD\gamma_{OM}\delta_{SODR}\frac{A_{sed}}{V} + A_{sur}K_L(-\Phi) - \theta^{T
 <p>The state variables of Fe and Mn in the water column are Fe(II), FeOOH, Mn(II), and MnO₂. These interact with the sediments in the sediment diagenesis model. In the water column the processes active are shown in Figure 72 for Fe and Figure 73 for Mn.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Sources and sinks of Fe in the water column](../assets/images/part2/fig72_fe_water_column.png){ width="500" }
+  ![Sources and sinks of Fe in the water column](../assets/images/part2/fig072_fe_sources_sinks.png){ width="500" }
   <figcaption>Figure 72. Sources and sinks of Fe in the water column.</figcaption>
 </figure> -->
 
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Sources and sinks of Mn in the water column](../assets/images/part2/fig73_mn_water_column.png){ width="500" }
+  ![Sources and sinks of Mn in the water column](../assets/images/part2/fig073_mn_sources_sinks.png){ width="500" }
   <figcaption>Figure 73. Sources and sinks of Mn in the water column.</figcaption>
 </figure> -->
 
@@ -5745,7 +5745,7 @@ S_{MnO_2} = \underbrace{k_{Mn(II)0}\Phi_{DO} 10^{2(pH-7)} \Phi_{Mn(II)}}_{\text{
 <p>The settling velocity of each inorganic suspended solids compartment is a user-defined parameter. Usually this is determined from Stokes' settling velocity for a particular sediment diameter and specific gravity. Any number of inorganic suspended solids groups can be modeled.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Internal flux for inorganic suspended solids](../assets/images/part2/fig74_iss_flux.png){ width="400" }
+  ![Internal flux for inorganic suspended solids](../assets/images/part2/fig074_iss_flux.png){ width="400" }
   <figcaption>Figure 74. Internal flux for inorganic suspended solids.</figcaption>
 </figure> -->
 
@@ -5763,7 +5763,7 @@ S_{ISS} = \omega_{ISS}\frac{\partial \Phi_{ISS}}{\partial z}
 <p>In the finite difference representation of suspended solids concentrations, solids settling from layer [K]-1 serve as a source for the layer below it [K]. Typical settling rates can be computed using Stokes' Law. Figure 75 shows typical settling rates based on particle diameter and density.</p>
 <!-- TODO: Add figure
 <figure markdown="span">
-  ![Typical settling of particles based on Stokes' Law](../assets/images/part2/fig75_stokes_settling.png){ width="500" }
+  ![Typical settling of particles based on Stokes' Law](../assets/images/part2/fig075_settling_stokes_law.png){ width="500" }
   <figcaption>Figure 75. Typical settling of particles based on Stokes' Law based on particle diameter and density.</figcaption>
 </figure> -->
 
@@ -5779,7 +5779,7 @@ S_{ISS} = \omega_{ISS}\frac{\partial \Phi_{ISS}}{\partial z}
 <p>Because of the importance of dissolved oxygen in aquatic systems, all constituents exerting an oxygen demand must be included in kinetic formulations. This demand is often measured as the biochemical oxygen demand (BOD), which includes microbial respiration and metabolism of various organic and inorganic compounds. Dissolved organic matter (DOM) is composed of labile and refractory components. DOM is modeled as two separate compartments because of the different decomposition rates of the two groups.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between labile DOM and other compartments](../assets/images/part2/fig76_ldom_flux.png){ width="600" }
+  ![Internal flux between labile DOM and other compartments](../assets/images/part2/fig076_labile_dom_flux.png){ width="600" }
   <figcaption>Figure 76. Internal flux between labile DOM and other compartments.</figcaption>
 </figure> -->
 
@@ -5813,7 +5813,7 @@ S_{LDOM} = \underbrace{\sum K_{ae}\Phi_a}_{\text{algal excretion}} + \underbrace
 <p>Refractory DOM is composed of compounds in the aquatic environment that slowly decompose, exerting oxygen demand over long periods. Internally, refractory DOM is produced from the decomposition of labile DOM.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between refractory DOM and other compartments](../assets/images/part2/fig77_rdom_flux.png){ width="600" }
+  ![Internal flux between refractory DOM and other compartments](../assets/images/part2/fig077_refractory_dom_flux.png){ width="600" }
   <figcaption>Figure 77. Internal flux between refractory DOM and other compartments.</figcaption>
 </figure> -->
 
@@ -5835,7 +5835,7 @@ S_{RDOM} = \underbrace{K_{L \to R}\Phi_{LDOM}}_{\substack{\text{labile to refrac
 <p>Labile particulate organic matter (LPOM) represents particulate organic material in the water column. Decaying particulate organic matter is a source of refractory particulate organic matter, nitrogen, phosphorus, and inorganic carbon. A stoichiometric relationship governs mineralization of ammonium, phosphorus, and inorganic carbon, and an oxygen demand is exerted as LPOM decomposes.</p>
 <p>When LPOM settles to the bottom, it accumulates and decays in the sediment compartment or the sediment diagenesis compartment if activated for the simulation.</p>
 <figure>
-  <img alt="Internal flux between labile POM and other compartments" src="../../assets/images/part2/fig071_h2s_sulfate_sources_sinks.png" width="600" />
+  <img alt="Internal flux between labile POM and other compartments" src="../../assets/images/part2/fig078_labile_pom_flux.png" width="600" />
 <br />
 <figcaption>Figure 78. Internal flux between labile POM and other compartments.</figcaption>
 </figure>
@@ -5880,7 +5880,7 @@ S_{LPOM} = \underbrace{\sum P_{am}K_{am}\Phi_a}_{\text{algal mortality}} + \unde
 <p>Refractory POM is slowly decaying non-living, organic matter that settles. The source/sink terms are first-order decay, the conversion of LPOM to RPOM, and sedimentation. The settled organic matter becomes part of the first-order sediment model or the sediment diagenesis model if they are active.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between refractory POM and other compartments](../assets/images/part2/fig79_rpom_flux.png){ width="600" }
+  ![Internal flux between refractory POM and other compartments](../assets/images/part2/fig079_refractory_pom_flux.png){ width="600" }
   <figcaption>Figure 79. Internal flux between refractory POM and other compartments.</figcaption>
 </figure> -->
 
@@ -6015,7 +6015,7 @@ S_{RPOM} = \underbrace{K_{L \to R}\Phi_{LPOM-N}}_{\substack{\text{labile to refr
 <h3 id="lpoc">LPOC<a class="headerlink" href="#lpoc" title="Permanent link">&para;</a></h3>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Kinetics of LPOC in the water column](../assets/images/part2/fig80_lpoc_kinetics.png){ width="600" }
+  ![Kinetics of LPOC in the water column](../assets/images/part2/fig080_lpoc_kinetics.png){ width="600" }
   <figcaption>Figure 80. Kinetics of LPOC in the water column.</figcaption>
 </figure> -->
 
@@ -6046,7 +6046,7 @@ S_{LPOC} = \underbrace{\sum K_{am}\delta_{ca}\Phi_a P_{am}}_{\text{algal mortali
 <h3 id="rpoc">RPOC<a class="headerlink" href="#rpoc" title="Permanent link">&para;</a></h3>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Kinetics of RPOC in the water column](../assets/images/part2/fig81_rpoc_kinetics.png){ width="600" }
+  ![Kinetics of RPOC in the water column](../assets/images/part2/fig081_rpoc_kinetics.png){ width="600" }
   <figcaption>Figure 81. Kinetics of RPOC in the water column.</figcaption>
 </figure> -->
 
@@ -6067,7 +6067,7 @@ S_{RPOC} = \underbrace{\gamma_{om}K_{LPOC \to RPOC}\Phi_{LPOC}}_{\substack{\text
 <h3 id="ldoc">LDOC<a class="headerlink" href="#ldoc" title="Permanent link">&para;</a></h3>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Kinetics of LDOC in the water column](../assets/images/part2/fig82_ldoc_kinetics.png){ width="600" }
+  ![Kinetics of LDOC in the water column](../assets/images/part2/fig082_ldoc_kinetics.png){ width="600" }
   <figcaption>Figure 82. Kinetics of LDOC in the water column.</figcaption>
 </figure> -->
 
@@ -6091,7 +6091,7 @@ S_{LDOC} = \underbrace{\sum K_{am}\delta_{ca}\Phi_a(1-P_{am})}_{\text{algal mort
 <h3 id="rdoc">RDOC<a class="headerlink" href="#rdoc" title="Permanent link">&para;</a></h3>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Kinetics of RDOC in the water column](../assets/images/part2/fig83_rdoc_kinetics.png){ width="600" }
+  ![Kinetics of RDOC in the water column](../assets/images/part2/fig083_rdoc_kinetics.png){ width="600" }
   <figcaption>Figure 83. Kinetics of RDOC in the water column.</figcaption>
 </figure> -->
 
@@ -6112,7 +6112,7 @@ S_{RDOC} = \underbrace{\gamma_{om}K_{LDOC \to RDOC}\Phi_{LDOC}}_{\substack{\text
 <p>In Version 3.6 and earlier, the CBOD cycle used fixed stoichiometry in terms of C:N:P. Starting with Version 3.7, the nitrogen and phosphorus corresponding to each CBOD group are modeled as separate constituents.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between CBOD and other compartments in Version 3.7 and later](../assets/images/part2/fig85_cbod_flux.png){ width="500" }
+  ![Internal flux between CBOD and other compartments in Version 3.7 and later](../assets/images/part2/fig085_cbod_flux_v37.png){ width="500" }
   <figcaption>Figure 85. Internal flux between CBOD and other compartments in Version 3.7 and later.</figcaption>
 </figure> -->
 
@@ -6170,7 +6170,7 @@ S_{CBODN} = -\underbrace{\Theta^{T-20}K_{BOD}\Phi_{CBODN}}_{\text{decay}} - \und
 <h3 id="source-sink-term-for-algae">Source-Sink Term for Algae<a class="headerlink" href="#source-sink-term-for-algae" title="Permanent link">&para;</a></h3>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between algae and other compartments](../assets/images/part2/fig88_algae_flux.png){ width="600" }
+  ![Internal flux between algae and other compartments](../assets/images/part2/fig088_algae_flux.png){ width="600" }
   <figcaption>Figure 88. Internal flux between algae and other compartments.</figcaption>
 </figure> -->
 
@@ -6621,7 +6621,7 @@ C_{intra} = \sum_{i=1}^{n \text{ algal groups}} (CTP) \cdot \Phi_a \cdot \beta
 <h2 id="periphytonepiphyton">Periphyton/Epiphyton<a class="headerlink" href="#periphytonepiphyton" title="Permanent link">&para;</a></h2>
 <p>Any number of user-defined periphyton/epiphyton groups can be modeled. Similar to the first-order sediment compartment, periphyton/epiphyton are not transported in the water column.</p>
 <figure>
-  <img alt="Internal flux between epiphyton and other compartments" src="../../assets/images/part2/fig079_refractory_pom_flux.png" width="600" />
+  <img alt="Internal flux between epiphyton and other compartments" src="../../assets/images/part2/fig090_epiphyton_flux.png" width="600" />
 <br />
 <figcaption>Figure 90. Internal flux between epiphyton and other compartments.</figcaption>
 </figure>
@@ -6723,7 +6723,7 @@ B = \Phi_e \frac{V}{A}
 <p>The macrophyte model simulates multiple submerged macrophyte species without differentiating between plant parts. Light, temperature, carbon dioxide, ammonia-nitrogen (the sole nitrogen source for macrophytes), and ortho-phosphorus may limit growth. Depending on the macrophyte species, nitrogen and phosphorus may be obtained from the sediments or the water column. Plants grow upward from the sediment through model layers. Macrophyte shading is modeled by making light attenuation a function of macrophyte concentration.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Nutrient fluxes for the macrophyte compartment in CE-QUAL-W2](../assets/images/part2/fig92_macrophyte_flux.png){ width="600" }
+  ![Nutrient fluxes for the macrophyte compartment in CE-QUAL-W2](../assets/images/part2/fig092_macrophyte_nutrient_flux.png){ width="600" }
   <figcaption>Figure 92. Nutrient fluxes for the macrophyte compartment in CE-QUAL-W2.</figcaption>
 </figure> -->
 
@@ -7003,7 +7003,7 @@ V_m = \frac{m}{\rho_m}
 <h2 id="zooplankton">Zooplankton<a class="headerlink" href="#zooplankton" title="Permanent link">&para;</a></h2>
 <p>The zooplankton compartment was adapted from the U.S. Army Corps of Engineers (USACE) reservoir model CE-QUAL-R1 (Environmental Laboratory, 1995). Zooplankton are assumed to be non-motile and are transported only by advection and dispersion. Zooplankton can graze algae, detritus (POM), and other zooplankton. Losses occur through mortality and respiration. Algae vertical settling or floating can also be specified through a settling velocity and dynamic vertical migration.</p>
 <figure>
-  <img alt="Zooplankton source/sinks" src="../../assets/images/part2/fig081_rpoc_kinetics.png" width="600" />
+  <img alt="Zooplankton source/sinks" src="../../assets/images/part2/fig093_zooplankton_source_sinks.png" width="600" />
 <br />
 <figcaption>Figure 93. Zooplankton source/sinks.</figcaption>
 </figure>
@@ -7136,7 +7136,7 @@ S_{zoo} = \underbrace{\gamma_1\gamma_2 Z_e K_{z\max}\left(\frac{(\sum\sigma_{alg
 <p>Phosphorus is assumed to be completely available as ortho-phosphate (PO₄) for uptake by phytoplankton. Measurements of soluble reactive phosphorus are closest to the form used in the model. Macrophytes are specified as either taking P from the sediments or from the water column.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between phosphorus and other compartments](../assets/images/part2/fig94_phosphorus_flux.png){ width="600" }
+  ![Internal flux between phosphorus and other compartments](../assets/images/part2/fig094_phosphorus_flux.png){ width="600" }
   <figcaption>Figure 94. Internal flux between phosphorus and other compartments.</figcaption>
 </figure> -->
 
@@ -7186,7 +7186,7 @@ S_P = \underbrace{\sum(K_{ar}-K_{ag})\delta_{Pa}\Phi_a}_{\text{algal net growth}
 <p>Ammonium is a product of the decay of organic matter, and algae can use ammonium during photosynthesis to form proteins. In many estuarine applications, nitrogen is the limiting nutrient for algal growth. Macrophytes can prefer taking N from the sediments versus the water column. Ammonia can decay in the presence of nitrifying bacteria to nitrite and nitrate. Ammonium is viewed as total ammonia, both ammonium (NH₄⁺-N) and unionized ammonia (NH₃-N).</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between ammonium and other compartments](../assets/images/part2/fig95_ammonium_flux.png){ width="600" }
+  ![Internal flux between ammonium and other compartments](../assets/images/part2/fig095_ammonium_flux.png){ width="600" }
   <figcaption>Figure 95. Internal flux between ammonium and other compartments.</figcaption>
 </figure> -->
 
@@ -7214,7 +7214,7 @@ S_{NH4} = \underbrace{\sum K_{ar}\delta_{Na}\Phi_a}_{\text{algal respiration}} -
 <p>Nitrogen may be the limiting nutrient for algae in systems with high phosphorus loadings or in estuaries. Some species of cyanobacteria can fix atmospheric nitrogen for use in photosynthesis. This process can be included by setting the nitrogen half-saturation concentration for algal growth to zero.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between nitrate-nitrite and other compartments](../assets/images/part2/fig96_nitrate_flux.png){ width="600" }
+  ![Internal flux between nitrate-nitrite and other compartments](../assets/images/part2/fig096_nitrate_nitrite_flux.png){ width="600" }
   <figcaption>Figure 96. Internal flux between nitrate-nitrite and other compartments.</figcaption>
 </figure> -->
 
@@ -7245,7 +7245,7 @@ S_{NOx} = \underbrace{K_{NH4}\gamma_{NH4}\Phi_{NH4}}_{\text{nitrification}} - \u
 <p>Dissolved silica is an important component of diatoms, providing the structural skeleton. In many cases diatoms can be silica limited. Dissolved silica is taken up by algae based on stoichiometric relationships and is produced by the decay of organic matter containing particulate biogenic silica. Dissolved silica is also adsorbed onto inorganic suspended solids based on a partitioning coefficient.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between dissolved silica and other compartments](../assets/images/part2/fig97_silica_flux.png){ width="600" }
+  ![Internal flux between dissolved silica and other compartments](../assets/images/part2/fig097_dissolved_silica_flux.png){ width="600" }
   <figcaption>Figure 97. Internal flux between dissolved silica and other compartments.</figcaption>
 </figure> -->
 
@@ -7264,7 +7264,7 @@ S_{DSi} = -\underbrace{\sum(K_{ag}-K_{ar})\delta_{Sia}\Phi_a}_{\text{algal uptak
 <p>Particulate biogenic silica results from diatom mortality and settles and also dissolves to form dissolved silica.</p>
 <!-- TODO: Add figure -->
 <!-- <figure markdown="span">
-  ![Internal flux between particulate biogenic silica and other compartments](../assets/images/part2/fig98_pbsi_flux.png){ width="500" }
+  ![Internal flux between particulate biogenic silica and other compartments](../assets/images/part2/fig098_biogenic_silica_flux.png){ width="500" }
   <figcaption>Figure 98. Internal flux between particulate biogenic silica and other compartments.</figcaption>
 </figure> -->
 
@@ -7286,7 +7286,7 @@ S_{PSi} = \underbrace{P_{am}\delta_{Sia}K_{am}\Phi_a}_{\text{algae mortality}} +
 <p>Oxygen is one of the most important elements in aquatic ecosystems. It is essential for higher forms of life, controls many chemical reactions through oxidation, and is a surrogate variable indicating the general health of aquatic systems.</p>
 <p>CE-QUAL-W2 includes both aerobic and anaerobic processes. The ability to model anaerobic periods is important since it provides information on potential problems with water quality. Simulations can be used to identify possibilities for both metalimnetic and hypolimnetic oxygen depletion and its impact on various water control management alternatives.</p>
 <figure>
-  <img alt="Internal flux between dissolved oxygen and other compartments" src="../../assets/images/part2/fig088_algae_flux.png" width="600" />
+  <img alt="Internal flux between dissolved oxygen and other compartments" src="../../assets/images/part2/fig099_dissolved_oxygen_flux.png" width="600" />
 <br />
 <figcaption>Figure 99. Internal flux between dissolved oxygen and other compartments.</figcaption>
 </figure>
@@ -7493,7 +7493,7 @@ K_a = 2592US \text{ for } Q &gt; 3000 \text{ cfs}
 \]</div>
 <p>where <span class="arithmatex">\(S\)</span> is the slope in ft/ft and <span class="arithmatex">\(U\)</span> is velocity in ft/s.</p>
 <figure>
-  <img alt="Reaeration coefficient as a function of flow rate" src="../../assets/images/part2/fig089_reaeration_vs_flow.png" width="600" />
+  <img alt="Reaeration coefficient as a function of flow rate" src="../../assets/images/part2/fig100_reaeration_vs_flow.png" width="600" />
 <br />
 <figcaption>Figure 100. Reaeration coefficient as a function of flow rate.</figcaption>
 </figure>
@@ -7517,7 +7517,7 @@ f(fetch) = \frac{\ln\frac{10}{z_{o2}}\ln\frac{\delta}{z_{o1}}}{\ln\frac{10}{z_{o
 </ul>
 <p>The function <span class="arithmatex">\(f(fetch)\)</span> varies from 1.056 for small lakes to 1.123 for large lakes. The fetch is the length in m of the wind over the water surface from one bank to the other.</p>
 <figure>
-  <img alt="Variation of wind speed and KL for lake/reservoir equations" src="../../assets/images/part2/fig090_epiphyton_flux.png" width="600" />
+  <img alt="Variation of wind speed and KL for lake/reservoir equations" src="../../assets/images/part2/fig101_wind_speed_kl.png" width="600" />
 <br />
 <figcaption>Figure 101. Variation of wind speed and KL for lake/reservoir equations.</figcaption>
 </figure>
@@ -7598,7 +7598,7 @@ D_{O2} = 4.58 \times 10^{-11} T + 1.2 \times 10^{-9}
 <p>where <span class="arithmatex">\(D_{O2}\)</span> is molecular diffusivity of oxygen (m² s⁻¹) and <span class="arithmatex">\(T\)</span> is temperature (°C).</p>
 <p>No temperature correction was made to the calculated value of <span class="arithmatex">\(K_L\)</span> in earlier versions of the model. The latest version includes the correction with theta set to 1.024.</p>
 <figure>
-  <img alt="Variation of KLT/KL20 as a function of temperature" src="../../assets/images/part2/fig094_phosphorus_flux.png" width="500" />
+  <img alt="Variation of KLT/KL20 as a function of temperature" src="../../assets/images/part2/fig105_kl_temperature.png" width="500" />
 <br />
 <figcaption>Figure 105. Variation of K<sub>LT</sub>/K<sub>L20</sub> as a function of temperature.</figcaption>
 </figure>
@@ -8123,7 +8123,7 @@ S_{Csed} = \frac{\omega_{POMR}A_{bottom}}{Vol_{cell}}\gamma_{COM}\Phi_{RPOM} + \
 <p>Sediment state variables include organic matter (labile, refractory, and inert), P, N, inorganic C, alkalinity, oxidized forms of Fe and Mn, reduced forms of Fe and Mn, CH₄, H₂S, sulfate, and temperature. There are also options in the sediment diagenesis model for bubble formation and organic sediment resuspension.</p>
 <h3 id="sediment-phosphorus-diagenesis">Sediment Phosphorus (Diagenesis)<a class="headerlink" href="#sediment-phosphorus-diagenesis" title="Permanent link">&para;</a></h3>
 <figure>
-  <img alt="Schematic of sediment phosphate model" src="../../assets/images/part2/fig097_dissolved_silica_flux.png" width="500" />
+  <img alt="Schematic of sediment phosphate model" src="../../assets/images/part2/fig108_sediment_phosphate_model.png" width="500" />
 <br />
 <figcaption>Figure 108. Schematic of sediment phosphate model (DiToro, 2001).</figcaption>
 </figure>
