@@ -2394,20 +2394,16 @@
 <li>Δt for stability requirement computed internally and updated for each time step</li>
 </ul>
 <p>This section outlines the numerical approach for the hydrodynamic equations (solution of <span class="arithmatex">\(U\)</span>, <span class="arithmatex">\(W\)</span>, and η) and advective-diffusion equations (<span class="arithmatex">\(T\)</span> and <span class="arithmatex">\(C\)</span> or Φ). Abbreviations used throughout this section include: finite difference approximation (FDA), left-hand side (LHS), right-hand side (RHS), and partial differential equation (PDE).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Computational grid variable definitions for no channel slope](../assets/images/part2/fig122_grid_no_slope.png){ width="600" }
-  <figcaption>Figure 122. Computational grid variable definitions for no channel slope.</figcaption>
+<figure>
+  <img alt="Computational grid variable definitions for no channel slope" src="../../assets/images/part2/fig122_grid_no_slope.png" width="600" />
+<br />
+<figcaption>Figure 122. Computational grid variable definitions for no channel slope.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Computational grid variable definitions for arbitrary channel slope](../assets/images/part2/fig123_grid_slope.png){ width="600" }
-  <figcaption>Figure 123. Computational grid variable definitions for arbitrary channel slope.</figcaption>
+<figure>
+  <img alt="Computational grid variable definitions for arbitrary channel slope" src="../../assets/images/part2/fig123_grid_slope.png" width="600" />
+<br />
+<figcaption>Figure 123. Computational grid variable definitions for arbitrary channel slope.</figcaption>
 </figure>
--->
-
 <h2 id="hydrodynamic-equations-numerical-solution">Hydrodynamic Equations Numerical Solution<a class="headerlink" href="#hydrodynamic-equations-numerical-solution" title="Permanent link">&para;</a></h2>
 <h3 id="characteristics-of-the-hydrodynamics-numerical-solution">Characteristics of the Hydrodynamics Numerical Solution<a class="headerlink" href="#characteristics-of-the-hydrodynamics-numerical-solution" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2568,13 +2564,11 @@ D = \Delta t \sum_{kt}^{kb} (UBH_r|_i - UBH_r|_{i-1}) + B_\eta \eta_i^{n-1} \Del
 + \Delta x \Delta t \sum_{kt}^{kb} qBH_r + \Delta x \Delta t^2 \frac{\partial}{\partial x} \sum_{kt}^{kb} qU_x BH_r + \frac{\Delta t^2}{\rho} \left[ \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_i - \left( B\tau_{xz}|_h - B\tau_{xz}|_\eta \right)_{i-1} \right]
 \]</div>
 <p>This equation is applied at all cells in the branch, generating a system of equations that are solved for the water surface elevation at the <span class="arithmatex">\(n+1\)</span> time level using the Thomas algorithm. The resulting FDA is implicit in η because of the dependence of η in the momentum equation (see Figure 124).</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Solution of the water level eta](../assets/images/part2/fig124_eta_solution.png){ width="500" }
-  <figcaption>Figure 124. Solution of the water level, η.</figcaption>
+<figure>
+  <img alt="Solution of the water level eta" src="../../assets/images/part2/fig124_eta_solution.png" width="500" />
+<br />
+<figcaption>Figure 124. Solution of the water level, η.</figcaption>
 </figure>
--->
-
 <p>The boundary conditions of either flow or head boundary are accounted for in applying the above equation to the boundary cells as shown in Figure 125 and Figure 126, respectively. The boundary condition implementation is the same as described in Cole and Buchak (1995).</p>
 <figure>
   <img alt="Grid for computation of a flow boundary in x" src="../../assets/images/part2/fig125_flow_boundary_grid.png" width="500" />
@@ -2673,36 +2667,30 @@ D = 1
 <p>The correction is calculated segment by segment: the change in the water layers over time should equal the net flow into the segment by horizontal velocities. The change or correction in velocity is apportioned equally to the horizontal velocity of all vertical layers. Other numerical models iterate by re-solving the water surface equation after updated horizontal and vertical velocities are computed, which results in significant computational time but a more correct solution.</p>
 <h4 id="boundary-conditions">Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permanent link">&para;</a></h4>
 <p>The solution of the horizontal momentum equation can either accept a flow boundary condition (as shown in Figure 127) or a head or water level condition (as shown in Figure 128). For the flow boundary condition, the velocities at the flow boundary are specified based on the flow rates provided by the user. For the head condition, the model user sets the head or water level as a function of time.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Flow boundary condition where velocities are specified on a boundary](../assets/images/part2/fig127_flow_boundary_U.png){ width="500" }
-  <figcaption>Figure 127. Flow boundary condition where velocities are specified on a boundary.</figcaption>
+<figure>
+  <img alt="Flow boundary condition where velocities are specified on a boundary" src="../../assets/images/part2/fig127_flow_boundary_U.png" width="500" />
+<br />
+<figcaption>Figure 127. Flow boundary condition where velocities are specified on a boundary.</figcaption>
 </figure>
--->
-
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Head boundary condition for solution of momentum equation](../assets/images/part2/fig128_head_boundary_U.png){ width="500" }
-  <figcaption>Figure 128. Head boundary condition for solution of momentum equation.</figcaption>
+<figure>
+  <img alt="Head boundary condition for solution of momentum equation" src="../../assets/images/part2/fig128_head_boundary_U.png" width="500" />
+<br />
+<figcaption>Figure 128. Head boundary condition for solution of momentum equation.</figcaption>
 </figure>
--->
-
 <h3 id="solution-of-vertical-velocity-w">Solution of Vertical Velocity W<a class="headerlink" href="#solution-of-vertical-velocity-w" title="Permanent link">&para;</a></h3>
 <p>The continuity equation</p>
 <div class="arithmatex">\[
 \frac{\partial UB}{\partial x} + \frac{\partial WB}{\partial z} = qB
 \]</div>
-<p>is used to solve for <span class="arithmatex">\(W\)</span> after discretizing into finite differences as:</p>
+<p>is used to solve for <span class="arithmatex">\(W\)</span> (Figure 129) after discretizing into finite differences as:</p>
 <div class="arithmatex">\[
 \frac{WB_{i,k} - WB_{i,k-1}}{\Delta z_k} = -\left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x_i} \right) + q_{i,k} B_{i,k} \tag{5-45}
 \]</div>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Solution of vertical velocity W from continuity equation](../assets/images/part2/fig129_w_solution.png){ width="400" }
-  <figcaption>Figure 129. Solution of vertical velocity, W, from continuity equation.</figcaption>
+<figure>
+  <img alt="Solution of vertical velocity W from continuity equation" src="../../assets/images/part2/fig129_w_solution.png" width="400" />
+<br />
+<figcaption>Figure 129. Solution of vertical velocity, W, from continuity equation.</figcaption>
 </figure>
--->
-
 <p>The algorithm starts at the bottom cell using corrected horizontal velocities and where <span class="arithmatex">\(WB_{k=0} = 0\)</span> such that:</p>
 <div class="arithmatex">\[
 WB_{i,k-1} = -WB_{i,k} + \Delta z_k \left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x_i} \right) - \Delta z_k q_{i,k} B_{i,k}
@@ -2785,14 +2773,12 @@ WB_{i,k-1} = -WB_{i,k} + \Delta z_k \left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x
 <div class="arithmatex">\[
 \frac{\partial B\Phi}{\partial t} + \frac{\partial UB\Phi}{\partial x} + \frac{\partial WB\Phi}{\partial z} - \frac{\partial \left(BD_x \frac{\partial \Phi}{\partial x}\right)}{\partial x} - \frac{\partial \left(BD_z \frac{\partial \Phi}{\partial z}\right)}{\partial z} = q_\Phi B + S_\Phi B
 \]</div>
-<p>is solved by splitting the two-dimensional FDA into two one-dimensional parts: (1) horizontal transport and sources/sinks and lateral inflows/outflows, and (2) vertical transport.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Horizontal advective and diffusive transport](../assets/images/part2/fig130_horizontal_transport.png){ width="500" }
-  <figcaption>Figure 130. Horizontal advective and diffusive transport.</figcaption>
+<p>is solved by splitting the two-dimensional FDA into two one-dimensional parts (Figure 130): (1) horizontal transport and sources/sinks and lateral inflows/outflows, and (2) vertical transport.</p>
+<figure>
+  <img alt="Horizontal advective and diffusive transport" src="../../assets/images/part2/fig130_horizontal_transport.png" width="500" />
+<br />
+<figcaption>Figure 130. Horizontal advective and diffusive transport.</figcaption>
 </figure>
--->
-
 <h4 id="horizontal-transport">Horizontal Transport<a class="headerlink" href="#horizontal-transport" title="Permanent link">&para;</a></h4>
 <p>The horizontal part of the solution is:</p>
 <div class="arithmatex">\[
@@ -2802,13 +2788,11 @@ WB_{i,k-1} = -WB_{i,k} + \Delta z_k \left( \frac{UB_{i,k} - UB_{i-1,k}}{\Delta x
 <p>In Version 2, the QUICKEST scheme was introduced, which uses quadratic upstream differencing rather than linear upstream differencing. Cole and Buchak (1995) discuss this differencing algorithm, which eliminates much of the numerical diffusion associated with upstream differencing.</p>
 <h4 id="vertical-transport">Vertical Transport<a class="headerlink" href="#vertical-transport" title="Permanent link">&para;</a></h4>
 <p>The result from this explicit computation is then used to compute the vertical transport (see Figure 131). The resulting FDA is put in a general time-weighted scheme:</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Vertical advective and diffusive transport](../assets/images/part2/fig131_vertical_transport.png){ width="400" }
-  <figcaption>Figure 131. Vertical advective and diffusive transport.</figcaption>
+<figure>
+  <img alt="Vertical advective and diffusive transport" src="../../assets/images/part2/fig131_vertical_transport.png" width="400" />
+<br />
+<figcaption>Figure 131. Vertical advective and diffusive transport.</figcaption>
 </figure>
--->
-
 <div class="arithmatex">\[
 \frac{\partial B\Phi}{\partial t} \cong \frac{B\Phi_{i,k}^{n+1} - B\Phi_{i,k}^*}{\Delta t} \cong \left(-\theta \frac{\partial WB\Phi}{\partial z}\right)_{i,k}^n + \left(-(1-\theta) \frac{\partial WB\Phi}{\partial z}\right)_{i,k}^{n+1} + \left(\frac{\partial \left(BD_z \frac{\partial \Phi}{\partial z}\right)}{\partial z}\right)_{i,k}^{n+1} \tag{5-48}
 \]</div>
@@ -2829,13 +2813,11 @@ B_{b_{k,i}} = \frac{B_{k,i} + B_{k+1,i}}{2} \tag{5-50}
 <div class="arithmatex">\[
 \overline{H}_{k,i} = \frac{H_k + H_{k+1}}{2} \tag{5-51}
 \]</div>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Variable locations in computational grid](../assets/images/part2/fig132_variable_locations.png){ width="500" }
-  <figcaption>Figure 132. Variable locations in computational grid.</figcaption>
+<figure>
+  <img alt="Variable locations in computational grid" src="../../assets/images/part2/fig132_variable_locations.png" width="500" />
+<br />
+<figcaption>Figure 132. Variable locations in computational grid.</figcaption>
 </figure>
--->
-
 <p>The numerical procedure for solving the six unknowns at each timestep is to first compute water surface elevations. With the new surface elevations, new horizontal velocities can be computed, and with new horizontal velocities, the vertical velocities can be found from continuity.</p>
 <p>Using new horizontal and vertical velocities, the water surface elevation equation can be solved for η simultaneously for a model branch. The solution for η is thus spatially implicit at the same time level and eliminates the surface gravity wave speed criterion:</p>
 <div class="arithmatex">\[
@@ -3006,13 +2988,11 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 \Phi_i^{n+1} = \frac{1}{B_i^{n+1}} \left( B_i^n \Phi_i^n - \left\{ \left[\frac{UB\Delta t}{\Delta x}\right]_R \Phi_R - \left[\frac{UB\Delta t}{\Delta x}\right]_L \Phi_L \right\} \right) \tag{5-61}
 \]</div>
 <p>The value <span class="arithmatex">\(i\)</span> refers to the center grid point, <span class="arithmatex">\(R\)</span> is the right-hand face value, and <span class="arithmatex">\(L\)</span> is the left-hand face value.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![ULTIMATE schematization for positive flow](../assets/images/part2/fig133_ultimate_positive.png){ width="500" }
-  <figcaption>Figure 133. ULTIMATE schematization for positive flow.</figcaption>
+<figure>
+  <img alt="ULTIMATE schematization for positive flow" src="../../assets/images/part2/fig133_ultimate_positive.png" width="500" />
+<br />
+<figcaption>Figure 133. ULTIMATE schematization for positive flow.</figcaption>
 </figure>
--->
-
 <p>For positive flow (Figure 133):</p>
 <table>
 <thead>
@@ -3055,13 +3035,11 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 </tr>
 </tbody>
 </table>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![ULTIMATE schematization for negative flow](../assets/images/part2/fig134_ultimate_negative.png){ width="500" }
-  <figcaption>Figure 134. ULTIMATE schematization for negative flow.</figcaption>
+<figure>
+  <img alt="ULTIMATE schematization for negative flow" src="../../assets/images/part2/fig134_ultimate_negative.png" width="500" />
+<br />
+<figcaption>Figure 134. ULTIMATE schematization for negative flow.</figcaption>
 </figure>
--->
-
 <p>For negative flow (Figure 134):</p>
 <table>
 <thead>
@@ -3137,22 +3115,18 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 <div class="arithmatex">\[
 \Phi_R = \Phi_{i-1}^n + \widetilde{\Phi}_R (\Phi_{i+1}^n - \Phi_{i-1}^n) \tag{5-69}
 \]</div>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Definition sketch for monotonic solution domain](../assets/images/part2/fig135_monotonic_domain.png){ width="400" }
-  <figcaption>Figure 135. Definition sketch for monotonic solution domain.</figcaption>
+<figure>
+  <img alt="Definition sketch for monotonic solution domain" src="../../assets/images/part2/fig135_monotonic_domain.png" width="400" />
+<br />
+<figcaption>Figure 135. Definition sketch for monotonic solution domain.</figcaption>
 </figure>
--->
-
 <p>This procedure is applied to all the faces and then Equation 5-61 is solved to update the concentration at the next time level. This means that the right face concentration will be the left face concentration for the next segment, thus ensuring mass conservation.</p>
-<p>According to tests performed by Lin and Falconer (1997), the QUICKEST-ULTIMATE scheme with splitting of the diffusion and source/sink terms conserved mass and eliminated numerical oscillations. Leonard (1991) also indicated that the QUICKEST scheme coupled with the ULTIMATE scheme was numerically accurate and cost-effective in terms of computational time.</p>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport](../assets/images/part2/fig136_scheme_comparison.png){ width="600" }
-  <figcaption>Figure 136. Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport.</figcaption>
+<p>According to tests performed by Lin and Falconer (1997), the QUICKEST-ULTIMATE scheme with splitting of the diffusion and source/sink terms conserved mass and eliminated numerical oscillations (Figure 136). Leonard (1991) also indicated that the QUICKEST scheme coupled with the ULTIMATE scheme was numerically accurate and cost-effective in terms of computational time.</p>
+<figure>
+  <img alt="Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport" src="../../assets/images/part2/fig136_scheme_comparison.png" width="600" />
+<br />
+<figcaption>Figure 136. Comparison of UPWIND, QUICKEST, and ULTIMATE/QUICKEST schemes for conservative tracer transport.</figcaption>
 </figure>
--->
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For any case of unequal grid spacing, the order of accuracy diminishes. Leonard (1991) recommends that if used with non-uniform grid spacing, the formal accuracy of the method is only preserved if the grid does not expand or contract more than about 125%.</p>
@@ -3194,13 +3168,11 @@ T_{i+1} = \frac{(x - x_i)}{(x_{i+1} - x_i)} - \frac{U \Delta t}{2} \frac{[(x - x
 <li>If not, and <span class="arithmatex">\(\text{DEL} &lt; 0\)</span>, limit <span class="arithmatex">\(\Phi_{face}\)</span> by <span class="arithmatex">\(\Phi_i^n\)</span>, or the larger of <span class="arithmatex">\(\Phi_{reference} = \Phi_{i-1}^n + \frac{(\Phi_i^n - \Phi_{i-1}^n)}{\left(\frac{U\Delta t}{\Delta x}\right)}\)</span> and <span class="arithmatex">\(\Phi_{i+1}^n\)</span></li>
 <li>Once all the face values are determined, use Equation 5-61 to obtain the solution.</li>
 </ol>
-<!-- TODO: Add figure
-<figure markdown="span">
-  ![Definition sketch for variable velocity](../assets/images/part2/fig137_variable_velocity.png){ width="500" }
-  <figcaption>Figure 137. Definition sketch for variable velocity.</figcaption>
+<figure>
+  <img alt="Definition sketch for variable velocity" src="../../assets/images/part2/fig137_variable_velocity.png" width="500" />
+<br />
+<figcaption>Figure 137. Definition sketch for variable velocity.</figcaption>
 </figure>
--->
-
 <h4 id="conditions-for-variable-velocity-and-width">Conditions for Variable Velocity and Width<a class="headerlink" href="#conditions-for-variable-velocity-and-width" title="Permanent link">&para;</a></h4>
 <p>The procedure outlined above is based on unidirectional and uniform magnitude velocity and segment widths. If the velocity regime and widths are variable, then the following procedure is followed in order to maintain a monotonic solution.</p>
 <p>Assuming that <span class="arithmatex">\(U_R\)</span> is positive and the concentration times width (<span class="arithmatex">\(\Phi B\)</span>) increases monotonically, i.e., <span class="arithmatex">\((B\Phi)_{i-1}^n &lt; (B\Phi)_i^n &lt; (B\Phi)_{i+1}^n &lt; (B\Phi)_{i+2}^n\)</span>, between segment <span class="arithmatex">\(i-1\)</span> and <span class="arithmatex">\(i+2\)</span>, then the goal of the technique is to estimate <span class="arithmatex">\(\Phi_R\)</span>, or really <span class="arithmatex">\(B_R \Phi_R\)</span>, and to update the concentration using Equation 5-61. Equation 5-61 can be written as a condition for <span class="arithmatex">\(\Phi_R\)</span> as:</p>
